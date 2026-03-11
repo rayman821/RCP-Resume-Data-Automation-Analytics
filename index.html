@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Jane Doe Portfolio - Light Tech Variant</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#0ea5e9", // Professional Blue/Teal
+                        "primary-dim": "#bae6fd",
+                        "background-light": "#f8fafc", 
+                        "background-white": "#ffffff",
+                        "background-dark": "#191919", // Added based on theme config requirements, though used sparingly in light theme
+                        "text-dark": "#0f172a",
+                        "text-muted": "#64748b",
+                        "surface-light": "#ffffff",
+                        "surface-accent": "#f1f5f9",
+                        "border-light": "#e2e8f0",
+                        "circuit-line": "#cbd5e1",
+                    },
+                    fontFamily: {
+                        display: ['Epilogue', 'sans-serif'], 
+                        body: ['Inter', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'hero-glow': "radial-gradient(circle at 50% 50%, rgba(14, 165, 233, 0.05) 0%, rgba(255, 255, 255, 0) 70%)",
+                        'circuit-pattern': "url(\"data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 10 L20 10 L20 20 L30 20' stroke='%23cbd5e1' stroke-width='1' fill='none' opacity='0.4'/%3E%3Cpath d='M60 60 L60 70 L70 70' stroke='%23cbd5e1' stroke-width='1' fill='none' opacity='0.4'/%3E%3Ccircle cx='30' cy='20' r='1.5' fill='%2394a3b8' opacity='0.5'/%3E%3Ccircle cx='70' cy='70' r='1.5' fill='%2394a3b8' opacity='0.5'/%3E%3C/svg%3E\")",
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                },
+            },
+        };
+    </script>
+<style>
+        .duotone-filter {
+            filter: grayscale(100%);
+            transition: all 0.5s ease;
+        }
+        .group:hover .duotone-filter {
+            filter: grayscale(0%);
+        }
+        .circuit-node {
+            width: 8px;
+            height: 8px;
+            background-color: #0ea5e9;
+            border-radius: 50%;
+            box-shadow: 0 0 4px #0ea5e9;
+        }
+        .motherboard-grid {
+            background-image: 
+                linear-gradient(rgba(203, 213, 225, 0.2) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(203, 213, 225, 0.2) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .text-stroke-primary {
+            -webkit-text-stroke: 1px #0ea5e9;
+        }
+    </style>
+</head>
+<body class="bg-background-light text-text-dark font-body transition-colors duration-300 antialiased selection:bg-primary/20 selection:text-primary relative overflow-x-hidden">
+<div class="fixed inset-0 pointer-events-none z-0 opacity-40 bg-circuit-pattern"></div>
+<div class="fixed inset-0 pointer-events-none z-0 motherboard-grid"></div>
+<nav class="fixed w-full z-50 backdrop-blur-md bg-white/80 border-b border-slate-200">
+<div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+<a class="font-display font-bold text-2xl tracking-tight uppercase flex items-center gap-3 text-slate-800" href="#">
+<div class="relative w-6 h-6 flex items-center justify-center">
+<span class="absolute w-full h-full border border-primary rounded-sm animate-[spin_8s_linear_infinite]"></span>
+<span class="w-2 h-2 bg-primary rounded-full"></span>
+</div>
+                RCP Data
+            </a>
+<div class="hidden md:flex items-center gap-10">
+<a class="text-sm font-semibold tracking-wide text-slate-600 hover:text-primary transition-colors" href="#about">RESUME</a>
+<a class="text-sm font-semibold tracking-wide text-slate-600 hover:text-primary transition-colors" href="#projects">PROJECTS</a>
+<a class="text-sm font-semibold tracking-wide text-slate-600 hover:text-primary transition-colors" href="#contact">CONTACT</a>
+</div>
+<a class="relative px-6 py-2 overflow-hidden group bg-white border border-primary text-primary font-bold text-sm uppercase tracking-wide rounded hover:bg-primary hover:text-white transition-all shadow-sm hover:shadow-md" href="#contact">
+<span class="relative z-10">Connect</span>
+<div class="absolute inset-0 h-full w-full scale-0 rounded transition-all duration-300 group-hover:scale-100 group-hover:bg-primary"></div>
+</a>
+</div>
+</nav>
+<header class="relative min-h-screen flex items-center pt-20 overflow-hidden bg-white">
+<div class="absolute top-0 right-0 w-[800px] h-[800px] bg-sky-100/50 blur-[100px] rounded-full pointer-events-none translate-x-1/3 -translate-y-1/4"></div>
+<div class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-slate-100 blur-[80px] rounded-full pointer-events-none -translate-x-1/4 translate-y-1/4"></div>
+<div class="absolute left-10 top-32 w-px h-64 bg-gradient-to-b from-transparent via-slate-300 to-transparent"></div>
+<div class="absolute right-10 bottom-32 w-px h-64 bg-gradient-to-b from-transparent via-slate-300 to-transparent"></div>
+<div class="max-w-7xl mx-auto px-6 w-full relative z-10 grid md:grid-cols-2 gap-16 items-center">
+<div class="order-2 md:order-1 relative flex justify-center md:justify-center">
+<div class="relative w-72 h-72 md:w-[450px] md:h-[450px] rounded-full p-2 bg-white border border-slate-200 shadow-xl">
+<div class="absolute inset-0 rounded-full border border-dashed border-primary/30 animate-[spin_20s_linear_infinite] m-2"></div>
+<img alt="Raymond Paredes Profile" class="w-full h-full object-cover rounded-full grayscale hover:grayscale-0 transition-all duration-500" src="https://drive.google.com/thumbnail?id=1gJ4_MGDFe9AjsVoiHukNHkn08oxQ29eF&=sz1000"/>
+<div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-white border border-primary text-primary px-4 py-1 rounded-full text-xs font-mono uppercase tracking-widest shadow-lg">
+                        System Online
+                    </div>
+</div>
+</div>
+<div class="order-1 md:order-2 text-center md:text-left relative">
+<div class="absolute -left-8 top-0 h-full w-4 border-l-2 border-t-2 border-b-2 border-slate-200 rounded-l-lg hidden md:block"></div>
+<p class="text-primary font-mono tracking-[0.2em] uppercase mb-4 text-xs font-semibold bg-sky-50 inline-block px-3 py-1 border border-sky-100 rounded">
+                    &lt;Developer /&gt;
+                </p>
+<h1 class="font-display font-black text-5xl md:text-7xl leading-[1.1] mb-6 text-slate-900 uppercase tracking-tight">
+                    Data <span class="text-slate-400">finally</span><br/>
+<span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-sky-600">understood</span>
+</h1>
+<p class="text-xl md:text-2xl text-slate-500 max-w-lg mb-10 md:mx-0 mx-auto font-light leading-relaxed border-l-4 border-primary/20 pl-6">
+                    Data that reveals your business now.<br/> Design workflows that motivate future progress.
+                </p>
+<div class="flex flex-col md:flex-row gap-4 justify-center md:justify-start">
+<a class="px-8 py-4 bg-primary text-white font-display font-bold text-lg uppercase tracking-wider rounded shadow-lg shadow-sky-200 hover:bg-sky-600 hover:shadow-xl transition-all duration-300" href="#projects">
+                        View Projects
+                    </a>
+<a class="px-8 py-4 border border-slate-300 text-slate-600 hover:border-primary hover:text-primary font-display font-bold text-lg uppercase tracking-wider transition-all duration-300 bg-white rounded hover:shadow-md" href="#contact">
+                        Contact Me
+                    </a>
+</div>
+</div>
+</div>
+</header>
+<section class="py-24 bg-slate-50 relative border-t border-slate-200" id="about">
+<div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTEgMWgydjJIMUMxeiIgZmlsbD0iIzIyMiIgZmlsbC1ydWxlPSJldmVub2RkIi8+PC9zdmc+')] opacity-5 pointer-events-none mix-blend-multiply"></div>
+<div class="max-w-7xl mx-auto px-6 grid md:grid-cols-12 gap-16 items-center relative z-10">
+<div class="md:col-span-12 flex items-center gap-4 mb-8">
+<div class="h-px bg-primary flex-grow max-w-[50px]"></div>
+<span class="text-primary font-mono text-sm font-bold">01 // IDENTITY</span>
+<h2 class="font-display font-bold text-4xl text-slate-900 uppercase tracking-tight">About_Me</h2>
+</div>
+<div class="md:col-span-7 space-y-6 text-slate-600 text-lg leading-relaxed">
+<p>
+<span class="text-primary font-bold">&gt;&gt;</span> As a data analyst and automation architect, I operate at the intersection of information and efficiency. I construct digital pipelines that transform raw input into strategic output.
+                </p>
+<p>
+<span class="text-primary font-bold">&gt;&gt;</span> Data is more than just numbers, it reveals how you act as a company. Like any company we strategize and execute options differently from the competition landscape. The best way to see improvements is to create customizable workflows that adapt to better outcomes. Metrics that doesn't merely display the now but the motivation for the future progress.
+                </p>
+<div class="grid grid-cols-2 gap-4 mt-8">
+<div class="bg-white border border-slate-200 p-6 rounded shadow-sm hover:shadow-md transition-shadow">
+<div class="text-4xl font-display font-bold text-primary mb-1">5+</div>
+<div class="text-xs font-mono text-slate-400 uppercase tracking-wider">Years Experience</div>
+</div>
+<div class="bg-white border border-slate-200 p-6 rounded shadow-sm hover:shadow-md transition-shadow">
+<div class="text-4xl font-display font-bold text-primary mb-1">10+</div>
+<div class="text-xs font-mono text-slate-400 uppercase tracking-wider">High Performance Project</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 bg-white relative overflow-hidden" id="skills">
+<svg class="absolute top-0 left-0 w-full h-full pointer-events-none opacity-30" xmlns="http://www.w3.org/2000/svg">
+<path d="M0,50 Q400,50 400,300 T800,550" fill="none" stroke="#e2e8f0" stroke-dasharray="8 8" stroke-width="2"></path>
+</svg>
+<div class="max-w-7xl mx-auto px-6 relative z-10">
+<div class="flex items-center gap-4 mb-16">
+<div class="h-px bg-primary flex-grow max-w-[50px]"></div>
+<span class="text-primary font-mono text-sm font-bold">02 // CAPABILITIES</span>
+<h2 class="font-display font-bold text-4xl text-slate-900 uppercase tracking-tight">Tech_Stack</h2>
+</div>
+<div class="grid md:grid-cols-3 gap-8">
+<div class="group relative bg-slate-50 border border-slate-200 hover:border-primary/50 transition-all duration-300 rounded hover:shadow-lg hover:-translate-y-1">
+<div class="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-primary text-xl">settings</span>
+</div>
+<div class="p-8 h-full relative overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-transparent transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
+<div class="w-16 h-16 bg-white border border-slate-200 shadow-sm rounded flex items-center justify-center mb-8 group-hover:bg-primary group-hover:text-white group-hover:border-primary transition-colors duration-300">
+<span class="material-symbols-outlined text-4xl text-slate-600 group-hover:text-white">analytics</span>
+</div>
+<h3 class="font-display font-bold text-xl mb-4 text-slate-900 uppercase tracking-wide">Data Analytics</h3>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-1 bg-white text-xs font-mono text-slate-600 border border-slate-200 rounded">Power BI</span>
+<span class="px-2 py-1 bg-white text-xs font-mono text-slate-600 border border-slate-200 rounded">SQL</span>
+<span class="px-2 py-1 bg-white text-xs font-mono text-slate-600 border border-slate-200 rounded">Looker</span>
+<span class="px-2 py-1 bg-white text-xs font-mono text-slate-600 border border-slate-200 rounded">Python</span>
+</div>
+</div>
+</div>
+<div class="group relative bg-slate-50 border border-slate-200 hover:border-primary/50 transition-all duration-300 rounded hover:shadow-lg hover:-translate-y-1">
+<div class="p-8 h-full relative overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-transparent transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 delay-75"></div>
+<div class="w-16 h-16 bg-white border border-slate-200 shadow-sm rounded flex items-center justify-center mb-8 group-hover:bg-primary group-hover:text-white group-hover:border-primary transition-colors duration-300">
+<span class="material-symbols-outlined text-4xl text-slate-600 group-hover:text-white">hub</span>
+</div>
+<h3 class="font-display font-bold text-xl mb-4 text-slate-900 uppercase tracking-wide">Automation</h3>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-1 bg-white text-xs font-mono text-slate-600 border border-slate-200 rounded">n8n</span>
+<span class="px-2 py-1 bg-white text-xs font-mono text-slate-600 border border-slate-200 rounded">Zapier</span>
+<span class="px-2 py-1 bg-white text-xs font-mono text-slate-600 border border-slate-200 rounded">Power Automate</span>
+</div>
+</div>
+</div>
+<div class="group relative bg-slate-50 border border-slate-200 hover:border-primary/50 transition-all duration-300 rounded hover:shadow-lg hover:-translate-y-1">
+<div class="p-8 h-full relative overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-transparent transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 delay-150"></div>
+<div class="w-16 h-16 bg-white border border-slate-200 shadow-sm rounded flex items-center justify-center mb-8 group-hover:bg-primary group-hover:text-white group-hover:border-primary transition-colors duration-300">
+<span class="material-symbols-outlined text-4xl text-slate-600 group-hover:text-white">database</span>
+</div>
+<h3 class="font-display font-bold text-xl mb-4 text-slate-900 uppercase tracking-wide">Infrastructure</h3>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-1 bg-white text-xs font-mono text-slate-600 border border-slate-200 rounded">REST API</span>
+<span class="px-2 py-1 bg-white text-xs font-mono text-slate-600 border border-slate-200 rounded">Data Warehousing</span>
+<span class="px-2 py-1 bg-white text-xs font-mono text-slate-600 border border-slate-200 rounded">ETL</span>
+</div>
+</div>
+</div>
+<div class="group relative bg-slate-50 border border-slate-200 hover:border-primary/50 transition-all duration-300 rounded hover:shadow-lg hover:-translate-y-1">
+<div class="p-8 h-full relative overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-transparent transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 delay-150"></div>
+<div class="w-16 h-16 bg-white border border-slate-200 shadow-sm rounded flex items-center justify-center mb-8 group-hover:bg-primary group-hover:text-white group-hover:border-primary transition-colors duration-300">
+<span class="material-symbols-outlined text-4xl text-slate-600 group-hover:text-white">database</span>
+</div>
+<h3 class="font-display font-bold text-xl mb-4 text-slate-900 uppercase tracking-wide">Workflow Management</h3>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-1 bg-white text-xs font-mono text-slate-600 border border-slate-200 rounded">Notion</span>
+<span class="px-2 py-1 bg-white text-xs font-mono text-slate-600 border border-slate-200 rounded">Asana</span>
+<span class="px-2 py-1 bg-white text-xs font-mono text-slate-600 border border-slate-200 rounded">Hubspot</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 bg-slate-50 relative border-t border-slate-200" id="projects">
+<div class="absolute top-20 right-10 hidden md:block opacity-30">
+<div class="flex items-end">
+<div class="w-20 h-[1px] bg-slate-300"></div>
+<div class="circuit-node bg-slate-400 shadow-none"></div>
+<div class="w-[1px] h-20 bg-slate-300"></div>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-6">
+<div class="flex items-center gap-4 mb-16">
+<div class="h-px bg-primary flex-grow max-w-[50px]"></div>
+<span class="text-primary font-mono text-sm font-bold">03 // DEPLOYMENTS</span>
+<h2 class="font-display font-bold text-4xl text-slate-900 uppercase tracking-tight relative inline-block">
+                    Featured_Projects
+                </h2>
+</div>
+<div class="grid md:grid-cols-2 gap-12">
+<div class="group bg-white border border-slate-200 hover:border-primary/50 transition-all duration-500 flex flex-col rounded shadow-sm hover:shadow-xl overflow-hidden">
+<div class="h-72 overflow-hidden relative border-b border-slate-100">
+<div class="absolute inset-0 bg-primary/20 z-10 mix-blend-multiply group-hover:bg-transparent transition-all"></div>
+<img alt="Sales Dashboard Interface" class="w-full h-full object-cover duotone-filter transform group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-zODwuX1Tkq0wHF7Rfn6X7JlKl3TI9FRUGh2N62YRQeHA6OPJZ4EFKplwcbSk8_vEymFz1qCdjIJh1cYlkwlmx2mtu4dFFxQiZ-24SGX72OheHfJfN5CUx_6tFY5O3yrCkBN8iJZsjLnix5uTOfxw_haJuuq4EVYSy7RTV4_WLkeFL8cgQIoG2MVQH7jQoYnsdEB34EO4IgXjuyputw3dVvafAZUg1EgMe-trK9JIYOjSBR7rs5FU3MAV3Q11pS2ddD70VYrXSJst"/>
+</div>
+<div class="p-8 flex-grow flex flex-col relative">
+<div class="absolute left-0 top-8 w-1 h-12 bg-primary"></div>
+<div class="text-primary font-mono text-xs mb-3 uppercase tracking-widest pl-4 font-bold">v.1.0 // Dashboard</div>
+<h3 class="font-display font-bold text-2xl mb-4 text-slate-900 uppercase pl-4 group-hover:text-primary transition-colors">Interactive Sales HUD</h3>
+<p class="text-slate-500 text-sm leading-relaxed mb-6 pl-4 border-l border-slate-200 ml-1">
+                            A real-time command center for sales data. Provides instant visualization of KPIs and predictive trends for executive decision-making.
+                        </p>
+<div class="mt-auto pl-4">
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="px-2 py-1 border border-slate-200 bg-slate-50 text-[10px] font-mono text-slate-600 uppercase rounded">Power BI</span>
+<span class="px-2 py-1 border border-slate-200 bg-slate-50 text-[10px] font-mono text-slate-600 uppercase rounded">SQL</span>
+<span class="px-2 py-1 border border-slate-200 bg-slate-50 text-[10px] font-mono text-slate-600 uppercase rounded">DAX</span>
+</div>
+<a class="inline-flex items-center gap-2 text-slate-700 hover:text-primary transition-colors font-bold text-sm uppercase tracking-wider" href="#">
+<span class="border-b border-primary/30 pb-0.5 group-hover:border-primary">View Case Study</span>
+<span class="material-symbols-outlined text-lg">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+<div class="group bg-white border border-slate-200 hover:border-primary/50 transition-all duration-500 flex flex-col rounded shadow-sm hover:shadow-xl overflow-hidden">
+<div class="h-72 overflow-hidden relative border-b border-slate-100">
+<div class="absolute inset-0 bg-primary/20 z-10 mix-blend-multiply group-hover:bg-transparent transition-all"></div>
+<img alt="Workflow Diagram" class="w-full h-full object-cover duotone-filter transform group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5LpVt9povmg-_AuCBWew7Evgw1dBv5FiU5bXlz9Mze3DRFKPsgjAoxywYcbqow61yyqa9yP8VQTzV-kAcHpXtW8KZPVqkkIveJX8CmWES4NTrgk6Q-P0vAHW1qrJ77FYvFCI37dmLu7SzTHvFgQIauDp0O8N--2_BWiAKz117wxltlcDUczJ8BJLNUk10yky5Uh5lfKsIKOeygiV6U0xpUc-w6po9vAKdtA32PEGI9gqvsPcXLY1U3oNLa6P_SFvW4wsNvIsTFviW"/>
+</div>
+<div class="p-8 flex-grow flex flex-col relative">
+<div class="absolute left-0 top-8 w-1 h-12 bg-primary"></div>
+<div class="text-primary font-mono text-xs mb-3 uppercase tracking-widest pl-4 font-bold">v.2.4 // Workflow</div>
+<h3 class="font-display font-bold text-2xl mb-4 text-slate-900 uppercase pl-4 group-hover:text-primary transition-colors">Auto-Reporting Engine</h3>
+<p class="text-slate-500 text-sm leading-relaxed mb-6 pl-4 border-l border-slate-200 ml-1">
+                            Automated n8n architecture handling data extraction, processing, and distribution. Reduces manual overhead by 95%.
+                        </p>
+<div class="mt-auto pl-4">
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="px-2 py-1 border border-slate-200 bg-slate-50 text-[10px] font-mono text-slate-600 uppercase rounded">n8n</span>
+<span class="px-2 py-1 border border-slate-200 bg-slate-50 text-[10px] font-mono text-slate-600 uppercase rounded">APIs</span>
+<span class="px-2 py-1 border border-slate-200 bg-slate-50 text-[10px] font-mono text-slate-600 uppercase rounded">JSON</span>
+</div>
+<a class="inline-flex items-center gap-2 text-slate-700 hover:text-primary transition-colors font-bold text-sm uppercase tracking-wider" href="#">
+<span class="border-b border-primary/30 pb-0.5 group-hover:border-primary">View Case Study</span>
+<span class="material-symbols-outlined text-lg">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+<div class="group bg-white border border-slate-200 hover:border-primary/50 transition-all duration-500 flex flex-col rounded shadow-sm hover:shadow-xl overflow-hidden">
+<div class="h-72 overflow-hidden relative border-b border-slate-100">
+<div class="absolute inset-0 bg-primary/20 z-10 mix-blend-multiply group-hover:bg-transparent transition-all"></div>
+<img alt="Supply Chain Optimizer Interface" class="w-full h-full object-cover duotone-filter transform group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-zODwuX1Tkq0wHF7Rfn6X7JlKl3TI9FRUGh2N62YRQeHA6OPJZ4EFKplwcbSk8_vEymFz1qCdjIJh1cYlkwlmx2mtu4dFFxQiZ-24SGX72OheHfJfN5CUx_6tFY5O3yrCkBN8iJZsjLnix5uTOfxw_haJuuq4EVYSy7RTV4_WLkeFL8cgQIoG2MVQH7jQoYnsdEB34EO4IgXjuyputw3dVvafAZUg1EgMe-trK9JIYOjSBR7rs5FU3MAV3Q11pS2ddD70VYrXSJst"/>
+</div>
+<div class="p-8 flex-grow flex flex-col relative">
+<div class="absolute left-0 top-8 w-1 h-12 bg-primary"></div>
+<div class="text-primary font-mono text-xs mb-3 uppercase tracking-widest pl-4 font-bold">V.3.1 // AUTOMATION</div>
+<h3 class="font-display font-bold text-2xl mb-4 text-slate-900 uppercase pl-4 group-hover:text-primary transition-colors">SUPPLY CHAIN OPTIMIZER</h3>
+<p class="text-slate-500 text-sm leading-relaxed mb-6 pl-4 border-l border-slate-200 ml-1">
+                            An intelligent system for forecasting inventory needs. Utilizes historical data to reduce stockouts and minimize carrying costs.
+                        </p>
+<div class="mt-auto pl-4">
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="px-2 py-1 border border-slate-200 bg-slate-50 text-[10px] font-mono text-slate-600 uppercase rounded">SQL</span>
+<span class="px-2 py-1 border border-slate-200 bg-slate-50 text-[10px] font-mono text-slate-600 uppercase rounded">PYTHON</span>
+<span class="px-2 py-1 border border-slate-200 bg-slate-50 text-[10px] font-mono text-slate-600 uppercase rounded">TABLEAU</span>
+</div>
+<a class="inline-flex items-center gap-2 text-slate-700 hover:text-primary transition-colors font-bold text-sm uppercase tracking-wider" href="#">
+<span class="border-b border-primary/30 pb-0.5 group-hover:border-primary">View Case Study</span>
+<span class="material-symbols-outlined text-lg">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+<div class="group bg-white border border-slate-200 hover:border-primary/50 transition-all duration-500 flex flex-col rounded shadow-sm hover:shadow-xl overflow-hidden">
+<div class="h-72 overflow-hidden relative border-b border-slate-100">
+<div class="absolute inset-0 bg-primary/20 z-10 mix-blend-multiply group-hover:bg-transparent transition-all"></div>
+<img alt="Predictive Model Graph" class="w-full h-full object-cover duotone-filter transform group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5LpVt9povmg-_AuCBWew7Evgw1dBv5FiU5bXlz9Mze3DRFKPsgjAoxywYcbqow61yyqa9yP8VQTzV-kAcHpXtW8KZPVqkkIveJX8CmWES4NTrgk6Q-P0vAHW1qrJ77FYvFCI37dmLu7SzTHvFgQIauDp0O8N--2_BWiAKz117wxltlcDUczJ8BJLNUk10yky5Uh5lfKsIKOeygiV6U0xpUc-w6po9vAKdtA32PEGI9gqvsPcXLY1U3oNLa6P_SFvW4wsNvIsTFviW"/>
+</div>
+<div class="p-8 flex-grow flex flex-col relative">
+<div class="absolute left-0 top-8 w-1 h-12 bg-primary"></div>
+<div class="text-primary font-mono text-xs mb-3 uppercase tracking-widest pl-4 font-bold">V.1.5 // ANALYTICS</div>
+<h3 class="font-display font-bold text-2xl mb-4 text-slate-900 uppercase pl-4 group-hover:text-primary transition-colors">PREDICTIVE CHURN MODEL</h3>
+<p class="text-slate-500 text-sm leading-relaxed mb-6 pl-4 border-l border-slate-200 ml-1">
+                            Machine learning model designed to identify at-risk customers. Provides actionable insights to retention teams before cancellation occurs.
+                        </p>
+<div class="mt-auto pl-4">
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="px-2 py-1 border border-slate-200 bg-slate-50 text-[10px] font-mono text-slate-600 uppercase rounded">PYTHON</span>
+<span class="px-2 py-1 border border-slate-200 bg-slate-50 text-[10px] font-mono text-slate-600 uppercase rounded">SCIKIT-LEARN</span>
+<span class="px-2 py-1 border border-slate-200 bg-slate-50 text-[10px] font-mono text-slate-600 uppercase rounded">PANDAS</span>
+</div>
+<a class="inline-flex items-center gap-2 text-slate-700 hover:text-primary transition-colors font-bold text-sm uppercase tracking-wider" href="#">
+<span class="border-b border-primary/30 pb-0.5 group-hover:border-primary">View Case Study</span>
+<span class="material-symbols-outlined text-lg">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 bg-white relative overflow-hidden" id="contact">
+<div class="absolute left-1/2 top-20 -translate-x-1/2 w-[600px] h-[400px] border border-slate-100 rounded-full pointer-events-none"></div>
+<div class="max-w-3xl mx-auto px-6 text-center relative z-10">
+<span class="text-primary font-mono text-sm tracking-[0.2em] mb-4 block uppercase font-bold">04 // Communication Link</span>
+<h2 class="font-display font-black text-5xl md:text-6xl mb-6 text-slate-900 uppercase">Contact<br/><span class="text-transparent bg-clip-text bg-gradient-to-br from-slate-700 to-slate-400">Now</span></h2>
+<p class="text-slate-500 text-lg mb-12 max-w-xl mx-auto font-light">
+                Ready to optimize your data architecture? Send a signal. I am currently available for projects and employment.
+            </p>
+<form class="space-y-6 text-left max-w-lg mx-auto bg-slate-50 p-10 border border-slate-200 shadow-xl rounded relative">
+<div class="absolute -top-1 -left-1 w-4 h-4 border-t-2 border-l-2 border-primary"></div>
+<div class="absolute -bottom-1 -right-1 w-4 h-4 border-b-2 border-r-2 border-primary"></div>
+<div>
+<label class="sr-only" for="name">ID: Name</label>
+<input class="w-full bg-white border border-slate-200 rounded px-4 py-4 text-slate-800 placeholder-slate-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all font-mono text-sm shadow-sm" id="name" placeholder="ENTER NAME" type="text"/>
+</div>
+<div>
+<label class="sr-only" for="email">ID: Email</label>
+<input class="w-full bg-white border border-slate-200 rounded px-4 py-4 text-slate-800 placeholder-slate-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all font-mono text-sm shadow-sm" id="email" placeholder="ENTER EMAIL ADDRESS" type="email"/>
+</div>
+<div>
+<label class="sr-only" for="message">Input Data</label>
+<textarea class="w-full bg-white border border-slate-200 rounded px-4 py-4 text-slate-800 placeholder-slate-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all font-mono text-sm shadow-sm" id="message" placeholder="INPUT MESSAGE DATA..." rows="4"></textarea>
+</div>
+<div class="text-center pt-4">
+<button class="w-full inline-flex justify-center items-center gap-3 bg-primary hover:bg-sky-600 text-white font-bold font-display uppercase tracking-widest py-4 px-8 rounded transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5" type="button">
+<span class="material-symbols-outlined text-lg">send</span>
+                        Looking forward to your message
+                    </button>
+</div>
+</form>
+</div>
+</section>
+<footer class="py-12 bg-slate-50 text-center border-t border-slate-200 relative">
+<div class="flex justify-center gap-8 mb-6">
+<a class="text-slate-400 hover:text-primary transition-colors hover:scale-110 transform duration-200" href="#">
+<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path></svg>
+</a>
+<a class="text-slate-400 hover:text-primary transition-colors hover:scale-110 transform duration-200" href="#">
+<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg>
+</a>
+</div>
+<p class="text-slate-500 font-mono text-xs uppercase tracking-widest">
+            Designed and Served Up by Yours Truly, RCP // <span class="text-primary font-bold">Status: Ready</span>
+</p>
+</footer>
+
+</body></html>
