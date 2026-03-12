@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html class="" lang="en"><head>
+<html lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Jane Doe - Tech Resume</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+<title>Raymond Paredes - Resume Page</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <script>
         tailwind.config = {
@@ -14,74 +14,76 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: "#3b82f6", // Bright Tech Blue
-                        "primary-dark": "#1d4ed8",
-                        "accent-blue": "#eff6ff", // Very light blue for backgrounds
-                        "background-light": "#ffffff",
-                        "background-dark": "#0f172a",
-                        "text-main": "#1e293b",
+                        primary: "#0ea5e9", // Professional Blue/Teal
+                        "primary-dim": "#bae6fd",
+                        "background-light": "#f8fafc", 
+                        "background-white": "#ffffff",
+                        "background-dark": "#191919", // Added based on theme config requirements, though used sparingly in light theme
+                        "text-dark": "#0f172a",
                         "text-muted": "#64748b",
-                        "border-light": "#e2e8f0"
+                        "surface-light": "#ffffff",
+                        "surface-accent": "#f1f5f9",
+                        "border-light": "#e2e8f0",
+                        "circuit-line": "#cbd5e1",
                     },
                     fontFamily: {
-                        display: ['Epilogue', 'sans-serif'],
-                        body: ['Epilogue', 'sans-serif'],
-                    },
-                    borderRadius: {
-                        DEFAULT: "0.125rem",
-                        lg: "0.25rem",
-                        xl: "0.5rem",
-                        full: "9999px"
+                        display: ['Epilogue', 'sans-serif'], 
+                        body: ['Inter', 'sans-serif'],
                     },
                     backgroundImage: {
-                        'grid-pattern': "linear-gradient(to right, #f1f5f9 1px, transparent 1px), linear-gradient(to bottom, #f1f5f9 1px, transparent 1px)",
-                    }
+                        'hero-glow': "radial-gradient(circle at 50% 50%, rgba(14, 165, 233, 0.05) 0%, rgba(255, 255, 255, 0) 70%)",
+                        'circuit-pattern': "url(\"data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 10 L20 10 L20 20 L30 20' stroke='%23cbd5e1' stroke-width='1' fill='none' opacity='0.4'/%3E%3Cpath d='M60 60 L60 70 L70 70' stroke='%23cbd5e1' stroke-width='1' fill='none' opacity='0.4'/%3E%3Ccircle cx='30' cy='20' r='1.5' fill='%2394a3b8' opacity='0.5'/%3E%3Ccircle cx='70' cy='70' r='1.5' fill='%2394a3b8' opacity='0.5'/%3E%3C/svg%3E\")",
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
                 },
             },
         };
     </script>
-<style type="text/tailwindcss">
-        @layer utilities {
-            .text-outline {
-                -webkit-text-stroke: 1px #e2e8f0;
-                color: transparent;
-            }
+<style>
+        .duotone-filter {
+            filter: grayscale(100%);
+            transition: all 0.5s ease;
         }
-        body {
-            @apply bg-background-light text-text-main font-display antialiased;
+        .group:hover .duotone-filter {
+            filter: grayscale(0%);
         }
-        .tech-grid {
+        .circuit-node {
+            width: 8px;
+            height: 8px;
+            background-color: #0ea5e9;
+            border-radius: 50%;
+            box-shadow: 0 0 4px #0ea5e9;
+        }
+        .motherboard-grid {
+            background-image: 
+                linear-gradient(rgba(203, 213, 225, 0.2) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(203, 213, 225, 0.2) 1px, transparent 1px);
             background-size: 40px 40px;
-            mask-image: linear-gradient(to bottom, transparent, black, transparent);
-            -webkit-mask-image: linear-gradient(to bottom, transparent 5%, black 40%, black 70%, transparent 95%);
         }
-        .circuit-line {
-            position: absolute;
-            background: linear-gradient(90deg, transparent, #3b82f6, transparent);
-            opacity: 0.2;
+        .text-stroke-primary {
+            -webkit-text-stroke: 1px #0ea5e9;
         }
     </style>
 </head>
-<body class="relative overflow-x-hidden">
-<div class="fixed inset-0 z-0 pointer-events-none">
-<div class="absolute inset-0 bg-grid-pattern tech-grid opacity-60"></div>
-<div class="circuit-line top-[15%] left-0 w-full h-[1px]"></div>
-<div class="circuit-line top-[45%] right-0 w-2/3 h-[1px]"></div>
-<div class="circuit-line bottom-[20%] left-0 w-3/4 h-[1px]"></div>
-<div class="circuit-line top-0 left-[10%] w-[1px] h-full"></div>
-<div class="circuit-line top-0 right-[15%] w-[1px] h-1/2"></div>
-</div>
-<nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-border-light">
+<body class="bg-background-light text-text-dark font-body transition-colors duration-300 antialiased selection:bg-primary/20 selection:text-primary relative overflow-x-hidden">
+<div class="fixed inset-0 pointer-events-none z-0 opacity-40 bg-circuit-pattern"></div>
+<div class="fixed inset-0 pointer-events-none z-0 motherboard-grid"></div>
+<nav class="fixed w-full z-50 backdrop-blur-md bg-white/80 border-b border-slate-200">
 <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-<a class="text-2xl font-bold tracking-tighter flex items-center gap-2" href="#">
-<div class="w-3 h-3 bg-primary rounded-full"></div>
-                RCP Worktech
-            </a>
-<div class="hidden md:flex items-center gap-8 text-sm font-medium tracking-wide">
-<a class="text-text-muted hover:text-primary transition-colors" href="index.html">ABOUT</a>
-<a class="text-primary" href="resume.html">RESUME</a>
-<a class="text-text-muted hover:text-primary transition-colors" href="#contact">CONTACT</a>
+<a class="font-display font-bold text-2xl tracking-tight uppercase flex items-center gap-3 text-slate-800" href="#">
+<div class="relative w-6 h-6 flex items-center justify-center">
+<span class="absolute w-full h-full border border-primary rounded-sm animate-[spin_8s_linear_infinite]"></span>
+<span class="w-2 h-2 bg-primary rounded-full"></span>
 </div>
+                RCP Data
+            </a>
+<div class="hidden md:flex items-center gap-10">
+<a class="text-sm font-semibold tracking-wide text-slate-600 hover:text-primary transition-colors" href="resume.html">RESUME</a>
+<a class="text-sm font-semibold tracking-wide text-slate-600 hover:text-primary transition-colors" href="projects.html">PROJECTS</a>
+<a class="text-sm font-semibold tracking-wide text-slate-600 hover:text-primary transition-colors" href="#contact">CONTACT</a>
+</div>
+<div class="absolute inset-0 h-full w-full scale-0 rounded transition-all duration-300 group-hover:scale-100 group-hover:bg-primary"></div>
+</a>
 <a class="hidden md:flex items-center gap-2 bg-primary hover:bg-primary-dark text-white px-6 py-2.5 rounded-full text-xs font-bold tracking-widest transition-all shadow-lg shadow-primary/20" href="#">
 <span class="material-symbols-outlined text-sm">download</span>
                 DOWNLOAD PDF
