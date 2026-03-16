@@ -1,8 +1,9 @@
 <!DOCTYPE html>
+
 <html lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Raymond Paredes - Data Now Easy</title>
+<title>Raymond Paredes - Data finally Understood</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -18,7 +19,6 @@
                         "primary-dim": "#bae6fd",
                         "background-light": "#f8fafc", 
                         "background-white": "#ffffff",
-                        "background-dark": "#191919", // Added based on theme config requirements, though used sparingly in light theme
                         "text-dark": "#0f172a",
                         "text-muted": "#64748b",
                         "surface-light": "#ffffff",
@@ -63,6 +63,15 @@
         .text-stroke-primary {
             -webkit-text-stroke: 1px #0ea5e9;
         }
+        #hero-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
     </style>
 </head>
 <body class="bg-background-light text-text-dark font-body transition-colors duration-300 antialiased selection:bg-primary/20 selection:text-primary relative overflow-x-hidden">
@@ -75,11 +84,12 @@
 <span class="absolute w-full h-full border border-primary rounded-sm animate-[spin_8s_linear_infinite]"></span>
 <span class="w-2 h-2 bg-primary rounded-full"></span>
 </div>
-                RCP Data
+                RCP
             </a>
 <div class="hidden md:flex items-center gap-10">
-<a class="text-sm font-semibold tracking-wide text-slate-600 hover:text-primary transition-colors" href="resume.html">RESUME</a>
-<a class="text-sm font-semibold tracking-wide text-slate-600 hover:text-primary transition-colors" href="projects.html">PROJECTS</a>
+<a class="text-sm font-semibold tracking-wide text-slate-600 hover:text-primary transition-colors" href="#about">ABOUT</a>
+<a class="text-sm font-semibold tracking-wide text-slate-600 hover:text-primary transition-colors" href="#skills">SKILLS</a>
+<a class="text-sm font-semibold tracking-wide text-slate-600 hover:text-primary transition-colors" href="#projects">PROJECTS</a>
 <a class="text-sm font-semibold tracking-wide text-slate-600 hover:text-primary transition-colors" href="#contact">CONTACT</a>
 </div>
 <a class="relative px-6 py-2 overflow-hidden group bg-white border border-primary text-primary font-bold text-sm uppercase tracking-wide rounded hover:bg-primary hover:text-white transition-all shadow-sm hover:shadow-md" href="#contact">
@@ -89,33 +99,23 @@
 </div>
 </nav>
 <header class="relative min-h-screen flex items-center pt-20 overflow-hidden bg-white">
-<div class="absolute top-0 right-0 w-[800px] h-[800px] bg-sky-100/50 blur-[100px] rounded-full pointer-events-none translate-x-1/3 -translate-y-1/4"></div>
+<canvas id="hero-canvas"></canvas>
+<div class="absolute top-0 right-0 w-[800px] h-[800px] bg-sky-100/30 blur-[100px] rounded-full pointer-events-none translate-x-1/3 -translate-y-1/4"></div>
 <div class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-slate-100 blur-[80px] rounded-full pointer-events-none -translate-x-1/4 translate-y-1/4"></div>
-<div class="absolute left-10 top-32 w-px h-64 bg-gradient-to-b from-transparent via-slate-300 to-transparent"></div>
-<div class="absolute right-10 bottom-32 w-px h-64 bg-gradient-to-b from-transparent via-slate-300 to-transparent"></div>
-<div class="max-w-7xl mx-auto px-6 w-full relative z-10 grid md:grid-cols-2 gap-16 items-center">
-<div class="order-2 md:order-1 relative flex justify-center md:justify-center">
-<div class="relative w-72 h-72 md:w-[450px] md:h-[450px] rounded-full p-2 bg-white border border-slate-200 shadow-xl">
-<div class="absolute inset-0 rounded-full border border-dashed border-primary/30 animate-[spin_20s_linear_infinite] m-2"></div>
-<img alt="Raymond Paredes Profile" class="w-full h-full object-cover rounded-full grayscale hover:grayscale-0 transition-all duration-500" src="https://drive.google.com/thumbnail?id=1KujG5uES7CLkgMCdTFFRYwdwxamXIp6w&view?sz=1000"/>
-<div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-white border border-primary text-primary px-4 py-1 rounded-full text-xs font-mono uppercase tracking-widest shadow-lg">
-                        System Online
-                    </div>
-</div>
-</div>
-<div class="order-1 md:order-2 text-center md:text-left relative">
-<div class="absolute -left-8 top-0 h-full w-4 border-l-2 border-t-2 border-b-2 border-slate-200 rounded-l-lg hidden md:block"></div>
+<div class="absolute left-1/2 -translate-x-1/2 top-32 w-px h-64 bg-gradient-to-b from-transparent via-slate-300 to-transparent"></div>
+<div class="max-w-7xl mx-auto px-6 w-full relative z-10 text-center">
+<div class="max-w-3xl mx-auto">
 <p class="text-primary font-mono tracking-[0.2em] uppercase mb-4 text-xs font-semibold bg-sky-50 inline-block px-3 py-1 border border-sky-100 rounded">
                     &lt;Developer /&gt;
                 </p>
 <h1 class="font-display font-black text-5xl md:text-7xl leading-[1.1] mb-6 text-slate-900 uppercase tracking-tight">
-                    Data <span class="text-slate-400">finally</span><br/>
+                     Data <span class="text-slate-400">finally</span><br/>
 <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-sky-600">understood</span>
 </h1>
-<p class="text-xl md:text-2xl text-slate-500 max-w-lg mb-10 md:mx-0 mx-auto font-light leading-relaxed border-l-4 border-primary/20 pl-6">
-                    Data that reveals your business now.<br/> Design workflows that motivate future progress.
+<p class="text-xl md:text-2xl text-slate-500 mb-10 mx-auto font-light leading-relaxed border-l-4 border-primary/20 pl-6 max-w-2xl">
+                    Data that reveals your business now.<br/> Design workflows that motivate future progress.<br/>Your next data analyst and automation specialist is here.
                 </p>
-<div class="flex flex-col md:flex-row gap-4 justify-center md:justify-start">
+<div class="flex flex-col md:flex-row gap-4 justify-center">
 <a class="px-8 py-4 bg-primary text-white font-display font-bold text-lg uppercase tracking-wider rounded shadow-lg shadow-sky-200 hover:bg-sky-600 hover:shadow-xl transition-all duration-300" href="#projects">
                         View Projects
                     </a>
@@ -128,42 +128,43 @@
 </header>
 <section class="py-24 bg-slate-50 relative border-t border-slate-200" id="about">
 <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTEgMWgydjJIMUMxeiIgZmlsbD0iIzIyMiIgZmlsbC1ydWxlPSJldmVub2RkIi8+PC9zdmc+')] opacity-5 pointer-events-none mix-blend-multiply"></div>
-<div class="max-w-7xl mx-auto px-6 grid md:grid-cols-12 gap-16 items-center relative z-10">
-<div class="md:col-span-12 flex items-center gap-4 mb-8">
+<div class="max-w-7xl mx-auto px-6 relative z-10">
+<div class="flex items-center gap-4 mb-12">
 <div class="h-px bg-primary flex-grow max-w-[50px]"></div>
 <span class="text-primary font-mono text-sm font-bold">01 // IDENTITY</span>
 <h2 class="font-display font-bold text-4xl text-slate-900 uppercase tracking-tight">About_Me</h2>
 </div>
-<div class="md:col-span-7 space-y-6 text-slate-600 text-lg leading-relaxed">
+<div class="grid md:grid-cols-12 gap-16 items-center">
+<div class="md:col-span-5 relative flex justify-center order-2 md:order-1">
+<div class="relative w-72 h-72 md:w-[450px] md:h-[450px] rounded-full p-2 bg-white border border-slate-200 shadow-xl">
+<div class="absolute inset-0 rounded-full border border-dashed border-primary/30 animate-[spin_20s_linear_infinite] m-2"></div>
+<img alt="Jane Doe Profile" class="w-full h-full object-cover rounded-full grayscale hover:grayscale-0 transition-all duration-500" src="https://drive.google.com/thumbnail?id=1KujG5uES7CLkgMCdTFFRYwdwxamXIp6w&view?sz=1000"/>
+<div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-white border border-primary text-primary px-4 py-1 rounded-full text-xs font-mono uppercase tracking-widest shadow-lg">
+                        System Online
+                    </div>
+</div>
+</div>
+<div class="md:col-span-7 space-y-6 text-slate-600 text-lg leading-relaxed order-1 md:order-2">
 <p>
 <span class="text-primary font-bold">&gt;&gt;</span> As a data analyst and automation architect, I operate at the intersection of information and efficiency. I construct digital pipelines that transform raw input into strategic output.
                 </p>
 <p>
-<span class="text-primary font-bold">&gt;&gt;</span> Data is more than just numbers, it reveals how you act as a company. Like any company we strategize and execute options differently from the competition landscape. The best way to see improvements is to create customizable workflows that adapt to better outcomes. Metrics that doesn't merely display the now but the motivation for the future progress.
+<span class="text-primary font-bold">&gt;&gt;</span> My framework is built on logic and scalability. I don't just visualize data; I engineer systems that anticipate future requirements, ensuring every process is optimized for maximum throughput.
                 </p>
 <div class="grid grid-cols-2 gap-4 mt-8">
 <div class="bg-white border border-slate-200 p-6 rounded shadow-sm hover:shadow-md transition-shadow">
-<div class="text-4xl font-display font-bold text-primary mb-1">5+</div>
+<div class="text-4xl font-display font-bold text-primary mb-1">3+</div>
 <div class="text-xs font-mono text-slate-400 uppercase tracking-wider">Years Experience</div>
 </div>
 <div class="bg-white border border-slate-200 p-6 rounded shadow-sm hover:shadow-md transition-shadow">
 <div class="text-4xl font-display font-bold text-primary mb-1">10+</div>
-<div class="text-xs font-mono text-slate-400 uppercase tracking-wider">High Performance Project</div>
+<div class="text-xs font-mono text-slate-400 uppercase tracking-wider">Projects Deployed</div>
 </div>
 </div>
 </div>
 </div>
 </div>
 </section>
-<div class="md:col-span-5 relative group">
-<div class="absolute -inset-4 border-2 border-slate-200 rounded z-0"></div>
-<div class="absolute -inset-4 border border-primary/20 rounded z-0 rotate-3 scale-95"></div>
-<div class="relative rounded overflow-hidden border border-slate-200 bg-white shadow-xl z-10">
-<img alt="Jane working" class="w-full object-cover grayscale opacity-90 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUsNVDhd34uWHMHXbDM_4UMgFnRiNrlXBouh-gIg9QZdHNdKVr8ivEEDUOC3t9vafqhTX7qvMJhQcbikpV-f9VIh8VAYIbkqGmI_wTXxISq2aVfZkBLEZ8El9Iifc0_shyxR964Y84dLHHnB9_npaulAK7SzLpP3M5h4MgX3h2KbPmMCV9C3rpMvkjYn2lkxE9PdbmeUgUGmPwMBezYxpRz_Mneclyk1zzCYTEilCJSWh1bljVpVDYDJtMxWqpJLus8u_5BVX3WjGH"/>
-<div class="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-white to-transparent opacity-80"></div>
-</div>
-</div>
-</div>
 <section class="py-24 bg-white relative overflow-hidden" id="skills">
 <svg class="absolute top-0 left-0 w-full h-full pointer-events-none opacity-30" xmlns="http://www.w3.org/2000/svg">
 <path d="M0,50 Q400,50 400,300 T800,550" fill="none" stroke="#e2e8f0" stroke-dasharray="8 8" stroke-width="2"></path>
@@ -372,5 +373,124 @@
             Designed and Served Up by Yours Truly, RCP // <span class="text-primary font-bold">Status: Ready</span>
 </p>
 </footer>
+<script>
+        const canvas = document.getElementById('hero-canvas');
+        const ctx = canvas.getContext('2d');
+        let width, height, particles;
+        const particleCount = 100;
+        const connectionDistance = 150;
+        const mouse = { x: null, y: null, radius: 180 };
 
-</body></html>
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = e.x;
+            mouse.y = e.y;
+        });
+
+        window.addEventListener('resize', init);
+
+        class Particle {
+            constructor() {
+                this.init();
+            }
+
+            init() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.vx = (Math.random() - 0.5) * 0.5;
+                this.vy = (Math.random() - 0.5) * 0.5;
+                this.radius = 2;
+                this.baseX = this.x;
+                this.baseY = this.y;
+            }
+
+            update() {
+                // Regular movement
+                this.x += this.vx;
+                this.y += this.vy;
+
+                // Bounce off walls
+                if (this.x < 0 || this.x > width) this.vx *= -1;
+                if (this.y < 0 || this.y > height) this.vy *= -1;
+
+                // Mouse interaction - Attraction/Repulsion
+                if (mouse.x != null && mouse.y != null) {
+                    let dx = mouse.x - this.x;
+                    let dy = mouse.y - this.y;
+                    let distance = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (distance < mouse.radius) {
+                        const force = (mouse.radius - distance) / mouse.radius;
+                        const angle = Math.atan2(dy, dx);
+                        const moveX = Math.cos(angle) * force * 2;
+                        const moveY = Math.sin(angle) * force * 2;
+                        
+                        // Slowly move away from mouse
+                        this.x -= moveX;
+                        this.y -= moveY;
+                    }
+                }
+            }
+
+            draw() {
+                ctx.fillStyle = '#0ea5e9';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function init() {
+            width = window.innerWidth;
+            height = window.innerHeight;
+            canvas.width = width;
+            canvas.height = height;
+            particles = [];
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+            
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+
+                // Draw connections
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < connectionDistance) {
+                        ctx.strokeStyle = `rgba(14, 165, 233, ${1 - distance / connectionDistance})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+
+                // Connections to mouse
+                if (mouse.x != null) {
+                    const mdx = particles[i].x - mouse.x;
+                    const mdy = particles[i].y - mouse.y;
+                    const mdist = Math.sqrt(mdx * mdx + mdy * mdy);
+                    if (mdist < mouse.radius) {
+                        ctx.strokeStyle = `rgba(14, 165, 233, ${(1 - mdist / mouse.radius) * 0.4})`;
+                        ctx.lineWidth = 0.8;
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(mouse.x, mouse.y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animate);
+        }
+
+        init();
+        animate();
+    </script>
