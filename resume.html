@@ -1,8 +1,9 @@
 <!DOCTYPE html>
+
 <html lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Raymond Paredes - Resume Page</title>
+<title>Raymond Paredes - Resume</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -18,7 +19,6 @@
                         "primary-dim": "#bae6fd",
                         "background-light": "#f8fafc", 
                         "background-white": "#ffffff",
-                        "background-dark": "#191919", // Added based on theme config requirements, though used sparingly in light theme
                         "text-dark": "#0f172a",
                         "text-muted": "#64748b",
                         "surface-light": "#ffffff",
@@ -63,6 +63,15 @@
         .text-stroke-primary {
             -webkit-text-stroke: 1px #0ea5e9;
         }
+        #hero-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
     </style>
 </head>
 <body class="bg-background-light text-text-dark font-body transition-colors duration-300 antialiased selection:bg-primary/20 selection:text-primary relative overflow-x-hidden">
@@ -70,17 +79,30 @@
 <div class="fixed inset-0 pointer-events-none z-0 motherboard-grid"></div>
 <nav class="fixed w-full z-50 backdrop-blur-md bg-white/80 border-b border-slate-200">
 <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-<a class="font-display font-bold text-2xl tracking-tight uppercase flex items-center gap-3 text-slate-800" href="#">
-<div class="relative w-6 h-6 flex items-center justify-center">
-<span class="absolute w-full h-full border border-primary rounded-sm animate-[spin_8s_linear_infinite]"></span>
-<span class="w-2 h-2 bg-primary rounded-full"></span>
+<a class="font-display font-bold text-2xl tracking-tight uppercase flex items-center gap-3 text-slate-800" href="#"><div class="flex items-center gap-3 group/logo">
+<div class="relative w-8 h-8 flex items-center justify-center">
+<svg class="absolute inset-0 w-full h-full text-primary opacity-20 group-hover/logo:animate-pulse" fill="none" stroke="currentColor" stroke-width="1" viewbox="0 0 24 24">
+<rect height="20" rx="2" width="20" x="2" y="2"></rect>
+</svg>
+<div class="relative">
+<span class="absolute inset-0 bg-primary/40 blur-sm rounded-full animate-pulse"></span>
+<div class="relative w-2 h-2 bg-primary rounded-full shadow-[0_0_8px_rgba(14,165,233,0.8)]"></div>
 </div>
-                RCP Data
-            </a>
+<svg class="absolute inset-0 w-full h-full text-primary/40" fill="none" stroke="currentColor" stroke-width="0.5" viewbox="0 0 24 24">
+<path class="animate-[spin_10s_linear_infinite]" d="M2 12h20M12 2v20" style="transform-origin: center;"></path>
+</svg>
+</div>
+<div class="flex flex-col leading-none">
+<span class="font-display font-black text-lg tracking-[0.2em] text-slate-800 group-hover/logo:text-primary transition-colors duration-300 relative">
+            RESUME
+            <span class="absolute -inset-x-1 -bottom-px h-[1px] bg-primary scale-x-0 group-hover/logo:scale-x-100 transition-transform duration-500 origin-left"></span>
+</span>
+</div>
+</div></a>
 <div class="hidden md:flex items-center gap-10">
-<a class="text-sm font-semibold tracking-wide text-slate-600 hover:text-primary transition-colors" href="resume.html">RESUME</a>
-<a class="text-sm font-semibold tracking-wide text-slate-600 hover:text-primary transition-colors" href="projects.html">PROJECTS</a>
-<a class="text-sm font-semibold tracking-wide text-slate-600 hover:text-primary transition-colors" href="#contact">CONTACT</a>
+<a class="text-sm font-semibold tracking-wide text-slate-600 hover:text-primary transition-colors" href="index.html">HOME</a>
+<a class="text-sm font-semibold tracking-wide text-slate-600 hover:text-primary transition-colors" href="index.html#projects">PROJECTS</a>
+<a class="text-sm font-semibold tracking-wide text-slate-600 hover:text-primary transition-colors" href="index.html#contact">CONTACT</a>
 </div>
 <div class="absolute inset-0 h-full w-full scale-0 rounded transition-all duration-300 group-hover:scale-100 group-hover:bg-primary"></div>
 </a>
@@ -109,7 +131,7 @@
 <h1 class="text-5xl font-extrabold tracking-tight text-text-main mb-2">
                                 Raymond<br/>Paredes
                             </h1>
-<p class="text-primary font-bold tracking-widest text-sm uppercase">Data Analyst &amp; Operations Management</p>
+<p class="text-primary font-bold tracking-widest text-sm uppercase">Data Analyst &amp; Automation</p>
 </div>
 <div class="flex flex-col gap-3 text-sm text-text-muted">
 <a class="flex items-center gap-3 hover:text-primary transition-colors justify-center lg:justify-start group" href="#">
@@ -141,19 +163,19 @@
 <div>
 <h4 class="text-xs font-bold text-text-main uppercase tracking-wider mb-3 flex items-center gap-2">
 <span class="w-1.5 h-1.5 bg-primary rounded-full"></span>
-                                    Analytics &amp; Vis
+                                    Data Analytics &amp; Vis
                                 </h4>
 <div class="flex flex-wrap gap-2">
 <span class="px-3 py-1.5 bg-slate-50 border border-slate-200 text-text-muted text-xs font-medium rounded hover:border-primary hover:text-primary transition-colors cursor-default">Power BI</span>
 <span class="px-3 py-1.5 bg-slate-50 border border-slate-200 text-text-muted text-xs font-medium rounded hover:border-primary hover:text-primary transition-colors cursor-default">Tableau</span>
 <span class="px-3 py-1.5 bg-slate-50 border border-slate-200 text-text-muted text-xs font-medium rounded hover:border-primary hover:text-primary transition-colors cursor-default">Looker</span>
-<span class="px-3 py-1.5 bg-slate-50 border border-slate-200 text-text-muted text-xs font-medium rounded hover:border-primary hover:text-primary transition-colors cursor-default">GA4</span>
+<span class="px-3 py-1.5 bg-slate-50 border border-slate-200 text-text-muted text-xs font-medium rounded hover:border-primary hover:text-primary transition-colors cursor-default">Excel</span>
 </div>
 </div>
 <div>
 <h4 class="text-xs font-bold text-text-main uppercase tracking-wider mb-3 flex items-center gap-2">
 <span class="w-1.5 h-1.5 bg-primary rounded-full"></span>
-                                    Engineering
+                                   Data Engineering
                                 </h4>
 <div class="flex flex-wrap gap-2">
 <span class="px-3 py-1.5 bg-slate-50 border border-slate-200 text-text-muted text-xs font-medium rounded hover:border-primary hover:text-primary transition-colors cursor-default">Python</span>
@@ -190,7 +212,7 @@
 <span class="material-symbols-outlined text-6xl text-primary">format_quote</span>
 </div>
 <p class="text-lg text-text-muted leading-relaxed relative z-10">
-                            Senior Data Analyst with 5+ years of experience transforming complex datasets into actionable strategic narratives. Specialist in building automated data pipelines that reduce reporting overhead by 60% on average. I combine technical precision in SQL and Python with an artistic eye for visualization, ensuring that data doesn't just inform, but compels action.
+                            Raymond Paredes is a Data Analyst with 3+ years of experience transforming complex datasets into actionable strategic narratives. Specialist in building automated data pipelines that reduce reporting overhead by 60% on average. Combining technical precision in Data Orchestration and SQL with an artistic eye for visualization, ensuring that data doesn't just inform, but compels action.
                         </p>
 </div>
 </section>
@@ -246,74 +268,18 @@
 </section>
 <section>
 <div class="flex items-center gap-4 mb-8">
-<span class="text-sm font-bold text-primary tracking-[0.2em] uppercase">03 // University Education</span>
+<span class="text-sm font-bold text-primary tracking-[0.2em] uppercase">03 // KNOWLEDGE_BASE</span>
 <div class="h-px bg-border-light flex-grow max-w-[100px]"></div>
 </div>
+<div class="grid md:grid-cols-2 gap-6">
 <div class="bg-white p-6 border border-border-light rounded-lg hover:shadow-lg hover:border-primary/30 transition-all group">
 <div class="flex justify-between items-start mb-4">
-<span class="text-xs font-bold text-text-muted uppercase tracking-wider bg-slate-50 px-2 py-1 rounded">Bachelor of Science</span>
-<span class="text-xs font-mono text-text-muted">2017</span>
+<span class="text-xs font-bold text-primary uppercase tracking-wider bg-blue-50 px-2 py-1 rounded">Master of Science</span>
+<span class="text-xs font-mono text-text-muted">2018</span>
 </div>
-<h3 class="text-lg font-bold text-text-main mb-1 group-hover:text-primary transition-colors">Business Administration - Export Management</h3>
-<p class="text-sm text-text-muted font-medium mb-3">De La Salle College of Saint Benilde</p>
-<p class="text-sm text-text-muted border-t border-slate-100 pt-3">Big focus in Marketing, Accounting, Logistics and Operations.</p>
-</div>
-</div>
-</section>
-<section id="contact">
-<div class="flex items-center gap-4 mb-8">
-<span class="text-sm font-bold text-primary tracking-[0.2em] uppercase">04 // INITIALIZE CONTACT</span>
-<div class="h-px bg-border-light flex-grow max-w-[100px]"></div>
-</div>
-<div class="bg-white border border-border-light rounded-lg p-8 md:p-10 shadow-sm relative overflow-hidden group">
-<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-bl-full pointer-events-none"></div>
-<div class="absolute bottom-0 left-0 w-24 h-24 bg-primary/5 rounded-tr-full pointer-events-none"></div>
-<div class="grid md:grid-cols-12 gap-10 relative z-10">
-<div class="md:col-span-5 space-y-6">
-<h3 class="text-2xl font-bold text-text-main tracking-tight">Ready to collaborate?</h3>
-<p class="text-text-muted text-sm leading-relaxed">
-                    Available for freelance projects, consulting, or full-time opportunities. Transmit your project details and I will respond within 24 hours.
-                </p>
-<div class="space-y-4 pt-4">
-<div class="flex items-center gap-3 text-sm text-text-muted group/item cursor-pointer hover:text-primary transition-colors">
-<div class="w-8 h-8 rounded bg-slate-50 border border-slate-200 flex items-center justify-center group-hover/item:border-primary/50 group-hover/item:text-primary transition-all">
-<span class="material-symbols-outlined text-sm">mail</span>
-</div>
-<span>jane.doe@example.com</span>
-</div>
-<div class="flex items-center gap-3 text-sm text-text-muted group/item cursor-pointer hover:text-primary transition-colors">
-<div class="w-8 h-8 rounded bg-slate-50 border border-slate-200 flex items-center justify-center group-hover/item:border-primary/50 group-hover/item:text-primary transition-all">
-<span class="material-symbols-outlined text-sm">call</span>
-</div>
-<span>+1 (555) 123-4567</span>
-</div>
-</div>
-</div>
-<div class="md:col-span-7">
-<form class="space-y-5">
-<div class="grid grid-cols-2 gap-5">
-<div class="space-y-2">
-<label class="text-xs font-bold text-primary tracking-widest uppercase" for="name">Identification</label>
-<input class="w-full bg-slate-50 border border-border-light rounded px-4 py-3 text-sm text-text-main focus:ring-1 focus:ring-primary focus:border-primary outline-none transition-all placeholder:text-slate-400" id="name" placeholder="Name or Entity" type="text"/>
-</div>
-<div class="space-y-2">
-<label class="text-xs font-bold text-primary tracking-widest uppercase" for="email">Transmission Addr</label>
-<input class="w-full bg-slate-50 border border-border-light rounded px-4 py-3 text-sm text-text-main focus:ring-1 focus:ring-primary focus:border-primary outline-none transition-all placeholder:text-slate-400" id="email" placeholder="email@domain.com" type="email"/>
-</div>
-</div>
-<div class="space-y-2">
-<label class="text-xs font-bold text-primary tracking-widest uppercase" for="message">Data Payload</label>
-<textarea class="w-full bg-slate-50 border border-border-light rounded px-4 py-3 text-sm text-text-main focus:ring-1 focus:ring-primary focus:border-primary outline-none transition-all placeholder:text-slate-400 min-h-[120px]" id="message" placeholder="Describe your project parameters..."></textarea>
-</div>
-<button class="group relative w-full inline-flex items-center justify-center gap-2 bg-text-main hover:bg-primary text-white px-8 py-4 rounded text-xs font-bold tracking-widest uppercase transition-all duration-300 overflow-hidden" type="submit">
-<span class="relative z-10 flex items-center gap-2">
-                            Transmit Data
-                            <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">send</span>
-</span>
-<div class="absolute inset-0 bg-primary transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></div>
-</button>
-</form>
-</div>
+<h3 class="text-lg font-bold text-text-main mb-1 group-hover:text-primary transition-colors">Data Science</h3>
+<p class="text-sm text-text-muted font-medium mb-3">University of Technology</p>
+<p class="text-sm text-text-muted border-t border-slate-100 pt-3">Focus on Machine Learning &amp; Predictive Analytics. Thesis on generative adversarial networks.</p>
 </div>
 </div>
 </section>
@@ -322,8 +288,11 @@
 <div class="absolute inset-0 bg-primary/20 mix-blend-multiply"></div>
 <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-8">
 <div>
-<h3 class="text-2xl font-bold text-white tracking-widest uppercase mb-2">Logic Meets Imagination</h3>
-<p class="text-white/80 text-sm">Crafting stories from raw data.</p>
+<h3 class="text-2xl font-bold text-white tracking-widest uppercase mb-2">Realize Data better</h3>
+<a class="relative px-6 py-2 overflow-hidden group bg-white border border-primary text-primary font-bold text-sm uppercase tracking-wide rounded hover:bg-primary hover:text-white transition-all shadow-sm hover:shadow-md" href="index.html#contact">
+<span class="relative z-10">Contact Now!</span>
+<div class="absolute inset-0 h-full w-full scale-0 rounded transition-all duration-300 group-hover:scale-100 group-hover:bg-primary"></div>
+</a>
 </div>
 </div>
 </div>
@@ -334,10 +303,10 @@
 <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
 <div class="text-lg font-bold text-text-main tracking-tight flex items-center gap-2">
 <div class="w-2 h-2 bg-primary rounded-full"></div>
-                JANE_DOE
+                RCP
             </div>
 <p class="text-text-muted text-xs font-medium uppercase tracking-widest">
-                Resume Data © Jane Doe // <span class="text-primary">Last Updated: Oct 2023</span>
+                Resume © Raymond Paredes // <span class="text-primary">2026</span>
 </p>
 </div>
 </footer>

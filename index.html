@@ -3,7 +3,7 @@
 <html lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Raymond Paredes - Data finally Understood</title>
+<title>Raymond Paredes - Home</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -79,16 +79,28 @@
 <div class="fixed inset-0 pointer-events-none z-0 motherboard-grid"></div>
 <nav class="fixed w-full z-50 backdrop-blur-md bg-white/80 border-b border-slate-200">
 <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-<a class="font-display font-bold text-2xl tracking-tight uppercase flex items-center gap-3 text-slate-800" href="#">
-<div class="relative w-6 h-6 flex items-center justify-center">
-<span class="absolute w-full h-full border border-primary rounded-sm animate-[spin_8s_linear_infinite]"></span>
-<span class="w-2 h-2 bg-primary rounded-full"></span>
+<a class="font-display font-bold text-2xl tracking-tight uppercase flex items-center gap-3 text-slate-800" href="#"><div class="flex items-center gap-3 group/logo">
+<div class="relative w-8 h-8 flex items-center justify-center">
+<svg class="absolute inset-0 w-full h-full text-primary opacity-20 group-hover/logo:animate-pulse" fill="none" stroke="currentColor" stroke-width="1" viewbox="0 0 24 24">
+<rect height="20" rx="2" width="20" x="2" y="2"></rect>
+</svg>
+<div class="relative">
+<span class="absolute inset-0 bg-primary/40 blur-sm rounded-full animate-pulse"></span>
+<div class="relative w-2 h-2 bg-primary rounded-full shadow-[0_0_8px_rgba(14,165,233,0.8)]"></div>
 </div>
-                RCP
-            </a>
+<svg class="absolute inset-0 w-full h-full text-primary/40" fill="none" stroke="currentColor" stroke-width="0.5" viewbox="0 0 24 24">
+<path class="animate-[spin_10s_linear_infinite]" d="M2 12h20M12 2v20" style="transform-origin: center;"></path>
+</svg>
+</div>
+<div class="flex flex-col leading-none">
+<span class="font-display font-black text-lg tracking-[0.2em] text-slate-800 group-hover/logo:text-primary transition-colors duration-300 relative">
+            HOME
+            <span class="absolute -inset-x-1 -bottom-px h-[1px] bg-primary scale-x-0 group-hover/logo:scale-x-100 transition-transform duration-500 origin-left"></span>
+</span>
+</div>
+</div></a>
 <div class="hidden md:flex items-center gap-10">
-<a class="text-sm font-semibold tracking-wide text-slate-600 hover:text-primary transition-colors" href="#about">ABOUT</a>
-<a class="text-sm font-semibold tracking-wide text-slate-600 hover:text-primary transition-colors" href="#skills">SKILLS</a>
+<a class="text-sm font-semibold tracking-wide text-slate-600 hover:text-primary transition-colors" href="resume.html">RESUME</a>
 <a class="text-sm font-semibold tracking-wide text-slate-600 hover:text-primary transition-colors" href="#projects">PROJECTS</a>
 <a class="text-sm font-semibold tracking-wide text-slate-600 hover:text-primary transition-colors" href="#contact">CONTACT</a>
 </div>
@@ -105,9 +117,58 @@
 <div class="absolute left-1/2 -translate-x-1/2 top-32 w-px h-64 bg-gradient-to-b from-transparent via-slate-300 to-transparent"></div>
 <div class="max-w-7xl mx-auto px-6 w-full relative z-10 text-center">
 <div class="max-w-3xl mx-auto">
-<p class="text-primary font-mono tracking-[0.2em] uppercase mb-4 text-xs font-semibold bg-sky-50 inline-block px-3 py-1 border border-sky-100 rounded">
-                    &lt;Developer /&gt;
-                </p>
+<div class="flex justify-center mb-8">
+<svg class="w-full max-w-md h-auto" viewbox="0 0 400 80" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<lineargradient id="logoGradient" x1="0%" x2="100%" y1="0%" y2="0%">
+<stop offset="0%" stop-color="#0ea5e9"></stop>
+<stop offset="100%" stop-color="#0284c7"></stop>
+</lineargradient>
+</defs>
+<style>
+            @keyframes dash {
+                to {
+                    stroke-dashoffset: 0;
+                }
+            }
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(5px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            .name-path {
+                stroke: url(#logoGradient);
+                stroke-width: 0.5;
+                fill: transparent;
+                stroke-dasharray: 1000;
+                stroke-dashoffset: 1000;
+                animation: dash 3s ease-in-out forwards;
+            }
+            .name-fill {
+                fill: #0f172a;
+                font-family: 'Epilogue', sans-serif;
+                font-weight: 800;
+                font-size: 28px;
+                letter-spacing: 0.2em;
+                opacity: 0;
+                animation: fadeIn 1s ease-out 2s forwards;
+            }
+            .subtitle-fill {
+                fill: #64748b;
+                font-family: 'Inter', sans-serif;
+                font-weight: 400;
+                font-size: 28px;
+                letter-spacing: 0.4em;
+                opacity: 0;
+                animation: fadeIn 1s ease-out 2.5s forwards;
+            }
+        </style>
+<text class="name-fill" text-anchor="middle" x="50%" y="35">RAYMOND</text>
+<text class="subtitle-fill" text-anchor="middle" x="50%" y="65">PAREDES</text>
+<path class="name-path" d="M 80 40 L 320 40"></path>
+</svg>
+</div>
+<br/>
+<br/>
 <h1 class="font-display font-black text-5xl md:text-7xl leading-[1.1] mb-6 text-slate-900 uppercase tracking-tight">
                      Data <span class="text-slate-400">finally</span><br/>
 <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-sky-600">understood</span>
@@ -132,7 +193,7 @@
 <div class="flex items-center gap-4 mb-12">
 <div class="h-px bg-primary flex-grow max-w-[50px]"></div>
 <span class="text-primary font-mono text-sm font-bold">01 // IDENTITY</span>
-<h2 class="font-display font-bold text-4xl text-slate-900 uppercase tracking-tight">About_Me</h2>
+<h2 class="font-display font-bold text-4xl text-slate-900 uppercase tracking-tight">About Me</h2>
 </div>
 <div class="grid md:grid-cols-12 gap-16 items-center">
 <div class="md:col-span-5 relative flex justify-center order-2 md:order-1">
@@ -146,11 +207,10 @@
 </div>
 <div class="md:col-span-7 space-y-6 text-slate-600 text-lg leading-relaxed order-1 md:order-2">
 <p>
-<span class="text-primary font-bold">&gt;&gt;</span> As a data analyst and automation architect, I operate at the intersection of information and efficiency. I construct digital pipelines that transform raw input into strategic output.
+<span class="text-primary font-bold">&gt;&gt;</span> As a data analyst and automation architect, I operate at the intersection of information and efficiency. Construction of digital pipelines is more than just a technical task; it's a strategic approach to transform raw input into strategic output .
                 </p>
 <p>
-<span class="text-primary font-bold">&gt;&gt;</span> My framework is built on logic and scalability. I don't just visualize data; I engineer systems that anticipate future requirements, ensuring every process is optimized for maximum throughput.
-                </p>
+<span class="text-primary font-bold">&gt;&gt;</span> Data is more than just numbers, it reveals how you act as a company. Like any company we strategize and execute options differently from the competition landscape. The best way to see improvements is to create customizable workflows that adapt to better outcomes. Metrics that doesn't merely display the now but the motivation for the future progress.
 <div class="grid grid-cols-2 gap-4 mt-8">
 <div class="bg-white border border-slate-200 p-6 rounded shadow-sm hover:shadow-md transition-shadow">
 <div class="text-4xl font-display font-bold text-primary mb-1">3+</div>
@@ -173,7 +233,7 @@
 <div class="flex items-center gap-4 mb-16">
 <div class="h-px bg-primary flex-grow max-w-[50px]"></div>
 <span class="text-primary font-mono text-sm font-bold">02 // CAPABILITIES</span>
-<h2 class="font-display font-bold text-4xl text-slate-900 uppercase tracking-tight">Tech_Stack</h2>
+<h2 class="font-display font-bold text-4xl text-slate-900 uppercase tracking-tight">Tech Stack</h2>
 </div>
 <div class="grid md:grid-cols-3 gap-8">
 <div class="group relative bg-slate-50 border border-slate-200 hover:border-primary/50 transition-all duration-300 rounded hover:shadow-lg hover:-translate-y-1">
@@ -228,6 +288,34 @@
 <div class="w-16 h-16 bg-white border border-slate-200 shadow-sm rounded flex items-center justify-center mb-8 group-hover:bg-primary group-hover:text-white group-hover:border-primary transition-colors duration-300">
 <span class="material-symbols-outlined text-4xl text-slate-600 group-hover:text-white">database</span>
 </div>
+<h3 class="font-display font-bold text-xl mb-4 text-slate-900 uppercase tracking-wide">Infrastructure</h3>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-1 bg-white text-xs font-mono text-slate-600 border border-slate-200 rounded">REST API</span>
+<span class="px-2 py-1 bg-white text-xs font-mono text-slate-600 border border-slate-200 rounded">Data Warehousing</span>
+<span class="px-2 py-1 bg-white text-xs font-mono text-slate-600 border border-slate-200 rounded">ETL</span>
+</div>
+</div>
+</div>
+<div class="group relative bg-slate-50 border border-slate-200 hover:border-primary/50 transition-all duration-300 rounded hover:shadow-lg hover:-translate-y-1">
+<div class="p-8 h-full relative overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-transparent transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 delay-150"></div>
+<div class="w-16 h-16 bg-white border border-slate-200 shadow-sm rounded flex items-center justify-center mb-8 group-hover:bg-primary group-hover:text-white group-hover:border-primary transition-colors duration-300">
+<span class="material-symbols-outlined text-4xl text-slate-600 group-hover:text-white">database</span>
+</div>
+<h3 class="font-display font-bold text-xl mb-4 text-slate-900 uppercase tracking-wide">Infrastructure</h3>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-1 bg-white text-xs font-mono text-slate-600 border border-slate-200 rounded">REST API</span>
+<span class="px-2 py-1 bg-white text-xs font-mono text-slate-600 border border-slate-200 rounded">Data Warehousing</span>
+<span class="px-2 py-1 bg-white text-xs font-mono text-slate-600 border border-slate-200 rounded">ETL</span>
+</div>
+</div>
+</div>
+<div class="group relative bg-slate-50 border border-slate-200 hover:border-primary/50 transition-all duration-300 rounded hover:shadow-lg hover:-translate-y-1">
+<div class="p-8 h-full relative overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-transparent transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 delay-150"></div>
+<div class="w-16 h-16 bg-white border border-slate-200 shadow-sm rounded flex items-center justify-center mb-8 group-hover:bg-primary group-hover:text-white group-hover:border-primary transition-colors duration-300">
+<span class="material-symbols-outlined text-4xl text-slate-600 group-hover:text-white">database</span>
+</div>
 <h3 class="font-display font-bold text-xl mb-4 text-slate-900 uppercase tracking-wide">Workflow Management</h3>
 <div class="flex flex-wrap gap-2">
 <span class="px-2 py-1 bg-white text-xs font-mono text-slate-600 border border-slate-200 rounded">Notion</span>
@@ -242,13 +330,13 @@
 <section class="py-24 bg-white relative" id="projects">
 <div class="max-w-7xl mx-auto px-6">
 <div class="mb-16">
-<h2 class="font-display font-bold text-4xl text-slate-900 uppercase tracking-tighter mb-4">Selected_Deployments</h2>
+<h2 class="font-display font-bold text-4xl text-slate-900 uppercase tracking-tighter mb-4">Projects</h2>
 <p class="text-slate-500 font-mono text-sm uppercase tracking-widest border-l-2 border-primary pl-4">Focus on Data Visualization &amp; Systematic Automation</p>
 </div>
 <!-- Minimalist Mosaic Grid - Reference: yan-holtz.com style -->
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-1">
 <!-- Project 1 -->
-<a class="group relative overflow-hidden project-card block aspect-[4/3] bg-slate-100" href="#">
+<a class="group relative overflow-hidden project-card block aspect-[4/3] bg-slate-100" href="https://app.powerbi.com/view?r=eyJrIjoiZTQ0OWU2ODktZDVlNy00NTlhLWJmYjItYTJlMGVmZDAwZWM5IiwidCI6ImJkMmIyOGI4LTc2OWMtNGFjZC04YzdlLTE1MDc1ZmE2NWVmOCIsImMiOjEwfQ%3D%3D&pageName=43b5a237969b4f0d1df2">
 <img alt="Interactive Sales HUD" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-zODwuX1Tkq0wHF7Rfn6X7JlKl3TI9FRUGh2N62YRQeHA6OPJZ4EFKplwcbSk8_vEymFz1qCdjIJh1cYlkwlmx2mtu4dFFxQiZ-24SGX72OheHfJfN5CUx_6tFY5O3yrCkBN8iJZsjLnix5uTOfxw_haJuuq4EVYSy7RTV4_WLkeFL8cgQIoG2MVQH7jQoYnsdEB34EO4IgXjuyputw3dVvafAZUg1EgMe-trK9JIYOjSBR7rs5FU3MAV3Q11pS2ddD70VYrXSJst"/>
 <div class="absolute inset-0 bg-white/0 group-hover:bg-white/95 transition-all duration-300 flex flex-col justify-center items-center p-8 opacity-0 group-hover:opacity-100 text-center">
 <h3 class="font-display font-bold text-xl text-slate-900 uppercase tracking-wide mb-2">Interactive Sales HUD</h3>
@@ -494,3 +582,4 @@
         init();
         animate();
     </script>
+</body></html>
