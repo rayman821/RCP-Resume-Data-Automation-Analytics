@@ -412,29 +412,28 @@
 <p class="text-slate-500 text-lg mb-12 max-w-xl mx-auto font-light">
                 Ready to optimize your data architecture? Send a signal. I am currently available for projects and employment.
             </p>
-<form class="space-y-6 text-left max-w-lg mx-auto bg-slate-50 p-10 border border-slate-200 shadow-xl rounded relative" action = "https://n8n-rcp.taild30d6e.ts.net/webhook/Contact-Submission-Resume" method="POST">
-<div class="absolute -top-1 -left-1 w-4 h-4 border-t-2 border-l-2 border-primary"></div>
-<div class="absolute -bottom-1 -right-1 w-4 h-4 border-b-2 border-r-2 border-primary"></div>
-<div>
-<label class="sr-only" for="name">ID: Name</label>
-<input class="w-full bg-white border border-slate-200 rounded px-4 py-4 text-slate-800 placeholder-slate-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all font-mono text-sm shadow-sm" id="name" placeholder="ENTER NAME" name="text"/>
-</div>
-<div>
-<label class="sr-only" for="email">ID: Email</label>
-<input class="w-full bg-white border border-slate-200 rounded px-4 py-4 text-slate-800 placeholder-slate-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all font-mono text-sm shadow-sm" id="email" placeholder="ENTER EMAIL ADDRESS" name="email"/>
-</div>
-<div>
-<label class="sr-only" for="message">Input Data</label>
-<textarea class="w-full bg-white border border-slate-200 rounded px-4 py-4 text-slate-800 placeholder-slate-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all font-mono text-sm shadow-sm" id="message" placeholder="INPUT MESSAGE DATA..." rows="4" name="message"></textarea>
-</div>
-<div class="text-center pt-4">
-<button class="w-full inline-flex justify-center items-center gap-3 bg-primary hover:bg-sky-600 text-white font-bold font-display uppercase tracking-widest py-4 px-8 rounded transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5" type="submit">See you soon!</button>
-<span class="material-symbols-outlined text-lg">send</span>
-                        Looking forward to your message
-                    </button>
-</div>
-</div>
-</section>
+<form id="contact-form" class="space-y-6 text-left max-w-lg mx-auto bg-slate-50 p-10 border border-slate-200 shadow-xl rounded relative">
+    <div class="absolute -top-1 -left-1 w-4 h-4 border-t-2 border-l-2 border-primary"></div>
+    <div class="absolute -bottom-1 -right-1 w-4 h-4 border-b-2 border-r-2 border-primary"></div>
+    <div>
+        <label class="sr-only" for="name">ID: Name</label>
+        <input class="w-full bg-white border border-slate-200 rounded px-4 py-4 text-slate-800 placeholder-slate-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all font-mono text-sm shadow-sm" id="name" placeholder="ENTER NAME" name="name" required/>
+    </div>
+    <div>
+        <label class="sr-only" for="email">ID: Email</label>
+        <input class="w-full bg-white border border-slate-200 rounded px-4 py-4 text-slate-800 placeholder-slate-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all font-mono text-sm shadow-sm" id="email" type="email" placeholder="ENTER EMAIL ADDRESS" name="email" required/>
+    </div>
+    <div>
+        <label class="sr-only" for="message">Input Data</label>
+        <textarea class="w-full bg-white border border-slate-200 rounded px-4 py-4 text-slate-800 placeholder-slate-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all font-mono text-sm shadow-sm" id="message" placeholder="INPUT MESSAGE DATA..." rows="4" name="message" required></textarea>
+    </div>
+    <div class="text-center pt-4 flex flex-col items-center gap-2">
+        <button id="submit-btn" class="w-full inline-flex justify-center items-center gap-3 bg-primary hover:bg-sky-600 text-white font-bold font-display uppercase tracking-widest py-4 px-8 rounded transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5" type="submit">
+            <span>See you soon!</span>
+            <span class="material-symbols-outlined text-lg">send</span>
+        </button>
+        <span class="text-sm text-slate-500">Looking forward to your message</span>
+    </div>
 </form>
 <footer class="py-12 bg-slate-50 text-center border-t border-slate-200 relative">
 <div class="flex justify-center gap-8 mb-6">
@@ -570,27 +569,73 @@
         init();
         animate();
     </script>
-    <script>
-    document.getElementById('submit-btn').addEventListener('click', function() {
-        const toast = document.getElementById('success-toast');
-        const progress = document.getElementById('toast-progress');
+<script>
+    document.getElementById('contact-form').addEventListener('submit', async function(event) {
+        event.preventDefault(); // Stop the page from reloading
         
-        // Reset progress bar animation
-        progress.style.transition = 'none';
-        progress.style.transform = 'scaleX(1)';
+        const form = event.target;
+        const submitBtn = document.getElementById('submit-btn');
+        const originalBtnText = submitBtn.innerHTML;
         
-        // Show toast
-        toast.classList.remove('translate-x-[120%]');
-        
-        // Animate progress bar and hide toast
-        setTimeout(() => {
-            progress.style.transition = 'transform 4000s linear'; // Very slow for visual, logic usually handled by JS timing
-            progress.style.transform = 'scaleX(0)';
-        }, 50);
+        // 1. Show a loading state on the button
+        submitBtn.innerHTML = '<span>Transmitting...</span><span class="material-symbols-outlined animate-spin text-lg">sync</span>';
+        submitBtn.disabled = true;
 
-        setTimeout(() => {
-            toast.classList.add('translate-x-[120%]');
-        }, 5000);
+        // 2. PASTE YOUR APPS SCRIPT URL HERE
+        const scriptUrl = "YOUR_WEB_APP_URL_HERE"; 
+        
+        // 3. Gather the data
+        const formData = {
+            name: document.getElementById("name").value,
+            email: document.getElementById("email").value,
+            message: document.getElementById("message").value
+        };
+
+        try {
+            // 4. Send the request to Google Sheets
+            const response = await fetch(scriptUrl, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "text/plain;charset=utf-8", 
+                },
+                body: JSON.stringify(formData) 
+            });
+
+            const result = await response.json();
+            
+            if (result.status === "success") {
+                // 5. Trigger your existing Toast Animation
+                const toast = document.getElementById('success-toast');
+                const progress = document.getElementById('toast-progress');
+                
+                progress.style.transition = 'none';
+                progress.style.transform = 'scaleX(1)';
+                toast.classList.remove('translate-x-[120%]');
+                
+                setTimeout(() => {
+                    progress.style.transition = 'transform 5s linear'; 
+                    progress.style.transform = 'scaleX(0)';
+                }, 50);
+
+                setTimeout(() => {
+                    toast.classList.add('translate-x-[120%]');
+                }, 5000);
+
+                // 6. Clear the form fields
+                form.reset();
+            } else {
+                console.error("Server Error:", result.message);
+                alert("There was an issue saving your message.");
+            }
+            
+        } catch (error) {
+            console.error("Network Error:", error);
+            alert("Network error. Please try again.");
+        } finally {
+            // 7. Restore the button to its original state
+            submitBtn.innerHTML = originalBtnText;
+            submitBtn.disabled = false;
+        }
     });
 </script>
 <div class="fixed bottom-10 right-10 z-[100] transform translate-x-[120%] transition-transform duration-500 ease-out pointer-events-none" id="success-toast">
