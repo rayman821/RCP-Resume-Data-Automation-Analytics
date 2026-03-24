@@ -1,590 +1,735 @@
 <!DOCTYPE html>
 
-<html lang="en">
-<head>
+<html class="scroll-smooth" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<link rel="icon" href="#" type="image/x-icon">
 <title>Raymond Paredes - Home</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
             theme: {
                 extend: {
                     colors: {
-                        primary: "#0ea5e9", // Professional Blue/Teal
-                        "primary-dim": "#bae6fd",
-                        "background-light": "#f8fafc", 
-                        "background-white": "#ffffff",
-                        "text-dark": "#0f172a",
-                        "text-muted": "#64748b",
-                        "surface-light": "#ffffff",
-                        "surface-accent": "#f1f5f9",
-                        "border-light": "#e2e8f0",
-                        "circuit-line": "#cbd5e1",
+                        "on-tertiary-fixed": "#00201b",
+                        "on-background": "#191c1d",
+                        "secondary": "#005fae",
+                        "inverse-surface": "#2e3132",
+                        "inverse-primary": "#ffb783",
+                        "inverse-on-surface": "#eff1f2",
+                        "secondary-fixed-dim": "#a5c8ff",
+                        "surface-tint": "#944b00",
+                        "on-tertiary-container": "#00473e",
+                        "primary-fixed": "#ffdcc5",
+                        "tertiary": "#006b5d",
+                        "secondary-fixed": "#d4e3ff",
+                        "outline": "#897362",
+                        "error-container": "#ffdad6",
+                        "error": "#ba1a1a",
+                        "surface-container-highest": "#e1e3e4",
+                        "background": "#f8fafb",
+                        "primary": "var(--primary-color, #944b00)",
+                        "on-secondary": "#ffffff",
+                        "tertiary-container": "#00bfa8",
+                        "primary-fixed-dim": "#ffb783",
+                        "primary-container": "var(--primary-container-color, #ff8c23)",
+                        "on-secondary-container": "#002f5b",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed-variant": "#004785",
+                        "tertiary-fixed": "#60fae0",
+                        "secondary-container": "#3e97fd",
+                        "on-primary-container": "#643000",
+                        "on-surface": "#191c1d",
+                        "on-secondary-fixed": "#001c3a",
+                        "on-surface-variant": "#564334",
+                        "surface-variant": "#e1e3e4",
+                        "on-error": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed-variant": "#703700",
+                        "surface-container": "#eceeef",
+                        "surface-container-low": "#f2f4f5",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed-variant": "#005046",
+                        "on-primary-fixed": "#301400",
+                        "surface-dim": "#d8dadb",
+                        "surface": "#f8fafb",
+                        "outline-variant": "#ddc1ae",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-high": "#e6e8e9",
+                        "surface-bright": "#f8fafb",
+                        "tertiary-fixed-dim": "#39ddc4"
                     },
                     fontFamily: {
-                        display: ['Epilogue', 'sans-serif'], 
-                        body: ['Inter', 'sans-serif'],
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
                     },
-                    backgroundImage: {
-                        'hero-glow': "radial-gradient(circle at 50% 50%, rgba(14, 165, 233, 0.05) 0%, rgba(255, 255, 255, 0) 70%)",
-                        'circuit-pattern': "url(\"data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 10 L20 10 L20 20 L30 20' stroke='%23cbd5e1' stroke-width='1' fill='none' opacity='0.4'/%3E%3Cpath d='M60 60 L60 70 L70 70' stroke='%23cbd5e1' stroke-width='1' fill='none' opacity='0.4'/%3E%3Ccircle cx='30' cy='20' r='1.5' fill='%2394a3b8' opacity='0.5'/%3E%3Ccircle cx='70' cy='70' r='1.5' fill='%2394a3b8' opacity='0.5'/%3E%3C/svg%3E\")",
-                    },
-                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+                    borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
                 },
             },
-        };
+        }
     </script>
 <style>
-        .duotone-filter {
-            filter: grayscale(100%);
-            transition: all 0.5s ease;
+        :root {
+            --primary-color: #944b00;
+            --primary-container-color: #ff8c23;
+            --dynamic-bg-mix: #f8fafb;
         }
-        .group:hover .duotone-filter {
-            filter: grayscale(0%);
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
-        .circuit-node {
-            width: 8px;
-            height: 8px;
-            background-color: #0ea5e9;
-            border-radius: 50%;
-            box-shadow: 0 0 4px #0ea5e9;
+        .grid-pattern {
+            background-image: radial-gradient(circle, #897362 1px, transparent 1px);
+            background-size: 32px 32px;
+            background-color: var(--dynamic-bg-mix);
+            transition: background-color 0.3s ease-out;
         }
-        .motherboard-grid {
-            background-image: 
-                linear-gradient(rgba(203, 213, 225, 0.2) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(203, 213, 225, 0.2) 1px, transparent 1px);
-            background-size: 40px 40px;
+        .circuit-line {
+            background: linear-gradient(90deg, transparent, var(--primary-container-color), transparent);
+            height: 1px;
+            width: 100%;
         }
-        .text-stroke-primary {
-            -webkit-text-stroke: 1px #0ea5e9;
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(148, 75, 0, 0.1);
+        }
+        .glass-panel-light {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
         }
         #hero-canvas {
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 0;
             pointer-events: none;
+            z-index: 1;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        .metric-row:hover .metric-bar {
+            filter: brightness(1.2);
+            box-shadow: 0 0 15px var(--primary-container-color);
         }
     </style>
 </head>
-<body class="bg-background-light text-text-dark font-body transition-colors duration-300 antialiased selection:bg-primary/20 selection:text-primary relative overflow-x-hidden">
-<div class="fixed inset-0 pointer-events-none z-0 opacity-40 bg-circuit-pattern"></div>
-<div class="fixed inset-0 pointer-events-none z-0 motherboard-grid"></div>
-<nav class="fixed w-full z-50 backdrop-blur-md bg-white/80 border-b border-slate-200">
-<div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-<a class="font-display font-bold text-2xl tracking-tight uppercase flex items-center gap-3 text-slate-800" href="#"><div class="flex items-center gap-3 group/logo">
-<div class="relative w-8 h-8 flex items-center justify-center">
-<svg class="absolute inset-0 w-full h-full text-primary opacity-20 group-hover/logo:animate-pulse" fill="none" stroke="currentColor" stroke-width="1" viewbox="0 0 24 24">
-<rect height="20" rx="2" width="20" x="2" y="2"></rect>
-</svg>
-<div class="relative">
-<span class="absolute inset-0 bg-primary/40 blur-sm rounded-full animate-pulse"></span>
-<div class="relative w-2 h-2 bg-primary rounded-full shadow-[0_0_8px_rgba(14,165,233,0.8)]"></div>
+<body class="font-body text-on-background grid-pattern min-h-screen transition-colors duration-500 overflow-x-hidden">
+<!-- Background Animation Layer (Fixed across entire page) -->
+<canvas id="hero-canvas"></canvas>
+<!-- TopAppBar -->
+<nav class="fixed top-0 w-full z-50 bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur-md">
+<div class="flex justify-between items-center px-8 h-16 max-w-7xl mx-auto">
+<div class="text-lg font-black tracking-tighter text-primary uppercase">RCP</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors duration-300" href="resume.html">RESUME</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors duration-300" href="#skills">SKILLS</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors duration-300" href="#projects">PROJECTS</a>
 </div>
-<svg class="absolute inset-0 w-full h-full text-primary/40" fill="none" stroke="currentColor" stroke-width="0.5" viewbox="0 0 24 24">
-<path class="animate-[spin_10s_linear_infinite]" d="M2 12h20M12 2v20" style="transform-origin: center;"></path>
-</svg>
-</div>
-<div class="flex flex-col leading-none">
-<span class="font-display font-black text-lg tracking-[0.2em] text-slate-800 group-hover/logo:text-primary transition-colors duration-300 relative">
-            HOME
-            <span class="absolute -inset-x-1 -bottom-px h-[1px] bg-primary scale-x-0 group-hover/logo:scale-x-100 transition-transform duration-500 origin-left"></span>
-</span>
-</div>
-</div></a>
-<div class="hidden md:flex items-center gap-10">
-<a class="text-sm font-semibold tracking-wide text-slate-600 hover:text-primary transition-colors" href="resume.html">RESUME</a>
-<a class="text-sm font-semibold tracking-wide text-slate-600 hover:text-primary transition-colors" href="#projects">PROJECTS</a>
-<a class="text-sm font-semibold tracking-wide text-slate-600 hover:text-primary transition-colors" href="#contact">CONTACT</a>
-</div>
-<a class="relative px-6 py-2 overflow-hidden group bg-white border border-primary text-primary font-bold text-sm uppercase tracking-wide rounded hover:bg-primary hover:text-white transition-all shadow-sm hover:shadow-md" href="#contact">
-<span class="relative z-10">Connect</span>
-<div class="absolute inset-0 h-full w-full scale-0 rounded transition-all duration-300 group-hover:scale-100 group-hover:bg-primary"></div>
-</a>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-full font-bold scale-95 active:opacity-80 transition-all" href="#contact">
+            Message Now!
+        </button>
 </div>
 </nav>
-<header class="relative min-h-screen flex items-center pt-20 overflow-hidden bg-white">
-<canvas id="hero-canvas"></canvas>
-<div class="absolute top-0 right-0 w-[800px] h-[800px] bg-sky-100/30 blur-[100px] rounded-full pointer-events-none translate-x-1/3 -translate-y-1/4"></div>
-<div class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-slate-100 blur-[80px] rounded-full pointer-events-none -translate-x-1/4 translate-y-1/4"></div>
-<div class="absolute left-1/2 -translate-x-1/2 top-32 w-px h-64 bg-gradient-to-b from-transparent via-slate-300 to-transparent"></div>
-<div class="max-w-7xl mx-auto px-6 w-full relative z-10 text-center">
-<div class="max-w-3xl mx-auto">
-<div class="flex justify-center mb-8">
-<svg class="w-full max-w-md h-auto" viewbox="0 0 400 80" xmlns="http://www.w3.org/2000/svg">
-<defs>
-<lineargradient id="logoGradient" x1="0%" x2="100%" y1="0%" y2="0%">
-<stop offset="0%" stop-color="#0ea5e9"></stop>
-<stop offset="100%" stop-color="#0284c7"></stop>
-</lineargradient>
-</defs>
-<style>
-            @keyframes dash {
-                to {
-                    stroke-dashoffset: 0;
-                }
-            }
-            @keyframes fadeIn {
-                from { opacity: 0; transform: translateY(5px); }
-                to { opacity: 1; transform: translateY(0); }
-            }
-            .name-path {
-                stroke: url(#logoGradient);
-                stroke-width: 0.5;
-                fill: transparent;
-                stroke-dasharray: 1000;
-                stroke-dashoffset: 1000;
-                animation: dash 3s ease-in-out forwards;
-            }
-            .name-fill {
-                fill: #0f172a;
-                font-family: 'Epilogue', sans-serif;
-                font-weight: 800;
-                font-size: 28px;
-                letter-spacing: 0.2em;
-                opacity: 0;
-                animation: fadeIn 1s ease-out 2s forwards;
-            }
-            .subtitle-fill {
-                fill: #64748b;
-                font-family: 'Inter', sans-serif;
-                font-weight: 400;
-                font-size: 28px;
-                letter-spacing: 0.4em;
-                opacity: 0;
-                animation: fadeIn 1s ease-out 2.5s forwards;
-            }
-        </style>
-<text class="name-fill" text-anchor="middle" x="50%" y="35">RAYMOND</text>
-<text class="subtitle-fill" text-anchor="middle" x="50%" y="65">PAREDES</text>
-<path class="name-path" d="M 80 40 L 320 40"></path>
-</svg>
+<main class="relative z-10 pt-16">
+<!-- Hero Section -->
+<section class="relative min-h-[90vh] flex flex-col items-center justify-center overflow-hidden px-6" id="hero-container">
+<div class="absolute inset-0 z-0 opacity-20">
+<div class="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-primary-container rounded-full blur-[150px]"></div>
+<div class="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-secondary-container rounded-full blur-[150px]"></div>
 </div>
-<br/>
-<br/>
-<h1 class="font-display font-black text-5xl md:text-7xl leading-[1.1] mb-6 text-slate-900 uppercase tracking-tight">
-                     Data <span class="text-slate-400">finally</span><br/>
-<span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-sky-600">understood</span>
+<div class="z-10 w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative px-8">
+<!-- Left Column: Header and Subtext -->
+<div class="space-y-8 text-left">
+<div class="flex flex-col items-start space-y-4">
+</br>
+<h1 class="text-6xl md:text-8xl font-black tracking-tighter text-on-background drop-shadow-sm leading-none">
+                        DATA IN<br/>
+<span class="text-primary-container">NARRATIVES</span>
 </h1>
-<p class="text-xl md:text-2xl text-slate-500 mb-10 mx-auto font-light leading-relaxed border-l-4 border-primary/20 pl-6 max-w-2xl">
-                    Data that reveals your business now.<br/> Design workflows that motivate future progress.<br/>Your next data analyst and automation specialist is here.
+</div>
+<p class="text-on-surface-variant max-w-2xl leading-relaxed text-lg">
+                    Engineering high-fidelity digital experiences through precise technical architecture and fluid data storytelling.
                 </p>
-<div class="flex flex-col md:flex-row gap-4 justify-center">
-<a class="px-8 py-4 bg-primary text-white font-display font-bold text-lg uppercase tracking-wider rounded shadow-lg shadow-sky-200 hover:bg-sky-600 hover:shadow-xl transition-all duration-300" href="#projects">
-                        View Projects
-                    </a>
-<a class="px-8 py-4 border border-slate-300 text-slate-600 hover:border-primary hover:text-primary font-display font-bold text-lg uppercase tracking-wider transition-all duration-300 bg-white rounded hover:shadow-md" href="#contact">
-                        Contact Me
-                    </a>
+<div class="flex flex-wrap gap-4 pt-6">
+<button class="bg-primary hover:bg-primary-container text-on-primary px-8 py-4 rounded-full font-bold transition-all flex items-center gap-2 shadow-lg">
+                        View Projects <span class="material-symbols-outlined">arrow_downward</span>
+</button>
+<button class="bg-surface-container-high/80 backdrop-blur-md text-on-surface px-8 py-4 rounded-full font-bold transition-all border border-outline-variant shadow-sm" href="resume.html">
+                        View Resume
+                    </button>
+</div>
+</div>
+<!-- Right Column: Metrics Dashboard -->
+<div class="flex justify-center lg:justify-end">
+<div class="w-full max-w-sm glass-panel-light border-white/40 p-8 rounded-2xl shadow-xl animate-fade-in-up group/dashboard">
+<div class="flex items-center gap-2 mb-8">
+<span class="material-symbols-outlined text-primary text-sm animate-pulse">analytics</span>
+<h4 class="text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface/80">Real-Time Metrics</h4>
+</div>
+<div class="space-y-6">
+<!-- Metric 1 -->
+<div class="space-y-2 metric-row cursor-default group/row">
+<div class="flex justify-between items-center">
+<span class="text-[10px] text-on-surface/60 uppercase font-mono tracking-wider group-hover/row:text-primary transition-colors">System Efficiency</span>
+<span class="text-xs font-bold text-primary font-mono">94.2%</span>
+</div>
+<div class="h-1 bg-on-surface/5 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[94%] relative transition-all duration-500 metric-bar">
+<div class="absolute inset-0 bg-white/20 animate-pulse"></div>
 </div>
 </div>
 </div>
-</header>
-<section class="py-24 bg-slate-50 relative border-t border-slate-200" id="about">
-<div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTEgMWgydjJIMUMxeiIgZmlsbD0iIzIyMiIgZmlsbC1ydWxlPSJldmVub2RkIi8+PC9zdmc+')] opacity-5 pointer-events-none mix-blend-multiply"></div>
-<div class="max-w-7xl mx-auto px-6 relative z-10">
-<div class="flex items-center gap-4 mb-12">
-<div class="h-px bg-primary flex-grow max-w-[50px]"></div>
-<span class="text-primary font-mono text-sm font-bold"></span>
-<h2 class="font-display font-bold text-4xl text-slate-900 uppercase tracking-tight">About Me</h2>
+<!-- Metric 2 -->
+<div class="space-y-2 metric-row cursor-default group/row">
+<div class="flex justify-between items-center">
+<span class="text-[10px] text-on-surface/60 uppercase font-mono tracking-wider group-hover/row:text-primary transition-colors">Node Connectivity</span>
+<span class="text-xs font-bold text-primary font-mono">Active</span>
 </div>
-<div class="grid md:grid-cols-12 gap-16 items-center">
-<div class="md:col-span-5 relative flex justify-center order-2 md:order-1">
-<div class="relative w-72 h-72 md:w-[450px] md:h-[450px] rounded-full p-2 bg-white border border-slate-200 shadow-xl">
-<div class="absolute inset-0 rounded-full border border-dashed border-primary/30 animate-[spin_20s_linear_infinite] m-2"></div>
-<img alt="Jane Doe Profile" class="w-full h-full object-cover rounded-full grayscale hover:grayscale-0 transition-all duration-500" src="https://drive.google.com/thumbnail?id=1KujG5uES7CLkgMCdTFFRYwdwxamXIp6w&view?sz=1000"/>
-<div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-white border border-primary text-primary px-4 py-1 rounded-full text-xs font-mono uppercase tracking-widest shadow-lg">
-                        System Online
-                    </div>
+<div class="h-1 bg-on-surface/5 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[100%] relative transition-all duration-500 metric-bar">
+<div class="absolute inset-0 bg-white/20 animate-pulse"></div>
 </div>
 </div>
-<div class="md:col-span-7 space-y-6 text-slate-600 text-lg leading-relaxed order-1 md:order-2">
-<p>
-<span class="text-primary font-bold">&gt;&gt;</span> As a data analyst and automation architect, I operate at the intersection of information and efficiency. Construction of digital pipelines is more than just a technical task; it's a strategic approach to transform raw input into strategic output .
-                </p>
-<p>
-<span class="text-primary font-bold">&gt;&gt;</span> Data is more than just numbers, it reveals how you act as a company. Like any company we strategize and execute options differently from the competition landscape. The best way to see improvements is to create customizable workflows that adapt to better outcomes. Metrics that doesn't merely display the now but the motivation for the future progress.
-<div class="grid grid-cols-2 gap-4 mt-8">
-<div class="bg-white border border-slate-200 p-6 rounded shadow-sm hover:shadow-md transition-shadow">
-<div class="text-4xl font-display font-bold text-primary mb-1">3+</div>
-<div class="text-xs font-mono text-slate-400 uppercase tracking-wider">Years Experience</div>
 </div>
-<div class="bg-white border border-slate-200 p-6 rounded shadow-sm hover:shadow-md transition-shadow">
-<div class="text-4xl font-display font-bold text-primary mb-1">10+</div>
-<div class="text-xs font-mono text-slate-400 uppercase tracking-wider">Projects Deployed</div>
+<!-- Metric 3 -->
+<div class="space-y-2 metric-row cursor-default group/row">
+<div class="flex justify-between items-center">
+<span class="text-[10px] text-on-surface/60 uppercase font-mono tracking-wider group-hover/row:text-primary transition-colors">Data Throughput</span>
+<span class="text-xs font-bold text-primary font-mono">1.2 GB/s</span>
+</div>
+<div class="h-1 bg-on-surface/5 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[78%] relative transition-all duration-500 metric-bar">
+<div class="absolute inset-0 bg-white/20 animate-pulse"></div>
 </div>
 </div>
 </div>
 </div>
-</div>
-</section>
-<section class="py-24 bg-white relative overflow-hidden" id="skills">
-<svg class="absolute top-0 left-0 w-full h-full pointer-events-none opacity-30" xmlns="http://www.w3.org/2000/svg">
-<path d="M0,50 Q400,50 400,300 T800,550" fill="none" stroke="#e2e8f0" stroke-dasharray="8 8" stroke-width="2"></path>
-</svg>
-<div class="max-w-7xl mx-auto px-6 relative z-10">
-<div class="flex items-center gap-4 mb-16">
-<div class="h-px bg-primary flex-grow max-w-[50px]"></div>
-<span class="text-primary font-mono text-sm font-bold"></span>
-<h2 class="font-display font-bold text-4xl text-slate-900 uppercase tracking-tight">Services and Tech Stack</h2>
-</div>
-<div class="grid md:grid-cols-3 gap-8">
-<div class="group relative bg-slate-50 border border-slate-200 hover:border-primary/50 transition-all duration-300 rounded hover:shadow-lg hover:-translate-y-1">
-<div class="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity">
-<span class="material-symbols-outlined text-primary text-xl">settings</span>
-</div>
-<div class="p-8 h-full relative overflow-hidden">
-<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-transparent transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></div>
-<div class="w-16 h-16 bg-white border border-slate-200 shadow-sm rounded flex items-center justify-center mb-8 group-hover:bg-primary group-hover:text-white group-hover:border-primary transition-colors duration-300">
-<span class="material-symbols-outlined text-4xl text-slate-600 group-hover:text-white">analytics</span>
-</div>
-<h3 class="font-display font-bold text-xl mb-4 text-slate-900 uppercase tracking-wide">Data Analytics</h3>
-<div class="flex flex-wrap gap-2">
-<span class="px-2 py-1 bg-white text-xs font-mono text-slate-600 border border-slate-200 rounded">Power BI</span>
-<span class="px-2 py-1 bg-white text-xs font-mono text-slate-600 border border-slate-200 rounded">SQL</span>
-<span class="px-2 py-1 bg-white text-xs font-mono text-slate-600 border border-slate-200 rounded">Looker</span>
-<span class="px-2 py-1 bg-white text-xs font-mono text-slate-600 border border-slate-200 rounded">Python</span>
-</div>
-</div>
-</div>
-<div class="group relative bg-slate-50 border border-slate-200 hover:border-primary/50 transition-all duration-300 rounded hover:shadow-lg hover:-translate-y-1">
-<div class="p-8 h-full relative overflow-hidden">
-<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-transparent transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 delay-75"></div>
-<div class="w-16 h-16 bg-white border border-slate-200 shadow-sm rounded flex items-center justify-center mb-8 group-hover:bg-primary group-hover:text-white group-hover:border-primary transition-colors duration-300">
-<span class="material-symbols-outlined text-4xl text-slate-600 group-hover:text-white">hub</span>
-</div>
-<h3 class="font-display font-bold text-xl mb-4 text-slate-900 uppercase tracking-wide">Workflow Automation</h3>
-<div class="flex flex-wrap gap-2">
-<span class="px-2 py-1 bg-white text-xs font-mono text-slate-600 border border-slate-200 rounded">n8n</span>
-<span class="px-2 py-1 bg-white text-xs font-mono text-slate-600 border border-slate-200 rounded">Zapier</span>
-<span class="px-2 py-1 bg-white text-xs font-mono text-slate-600 border border-slate-200 rounded">Power Automate</span>
-</div>
-</div>
-</div>
-<div class="group relative bg-slate-50 border border-slate-200 hover:border-primary/50 transition-all duration-300 rounded hover:shadow-lg hover:-translate-y-1">
-<div class="p-8 h-full relative overflow-hidden">
-<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-transparent transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 delay-150"></div>
-<div class="w-16 h-16 bg-white border border-slate-200 shadow-sm rounded flex items-center justify-center mb-8 group-hover:bg-primary group-hover:text-white group-hover:border-primary transition-colors duration-300">
-<span class="material-symbols-outlined text-4xl text-slate-600 group-hover:text-white">database</span>
-</div>
-<h3 class="font-display font-bold text-xl mb-4 text-slate-900 uppercase tracking-wide">Data Pipelines</h3>
-<div class="flex flex-wrap gap-2">
-<span class="px-2 py-1 bg-white text-xs font-mono text-slate-600 border border-slate-200 rounded">REST API</span>
-<span class="px-2 py-1 bg-white text-xs font-mono text-slate-600 border border-slate-200 rounded">Supabase</span>
-<span class="px-2 py-1 bg-white text-xs font-mono text-slate-600 border border-slate-200 rounded">ETL</span>
-</div>
-</div>
-</div>
-<div class="group relative bg-slate-50 border border-slate-200 hover:border-primary/50 transition-all duration-300 rounded hover:shadow-lg hover:-translate-y-1">
-<div class="p-8 h-full relative overflow-hidden">
-<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-transparent transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 delay-150"></div>
-<div class="w-16 h-16 bg-white border border-slate-200 shadow-sm rounded flex items-center justify-center mb-8 group-hover:bg-primary group-hover:text-white group-hover:border-primary transition-colors duration-300">
-<span class="material-symbols-outlined text-4xl text-slate-600 group-hover:text-white">database</span>
-</div>
-<h3 class="font-display font-bold text-xl mb-4 text-slate-900 uppercase tracking-wide">Project Management</h3>
-<div class="flex flex-wrap gap-2">
-<span class="px-2 py-1 bg-white text-xs font-mono text-slate-600 border border-slate-200 rounded">Notion</span>
-<span class="px-2 py-1 bg-white text-xs font-mono text-slate-600 border border-slate-200 rounded">Asana</span>
-<span class="px-2 py-1 bg-white text-xs font-mono text-slate-600 border border-slate-200 rounded">Hubspot</span>
-</div>
-</div>
-</div>
-<div class="group relative bg-slate-50 border border-slate-200 hover:border-primary/50 transition-all duration-300 rounded hover:shadow-lg hover:-translate-y-1">
-<div class="p-8 h-full relative overflow-hidden">
-<div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-transparent transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 delay-150"></div>
-<div class="w-16 h-16 bg-white border border-slate-200 shadow-sm rounded flex items-center justify-center mb-8 group-hover:bg-primary group-hover:text-white group-hover:border-primary transition-colors duration-300">
-<span class="material-symbols-outlined text-4xl text-slate-600 group-hover:text-white">ai</span>
-</div>
-<h3 class="font-display font-bold text-xl mb-4 text-slate-900 uppercase tracking-wide">AI Integration</h3>
-<div class="flex flex-wrap gap-2">
-<span class="px-2 py-1 bg-white text-xs font-mono text-slate-600 border border-slate-200 rounded">AI Agent Development</span>
-<span class="px-2 py-1 bg-white text-xs font-mono text-slate-600 border border-slate-200 rounded">Prompt Engineering</span>
-<span class="px-2 py-1 bg-white text-xs font-mono text-slate-600 border border-slate-200 rounded">RAG Pipeline</span>
+<div class="mt-8 pt-4 border-t border-on-surface/5">
+<div class="flex justify-between items-center">
+<span class="text-[9px] text-on-surface/40 font-mono uppercase">Encryption_Layer: Secured</span>
+<div class="flex gap-1">
+<div class="w-1 h-1 rounded-full bg-primary animate-ping"></div>
+<div class="w-1 h-1 rounded-full bg-primary"></div>
 </div>
 </div>
 </div>
 </div>
 </div>
-</section>
-<section class="py-24 bg-white relative" id="projects">
-<div class="max-w-7xl mx-auto px-6">
-<div class="mb-16">
-<h2 class="font-display font-bold text-4xl text-slate-900 uppercase tracking-tighter mb-4">Projects</h2>
-<p class="text-slate-500 font-mono text-sm uppercase tracking-widest border-l-2 border-primary pl-4">Focus on Data Visualization &amp; Systematic Automation</p>
 </div>
-<!-- Minimalist Mosaic Grid - Reference: yan-holtz.com style -->
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-1">
-<!-- Project 1 -->
-<a class="group relative overflow-hidden project-card block aspect-[4/3] bg-slate-100" href="https://app.powerbi.com/view?r=eyJrIjoiZTQ0OWU2ODktZDVlNy00NTlhLWJmYjItYTJlMGVmZDAwZWM5IiwidCI6ImJkMmIyOGI4LTc2OWMtNGFjZC04YzdlLTE1MDc1ZmE2NWVmOCIsImMiOjEwfQ%3D%3D&pageName=43b5a237969b4f0d1df2">
-<img alt="Interactive Sales HUD" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-zODwuX1Tkq0wHF7Rfn6X7JlKl3TI9FRUGh2N62YRQeHA6OPJZ4EFKplwcbSk8_vEymFz1qCdjIJh1cYlkwlmx2mtu4dFFxQiZ-24SGX72OheHfJfN5CUx_6tFY5O3yrCkBN8iJZsjLnix5uTOfxw_haJuuq4EVYSy7RTV4_WLkeFL8cgQIoG2MVQH7jQoYnsdEB34EO4IgXjuyputw3dVvafAZUg1EgMe-trK9JIYOjSBR7rs5FU3MAV3Q11pS2ddD70VYrXSJst"/>
-<div class="absolute inset-0 bg-white/0 group-hover:bg-white/95 transition-all duration-300 flex flex-col justify-center items-center p-8 opacity-0 group-hover:opacity-100 text-center">
-<h3 class="font-display font-bold text-xl text-slate-900 uppercase tracking-wide mb-2">Interactive Sales HUD</h3>
-<p class="text-slate-500 text-xs mb-4 line-clamp-2">Real-time command center for sales KPIs and predictive trends.</p>
-<div class="flex flex-wrap justify-center gap-2">
-<span class="text-[10px] font-mono text-primary font-bold uppercase tracking-tighter">Power BI</span>
-<span class="text-[10px] font-mono text-primary font-bold uppercase tracking-tighter">SQL</span>
-</div>
-</div>
-</a>
-<!-- Project 2 -->
-<a class="group relative overflow-hidden project-card block aspect-[4/3] bg-slate-100" href="#">
-<img alt="Auto-Reporting Engine" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5LpVt9povmg-_AuCBWew7Evgw1dBv5FiU5bXlz9Mze3DRFKPsgjAoxywYcbqow61yyqa9yP8VQTzV-kAcHpXtW8KZPVqkkIveJX8CmWES4NTrgk6Q-P0vAHW1qrJ77FYvFCI37dmLu7SzTHvFgQIauDp0O8N--2_BWiAKz117wxltlcDUczJ8BJLNUk10yky5Uh5lfKsIKOeygiV6U0xpUc-w6po9vAKdtA32PEGI9gqvsPcXLY1U3oNLa6P_SFvW4wsNvIsTFviW"/>
-<div class="absolute inset-0 bg-white/0 group-hover:bg-white/95 transition-all duration-300 flex flex-col justify-center items-center p-8 opacity-0 group-hover:opacity-100 text-center">
-<h3 class="font-display font-bold text-xl text-slate-900 uppercase tracking-wide mb-2">Auto-Reporting Engine</h3>
-<p class="text-slate-500 text-xs mb-4 line-clamp-2">n8n architecture reducing manual overhead by 95%.</p>
-<div class="flex flex-wrap justify-center gap-2">
-<span class="text-[10px] font-mono text-primary font-bold uppercase tracking-tighter">n8n</span>
-<span class="text-[10px] font-mono text-primary font-bold uppercase tracking-tighter">APIs</span>
-</div>
-</div>
-</a>
-<!-- Project 3 -->
-<a class="group relative overflow-hidden project-card block aspect-[4/3] bg-slate-100 lg:col-span-1" href="#">
-<img alt="Supply Chain Optimizer" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-zODwuX1Tkq0wHF7Rfn6X7JlKl3TI9FRUGh2N62YRQeHA6OPJZ4EFKplwcbSk8_vEymFz1qCdjIJh1cYlkwlmx2mtu4dFFxQiZ-24SGX72OheHfJfN5CUx_6tFY5O3yrCkBN8iJZsjLnix5uTOfxw_haJuuq4EVYSy7RTV4_WLkeFL8cgQIoG2MVQH7jQoYnsdEB34EO4IgXjuyputw3dVvafAZUg1EgMe-trK9JIYOjSBR7rs5FU3MAV3Q11pS2ddD70VYrXSJst"/>
-<div class="absolute inset-0 bg-white/0 group-hover:bg-white/95 transition-all duration-300 flex flex-col justify-center items-center p-8 opacity-0 group-hover:opacity-100 text-center">
-<h3 class="font-display font-bold text-xl text-slate-900 uppercase tracking-wide mb-2">Supply Chain Optimizer</h3>
-<p class="text-slate-500 text-xs mb-4 line-clamp-2">Historical data forecasting system reducing stockouts.</p>
-<div class="flex flex-wrap justify-center gap-2">
-<span class="text-[10px] font-mono text-primary font-bold uppercase tracking-tighter">SQL</span>
-<span class="text-[10px] font-mono text-primary font-bold uppercase tracking-tighter">Python</span>
-</div>
-</div>
-</a>
-<!-- Project 4 -->
-<a class="group relative overflow-hidden project-card block aspect-[4/3] bg-slate-100" href="#">
-<img alt="Predictive Churn Model" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5LpVt9povmg-_AuCBWew7Evgw1dBv5FiU5bXlz9Mze3DRFKPsgjAoxywYcbqow61yyqa9yP8VQTzV-kAcHpXtW8KZPVqkkIveJX8CmWES4NTrgk6Q-P0vAHW1qrJ77FYvFCI37dmLu7SzTHvFgQIauDp0O8N--2_BWiAKz117wxltlcDUczJ8BJLNUk10yky5Uh5lfKsIKOeygiV6U0xpUc-w6po9vAKdtA32PEGI9gqvsPcXLY1U3oNLa6P_SFvW4wsNvIsTFviW"/>
-<div class="absolute inset-0 bg-white/0 group-hover:bg-white/95 transition-all duration-300 flex flex-col justify-center items-center p-8 opacity-0 group-hover:opacity-100 text-center">
-<h3 class="font-display font-bold text-xl text-slate-900 uppercase tracking-wide mb-2">Predictive Churn Model</h3>
-<p class="text-slate-500 text-xs mb-4 line-clamp-2">ML model identifying at-risk customers before cancellation.</p>
-<div class="flex flex-wrap justify-center gap-2">
-<span class="text-[10px] font-mono text-primary font-bold uppercase tracking-tighter">Scikit-Learn</span>
-<span class="text-[10px] font-mono text-primary font-bold uppercase tracking-tighter">Python</span>
-</div>
-</div>
-</a>
-<!-- Mock Project 5 for dense mosaic look -->
-<a class="group relative overflow-hidden project-card block aspect-[4/3] bg-slate-100" href="#">
-<img alt="Data Architecture" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-zODwuX1Tkq0wHF7Rfn6X7JlKl3TI9FRUGh2N62YRQeHA6OPJZ4EFKplwcbSk8_vEymFz1qCdjIJh1cYlkwlmx2mtu4dFFxQiZ-24SGX72OheHfJfN5CUx_6tFY5O3yrCkBN8iJZsjLnix5uTOfxw_haJuuq4EVYSy7RTV4_WLkeFL8cgQIoG2MVQH7jQoYnsdEB34EO4IgXjuyputw3dVvafAZUg1EgMe-trK9JIYOjSBR7rs5FU3MAV3Q11pS2ddD70VYrXSJst"/>
-<div class="absolute inset-0 bg-white/0 group-hover:bg-white/95 transition-all duration-300 flex flex-col justify-center items-center p-8 opacity-0 group-hover:opacity-100 text-center">
-<h3 class="font-display font-bold text-xl text-slate-900 uppercase tracking-wide mb-2">Enterprise ETL</h3>
-<p class="text-slate-500 text-xs mb-4 line-clamp-2">Scalable data pipeline for retail inventory management.</p>
-<div class="flex flex-wrap justify-center gap-2">
-<span class="text-[10px] font-mono text-primary font-bold uppercase tracking-tighter">AWS</span>
-<span class="text-[10px] font-mono text-primary font-bold uppercase tracking-tighter">Spark</span>
-</div>
-</div>
-</a>
-<!-- Mock Project 6 for dense mosaic look -->
-<a class="group relative overflow-hidden project-card block aspect-[4/3] bg-slate-100" href="#">
-<img alt="Analytics Visuals" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5LpVt9povmg-_AuCBWew7Evgw1dBv5FiU5bXlz9Mze3DRFKPsgjAoxywYcbqow61yyqa9yP8VQTzV-kAcHpXtW8KZPVqkkIveJX8CmWES4NTrgk6Q-P0vAHW1qrJ77FYvFCI37dmLu7SzTHvFgQIauDp0O8N--2_BWiAKz117wxltlcDUczJ8BJLNUk10yky5Uh5lfKsIKOeygiV6U0xpUc-w6po9vAKdtA32PEGI9gqvsPcXLY1U3oNLa6P_SFvW4wsNvIsTFviW"/>
-<div class="absolute inset-0 bg-white/0 group-hover:bg-white/95 transition-all duration-300 flex flex-col justify-center items-center p-8 opacity-0 group-hover:opacity-100 text-center">
-<h3 class="font-display font-bold text-xl text-slate-900 uppercase tracking-wide mb-2">Biotech Trends</h3>
-<p class="text-slate-500 text-xs mb-4 line-clamp-2">Interactive visualization of clinical trial performance.</p>
-<div class="flex flex-wrap justify-center gap-2">
-<span class="text-[10px] font-mono text-primary font-bold uppercase tracking-tighter">D3.js</span>
-<span class="text-[10px] font-mono text-primary font-bold uppercase tracking-tighter">React</span>
-</div>
-</div>
-</a>
-</div>
-<div class="mt-12 text-center">
-<a class="inline-flex items-center gap-2 text-slate-400 hover:text-primary transition-colors font-mono text-xs uppercase tracking-[0.3em] font-bold" href="#">
-                Explorer Full Archive // 042
-                <span class="material-symbols-outlined text-sm">arrow_outward</span>
-</a>
-</div>
-</div>
-</section>
-<section class="py-24 bg-white relative overflow-hidden" id="contact">
-<div class="absolute left-1/2 top-20 -translate-x-1/2 w-[600px] h-[400px] border border-slate-100 rounded-full pointer-events-none"></div>
-<div class="max-w-3xl mx-auto px-6 text-center relative z-10">
 </br>
 </br>
-<h2 class="font-display font-black text-5xl md:text-6xl mb-6 text-slate-900 uppercase">Contact<br/><span class="text-transparent bg-clip-text bg-gradient-to-br from-slate-700 to-slate-400">Now!</span></h2>
-<p class="text-slate-500 text-lg mb-12 max-w-xl mx-auto font-light">
-                Ready to optimize your data architecture? Send a signal. I am currently available for projects and employment.
+</br>
+<!-- Terminal Decals -->
+<div class="absolute bottom-10 left-10 hidden lg:block font-mono text-[10px] text-outline space-y-1 z-10">
+<p>CORE_ENGINE_V4.2</p>
+<p>LATENCY: 14MS</p>
+<p>UI_DENSITY: HIGH_OPTIMIZED</p>
+</div>
+<div class="absolute bottom-10 right-10 hidden lg:block font-mono text-[10px] text-outline text-right space-y-1 z-10">
+<p>LAT: 40.7128° N</p>
+<p>LONG: 74.0060° W</p>
+<p>STATUS: OPTIMIZED</p>
+</div>
+</section>
+<!-- About Me Section -->
+<section class="max-w-7xl mx-auto px-8 py-24" id="about">
+<div class="flex flex-col gap-12"><!-- Side-by-Side Identity Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+<!-- Image Column -->
+<div class="lg:col-span-4">
+<div class="relative group">
+<div class="absolute -inset-1 bg-gradient-to-r from-primary to-primary-container rounded-lg blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+<div class="relative bg-white dark:bg-slate-900 rounded-lg overflow-hidden border border-outline/10 shadow-2xl">
+<img alt="Professional portrait of Raymond, a male data analyst wearing glasses and a focused expression in a high-tech office environment" class="w-full aspect-square object-cover grayscale hover:grayscale-0 transition-all duration-700 scale-105 hover:scale-100" src="https://drive.google.com/thumbnail?id=1KujG5uES7CLkgMCdTFFRYwdwxamXIp6w&view?sz=1000"/>
+</div>
+</div>
+</div>
+<!-- Content Column -->
+<div class="lg:col-span-8 space-y-8">
+<div class="space-y-2">
+<span class="text-primary font-bold label-md uppercase tracking-widest block">RCP</span>
+<h2 class="text-5xl md:text-6xl font-black tracking-tighter">ABOUT RAYMOND PAREDES</h2>
+<p class="text-xs font-mono text-outline uppercase"></p>
+</div>
+<div class="space-y-6">
+<p class="text-2xl md:text-3xl font-medium text-on-surface leading-tight">
+                Senior Systems Architect with a focus on translating complex data structures into high-performance user interfaces.
             </p>
-<form id="contact-form" class="space-y-6 text-left max-w-lg mx-auto bg-slate-50 p-10 border border-slate-200 shadow-xl rounded relative">
-    <div class="absolute -top-1 -left-1 w-4 h-4 border-t-2 border-l-2 border-primary"></div>
-    <div class="absolute -bottom-1 -right-1 w-4 h-4 border-b-2 border-r-2 border-primary"></div>
-    <div>
-        <label class="sr-only" for="name">ID: Name</label>
-        <input class="w-full bg-white border border-slate-200 rounded px-4 py-4 text-slate-800 placeholder-slate-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all font-mono text-sm shadow-sm" id="name" placeholder="ENTER NAME" name="name" required/>
-    </div>
-    <div>
-        <label class="sr-only" for="email">ID: Email</label>
-        <input class="w-full bg-white border border-slate-200 rounded px-4 py-4 text-slate-800 placeholder-slate-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all font-mono text-sm shadow-sm" id="email" type="email" placeholder="ENTER EMAIL ADDRESS" name="email" required/>
-    </div>
-    <div>
-        <label class="sr-only" for="message">Input Data</label>
-        <textarea class="w-full bg-white border border-slate-200 rounded px-4 py-4 text-slate-800 placeholder-slate-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all font-mono text-sm shadow-sm" id="message" placeholder="INPUT MESSAGE..." rows="4" name="message" required></textarea>
-    </div>
-    <div class="text-center pt-4 flex flex-col items-center gap-2">
-        <button id="submit-btn" class="w-full inline-flex justify-center items-center gap-3 bg-primary hover:bg-sky-600 text-white font-bold font-display uppercase tracking-widest py-4 px-8 rounded transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5" type="submit">
-            <span>See you soon!</span>
-            <span class="material-symbols-outlined text-lg">send</span>
-        </button>
-    </div>
+<div class="h-px w-24 bg-primary"></div>
+<p class="text-on-surface-variant max-w-2xl leading-relaxed text-lg">
+                Over the last decade, I have specialized in building scalable technical frameworks for Fortune 500 analytics platforms and agile startups. My methodology prioritizes precision, minimal latency, and accessible data visualization. 
+            </p>
+<p class="text-on-surface-variant max-w-2xl leading-relaxed">
+                When I'm not optimizing render cycles, I'm contributing to open-source infrastructure tools that bridge the gap between raw backend efficiency and fluid frontend interaction.
+            </p>
 </div>
+</div>
+</div></div>
+</section>
+<!-- Skills Matrix Section -->
+<section class="max-w-7xl mx-auto px-8 py-24" id="skills">
+<div class="max-w-7xl mx-auto px-8">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+<div>
+<span class="text-xs font-bold text-secondary tracking-widest uppercase">Technicals</span>
+<h2 class="text-5xl font-black tracking-tighter mt-2"><span class="text-primary">01.</span> THE SKILLS</h2>
+</div>
+<p class="text-on-surface-variant max-w-sm font-mono text-xs uppercase">
+                    Hover over a node to reveal technical depth and interconnected application layers.
+                </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 h-auto md:h-[600px]">
+<!-- Large Primary Node -->
+<div class="md:col-span-6 bg-surface-container-lowest p-8 rounded-lg border border-outline-variant/20 flex flex-col justify-between group hover:shadow-lg transition-shadow">
+<div class="flex justify-between items-start">
+<iframe title="Procurement Project Dashboard v2" width="600" height="373.5" src="https://app.powerbi.com/view?r=eyJrIjoiZTQ0OWU2ODktZDVlNy00NTlhLWJmYjItYTJlMGVmZDAwZWM5IiwidCI6ImJkMmIyOGI4LTc2OWMtNGFjZC04YzdlLTE1MDc1ZmE2NWVmOCIsImMiOjEwfQ%3D%3D" frameborder="0" allowFullScreen="true"></iframe>
+</div>
+<div>
+<h3 class="text-3xl font-bold mb-2 uppercase tracking-tighter">Power BI &amp; Data Strategy</h3>
+<p class="text-on-surface-variant text-sm mb-6">Expertise in complex data modeling, DAX, and PowerQuery for enterprise-scale business intelligence.</p>
+<div class="flex flex-wrap gap-2"><span class="px-4 py-1.5 bg-primary/10 border border-primary/20 rounded-full text-xs font-bold uppercase tracking-wider text-primary">Power BI</span>
+<span class="px-4 py-1.5 bg-surface-container rounded-full text-xs font-bold uppercase tracking-wider">SQL / PowerQuery</span>
+<span class="px-4 py-1.5 bg-surface-container rounded-full text-xs font-bold uppercase tracking-wider">DAX</span></div>
+</div>
+</div>
+<!-- Medium Secondary Node -->
+<div class="md:col-span-3 bg-secondary-container p-8 rounded-lg flex flex-col justify-between group cursor-pointer hover:scale-[1.02] transition-transform"><div class="flex justify-between items-start"><div class="w-16 h-16 bg-white/20 rounded-lg flex items-center justify-center"><img alt="n8n Logo" class="w-12 h-12 object-contain filter brightness-0 invert" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA26jprYDmn6j3KO8hnrChFW_Gq9whpEFiI_cOlNN9XLCug0nyXY3fFbS7_YDxpoeWQJ-lrEFBf7GvCqgSSEozY2o-G9EE2QhnJDllPsZmMaXDRDGNsmz7g3IwDrYffKjTMUny_Ur-zIYH7aL9gHDvwLdFwaOTiVpQdc2bAF5gujtBSB_CEuz4Tj3VVxpEXYvBNspRT8WS0s8ECAY9YwjLXfne29nV1-lx43Y9GQ5D9n5ak01SnbtWnMmsSF8zF4A14OSgMB4SjhzZ5"/></div></div>
+<div class="text-on-secondary-container">
+<n8n-demo clicktointeract="true" workflow='{"nodes":[{"name":"Workflow-Created","type":"n8n-nodes-base.webhook","position":[512,369],"parameters":{"path":"webhook","httpMethod":"POST"},"typeVersion":1}],"connections":{}}'></n8n-demo>
+<h3 class="text-2xl font-black mb-1 uppercase tracking-tight">Automation Workflows</h3>
+<p class="text-sm font-medium opacity-90">Advanced workflow automation &amp; backend logic orchestration.</p>
+</div></div>
+<!-- Medium Secondary Node -->
+<div class="md:col-span-3 bg-secondary-container p-8 rounded-lg flex flex-col justify-between group cursor-pointer hover:scale-[1.02] transition-transform"><div class="flex justify-between items-start"><div class="w-16 h-16 bg-white/20 rounded-lg flex items-center justify-center"><img alt="n8n Logo" class="w-12 h-12 object-contain filter brightness-0 invert" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA26jprYDmn6j3KO8hnrChFW_Gq9whpEFiI_cOlNN9XLCug0nyXY3fFbS7_YDxpoeWQJ-lrEFBf7GvCqgSSEozY2o-G9EE2QhnJDllPsZmMaXDRDGNsmz7g3IwDrYffKjTMUny_Ur-zIYH7aL9gHDvwLdFwaOTiVpQdc2bAF5gujtBSB_CEuz4Tj3VVxpEXYvBNspRT8WS0s8ECAY9YwjLXfne29nV1-lx43Y9GQ5D9n5ak01SnbtWnMmsSF8zF4A14OSgMB4SjhzZ5"/></div></div>
+<div class="text-on-secondary-container">
+<h3 class="text-2xl font-black mb-1 uppercase tracking-tight">AI Integration</h3>
+<p class="text-sm font-medium opacity-90">Advanced workflow automation &amp; backend logic orchestration.</p>
+</div></div>
+<!-- Vertical Metric Node -->
+<div class="md:col-span-3 bg-on-background p-8 rounded-lg flex flex-col justify-between text-white group hover:bg-primary transition-all duration-500">
+<div class="flex justify-between items-start"><div class="w-16 h-16 bg-white/10 rounded-lg flex items-center justify-center"><img alt="Docker Logo" class="w-12 h-12 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPxQcybpFIfbt3oYqWmEJCJe3Y7D4POwQXr4fOFPgPZ6G6er31lUN4kdl3JqkeTe39LRdyLLO00CKHEzsHs-E0HrUrFRUGg41MkHB3Se_pG7H5IIA6v3Klh4fbPqw_hPifZ4CDNM52WMzuYzrMicE3WpYljosHWtpN03i0MWE3TRq65XyB7vuC5oJaXZil8rIziqbQwN97_k76374yELsJNja5YMTK8c7uLSKV_BQ5B_yj7aESLN0zxvT75qUuHBMAosLWTxQ1XzfE"/></div></div>
+<div>
+<h3 class="text-2xl font-black mb-1 uppercase tracking-tight">Docker</h3>
+<p class="text-xs font-mono uppercase tracking-widest opacity-70">Containerized Architecture</p>
+</div>
+</div>
+<!-- Small Cluster -->
+<div class="md:col-span-4 bg-surface-container p-6 rounded-lg border border-outline-variant/10 flex items-center gap-4">
+<div class="w-12 h-12 bg-white rounded-full flex items-center justify-center shrink-0 shadow-sm"><img alt="Obsidian Logo" class="w-8 h-8 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4i4LxfbB5-R9mLT6WaMG9H3fl7cqq6md4pGGfn1GqeZTiVZO9-5y5_9VkG7f3EMcFBoQZgiABXO3lxFex81qWDJ6NSuv_rvxFQf6RFB0Eq8U4vk4U-9VQ7kozqT-NWuwGxGKeBHFBxAtxjFBJL_jicwy0dIib_y4_5Wwne65xUuOfGnMlGLIjuwRjGNBNQK1etdRqTzbfIyiVJuuYJukTBzWj_-7XgGJWZxb2pa_tfMAWFK1uEaxmxOMQHjVibePVxLO0zkeG6QUF"/></div>
+<div>
+<h4 class="font-bold uppercase text-sm tracking-tight">Obsidian Systems</h4>
+<p class="text-xs text-on-surface-variant">Second-brain methodology for technical documentation and knowledge management.</p>
+</div>
+</div>
+</div>
+</section>
+</br>
+<!-- Project Dashboard -->
+<section class="py-24 px-8" id="projects">
+<div class="max-w-7xl mx-auto">
+<div class="flex justify-between items-end mb-16">
+<div>
+<span class="text-primary font-bold label-md uppercase tracking-widest block mb-2">Favorite Projects</span>
+<h2 class="text-5xl font-black tracking-tighter">CONTROLLED PRODUCTIVITY</h2>
+</div>
+<div class="hidden md:block font-mono text-xs text-outline-variant border border-outline-variant p-2 rounded">
+                    FILTER_STATUS: ALL_ACTIVE
+                </div>
+</div>
+<div class="space-y-24">
+<div class="space-y-32 mb-32">
+<!-- Project 01 -->
+<div class="flex flex-col lg:flex-row gap-12 items-center group">
+<div class="lg:w-1/2 relative">
+<div class="rounded-lg overflow-hidden shadow-2xl relative z-10 border border-primary/10">
+<img alt="high-tech computer server room" class="w-full grayscale group-hover:grayscale-0 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBL4E07TjeuYx74uyz7aKn8owtchPJ6Ox94Q0lAskNJGDMAMt2g5Bj_cqozXI_5GyPNnjzfOIv_bH7rZqQNLuL9J2dbqQTyamwJHO8Nv_RI_3-zO3AtRNdPmfxbfCm1mjqRMSVRGETRiQl_glP-PCSUsA1GuIoHnLhBUZlkHxzJa_U09Fl9besO6TyOY5_SP1wrsRuFsIby8EYhvfY1JAStzZkINO9h_eLNH7UUBE3u2eoMj2zVMJ3XdTI4gBYTnT9t8IyitGPwsizl"/>
+</div>
+<div class="absolute -bottom-8 -right-8 w-48 h-48 bg-primary/10 rounded-full blur-2xl z-0"></div>
+</div>
+<div class="lg:w-1/2 space-y-6">
+<span class="text-xs font-black text-secondary uppercase tracking-[0.2em]">ID: PROJECT_01 // OPERATIONS ANALYTICS</span>
+<h3 class="text-4xl font-black leading-tight text-on-background">PROCUREMENT DASHBOARD</h3>
+<p class="text-on-surface-variant leading-relaxed text-lg">
+                                Real-time cloud monitoring analytical dashboard designed for enterprise-scale distributed systems. Synthesizes multi-region latency data into a centralized, actionable visual topography.
+                            </p>
+<ul class="space-y-3">
+<li class="flex items-center gap-3 text-sm font-bold text-on-surface">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+                                    Node.js / Three.js backend infrastructure
+                                </li>
+<li class="flex items-center gap-3 text-sm font-bold text-on-surface">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+                                    Sub-10ms visualization latency target
+                                </li>
+</ul>
+<div class="pt-4">
+<a class="inline-flex items-center gap-2 font-black text-primary hover:gap-4 transition-all" href="#">
+                                    Full Technical Specs <span class="material-symbols-outlined">north_east</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Project 02 -->
+<div class="flex flex-col lg:flex-row-reverse gap-12 items-center group">
+<div class="lg:w-1/2 relative">
+<div class="rounded-lg overflow-hidden shadow-2xl relative z-10 border border-primary/10">
+<img alt="robotic arm assembling circuit board" class="w-full grayscale group-hover:grayscale-0 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAX8mR1bzMO-UZ0PVtjcjy_5vlr2td9tES5dnLnfR40mt2frsKcCKTHfesmHf1AgBm5AE0FwtfVixLOqcij8EOIVkIv7SOI6rz1qp5ZxvsJvaPJeol7VJrE5MCULHKmvQuYFxPxeue4QQFM8XNQaWXWLdqnVBy8m63yB_fSls_wOVgRHn4sUxdBtbPAomIGvtjs3V7ORVV9rG2jzzh9qelGzafv9qF8xwADBe9ktnsp9WCX90gUy5i4hyMQ_U1mk82PodfwzA_ZLGiN"/>
+</div>
+<div class="absolute -top-8 -left-8 w-48 h-48 bg-tertiary/10 rounded-full blur-2xl z-0"></div>
+</div>
+<div class="lg:w-1/2 space-y-6">
+<span class="text-xs font-black text-primary uppercase tracking-[0.2em]">ID: PROJECT_02 // CRM FRAMEWORK</span>
+<h3 class="text-4xl font-black leading-tight text-on-background">CUSTOMIZED CRM SOLUTION</h3>
+<p class="text-on-surface-variant leading-relaxed text-lg">
+                                IoT automation framework optimized for industrial control units. Built to maintain operational stability across legacy hardware and modern sensor arrays.
+                            </p>
+<ul class="space-y-3">
+<li class="flex items-center gap-3 text-sm font-bold text-on-surface">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+                                    Python / MQTT low-level integration
+                                </li>
+<li class="flex items-center gap-3 text-sm font-bold text-on-surface">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+                                    Real-time fault detection algorithms
+                                </li>
+</ul>
+<div class="pt-4">
+<a class="inline-flex items-center gap-2 font-black text-primary hover:gap-4 transition-all" href="#">
+                                    Explore Protocol <span class="material-symbols-outlined">settings_input_component</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Project 03 -->
+<div class="flex flex-col lg:flex-row gap-12 items-center group">
+<div class="lg:w-1/2 relative">
+<div class="rounded-lg overflow-hidden shadow-2xl relative z-10 border border-primary/10">
+<img alt="computer processor glowing" class="w-full grayscale group-hover:grayscale-0 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJj7biKMXXhkl2nND-9wYCtpN0szpXWYX4tba6qIcqnkg0Ky3GYfRUDalrg5idLAmXBoPdjv1CsB2o2xjgQe7cSaUXeA49bkr0Hmest_BjUvvwGeevzvQitgojW5bTe-VM2qZ1gsxFZhTMXgex1yVIDy7tMNqtB_zI9Tu1Yh-7H2UK4ZuSi-I_XGmEsYJ7uXswRbS3T8nMls1I1xINSKK2pTCkeN41InjmsQa5EWeqDSlL0Rh0oOBH6ag72NhiMwRgCs4WCxsNXXEV"/>
+</div>
+<div class="absolute -bottom-8 -right-8 w-48 h-48 bg-primary/10 rounded-full blur-2xl z-0"></div>
+</div>
+<div class="lg:w-1/2 space-y-6">
+<span class="text-xs font-black text-secondary uppercase tracking-[0.2em]">ID: PROJECT_03 // DATABASES</span>
+<h3 class="text-4xl font-black leading-tight text-on-background">KNOWLEDGE MANAGEMENT AUTOMATION</h3>
+<p class="text-on-surface-variant leading-relaxed text-lg">
+                                Serverless data processing architecture designed for high-frequency financial modeling. Translates complex market signals into visual decision matrices.
+                            </p>
+<ul class="space-y-3">
+<li class="flex items-center gap-3 text-sm font-bold text-on-surface">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+                                    Next.js / AWS Lambda orchestration
+                                </li>
+<li class="flex items-center gap-3 text-sm font-bold text-on-surface">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+                                    Predictive trend visualization
+                                </li>
+</ul>
+<div class="pt-4">
+<a class="inline-flex items-center gap-2 font-black text-primary hover:gap-4 transition-all" href="#">
+                                    System Architecture <span class="material-symbols-outlined">account_tree</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Project Delta -->
+<div class="group cursor-pointer">
+<div class="relative aspect-[4/3] rounded-lg overflow-hidden bg-on-background mb-4 border border-white/10">
+<img alt="holographic futuristic interface" class="w-full h-full object-cover opacity-60 group-hover:scale-105 group-hover:opacity-80 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdFj4UBe0mQ-_YLIrBsua9SIIaWLkmFR5aUDqGPGlUMBuj7oX3L0rF6ZYL5OeXxRxEtoqS80IRm2X_ilYJlVlUKIbXOy62vE8P0RKfesd9NHnZ-33PEZWtx_sdI19XogJKaU3vlePB14RZ4eWH8xzMnmJR-qYBxhOomoFZ1go_1U-LaklC01F-gHx6F4Riea2KvcbyzvCdbkg0jLBwov7wD9PL56O0vU-eRGvFtTw5JiRhlt-6jh5_RPo-ZdVZ0nHkADN5I-mQWd3_"/>
+<div class="absolute inset-0 p-6 flex flex-col justify-between bg-gradient-to-t from-black/80 to-transparent">
+<div class="flex justify-between items-start">
+<div class="bg-primary/90 text-on-primary px-2 py-0.5 rounded text-[10px] font-mono">ID: PROJECT_04</div>
+<div class="bg-on-background/80 backdrop-blur-sm text-secondary px-2 py-0.5 rounded text-[10px] font-mono border border-secondary">DEPLOYED</div>
+</div>
+<div class="space-y-1">
+<h3 class="text-2xl font-black text-white uppercase">VISTA ANALYTICS</h3>
+<div class="flex gap-3">
+<span class="text-white/60 text-[10px] font-mono uppercase">D3.js</span>
+<span class="text-white/60 text-[10px] font-mono uppercase">Go</span>
+</div>
+</div>
+</div>
+</div>
+<div class="flex justify-between items-center px-1">
+<p class="text-on-surface-variant text-sm font-medium">Large-scale multidimensional data visualization tool.</p>
+<span class="material-symbols-outlined text-primary group-hover:translate-x-2 transition-transform duration-500 text-sm">arrow_forward</span>
+</div>
+</div>
+<!-- Project Epsilon -->
+<div class="group cursor-pointer">
+<div class="relative aspect-[4/3] rounded-lg overflow-hidden bg-on-background mb-4 border border-white/10">
+<img alt="industrial robotic sensors" class="w-full h-full object-cover opacity-60 group-hover:scale-105 group-hover:opacity-80 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOemS_P3kCbf2_G-ruOSQTqtO092vQOp8-7Jb6MCyjIYPVOyhUxK3tHuG04-nP3Fj4WTGAyMue3PZKe2VwHxb1DlUY-yAX-GcB53064TTg8O-x-KBfSRIqqWUWrnXJY5j8es2dgH870XfQ7rvGufgKJEYaGfyUtIsv2mrbEOuV4vOOWVFyhOhGIA1c5zvegW2stvOlsZQ0_KYbqHGmAnbNlAApMYP0oys24V1afj0jGrGOhqsyYnaes_unxxn0SwuUvCTthF9bqGD-"/>
+<div class="absolute inset-0 p-6 flex flex-col justify-between bg-gradient-to-t from-black/80 to-transparent">
+<div class="flex justify-between items-start">
+<div class="bg-primary/90 text-on-primary px-2 py-0.5 rounded text-[10px] font-mono">ID: PROJECT_05</div>
+<div class="bg-on-background/80 backdrop-blur-sm text-secondary px-2 py-0.5 rounded text-[10px] font-mono border border-secondary">STABLE</div>
+</div>
+<div class="space-y-1">
+<h3 class="text-2xl font-black text-white uppercase">Automated File Management</h3>
+<div class="flex gap-3">
+<span class="text-white/60 text-[10px] font-mono uppercase">C++</span>
+<span class="text-white/60 text-[10px] font-mono uppercase">Rust</span>
+</div>
+</div>
+</div>
+</div>
+<div class="flex justify-between items-center px-1">
+<p class="text-on-surface-variant text-sm font-medium">Hardware-level sensor fusion for autonomous nav.</p>
+<span class="material-symbols-outlined text-primary group-hover:translate-x-2 transition-transform duration-500 text-sm">arrow_forward</span>
+</div>
+</div>
+<!-- Project Zeta -->
+<div class="group cursor-pointer">
+<div class="relative aspect-[4/3] rounded-lg overflow-hidden bg-on-background mb-4 border border-white/10">
+<img alt="cyber security digital padlock" class="w-full h-full object-cover opacity-60 group-hover:scale-105 group-hover:opacity-80 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAICVGsXJ68OmDZqKUtZpU0BnmTYGVntALI7m_QIVQX-SrbCSxSf2RMxffF4T1Ev7q-MQtfbubVC4MRtQRPtrYwZQLjbK-D6pG40IPhlchOzrtWxUZQQsc_eONk7vtzbN71uBzlxFeFOl3pfVYN4LK_RGamf7K3PbN4SSF9qmLvk56l77oUNTadnXtT2Rc0aHdyuu4FmRJVLaTC250ScLNqe1-8x6l_ORtjdR94N0e2EsNv_ItGeHYxqFi0TS0NgLFHGSb74L2m3S50"/>
+<div class="absolute inset-0 p-6 flex flex-col justify-between bg-gradient-to-t from-black/80 to-transparent">
+<div class="flex justify-between items-start">
+<div class="bg-primary/90 text-on-primary px-2 py-0.5 rounded text-[10px] font-mono">ID: PROJECT_06</div>
+<div class="bg-on-background/80 backdrop-blur-sm text-secondary px-2 py-0.5 rounded text-[10px] font-mono border border-secondary">SECURE</div>
+</div>
+<div class="space-y-1">
+<h3 class="text-2xl font-black text-white uppercase">CRYPT GUARD</h3>
+<div class="flex gap-3">
+<span class="text-white/60 text-[10px] font-mono uppercase">Solidity</span>
+<span class="text-white/60 text-[10px] font-mono uppercase">React</span>
+</div>
+</div>
+</div>
+</div>
+<div class="flex justify-between items-center px-1">
+<p class="text-on-surface-variant text-sm font-medium">Decentralized asset protection and monitoring.</p>
+<span class="material-symbols-outlined text-primary group-hover:translate-x-2 transition-transform duration-500 text-sm">arrow_forward</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact Section -->
+<section class="max-w-7xl mx-auto px-8 py-24" id="contact">
+<div class="flex flex-col items-center mb-16 text-center">
+<span class="material-symbols-outlined text-5xl text-primary mb-6 animate-pulse">sensors</span>
+<span class="text-primary font-bold label-md uppercase tracking-[0.3em] block mb-2">Signaling Requests</span>
+<h2 class="text-6xl font-black tracking-tighter uppercase">Let's Collab</h2>
+</div>
+<div class="max-w-3xl mx-auto">
+<div class="glass-panel-light border-white/20 rounded-2xl overflow-hidden relative shadow-lg">
+<div class="absolute inset-0 opacity-[0.03] pointer-events-none grid-pattern"></div>
+<form id="contact-form" class="p-8 md:p-12 space-y-8 relative z-10">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="space-y-2">
+            <label class="font-mono text-[10px] uppercase tracking-widest text-on-surface/60 block" for="name">Name</label>
+            <input id="name" class="w-full bg-white/50 border border-on-surface/10 focus:border-primary/50 focus:ring-1 focus:ring-primary/20 rounded-lg px-4 py-3 font-mono text-sm uppercase tracking-wider transition-all duration-300" placeholder="ENTER NAME" type="text" required/>
+        </div>
+        <div class="space-y-2">
+            <label class="font-mono text-[10px] uppercase tracking-widest text-on-surface/60 block" for="email">Email</label>
+            <input id="email" class="w-full bg-white/50 border border-on-surface/10 focus:border-primary/50 focus:ring-1 focus:ring-primary/20 rounded-lg px-4 py-3 font-mono text-sm uppercase tracking-wider transition-all duration-300" placeholder="EMAIL@HOST.COM" type="email" required/>
+        </div>
+    </div>
+    <div class="space-y-2">
+        <label class="font-mono text-[10px] uppercase tracking-widest text-on-surface/60 block" for="message">Message</label>
+        <textarea id="message" class="w-full bg-white/50 border border-on-surface/10 focus:border-primary/50 focus:ring-1 focus:ring-primary/20 rounded-lg px-4 py-3 font-mono text-sm uppercase tracking-wider transition-all duration-300 resize-none" placeholder="INPUT MESSAGE SEQUENCE..." rows="4" required></textarea>
+    </div>
+    <div class="flex flex-col items-center pt-4">
+        <button id="submit-btn" type="submit" class="bg-primary hover:bg-primary-container text-on-primary px-12 py-4 rounded-full font-black tracking-[0.2em] transition-all flex items-center gap-3 shadow-lg group uppercase">
+            <span>Send</span>
+            <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">send</span>
+        </button>
+        
+        <div class="mt-8 flex gap-8 items-center justify-center grayscale opacity-50">
+            <div class="flex flex-col items-center">
+                <span class="font-mono text-[9px] text-on-surface/40 uppercase tracking-tighter">LATENCY</span>
+                <span class="font-mono text-[11px] font-bold">14MS</span>
+            </div>
+            <div class="w-px h-6 bg-on-surface/10"></div>
+            <div class="flex flex-col items-center">
+                <span class="font-mono text-[9px] text-on-surface/40 uppercase tracking-tighter">ENCRYPTION</span>
+                <span class="font-mono text-[11px] font-bold">AES-256</span>
+            </div>
+            <div class="w-px h-6 bg-on-surface/10"></div>
+            <div class="flex flex-col items-center">
+                <span class="font-mono text-[9px] text-on-surface/40 uppercase tracking-tighter">STATUS</span>
+                <span class="font-mono text-[11px] font-bold text-primary">SECURE</span>
+            </div>
+        </div>
+    </div>
 </form>
 </div>
-</section>
-<footer class="py-12 bg-slate-50 text-center border-t border-slate-200 relative">
-<div class="flex justify-center gap-8 mb-6">
-<a class="text-slate-400 hover:text-primary transition-colors hover:scale-110 transform duration-200" href="https://www.linkedin.com/in/raymond-paredes-805b5415a/">
-<svg class="w-6 h-6" fill="currentColor" viewbox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg>
-</a>
 </div>
-<p class="text-slate-500 font-mono text-xs uppercase tracking-widest">
-            Designed by © RCP // <span class="text-primary font-bold">Status: Ready</span>
-</p>
+<div class="flex justify-center gap-12 pt-16">
+<div class="text-center group cursor-pointer">
+<p class="text-[10px] font-bold uppercase tracking-widest text-outline mb-2 font-mono">Network</p>
+<p class="font-bold text-on-background group-hover:text-primary transition-colors duration-500 uppercase tracking-tight">LinkedIn</p>
+</div>
+<div class="text-center group cursor-pointer">
+<p class="text-[10px] font-bold uppercase tracking-widest text-outline mb-2 font-mono">Codebase</p>
+<p class="font-bold text-on-background group-hover:text-primary transition-colors duration-500 uppercase tracking-tight">GitHub</p>
+</div>
+<div class="text-center group cursor-pointer">
+<p class="text-[10px] font-bold uppercase tracking-widest text-outline mb-2 font-mono">Location</p>
+<p class="font-bold text-on-background group-hover:text-primary transition-colors duration-500 uppercase tracking-tight">METRO MANILA</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 bg-slate-100 dark:bg-slate-900 border-t border-outline/10 relative z-10">
+<div class="flex flex-col md:flex-row justify-between items-center px-8 max-w-7xl mx-auto">
+<div class="font-bold text-slate-900 dark:text-slate-100 mb-4 md:mb-0 uppercase tracking-tighter">RCP</div>
+<div class="font-['Inter'] text-xs uppercase tracking-widest text-slate-500 mb-4 md:mb-0">
+            © 2026 DESIGNED AND SERVED By Yours Truly
+        </div>
+<div class="flex gap-6">
+<a class="text-xs uppercase tracking-widest text-slate-500 hover:text-primary transition-all opacity-100 hover:opacity-80" href="#">LinkedIn</a>
+<a class="text-xs uppercase tracking-widest text-slate-500 hover:text-primary transition-all opacity-100 hover:opacity-80" href="#">GitHub</a>
+<a class="text-xs uppercase tracking-widest text-slate-500 hover:text-primary transition-all opacity-100 hover:opacity-80" href="#">Resume</a>
+</div>
+</div>
 </footer>
 <script>
-        const canvas = document.getElementById('hero-canvas');
-        const ctx = canvas.getContext('2d');
-        let width, height, particles;
-        const particleCount = 100;
-        const connectionDistance = 150;
-        const mouse = { x: null, y: null, radius: 180 };
+    const canvas = document.getElementById('hero-canvas');
+    const ctx = canvas.getContext('2d');
+    const root = document.documentElement;
 
-        window.addEventListener('mousemove', (e) => {
-            mouse.x = e.x;
-            mouse.y = e.y;
-        });
+    let width, height;
+    let particles = [];
+    let mouse = { x: -1000, y: -1000 };
 
-        window.addEventListener('resize', init);
+    const PARTICLE_COUNT = 150; 
+    const CONNECTION_DISTANCE = 160; 
+    const MOUSE_REPEL_RADIUS = 250; 
+    const PARTICLE_SIZE_RANGE = [1, 2.5]; 
 
-        class Particle {
-            constructor() {
-                this.init();
+    class Particle {
+        constructor() {
+            this.init();
+        }
+        init() {
+            this.x = Math.random() * width;
+            this.y = Math.random() * height;
+            this.vx = (Math.random() - 0.5) * 1.2;
+            this.vy = (Math.random() - 0.5) * 1.2;
+            this.radius = Math.random() * (PARTICLE_SIZE_RANGE[1] - PARTICLE_SIZE_RANGE[0]) + PARTICLE_SIZE_RANGE[0];
+            this.pulse = Math.random() * Math.PI * 2;
+            this.pulseSpeed = 0.01 + Math.random() * 0.03;
+        }
+        update() {
+            this.x += this.vx;
+            this.y += this.vy;
+            const dx = this.x - mouse.x;
+            const dy = this.y - mouse.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < MOUSE_REPEL_RADIUS) {
+                const force = (MOUSE_REPEL_RADIUS - dist) / MOUSE_REPEL_RADIUS;
+                this.x += (dx / dist) * force * 3;
+                this.y += (dy / dist) * force * 3;
             }
+            if (this.x < 0) this.x = width;
+            if (this.x > width) this.x = 0;
+            if (this.y < 0) this.y = height;
+            if (this.y > height) this.y = 0;
+            this.pulse += this.pulseSpeed;
+        }
+        draw() {
+            const opacity = 0.15 + (Math.sin(this.pulse) + 1) * 0.25;
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(255, 140, 0, ${opacity})`;
+            ctx.fill();
+        }
+    }
 
-            init() {
-                this.x = Math.random() * width;
-                this.y = Math.random() * height;
-                this.vx = (Math.random() - 0.5) * 0.5;
-                this.vy = (Math.random() - 0.5) * 0.5;
-                this.radius = 2;
-                this.baseX = this.x;
-                this.baseY = this.y;
-            }
+    function resize() {
+        width = window.innerWidth;
+        height = window.innerHeight;
+        canvas.width = width;
+        canvas.height = height;
+        particles = [];
+        for (let i = 0; i < PARTICLE_COUNT; i++) {
+            particles.push(new Particle());
+        }
+    }
 
-            update() {
-                // Regular movement
-                this.x += this.vx;
-                this.y += this.vy;
-
-                // Bounce off walls
-                if (this.x < 0 || this.x > width) this.vx *= -1;
-                if (this.y < 0 || this.y > height) this.vy *= -1;
-
-                // Mouse interaction - Attraction/Repulsion
-                if (mouse.x != null && mouse.y != null) {
-                    let dx = mouse.x - this.x;
-                    let dy = mouse.y - this.y;
-                    let distance = Math.sqrt(dx * dx + dy * dy);
-                    
-                    if (distance < mouse.radius) {
-                        const force = (mouse.radius - distance) / mouse.radius;
-                        const angle = Math.atan2(dy, dx);
-                        const moveX = Math.cos(angle) * force * 2;
-                        const moveY = Math.sin(angle) * force * 2;
-                        
-                        // Slowly move away from mouse
-                        this.x -= moveX;
-                        this.y -= moveY;
-                    }
+    function animate() {
+        ctx.clearRect(0, 0, width, height);
+        for (let i = 0; i < particles.length; i++) {
+            const p1 = particles[i];
+            p1.update();
+            p1.draw();
+            for (let j = i + 1; j < particles.length; j++) {
+                const p2 = particles[j];
+                const dx = p1.x - p2.x;
+                const dy = p1.y - p2.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < CONNECTION_DISTANCE) {
+                    const opacity = (1 - dist / CONNECTION_DISTANCE) * 0.35;
+                    ctx.beginPath();
+                    ctx.moveTo(p1.x, p1.y);
+                    ctx.lineTo(p2.x, p2.y);
+                    ctx.strokeStyle = `rgba(255, 140, 0, ${opacity})`;
+                    ctx.lineWidth = 0.8;
+                    ctx.stroke();
                 }
             }
-
-            draw() {
-                ctx.fillStyle = '#0ea5e9';
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                ctx.fill();
-            }
         }
+        requestAnimationFrame(animate);
+    }
 
-        function init() {
-            width = window.innerWidth;
-            height = window.innerHeight;
-            canvas.width = width;
-            canvas.height = height;
-            particles = [];
-            for (let i = 0; i < particleCount; i++) {
-                particles.push(new Particle());
-            }
-        }
+    window.addEventListener('resize', resize);
+    window.addEventListener('mousemove', (e) => {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+        const xPct = e.clientX / window.innerWidth;
+        const yPct = e.clientY / window.innerHeight;
+        const hue = 25 + (xPct * 20); 
+        const sat = 80 + (yPct * 20); 
+        const light = 40 + (yPct * 10); 
+        const containerHue = 30 + (xPct * 30); 
+        root.style.setProperty('--primary-color', `hsl(${hue}, ${sat}%, ${light}%)`);
+        root.style.setProperty('--primary-container-color', `hsl(${containerHue}, 100%, 57%)`);
+        const bgSat = 5 * xPct;
+        root.style.setProperty('--dynamic-bg-mix', `hsl(${hue}, ${bgSat}%, 98%)`);
+    });
 
-        function animate() {
-            ctx.clearRect(0, 0, width, height);
-            
-            for (let i = 0; i < particles.length; i++) {
-                particles[i].update();
-                particles[i].draw();
-
-                // Draw connections
-                for (let j = i + 1; j < particles.length; j++) {
-                    const dx = particles[i].x - particles[j].x;
-                    const dy = particles[i].y - particles[j].y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-
-                    if (distance < connectionDistance) {
-                        ctx.strokeStyle = `rgba(14, 165, 233, ${1 - distance / connectionDistance})`;
-                        ctx.lineWidth = 0.5;
-                        ctx.beginPath();
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.stroke();
-                    }
-                }
-
-                // Connections to mouse
-                if (mouse.x != null) {
-                    const mdx = particles[i].x - mouse.x;
-                    const mdy = particles[i].y - mouse.y;
-                    const mdist = Math.sqrt(mdx * mdx + mdy * mdy);
-                    if (mdist < mouse.radius) {
-                        ctx.strokeStyle = `rgba(14, 165, 233, ${(1 - mdist / mouse.radius) * 0.4})`;
-                        ctx.lineWidth = 0.8;
-                        ctx.beginPath();
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(mouse.x, mouse.y);
-                        ctx.stroke();
-                    }
-                }
-            }
-            requestAnimationFrame(animate);
-        }
-
-        init();
-        animate();
-    </script>
+    resize();
+    animate();
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.0.0/webcomponents-loader.js"></script>
+<script src="https://www.unpkg.com/lit@2.0.0-rc.2/polyfill-support.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/@n8n_io/n8n-demo-component/n8n-demo.bundled.js"></script>
 <script>
+    // Google Apps Script Form Integration
     document.getElementById('contact-form').addEventListener('submit', async function(event) {
-        event.preventDefault(); // Stop the page from reloading
+        event.preventDefault(); // Stop standard form submission reload
         
         const form = event.target;
         const submitBtn = document.getElementById('submit-btn');
-        const originalBtnText = submitBtn.innerHTML;
+        const originalBtnHTML = submitBtn.innerHTML;
         
-        // 1. Show a loading state on the button
-        submitBtn.innerHTML = '<span>Transmitting...</span><span class="material-symbols-outlined animate-spin text-lg">sync</span>';
+        // 1. Show loading state
+        submitBtn.innerHTML = '<span>Transmitting...</span><span class="material-symbols-outlined animate-spin">sync</span>';
         submitBtn.disabled = true;
 
-        // 2. PASTE YOUR APPS SCRIPT URL HERE
+        // 2. YOUR APPS SCRIPT WEB APP URL HERE
         const scriptUrl = "https://script.google.com/macros/s/AKfycby_uNku4B679qg8qSaahUbJUw1d7Po015l2U9j_bOINDK9F9uS3hkE7nkWpMNbwE-S1/exec"; 
         
-        // 3. Gather the data
+        // 3. Gather data
         const formData = {
             name: document.getElementById("name").value,
             email: document.getElementById("email").value,
@@ -592,7 +737,7 @@
         };
 
         try {
-            // 4. Send the request to Google Sheets
+            // 4. Send request
             const response = await fetch(scriptUrl, {
                 method: "POST",
                 headers: {
@@ -604,58 +749,30 @@
             const result = await response.json();
             
             if (result.status === "success") {
-                // 5. Trigger your existing Toast Animation
-                const toast = document.getElementById('success-toast');
-                const progress = document.getElementById('toast-progress');
-                
-                progress.style.transition = 'none';
-                progress.style.transform = 'scaleX(1)';
-                toast.classList.remove('translate-x-[120%]');
-                
-                setTimeout(() => {
-                    progress.style.transition = 'transform 5s linear'; 
-                    progress.style.transform = 'scaleX(0)';
-                }, 50);
-
-                setTimeout(() => {
-                    toast.classList.add('translate-x-[120%]');
-                }, 5000);
-
-                // 6. Clear the form fields
+                // 5. Success state handling
+                submitBtn.innerHTML = '<span>Sequence Complete</span><span class="material-symbols-outlined">check_circle</span>';
+                submitBtn.style.backgroundColor = '#10b981'; // Tailwind emerald-500
                 form.reset();
+                
+                // Revert button back to normal after 3.5 seconds
+                setTimeout(() => {
+                    submitBtn.innerHTML = originalBtnHTML;
+                    submitBtn.style.backgroundColor = ''; // Clear inline style to return to Tailwind classes
+                    submitBtn.disabled = false;
+                }, 3500);
             } else {
                 console.error("Server Error:", result.message);
-                alert("There was an issue saving your message.");
+                alert("Transmission failed: " + result.message);
+                submitBtn.innerHTML = originalBtnHTML;
+                submitBtn.disabled = false;
             }
             
         } catch (error) {
             console.error("Network Error:", error);
-            alert("Network error. Please try again.");
-        } finally {
-            // 7. Restore the button to its original state
-            submitBtn.innerHTML = originalBtnText;
+            alert("Network error. Please check your connection and try again.");
+            submitBtn.innerHTML = originalBtnHTML;
             submitBtn.disabled = false;
         }
     });
 </script>
-<div class="fixed bottom-10 right-10 z-[100] transform translate-x-[120%] transition-transform duration-500 ease-out pointer-events-none" id="success-toast">
-<div class="bg-white border-2 border-primary p-6 rounded shadow-2xl relative min-w-[300px] pointer-events-auto">
-<div class="absolute -top-1 -left-1 w-3 h-3 border-t-2 border-l-2 border-primary"></div>
-<div class="absolute -bottom-1 -right-1 w-3 h-3 border-b-2 border-r-2 border-primary"></div>
-<div class="flex items-center gap-4">
-<div class="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center border border-primary/20">
-<span class="material-symbols-outlined text-3xl text-primary">check_circle</span>
-</div>
-<div class="flex-grow">
-<h3 class="font-display font-bold text-lg text-slate-900 uppercase tracking-wide leading-tight">Message Sent!</h3>
-<p class="text-slate-500 font-mono text-[10px] uppercase tracking-tighter mt-1">
-                    Thank you for reaching out. I will review your message and get back to you as soon as possible. Looking forward to connecting!
-                </p>
-</div>
-</div>
-<div class="mt-4 h-1 w-full bg-slate-100 overflow-hidden">
-<div class="h-full bg-primary w-full origin-left" id="toast-progress"></div>
-</div>
-</div>
-</div>
 </body></html>
