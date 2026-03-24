@@ -140,8 +140,7 @@
 <a class="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors duration-300" href="#skills">SKILLS</a>
 <a class="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors duration-300" href="#projects">PROJECTS</a>
 </div>
-<button class="bg-primary text-on-primary px-6 py-2 rounded-full font-bold scale-95 active:opacity-80 transition-all" href="#contact">
-            Message Now!
+<button class="bg-primary text-on-primary px-6 py-2 rounded-full font-bold scale-95 active:opacity-80 transition-all" href="#contact">Message Now!
         </button>
 </div>
 </nav>
@@ -287,7 +286,7 @@
 <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
 <div>
 <span class="text-xs font-bold text-secondary tracking-widest uppercase">Technicals</span>
-<h2 class="text-5xl font-black tracking-tighter mt-2"><span class="text-primary">01.</span> THE SKILLS</h2>
+<h2 class="text-5xl font-black tracking-tighter mt-2"><span class="text-primary"></span> THE SKILLS</h2>
 </div>
 <p class="text-on-surface-variant max-w-sm font-mono text-xs uppercase">
                     Hover over a node to reveal technical depth and interconnected application layers.
@@ -338,9 +337,9 @@
 </div>
 </div>
 </section>
-</br>
+<div class="h-32 md:h-32"></div>
 <!-- Project Dashboard -->
-<section class="py-24 px-8" id="projects">
+<section class="max-w-7xl mx-auto pt-60 pb-24 px-8" id="projects">
 <div class="max-w-7xl mx-auto">
 <div class="flex justify-between items-end mb-16">
 <div>
@@ -723,7 +722,7 @@
         const originalBtnHTML = submitBtn.innerHTML;
         
         // 1. Show loading state
-        submitBtn.innerHTML = '<span>Transmitting...</span><span class="material-symbols-outlined animate-spin">sync</span>';
+        submitBtn.innerHTML = '<span>Sending now...</span><span class="material-symbols-outlined animate-spin">sync</span>';
         submitBtn.disabled = true;
 
         // 2. YOUR APPS SCRIPT WEB APP URL HERE
