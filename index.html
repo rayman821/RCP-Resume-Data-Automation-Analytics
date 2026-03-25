@@ -6,6 +6,7 @@
 <title>Raymond Paredes - Home</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/powerbi-client/2.22.3/powerbi.min.js"></script>
 <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -294,17 +295,24 @@
 </div>
 <div class="grid grid-cols-1 md:grid-cols-12 gap-6 h-auto md:h-[600px]">
 <!-- Large Primary Node -->
-<div class="md:col-span-6 bg-surface-container-lowest p-8 rounded-lg border border-outline-variant/20 flex flex-col justify-between group hover:shadow-lg transition-shadow">
-<div class="flex justify-between items-start">
-<iframe title="Procurement Project Dashboard v2" width="600" height="373.5" src="https://app.powerbi.com/view?r=eyJrIjoiZTQ0OWU2ODktZDVlNy00NTlhLWJmYjItYTJlMGVmZDAwZWM5IiwidCI6ImJkMmIyOGI4LTc2OWMtNGFjZC04YzdlLTE1MDc1ZmE2NWVmOCIsImMiOjEwfQ%3D%3D" frameborder="0" allowFullScreen="true"></iframe>
-</div>
-<div>
-<h3 class="text-3xl font-bold mb-2 uppercase tracking-tighter">Power BI &amp; Data Strategy</h3>
-<p class="text-on-surface-variant text-sm mb-6">Expertise in complex data modeling, DAX, and PowerQuery for enterprise-scale business intelligence.</p>
-<div class="flex flex-wrap gap-2"><span class="px-4 py-1.5 bg-primary/10 border border-primary/20 rounded-full text-xs font-bold uppercase tracking-wider text-primary">Power BI</span>
-<span class="px-4 py-1.5 bg-surface-container rounded-full text-xs font-bold uppercase tracking-wider">SQL / PowerQuery</span>
-<span class="px-4 py-1.5 bg-surface-container rounded-full text-xs font-bold uppercase tracking-wider">DAX</span></div>
-</div>
+<div class="md:col-span-6 bg-surface-container-lowest p-8 rounded-lg border border-outline-variant/20 flex flex-col justify-between group hover:shadow-lg transition-shadow" id="dashboard-container">
+    <div class="flex justify-between items-center mb-4">
+        <h3 class="text-3xl font-bold uppercase tracking-tighter">Power BI & Data Strategy</h3>
+        <button onclick="handleFullScreen()" class="p-2 hover:bg-primary/10 rounded-full transition-colors" title="Toggle Fullscreen">
+            <span class="material-symbols-outlined text-primary">fullscreen</span>
+        </button>
+    </div>
+
+    <div id="embedContainer" class="w-full rounded-lg bg-slate-100 overflow-hidden" style="height: 400px;"></div>
+
+    <div class="mt-6">
+        <p class="text-on-surface-variant text-sm mb-6">Expertise in complex data modeling and DAX using the Power BI JavaScript SDK for enhanced interactivity.</p>
+        <div class="flex flex-wrap gap-2">
+            <span class="px-4 py-1.5 bg-primary/10 border border-primary/20 rounded-full text-xs font-bold uppercase tracking-wider text-primary">JS API</span>
+            <span class="px-4 py-1.5 bg-surface-container rounded-full text-xs font-bold uppercase tracking-wider">SQL / PowerQuery</span>
+            <span class="px-4 py-1.5 bg-surface-container rounded-full text-xs font-bold uppercase tracking-wider">DAX</span>
+        </div>
+    </div>
 </div>
 <!-- Medium Secondary Node -->
 <div class="md:col-span-3 bg-secondary-container p-8 rounded-lg flex flex-col justify-between group cursor-pointer hover:scale-[1.02] transition-transform"><div class="flex justify-between items-start"><div class="w-16 h-16 bg-white/20 rounded-lg flex items-center justify-center"><img alt="n8n Logo" class="w-12 h-12 object-contain filter brightness-0 invert" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA26jprYDmn6j3KO8hnrChFW_Gq9whpEFiI_cOlNN9XLCug0nyXY3fFbS7_YDxpoeWQJ-lrEFBf7GvCqgSSEozY2o-G9EE2QhnJDllPsZmMaXDRDGNsmz7g3IwDrYffKjTMUny_Ur-zIYH7aL9gHDvwLdFwaOTiVpQdc2bAF5gujtBSB_CEuz4Tj3VVxpEXYvBNspRT8WS0s8ECAY9YwjLXfne29nV1-lx43Y9GQ5D9n5ak01SnbtWnMmsSF8zF4A14OSgMB4SjhzZ5"/></div></div>
@@ -781,5 +789,32 @@
             submitBtn.disabled = false;
         }
     });
+</script>
+<script>// Power BI JS API Initialization
+const embedContainer = document.getElementById('embedContainer');
+
+// Configuration for 'Publish to Web' via JS API
+const config = {
+    type: 'report',
+    id: 'e449e689-d5e7-459a-bfb2-a2e0efd00ec9', 
+    embedUrl: 'https://app.powerbi.com/view?r=eyJrIjoiZTQ0OWU2ODktZDVlNy00NTlhLWJmYjItYTJlMGVmZDAwZWM5IiwidCI6ImJkMmIyOGI4LTc2OWMtNGFjZC04YzdlLTE1MDc1ZmE2NWVmOCIsImMiOjEwfQ%3D%3D',
+    settings: {
+        filterPaneEnabled: false,
+        navContentPaneEnabled: false,
+        layoutType: 0 // models.LayoutType.Master
+    }
+};
+
+// Initialize the report
+let report = powerbi.embed(embedContainer, config);
+
+// Full Screen Handler
+function handleFullScreen() {
+    const reportInstance = powerbi.get(embedContainer);
+    reportInstance.fullscreen();
+}
+
+// Ensure the Skills and Projects sections have breathing room
+document.getElementById('projects').classList.add('mt-40');
 </script>
 </body></html>
