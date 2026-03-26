@@ -6,7 +6,6 @@
 <title>Raymond Paredes - Home</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/powerbi-client/2.22.3/powerbi.min.js"></script>
 <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -303,7 +302,9 @@
         </button>
     </div>
 
-    <div id="embedContainer" class="w-full rounded-lg bg-slate-100 overflow-hidden" style="height: 400px;"></div>
+<div id="embedContainer" class="w-full rounded-lg bg-slate-100 overflow-hidden" style="height: 400px;">
+    <iframe title="Procurement Dashboard" width="100%" height="100%" src="https://app.powerbi.com/view?r=eyJrIjoiZTQ0OWU2ODktZDVlNy00NTlhLWJmYjItYTJlMGVmZDAwZWM5IiwidCI6ImJkMmIyOGI4LTc2OWMtNGFjZC04YzdlLTE1MDc1ZmE2NWVmOCIsImMiOjEwfQ%3D%3D" frameborder="0" allowFullScreen="true"></iframe>
+</div>
 
     <div class="mt-6">
         <p class="text-on-surface-variant text-sm mb-6">Expertise in complex data modeling and DAX using the Power BI JavaScript SDK for enhanced interactivity.</p>
@@ -315,12 +316,22 @@
     </div>
 </div>
 <!-- Medium Secondary Node -->
-<div class="md:col-span-3 bg-secondary-container p-8 rounded-lg flex flex-col justify-between group cursor-pointer hover:scale-[1.02] transition-transform"><div class="flex justify-between items-start"><div class="w-16 h-16 bg-white/20 rounded-lg flex items-center justify-center"><img alt="n8n Logo" class="w-12 h-12 object-contain filter brightness-0 invert" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA26jprYDmn6j3KO8hnrChFW_Gq9whpEFiI_cOlNN9XLCug0nyXY3fFbS7_YDxpoeWQJ-lrEFBf7GvCqgSSEozY2o-G9EE2QhnJDllPsZmMaXDRDGNsmz7g3IwDrYffKjTMUny_Ur-zIYH7aL9gHDvwLdFwaOTiVpQdc2bAF5gujtBSB_CEuz4Tj3VVxpEXYvBNspRT8WS0s8ECAY9YwjLXfne29nV1-lx43Y9GQ5D9n5ak01SnbtWnMmsSF8zF4A14OSgMB4SjhzZ5"/></div></div>
-<div class="text-on-secondary-container">
-<n8n-demo clicktointeract="true" workflow='{"nodes":[{"name":"Workflow-Created","type":"n8n-nodes-base.webhook","position":[512,369],"parameters":{"path":"webhook","httpMethod":"POST"},"typeVersion":1}],"connections":{}}'></n8n-demo>
-<h3 class="text-2xl font-black mb-1 uppercase tracking-tight">Automation Workflows</h3>
-<p class="text-sm font-medium opacity-90">Advanced workflow automation &amp; backend logic orchestration.</p>
-</div></div>
+<div class="md:col-span-3 bg-secondary-container p-8 rounded-lg flex flex-col justify-between group cursor-pointer hover:scale-[1.02] transition-transform" id="n8n-node">
+    <div class="flex justify-between items-start">
+        <div class="w-16 h-16 bg-white/20 rounded-lg flex items-center justify-center">
+            <span class="material-symbols-outlined text-white text-3xl">hub</span>
+        </div>
+    </div>
+    
+    <div class="text-on-secondary-container mt-4">
+        <div id="n8n-container" class="rounded-lg overflow-hidden border border-white/10 bg-black/20 mb-4 h-48">
+            <n8n-demo id="n8n-canvas" clicktointeract="true"></n8n-demo>
+        </div>
+        
+        <h3 class="text-2xl font-black mb-1 uppercase tracking-tight">Automation</h3>
+        <p class="text-sm font-medium opacity-90">Orchestrating logic layers via n8n JS API.</p>
+    </div>
+</div>
 <!-- Medium Secondary Node -->
 <div class="md:col-span-3 bg-secondary-container p-8 rounded-lg flex flex-col justify-between group cursor-pointer hover:scale-[1.02] transition-transform"><div class="flex justify-between items-start"><div class="w-16 h-16 bg-white/20 rounded-lg flex items-center justify-center"><img alt="n8n Logo" class="w-12 h-12 object-contain filter brightness-0 invert" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA26jprYDmn6j3KO8hnrChFW_Gq9whpEFiI_cOlNN9XLCug0nyXY3fFbS7_YDxpoeWQJ-lrEFBf7GvCqgSSEozY2o-G9EE2QhnJDllPsZmMaXDRDGNsmz7g3IwDrYffKjTMUny_Ur-zIYH7aL9gHDvwLdFwaOTiVpQdc2bAF5gujtBSB_CEuz4Tj3VVxpEXYvBNspRT8WS0s8ECAY9YwjLXfne29nV1-lx43Y9GQ5D9n5ak01SnbtWnMmsSF8zF4A14OSgMB4SjhzZ5"/></div></div>
 <div class="text-on-secondary-container">
@@ -790,31 +801,61 @@
         }
     });
 </script>
-<script>// Power BI JS API Initialization
-const embedContainer = document.getElementById('embedContainer');
-
-// Configuration for 'Publish to Web' via JS API
-const config = {
-    type: 'report',
-    id: 'e449e689-d5e7-459a-bfb2-a2e0efd00ec9', 
-    embedUrl: 'https://app.powerbi.com/view?r=eyJrIjoiZTQ0OWU2ODktZDVlNy00NTlhLWJmYjItYTJlMGVmZDAwZWM5IiwidCI6ImJkMmIyOGI4LTc2OWMtNGFjZC04YzdlLTE1MDc1ZmE2NWVmOCIsImMiOjEwfQ%3D%3D',
-    settings: {
-        filterPaneEnabled: false,
-        navContentPaneEnabled: false,
-        layoutType: 0 // models.LayoutType.Master
-    }
-};
-
-// Initialize the report
-let report = powerbi.embed(embedContainer, config);
-
-// Full Screen Handler
+<script>
+// Native HTML5 Full Screen Handler for the iframe container
 function handleFullScreen() {
-    const reportInstance = powerbi.get(embedContainer);
-    reportInstance.fullscreen();
+    const embedContainer = document.getElementById('embedContainer');
+    if (embedContainer.requestFullscreen) {
+        embedContainer.requestFullscreen();
+    } else if (embedContainer.webkitRequestFullscreen) { /* Safari */
+        embedContainer.webkitRequestFullscreen();
+    } else if (embedContainer.msRequestFullscreen) { /* IE11 */
+        embedContainer.msRequestFullscreen();
+    }
 }
 
 // Ensure the Skills and Projects sections have breathing room
 document.getElementById('projects').classList.add('mt-40');
+</script>
+<script>
+// n8n JS API Initialization - Fixed Target ID
+const n8nCanvas = document.getElementById('n8n-canvas'); // Changed from 'n8n-node'
+
+// Example Workflow Data (JSON format)
+const workflowData = {
+    nodes: [
+        {
+            parameters: { path: "webhook", httpMethod: "POST" },
+            name: "Webhook",
+            type: "n8n-nodes-base.webhook",
+            typeVersion: 1,
+            position: [100, 200]
+        },
+        {
+            parameters: { content: "Data Received" },
+            name: "AI Agent",
+            type: "n8n-nodes-base.set",
+            typeVersion: 1,
+            position: [350, 200]
+        }
+    ],
+    connections: {
+        "Webhook": {
+            main: [
+                [{ node: "AI Agent", type: "main", index: 0 }]
+            ]
+        }
+    }
+};
+
+// Wait for the Web Component to be defined before loading workflow
+customElements.whenDefined('n8n-demo').then(() => {
+    n8nCanvas.workflow = workflowData;
+});
+
+// Optional: Function to switch workflows on click
+function updateWorkflow(newWorkflow) {
+    n8nCanvas.workflow = newWorkflow;
+}
 </script>
 </body></html>
