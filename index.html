@@ -1,861 +1,899 @@
 <!DOCTYPE html>
-
-<html class="scroll-smooth" lang="en"><head>
+<html lang="en" class="scroll-smooth">
+<head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Raymond Paredes - Home</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Raymond Paredes — The Data in Narratives</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Outfit:wght@200;300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "on-tertiary-fixed": "#00201b",
-                        "on-background": "#191c1d",
-                        "secondary": "#005fae",
-                        "inverse-surface": "#2e3132",
-                        "inverse-primary": "#ffb783",
-                        "inverse-on-surface": "#eff1f2",
-                        "secondary-fixed-dim": "#a5c8ff",
-                        "surface-tint": "#944b00",
-                        "on-tertiary-container": "#00473e",
-                        "primary-fixed": "#ffdcc5",
-                        "tertiary": "#006b5d",
-                        "secondary-fixed": "#d4e3ff",
-                        "outline": "#897362",
-                        "error-container": "#ffdad6",
-                        "error": "#ba1a1a",
-                        "surface-container-highest": "#e1e3e4",
-                        "background": "#f8fafb",
-                        "primary": "var(--primary-color, #944b00)",
-                        "on-secondary": "#ffffff",
-                        "tertiary-container": "#00bfa8",
-                        "primary-fixed-dim": "#ffb783",
-                        "primary-container": "var(--primary-container-color, #ff8c23)",
-                        "on-secondary-container": "#002f5b",
-                        "on-primary": "#ffffff",
-                        "on-secondary-fixed-variant": "#004785",
-                        "tertiary-fixed": "#60fae0",
-                        "secondary-container": "#3e97fd",
-                        "on-primary-container": "#643000",
-                        "on-surface": "#191c1d",
-                        "on-secondary-fixed": "#001c3a",
-                        "on-surface-variant": "#564334",
-                        "surface-variant": "#e1e3e4",
-                        "on-error": "#ffffff",
-                        "surface-container-lowest": "#ffffff",
-                        "on-primary-fixed-variant": "#703700",
-                        "surface-container": "#eceeef",
-                        "surface-container-low": "#f2f4f5",
-                        "on-error-container": "#93000a",
-                        "on-tertiary-fixed-variant": "#005046",
-                        "on-primary-fixed": "#301400",
-                        "surface-dim": "#d8dadb",
-                        "surface": "#f8fafb",
-                        "outline-variant": "#ddc1ae",
-                        "on-tertiary": "#ffffff",
-                        "surface-container-high": "#e6e8e9",
-                        "surface-bright": "#f8fafb",
-                        "tertiary-fixed-dim": "#39ddc4"
-                    },
-                    fontFamily: {
-                        "headline": ["Inter"],
-                        "body": ["Inter"],
-                        "label": ["Inter"]
-                    },
-                    borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
-                },
-            },
-        }
-    </script>
+<script>
+tailwind.config={theme:{extend:{colors:{
+bg:'#f8f7f4',surface:'#f0eee9',card:'#ffffff',border:'#e2ddd5',
+muted:'#999590',subtle:'#6b6660',cream:'#1a1816',warm:'#3d3530',
+accent:'#c47a1e',glow:'#e8973e',dark:'#1a1816',darkcard:'#242120',
+},fontFamily:{
+display:['Syne','sans-serif'],body:['Outfit','sans-serif'],mono:['"JetBrains Mono"','monospace'],
+}}}}
+</script>
 <style>
-        :root {
-            --primary-color: #944b00;
-            --primary-container-color: #ff8c23;
-            --dynamic-bg-mix: #f8fafb;
-        }
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-        .grid-pattern {
-            background-image: radial-gradient(circle, #897362 1px, transparent 1px);
-            background-size: 32px 32px;
-            background-color: var(--dynamic-bg-mix);
-            transition: background-color 0.3s ease-out;
-        }
-        .circuit-line {
-            background: linear-gradient(90deg, transparent, var(--primary-container-color), transparent);
-            height: 1px;
-            width: 100%;
-        }
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(148, 75, 0, 0.1);
-        }
-        .glass-panel-light {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.4);
-        }
-        #hero-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-        }
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        .animate-fade-in-up {
-            animation: fadeInUp 0.8s ease-out forwards;
-        }
-        .metric-row:hover .metric-bar {
-            filter: brightness(1.2);
-            box-shadow: 0 0 15px var(--primary-container-color);
-        }
-    </style>
+*,*::before,*::after{box-sizing:border-box}
+::selection{background:#c47a1e;color:#fff}
+html{background:#f8f7f4}
+body{background:#f8f7f4;color:#1a1816;font-family:'Outfit',sans-serif;overflow-x:hidden;
+background-image:radial-gradient(circle,#c4b8a8 .8px,transparent .8px);background-size:28px 28px}
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9998;opacity:.02;
+background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+.sr{opacity:0;transform:translateY(36px);transition:opacity .85s cubic-bezier(.16,1,.3,1),transform .85s cubic-bezier(.16,1,.3,1)}
+.sr.v{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+
+@keyframes mql{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.mq{animation:mql 60s linear infinite;display:flex;width:max-content}
+.mq:hover{animation-play-state:paused}
+
+.nl{position:relative}
+.nl::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1.5px;background:#c47a1e;transition:width .35s ease}
+.nl:hover::after{width:100%}
+
+/* Clay-style feature card with stat callout */
+.stat-pill{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid #e2ddd5;border-radius:16px;padding:12px 20px;transition:all .3s}
+.stat-pill:hover{border-color:#c47a1e;box-shadow:0 8px 30px -8px rgba(196,122,30,.12)}
+.stat-pill .stat-val{font-family:'Syne',sans-serif;font-weight:800;font-size:1.5rem;color:#c47a1e;line-height:1}
+
+/* Icon feature card (Clay grid pattern) */
+.feat-card{background:#fff;border:1px solid #e2ddd5;border-radius:20px;padding:32px;transition:all .4s cubic-bezier(.16,1,.3,1)}
+.feat-card:hover{border-color:#c47a1e;transform:translateY(-3px);box-shadow:0 16px 50px -10px rgba(196,122,30,.08)}
+
+/* Project card */
+.proj-card{background:#fff;border:1px solid #e2ddd5;border-radius:24px;overflow:hidden;transition:all .5s cubic-bezier(.16,1,.3,1)}
+.proj-card:hover{border-color:#c47a1e;transform:translateY(-5px);box-shadow:0 24px 70px -12px rgba(196,122,30,.1)}
+.proj-card .pi{transition:transform .7s ease,filter .7s ease;filter:grayscale(.3)}
+.proj-card:hover .pi{transform:scale(1.04);filter:grayscale(0)}
+
+.mt{display:inline-flex;padding:4px 12px;border:1px solid #d5cfc5;border-radius:999px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:#6b6660;transition:all .3s;white-space:nowrap}
+.mt:hover{border-color:#c47a1e;color:#c47a1e}
+
+.ff{width:100%;background:transparent;border:none;border-bottom:1px solid #d5cfc5;padding:16px 0;font-family:'Outfit',sans-serif;font-size:16px;color:#1a1816;outline:none;transition:border-color .3s}
+.ff:focus{border-bottom-color:#c47a1e}.ff::placeholder{color:#999590}
+
+#n8n-container n8n-demo{display:block;width:100%;height:100%}
+#scroll-bar{position:fixed;top:0;left:0;height:2px;z-index:9999;background:linear-gradient(90deg,#c47a1e,#e8973e)}
+</style>
 </head>
-<body class="font-body text-on-background grid-pattern min-h-screen transition-colors duration-500 overflow-x-hidden">
-<!-- Background Animation Layer (Fixed across entire page) -->
-<canvas id="hero-canvas"></canvas>
-<!-- TopAppBar -->
-<nav class="fixed top-0 w-full z-50 bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur-md">
-<div class="flex justify-between items-center px-8 h-16 max-w-7xl mx-auto">
-<div class="text-lg font-black tracking-tighter text-primary uppercase">RCP</div>
-<div class="hidden md:flex items-center gap-8">
-<a class="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors duration-300" href="resume.html">RESUME</a>
-<a class="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors duration-300" href="#skills">SKILLS</a>
-<a class="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors duration-300" href="#projects">PROJECTS</a>
+<body>
+<div id="scroll-bar" style="width:0%"></div>
+
+<!-- ═══ NAV ═══ -->
+<nav class="fixed top-0 w-full z-50 backdrop-blur-2xl bg-bg/80 border-b border-border/40">
+<div class="max-w-7xl mx-auto flex justify-between items-center px-8 h-[68px]">
+<a href="#" class="font-display text-xl font-800 tracking-tight text-cream">RCP<span class="text-accent">.</span></a>
+<div class="hidden md:flex items-center gap-9">
+<a href="#about" class="nl text-[13px] font-medium text-subtle hover:text-cream transition-colors">About</a>
+<a href="#services" class="nl text-[13px] font-medium text-subtle hover:text-cream transition-colors">Services</a>
+<a href="#projects" class="nl text-[13px] font-medium text-subtle hover:text-cream transition-colors">Projects</a>
+<a href="resume.html" class="nl text-[13px] font-medium text-subtle hover:text-cream transition-colors">Resume</a>
 </div>
-<button class="bg-primary text-on-primary px-6 py-2 rounded-full font-bold scale-95 active:opacity-80 transition-all" href="#contact">
-            Message Now</button>
+<div class="flex items-center gap-3">
+<a href="#contact" class="bg-accent text-white px-5 py-2 rounded-xl text-[13px] font-semibold hover:bg-glow transition-all">Get in Touch</a>
+</div>
 </div>
 </nav>
-<main class="relative z-10 pt-16">
-<!-- Hero Section -->
-<section class="relative min-h-[90vh] flex flex-col items-center justify-center overflow-hidden px-6" id="hero-container">
-<div class="absolute inset-0 z-0 opacity-20">
-<div class="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-primary-container rounded-full blur-[150px]"></div>
-<div class="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-secondary-container rounded-full blur-[150px]"></div>
-</div>
-<div class="z-10 w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative px-8">
-<!-- Left Column: Header and Subtext -->
-<div class="space-y-8 text-left">
-<div class="flex flex-col items-start space-y-4">
-</br>
-<h1 class="text-6xl md:text-8xl font-black tracking-tighter text-on-background drop-shadow-sm leading-none">
-                        DATA IN<br/>
-<span class="text-primary-container">NARRATIVES</span>
-</h1>
-</div>
-<p class="text-on-surface-variant max-w-2xl leading-relaxed text-lg">
-                    Engineering high-fidelity digital experiences through precise technical architecture and fluid data storytelling.
-                </p>
-<div class="flex flex-wrap gap-4 pt-6">
-<button class="bg-primary hover:bg-primary-container text-on-primary px-8 py-4 rounded-full font-bold transition-all flex items-center gap-2 shadow-lg">
-                        View Projects <span class="material-symbols-outlined">arrow_downward</span>
-</button>
-<button class="bg-surface-container-high/80 backdrop-blur-md text-on-surface px-8 py-4 rounded-full font-bold transition-all border border-outline-variant shadow-sm" href="resume.html">
-                        View Resume
-                    </button>
-</div>
-</div>
-<!-- Right Column: Metrics Dashboard -->
-<div class="flex justify-center lg:justify-end">
-<div class="w-full max-w-sm glass-panel-light border-white/40 p-8 rounded-2xl shadow-xl animate-fade-in-up group/dashboard">
-<div class="flex items-center gap-2 mb-8">
-<span class="material-symbols-outlined text-primary text-sm animate-pulse">analytics</span>
-<h4 class="text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface/80">Real-Time Metrics</h4>
-</div>
-<div class="space-y-6">
-<!-- Metric 1 -->
-<div class="space-y-2 metric-row cursor-default group/row">
-<div class="flex justify-between items-center">
-<span class="text-[10px] text-on-surface/60 uppercase font-mono tracking-wider group-hover/row:text-primary transition-colors">System Efficiency</span>
-<span class="text-xs font-bold text-primary font-mono">94.2%</span>
-</div>
-<div class="h-1 bg-on-surface/5 rounded-full overflow-hidden">
-<div class="h-full bg-primary w-[94%] relative transition-all duration-500 metric-bar">
-<div class="absolute inset-0 bg-white/20 animate-pulse"></div>
-</div>
-</div>
-</div>
-<!-- Metric 2 -->
-<div class="space-y-2 metric-row cursor-default group/row">
-<div class="flex justify-between items-center">
-<span class="text-[10px] text-on-surface/60 uppercase font-mono tracking-wider group-hover/row:text-primary transition-colors">Node Connectivity</span>
-<span class="text-xs font-bold text-primary font-mono">Active</span>
-</div>
-<div class="h-1 bg-on-surface/5 rounded-full overflow-hidden">
-<div class="h-full bg-primary w-[100%] relative transition-all duration-500 metric-bar">
-<div class="absolute inset-0 bg-white/20 animate-pulse"></div>
-</div>
-</div>
-</div>
-<!-- Metric 3 -->
-<div class="space-y-2 metric-row cursor-default group/row">
-<div class="flex justify-between items-center">
-<span class="text-[10px] text-on-surface/60 uppercase font-mono tracking-wider group-hover/row:text-primary transition-colors">Data Throughput</span>
-<span class="text-xs font-bold text-primary font-mono">1.2 GB/s</span>
-</div>
-<div class="h-1 bg-on-surface/5 rounded-full overflow-hidden">
-<div class="h-full bg-primary w-[78%] relative transition-all duration-500 metric-bar">
-<div class="absolute inset-0 bg-white/20 animate-pulse"></div>
-</div>
-</div>
-</div>
-</div>
-<div class="mt-8 pt-4 border-t border-on-surface/5">
-<div class="flex justify-between items-center">
-<span class="text-[9px] text-on-surface/40 font-mono uppercase">Encryption_Layer: Secured</span>
-<div class="flex gap-1">
-<div class="w-1 h-1 rounded-full bg-primary animate-ping"></div>
-<div class="w-1 h-1 rounded-full bg-primary"></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</br>
-</br>
-</br>
-<!-- Terminal Decals -->
-<div class="absolute bottom-10 left-10 hidden lg:block font-mono text-[10px] text-outline space-y-1 z-10">
-<p>CORE_ENGINE_V4.2</p>
-<p>LATENCY: 14MS</p>
-<p>UI_DENSITY: HIGH_OPTIMIZED</p>
-</div>
-<div class="absolute bottom-10 right-10 hidden lg:block font-mono text-[10px] text-outline text-right space-y-1 z-10">
-<p>LAT: 40.7128° N</p>
-<p>LONG: 74.0060° W</p>
-<p>STATUS: OPTIMIZED</p>
-</div>
-</section>
-<!-- About Me Section -->
-<section class="max-w-7xl mx-auto px-8 py-24" id="about">
-<div class="flex flex-col gap-12"><!-- Side-by-Side Identity Layout -->
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-<!-- Image Column -->
-<div class="lg:col-span-4">
-<div class="relative group">
-<div class="absolute -inset-1 bg-gradient-to-r from-primary to-primary-container rounded-lg blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
-<div class="relative bg-white dark:bg-slate-900 rounded-lg overflow-hidden border border-outline/10 shadow-2xl">
-<img alt="Professional portrait of Raymond, a male data analyst wearing glasses and a focused expression in a high-tech office environment" class="w-full aspect-square object-cover grayscale hover:grayscale-0 transition-all duration-700 scale-105 hover:scale-100" src="https://drive.google.com/thumbnail?id=1KujG5uES7CLkgMCdTFFRYwdwxamXIp6w&view?sz=1000"/>
-</div>
-</div>
-</div>
-<!-- Content Column -->
-<div class="lg:col-span-8 space-y-8">
-<div class="space-y-2">
-<span class="text-primary font-bold label-md uppercase tracking-widest block">ABOUT HIM</span>
-<h2 class="text-5xl md:text-6xl font-black tracking-tighter">WHO IS RAYMOND PAREDES?</h2>
-<p class="text-xs font-mono text-outline uppercase"></p>
-</div>
-<div class="space-y-6">
-<p class="text-2xl md:text-3xl font-medium text-on-surface leading-tight">
-                Senior Systems Architect with a focus on translating complex data structures into high-performance user interfaces.
-            </p>
-<div class="h-px w-24 bg-primary"></div>
-<p class="text-on-surface-variant max-w-2xl leading-relaxed text-lg">
-                Over the last decade, I have specialized in building scalable technical frameworks for Fortune 500 analytics platforms and agile startups. My methodology prioritizes precision, minimal latency, and accessible data visualization. 
-            </p>
-<p class="text-on-surface-variant max-w-2xl leading-relaxed">
-                When I'm not optimizing render cycles, I'm contributing to open-source infrastructure tools that bridge the gap between raw backend efficiency and fluid frontend interaction.
-            </p>
-</div>
-</div>
-</div></div>
-</section>
-<!-- Skills Matrix Section -->
-<section class="max-w-7xl mx-auto px-8 py-24" id="skills">
-<div class="max-w-7xl mx-auto px-8">
-<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
-<div>
-<span class="text-xs font-bold text-secondary tracking-widest uppercase">Technicals</span>
-<h2 class="text-5xl font-black tracking-tighter mt-2"><span class="text-primary"></span> THE SKILLS</h2>
-</div>
-<p class="text-on-surface-variant max-w-sm font-mono text-xs uppercase">
-                    Hover over a node to reveal technical depth and interconnected application layers.
-                </p>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-12 gap-6 h-auto md:h-[600px]">
-<!-- Large Primary Node -->
-<div class="md:col-span-6 bg-surface-container-lowest p-8 rounded-lg border border-outline-variant/20 flex flex-col justify-between group hover:shadow-lg transition-shadow" id="dashboard-container">
-    <div class="flex justify-between items-center mb-4">
-        <h3 class="text-3xl font-bold uppercase tracking-tighter">Power BI & Data Strategy</h3>
-        <button onclick="handleFullScreen()" class="p-2 hover:bg-primary/10 rounded-full transition-colors" title="Toggle Fullscreen">
-            <span class="material-symbols-outlined text-primary">fullscreen</span>
-        </button>
-    </div>
 
-<div id="embedContainer" class="w-full rounded-lg bg-slate-100 overflow-hidden" style="height: 400px;">
-    <iframe title="Procurement Dashboard" width="100%" height="100%" src="https://app.powerbi.com/view?r=eyJrIjoiZTQ0OWU2ODktZDVlNy00NTlhLWJmYjItYTJlMGVmZDAwZWM5IiwidCI6ImJkMmIyOGI4LTc2OWMtNGFjZC04YzdlLTE1MDc1ZmE2NWVmOCIsImMiOjEwfQ%3D%3D" frameborder="0" allowFullScreen="true"></iframe>
+<!-- ═══ HERO (Kontenta-style: centered brand word + subtitle + animated dashboard) ═══ -->
+<section class="relative z-10 pt-28 pb-8 px-8 overflow-hidden">
+<!-- BG glow -->
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-accent/6 rounded-full blur-[180px] pointer-events-none"></div>
+
+<div class="max-w-5xl mx-auto text-center relative z-10">
+    <!-- Brand word (kontenta: oversized single word) -->
+    <h1 class="sr font-display font-800 text-[clamp(3.5rem,10vw,8rem)] leading-[.9] tracking-tighter text-cream">
+        DATA in NARRATIVES<span class="text-accent">.</span>
+    </h1>
+    <p class="sr d1 text-subtle text-lg md:text-xl max-w-2xl mx-auto mt-6 leading-relaxed font-light">
+        I turn operational data into dashboards your team actually uses — and automate the workflows you shouldn't be doing manually.
+    </p>
+    <div class="sr d2 flex flex-wrap justify-center gap-4 mt-8">
+        <a href="#projects" class="bg-accent text-white px-7 py-3.5 rounded-xl font-semibold text-[15px] hover:bg-glow transition-all">View Projects</a>
+        <a href="#contact" class="border border-border text-warm px-7 py-3.5 rounded-xl font-semibold text-[15px] hover:border-accent hover:text-accent transition-all">Get in Touch</a>
+    </div>
+    <p class="sr d3 font-mono text-[11px] text-muted tracking-wider uppercase mt-6">The data analytics & automation portfolio</p>
 </div>
 
-    <div class="mt-6">
-        <p class="text-on-surface-variant text-sm mb-6">Expertise in complex data modeling and DAX using the Power BI JavaScript SDK for enhanced interactivity.</p>
-        <div class="flex flex-wrap gap-2">
-            <span class="px-4 py-1.5 bg-primary/10 border border-primary/20 rounded-full text-xs font-bold uppercase tracking-wider text-primary">JS API</span>
-            <span class="px-4 py-1.5 bg-surface-container rounded-full text-xs font-bold uppercase tracking-wider">SQL / PowerQuery</span>
-            <span class="px-4 py-1.5 bg-surface-container rounded-full text-xs font-bold uppercase tracking-wider">DAX</span>
+<!-- ═══ ANIMATED DASHBOARD VISUAL ═══ -->
+<div class="sr d2 relative mx-auto mt-16 mb-4" style="max-width:900px;height:480px;perspective:1200px">
+
+    <!-- Central dashboard panel -->
+    <div class="absolute inset-x-8 top-8 bottom-8 bg-white/90 backdrop-blur-xl border border-border rounded-3xl shadow-2xl shadow-cream/8 overflow-hidden" style="transform:rotateX(8deg) rotateY(-2deg);transform-style:preserve-3d">
+        <!-- Dashboard header bar -->
+        <div class="flex items-center justify-between px-6 py-3 border-b border-border/60 bg-surface/50">
+            <div class="flex items-center gap-2">
+                <div class="w-3 h-3 rounded-full bg-red-400/60"></div>
+                <div class="w-3 h-3 rounded-full bg-yellow-400/60"></div>
+                <div class="w-3 h-3 rounded-full bg-green-400/60"></div>
+            </div>
+            <span class="font-mono text-[10px] text-muted tracking-wider">RCP_ANALYTICS_DASHBOARD</span>
+            <div class="flex items-center gap-1"><div class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></div><span class="font-mono text-[9px] text-accent">LIVE</span></div>
         </div>
-    </div>
-</div>
-<!-- Medium Secondary Node -->
-<div class="md:col-span-3 bg-secondary-container p-8 rounded-lg flex flex-col justify-between group cursor-pointer hover:scale-[1.02] transition-transform" id="n8n-node">
-    <div class="flex justify-between items-start">
-        <div class="w-16 h-16 bg-white/20 rounded-lg flex items-center justify-center">
-            <span class="material-symbols-outlined text-white text-3xl">hub</span>
-        </div>
-    </div>
-    
-    <div class="text-on-secondary-container mt-4">
-        <div id="n8n-container" class="rounded-lg overflow-hidden border border-white/10 bg-black/20 mb-4 h-48">
-            <n8n-demo id="n8n-canvas" clicktointeract="true"></n8n-demo>
-        </div>
-        
-        <h3 class="text-2xl font-black mb-1 uppercase tracking-tight">Automation</h3>
-        <p class="text-sm font-medium opacity-90">Orchestrating logic layers via n8n JS API.</p>
-    </div>
-</div>
-<!-- Medium Secondary Node -->
-<div class="md:col-span-3 bg-secondary-container p-8 rounded-lg flex flex-col justify-between group cursor-pointer hover:scale-[1.02] transition-transform"><div class="flex justify-between items-start"><div class="w-16 h-16 bg-white/20 rounded-lg flex items-center justify-center"><img alt="n8n Logo" class="w-12 h-12 object-contain filter brightness-0 invert" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA26jprYDmn6j3KO8hnrChFW_Gq9whpEFiI_cOlNN9XLCug0nyXY3fFbS7_YDxpoeWQJ-lrEFBf7GvCqgSSEozY2o-G9EE2QhnJDllPsZmMaXDRDGNsmz7g3IwDrYffKjTMUny_Ur-zIYH7aL9gHDvwLdFwaOTiVpQdc2bAF5gujtBSB_CEuz4Tj3VVxpEXYvBNspRT8WS0s8ECAY9YwjLXfne29nV1-lx43Y9GQ5D9n5ak01SnbtWnMmsSF8zF4A14OSgMB4SjhzZ5"/></div></div>
-<div class="text-on-secondary-container">
-<h3 class="text-2xl font-black mb-1 uppercase tracking-tight">AI Integration</h3>
-<p class="text-sm font-medium opacity-90">Advanced workflow automation &amp; backend logic orchestration.</p>
-</div></div>
-<!-- Vertical Metric Node -->
-<div class="md:col-span-3 bg-on-background p-8 rounded-lg flex flex-col justify-between text-white group hover:bg-primary transition-all duration-500">
-<div class="flex justify-between items-start"><div class="w-16 h-16 bg-white/10 rounded-lg flex items-center justify-center"><img alt="Docker Logo" class="w-12 h-12 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPxQcybpFIfbt3oYqWmEJCJe3Y7D4POwQXr4fOFPgPZ6G6er31lUN4kdl3JqkeTe39LRdyLLO00CKHEzsHs-E0HrUrFRUGg41MkHB3Se_pG7H5IIA6v3Klh4fbPqw_hPifZ4CDNM52WMzuYzrMicE3WpYljosHWtpN03i0MWE3TRq65XyB7vuC5oJaXZil8rIziqbQwN97_k76374yELsJNja5YMTK8c7uLSKV_BQ5B_yj7aESLN0zxvT75qUuHBMAosLWTxQ1XzfE"/></div></div>
-<div>
-<h3 class="text-2xl font-black mb-1 uppercase tracking-tight">Docker</h3>
-<p class="text-xs font-mono uppercase tracking-widest opacity-70">Containerized Architecture</p>
-</div>
-</div>
-<!-- Vertical Metric Node -->
-<div class="md:col-span-3 bg-on-background p-8 rounded-lg flex flex-col justify-between text-white group hover:bg-primary transition-all duration-500">
-<div class="flex justify-between items-start"><div class="w-16 h-16 bg-white/10 rounded-lg flex items-center justify-center"><img alt="Docker Logo" class="w-12 h-12 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPxQcybpFIfbt3oYqWmEJCJe3Y7D4POwQXr4fOFPgPZ6G6er31lUN4kdl3JqkeTe39LRdyLLO00CKHEzsHs-E0HrUrFRUGg41MkHB3Se_pG7H5IIA6v3Klh4fbPqw_hPifZ4CDNM52WMzuYzrMicE3WpYljosHWtpN03i0MWE3TRq65XyB7vuC5oJaXZil8rIziqbQwN97_k76374yELsJNja5YMTK8c7uLSKV_BQ5B_yj7aESLN0zxvT75qUuHBMAosLWTxQ1XzfE"/></div></div>
-<div>
-<h3 class="text-2xl font-black mb-1 uppercase tracking-tight">Docker</h3>
-<p class="text-xs font-mono uppercase tracking-widest opacity-70">Containerized Architecture</p>
-</div>
-</div>
-<!-- Small Cluster -->
-<div class="md:col-span-4 bg-surface-container p-6 rounded-lg border border-outline-variant/10 flex items-center gap-4">
-<div class="w-12 h-12 bg-white rounded-full flex items-center justify-center shrink-0 shadow-sm"><img alt="Obsidian Logo" class="w-8 h-8 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4i4LxfbB5-R9mLT6WaMG9H3fl7cqq6md4pGGfn1GqeZTiVZO9-5y5_9VkG7f3EMcFBoQZgiABXO3lxFex81qWDJ6NSuv_rvxFQf6RFB0Eq8U4vk4U-9VQ7kozqT-NWuwGxGKeBHFBxAtxjFBJL_jicwy0dIib_y4_5Wwne65xUuOfGnMlGLIjuwRjGNBNQK1etdRqTzbfIyiVJuuYJukTBzWj_-7XgGJWZxb2pa_tfMAWFK1uEaxmxOMQHjVibePVxLO0zkeG6QUF"/></div>
-<div>
-<h4 class="font-bold uppercase text-sm tracking-tight">Obsidian Systems</h4>
-<p class="text-xs text-on-surface-variant">Second-brain methodology for technical documentation and knowledge management.</p>
-</div>
-</div>
-</div>
-</section>
-<div class="h-32 md:h-32"></div>
-<!-- Project Dashboard -->
-<section class="max-w-7xl mx-auto pt-60 pb-24 px-8" id="projects">
-<div class="max-w-7xl mx-auto">
-<div class="flex justify-between items-end mb-16">
-<div>
-<span class="text-primary font-bold label-md uppercase tracking-widest block mb-2">Favorite Projects</span>
-<h2 class="text-5xl font-black tracking-tighter">CONTROLLED PRODUCTIVITY</h2>
-</div>
-<div class="hidden md:block font-mono text-xs text-outline-variant border border-outline-variant p-2 rounded">
-                    FILTER_STATUS: ALL_ACTIVE
+        <!-- Dashboard body grid -->
+        <div class="p-5 grid grid-cols-12 gap-3 h-[calc(100%-44px)]">
+            <!-- KPI row -->
+            <div class="col-span-3 bg-surface/60 rounded-xl p-4 border border-border/40 flex flex-col justify-between">
+                <span class="font-mono text-[9px] text-muted uppercase tracking-wider">Revenue</span>
+                <span class="font-display font-800 text-2xl text-cream">₱4.2M</span>
+                <span class="font-mono text-[9px] text-green-600">▲ 12.4%</span>
+            </div>
+            <div class="col-span-3 bg-surface/60 rounded-xl p-4 border border-border/40 flex flex-col justify-between">
+                <span class="font-mono text-[9px] text-muted uppercase tracking-wider">Orders</span>
+                <span class="font-display font-800 text-2xl text-cream">1,847</span>
+                <span class="font-mono text-[9px] text-green-600">▲ 8.1%</span>
+            </div>
+            <div class="col-span-3 bg-surface/60 rounded-xl p-4 border border-border/40 flex flex-col justify-between">
+                <span class="font-mono text-[9px] text-muted uppercase tracking-wider">Vendors</span>
+                <span class="font-display font-800 text-2xl text-cream">142</span>
+                <span class="font-mono text-[9px] text-accent">● Active</span>
+            </div>
+            <div class="col-span-3 bg-accent/10 rounded-xl p-4 border border-accent/20 flex flex-col justify-between">
+                <span class="font-mono text-[9px] text-accent uppercase tracking-wider">Efficiency</span>
+                <span class="font-display font-800 text-2xl text-accent">94.2%</span>
+                <span class="font-mono text-[9px] text-green-600">▲ 3.2%</span>
+            </div>
+            <!-- Chart area -->
+            <div class="col-span-8 bg-surface/40 rounded-xl p-4 border border-border/30 relative overflow-hidden" style="min-height:120px">
+                <span class="font-mono text-[9px] text-muted uppercase tracking-wider block mb-2">Procurement Spend — 12 Months</span>
+                <svg viewBox="0 0 400 100" class="w-full h-[80px]" preserveAspectRatio="none">
+                    <defs><linearGradient id="cg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#c47a1e" stop-opacity=".25"/><stop offset="100%" stop-color="#c47a1e" stop-opacity="0"/></linearGradient></defs>
+                    <path d="M0,80 Q30,75 60,65 T120,50 T180,55 T240,35 T300,40 T360,20 L400,15 L400,100 L0,100Z" fill="url(#cg)"/>
+                    <path d="M0,80 Q30,75 60,65 T120,50 T180,55 T240,35 T300,40 T360,20 L400,15" fill="none" stroke="#c47a1e" stroke-width="2.5" stroke-linecap="round">
+                        <animate attributeName="stroke-dasharray" from="0,1000" to="600,0" dur="2.5s" fill="freeze"/>
+                    </path>
+                    <circle cx="400" cy="15" r="4" fill="#c47a1e"><animate attributeName="opacity" values="0;1" dur="2.5s" fill="freeze"/></circle>
+                </svg>
+            </div>
+            <!-- Side mini widgets -->
+            <div class="col-span-4 space-y-3">
+                <div class="bg-surface/40 rounded-xl p-3 border border-border/30">
+                    <span class="font-mono text-[9px] text-muted uppercase tracking-wider block mb-1">Top Vendor</span>
+                    <span class="text-sm font-semibold text-cream">Manila Concrete Co.</span>
+                    <div class="mt-1 h-1 bg-border/40 rounded-full overflow-hidden"><div class="h-full bg-accent rounded-full" style="width:78%"></div></div>
                 </div>
+                <div class="bg-surface/40 rounded-xl p-3 border border-border/30">
+                    <span class="font-mono text-[9px] text-muted uppercase tracking-wider block mb-1">Pipeline Status</span>
+                    <div class="flex gap-1 mt-1">
+                        <div class="h-2 rounded-full bg-green-500/60 flex-[5]"></div>
+                        <div class="h-2 rounded-full bg-accent/60 flex-[3]"></div>
+                        <div class="h-2 rounded-full bg-border flex-[2]"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- Bottom bar -->
+            <div class="col-span-12 bg-surface/30 rounded-xl p-3 border border-border/20 flex items-center justify-between">
+                <div class="flex items-center gap-4">
+                    <span class="font-mono text-[9px] text-muted">Last sync: 2 min ago</span>
+                    <span class="font-mono text-[9px] text-muted">•</span>
+                    <span class="font-mono text-[9px] text-muted">12 models active</span>
+                </div>
+                <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span><span class="font-mono text-[9px] text-green-600">All systems operational</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══ FLOATING ANALYTICS CARDS (orbiting the dashboard) ═══ -->
+
+    <!-- Float card: DAX -->
+    <div class="absolute top-2 -left-4 md:left-2 bg-white/95 backdrop-blur-lg border border-border rounded-2xl p-3 shadow-xl shadow-cream/8 z-20" style="animation:floatA 6s ease-in-out infinite;width:140px">
+        <div class="flex items-center gap-2 mb-1"><span class="material-symbols-outlined text-accent text-sm">function</span><span class="font-mono text-[9px] text-accent uppercase tracking-wider font-medium">DAX Measure</span></div>
+        <span class="font-mono text-[10px] text-cream leading-tight block">CALCULATE(SUM(Sales[Amount]), FILTER(...))</span>
+    </div>
+
+    <!-- Float card: Workflow -->
+    <div class="absolute top-16 -right-2 md:right-4 bg-white/95 backdrop-blur-lg border border-accent/30 rounded-2xl p-3 shadow-xl shadow-accent/8 z-20" style="animation:floatB 7s ease-in-out infinite;width:155px">
+        <div class="flex items-center gap-2 mb-1"><span class="material-symbols-outlined text-accent text-sm">account_tree</span><span class="font-mono text-[9px] text-accent uppercase tracking-wider font-medium">n8n Pipeline</span></div>
+        <div class="flex items-center gap-1 mt-1">
+            <div class="w-5 h-5 rounded-md bg-accent/15 flex items-center justify-center"><span class="text-[8px] text-accent font-bold">PDF</span></div>
+            <div class="text-muted text-[10px]">→</div>
+            <div class="w-5 h-5 rounded-md bg-accent/15 flex items-center justify-center"><span class="text-[8px] text-accent font-bold">JS</span></div>
+            <div class="text-muted text-[10px]">→</div>
+            <div class="w-5 h-5 rounded-md bg-green-500/15 flex items-center justify-center"><span class="text-[8px] text-green-600 font-bold">✓</span></div>
+        </div>
+    </div>
+
+    <!-- Float card: Metric -->
+    <div class="absolute bottom-4 -left-2 md:left-6 bg-accent text-white rounded-2xl p-3 shadow-xl shadow-accent/20 z-20" style="animation:floatC 5.5s ease-in-out infinite;width:130px">
+        <span class="font-mono text-[9px] uppercase tracking-wider opacity-70">Uptime</span>
+        <span class="font-display font-800 text-xl block">99.8%</span>
+        <span class="font-mono text-[9px] opacity-60">All pipelines</span>
+    </div>
+
+    <!-- Float card: Sheets sync -->
+    <div class="absolute bottom-12 -right-3 md:right-8 bg-white/95 backdrop-blur-lg border border-border rounded-2xl p-3 shadow-xl shadow-cream/8 z-20" style="animation:floatD 6.5s ease-in-out infinite;width:145px">
+        <div class="flex items-center gap-2 mb-1"><span class="material-symbols-outlined text-green-600 text-sm">table_chart</span><span class="font-mono text-[9px] text-green-600 uppercase tracking-wider font-medium">Sheets Sync</span></div>
+        <span class="text-[11px] text-cream font-medium">1,247 rows updated</span>
+        <span class="font-mono text-[9px] text-muted block">BPI · BDO · UnionBank</span>
+    </div>
+
+    <!-- Float card: BPMN mini -->
+    <div class="absolute top-1/2 -translate-y-1/2 -left-6 md:left-0 bg-white/90 backdrop-blur-lg border border-border rounded-xl p-2 shadow-lg z-20 hidden lg:block" style="animation:floatE 8s ease-in-out infinite;width:100px">
+        <span class="font-mono text-[8px] text-muted uppercase tracking-wider block mb-1">BPMN</span>
+        <div class="flex items-center gap-1">
+            <div class="w-3 h-3 rounded-full border-2 border-accent"></div>
+            <div class="w-4 h-px bg-accent"></div>
+            <div class="w-3 h-3 rounded-sm bg-accent/20 border border-accent/40"></div>
+            <div class="w-4 h-px bg-accent"></div>
+            <div class="w-3 h-3 rounded-full border-2 border-accent bg-accent"></div>
+        </div>
+    </div>
 </div>
-<div class="space-y-24">
-<div class="space-y-32 mb-32">
-<!-- Project 01 -->
-<div class="flex flex-col lg:flex-row gap-12 items-center group">
-<div class="lg:w-1/2 relative">
-<div class="rounded-lg overflow-hidden shadow-2xl relative z-10 border border-primary/10">
-<img alt="high-tech computer server room" class="w-full grayscale group-hover:grayscale-0 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBL4E07TjeuYx74uyz7aKn8owtchPJ6Ox94Q0lAskNJGDMAMt2g5Bj_cqozXI_5GyPNnjzfOIv_bH7rZqQNLuL9J2dbqQTyamwJHO8Nv_RI_3-zO3AtRNdPmfxbfCm1mjqRMSVRGETRiQl_glP-PCSUsA1GuIoHnLhBUZlkHxzJa_U09Fl9besO6TyOY5_SP1wrsRuFsIby8EYhvfY1JAStzZkINO9h_eLNH7UUBE3u2eoMj2zVMJ3XdTI4gBYTnT9t8IyitGPwsizl"/>
+</section>
+
+<style>
+@keyframes floatA{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-18px) rotate(1deg)}}
+@keyframes floatB{0%,100%{transform:translateY(0) rotate(1deg)}50%{transform:translateY(-14px) rotate(-1.5deg)}}
+@keyframes floatC{0%,100%{transform:translateY(0) rotate(0.5deg)}50%{transform:translateY(-20px) rotate(-1deg)}}
+@keyframes floatD{0%,100%{transform:translateY(0) rotate(-0.5deg)}50%{transform:translateY(-16px) rotate(1.5deg)}}
+@keyframes floatE{0%,100%{transform:translateY(-50%) translateX(0)}50%{transform:translateY(calc(-50% - 12px)) translateX(6px)}}
+</style>
+
+<!-- ═══ TRUST BAR (Clay: logo marquee) ═══ -->
+<section class="relative z-10 border-y border-border/40 py-6 overflow-hidden">
+<p class="text-center text-muted text-sm mb-5 font-medium">Tools & platforms I work with daily</p>
+<div class="mq">
+<div class="flex items-center gap-14 px-7">
+<span class="font-display font-700 text-base text-cream/15 uppercase tracking-wide whitespace-nowrap">Power BI</span><span class="text-accent/20">·</span>
+<span class="font-display font-700 text-base text-cream/15 uppercase tracking-wide whitespace-nowrap">DAX</span><span class="text-accent/20">·</span>
+<span class="font-display font-700 text-base text-cream/15 uppercase tracking-wide whitespace-nowrap">n8n</span><span class="text-accent/20">·</span>
+<span class="font-display font-700 text-base text-cream/15 uppercase tracking-wide whitespace-nowrap">Google Apps Script</span><span class="text-accent/20">·</span>
+<span class="font-display font-700 text-base text-cream/15 uppercase tracking-wide whitespace-nowrap">Docker</span><span class="text-accent/20">·</span>
+<span class="font-display font-700 text-base text-cream/15 uppercase tracking-wide whitespace-nowrap">Obsidian</span><span class="text-accent/20">·</span>
+<span class="font-display font-700 text-base text-cream/15 uppercase tracking-wide whitespace-nowrap">BPMN 2.0</span><span class="text-accent/20">·</span>
+<span class="font-display font-700 text-base text-cream/15 uppercase tracking-wide whitespace-nowrap">Mermaid</span><span class="text-accent/20">·</span>
+<span class="font-display font-700 text-base text-cream/15 uppercase tracking-wide whitespace-nowrap">Supabase</span><span class="text-accent/20">·</span>
+<span class="font-display font-700 text-base text-cream/15 uppercase tracking-wide whitespace-nowrap">TMDL</span><span class="text-accent/20">·</span>
+<span class="font-display font-700 text-base text-cream/15 uppercase tracking-wide whitespace-nowrap">MongoDB</span><span class="text-accent/20">·</span>
+<span class="font-display font-700 text-base text-cream/15 uppercase tracking-wide whitespace-nowrap">Tailscale</span><span class="text-accent/20">·</span>
+<span class="font-display font-700 text-base text-cream/15 uppercase tracking-wide whitespace-nowrap">Python</span><span class="text-accent/20">·</span>
+<span class="font-display font-700 text-base text-cream/15 uppercase tracking-wide whitespace-nowrap">Regex</span><span class="text-accent/20">·</span>
 </div>
-<div class="absolute -bottom-8 -right-8 w-48 h-48 bg-primary/10 rounded-full blur-2xl z-0"></div>
-</div>
-<div class="lg:w-1/2 space-y-6">
-<span class="text-xs font-black text-secondary uppercase tracking-[0.2em]">ID: PROJECT_01 // OPERATIONS ANALYTICS</span>
-<h3 class="text-4xl font-black leading-tight text-on-background">PROCUREMENT DASHBOARD</h3>
-<p class="text-on-surface-variant leading-relaxed text-lg">
-                                Real-time cloud monitoring analytical dashboard designed for enterprise-scale distributed systems. Synthesizes multi-region latency data into a centralized, actionable visual topography.
-                            </p>
-<ul class="space-y-3">
-<li class="flex items-center gap-3 text-sm font-bold text-on-surface">
-<span class="w-2 h-2 rounded-full bg-primary"></span>
-                                    Node.js / Three.js backend infrastructure
-                                </li>
-<li class="flex items-center gap-3 text-sm font-bold text-on-surface">
-<span class="w-2 h-2 rounded-full bg-secondary"></span>
-                                    Sub-10ms visualization latency target
-                                </li>
-</ul>
-<div class="pt-4">
-<a class="inline-flex items-center gap-2 font-black text-primary hover:gap-4 transition-all" href="#">
-                                    Full Technical Specs <span class="material-symbols-outlined">north_east</span>
-</a>
-</div>
-</div>
-</div>
-<!-- Project 02 -->
-<div class="flex flex-col lg:flex-row-reverse gap-12 items-center group">
-<div class="lg:w-1/2 relative">
-<div class="rounded-lg overflow-hidden shadow-2xl relative z-10 border border-primary/10">
-<img alt="robotic arm assembling circuit board" class="w-full grayscale group-hover:grayscale-0 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAX8mR1bzMO-UZ0PVtjcjy_5vlr2td9tES5dnLnfR40mt2frsKcCKTHfesmHf1AgBm5AE0FwtfVixLOqcij8EOIVkIv7SOI6rz1qp5ZxvsJvaPJeol7VJrE5MCULHKmvQuYFxPxeue4QQFM8XNQaWXWLdqnVBy8m63yB_fSls_wOVgRHn4sUxdBtbPAomIGvtjs3V7ORVV9rG2jzzh9qelGzafv9qF8xwADBe9ktnsp9WCX90gUy5i4hyMQ_U1mk82PodfwzA_ZLGiN"/>
-</div>
-<div class="absolute -top-8 -left-8 w-48 h-48 bg-tertiary/10 rounded-full blur-2xl z-0"></div>
-</div>
-<div class="lg:w-1/2 space-y-6">
-<span class="text-xs font-black text-primary uppercase tracking-[0.2em]">ID: PROJECT_02 // CRM FRAMEWORK</span>
-<h3 class="text-4xl font-black leading-tight text-on-background">CUSTOMIZED CRM SOLUTION</h3>
-<p class="text-on-surface-variant leading-relaxed text-lg">
-                                IoT automation framework optimized for industrial control units. Built to maintain operational stability across legacy hardware and modern sensor arrays.
-                            </p>
-<ul class="space-y-3">
-<li class="flex items-center gap-3 text-sm font-bold text-on-surface">
-<span class="w-2 h-2 rounded-full bg-tertiary"></span>
-                                    Python / MQTT low-level integration
-                                </li>
-<li class="flex items-center gap-3 text-sm font-bold text-on-surface">
-<span class="w-2 h-2 rounded-full bg-secondary"></span>
-                                    Real-time fault detection algorithms
-                                </li>
-</ul>
-<div class="pt-4">
-<a class="inline-flex items-center gap-2 font-black text-primary hover:gap-4 transition-all" href="#">
-                                    Explore Protocol <span class="material-symbols-outlined">settings_input_component</span>
-</a>
-</div>
-</div>
-</div>
-<!-- Project 03 -->
-<div class="flex flex-col lg:flex-row gap-12 items-center group">
-<div class="lg:w-1/2 relative">
-<div class="rounded-lg overflow-hidden shadow-2xl relative z-10 border border-primary/10">
-<img alt="computer processor glowing" class="w-full grayscale group-hover:grayscale-0 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJj7biKMXXhkl2nND-9wYCtpN0szpXWYX4tba6qIcqnkg0Ky3GYfRUDalrg5idLAmXBoPdjv1CsB2o2xjgQe7cSaUXeA49bkr0Hmest_BjUvvwGeevzvQitgojW5bTe-VM2qZ1gsxFZhTMXgex1yVIDy7tMNqtB_zI9Tu1Yh-7H2UK4ZuSi-I_XGmEsYJ7uXswRbS3T8nMls1I1xINSKK2pTCkeN41InjmsQa5EWeqDSlL0Rh0oOBH6ag72NhiMwRgCs4WCxsNXXEV"/>
-</div>
-<div class="absolute -bottom-8 -right-8 w-48 h-48 bg-primary/10 rounded-full blur-2xl z-0"></div>
-</div>
-<div class="lg:w-1/2 space-y-6">
-<span class="text-xs font-black text-secondary uppercase tracking-[0.2em]">ID: PROJECT_03 // DATABASES</span>
-<h3 class="text-4xl font-black leading-tight text-on-background">KNOWLEDGE MANAGEMENT AUTOMATION</h3>
-<p class="text-on-surface-variant leading-relaxed text-lg">
-                                Serverless data processing architecture designed for high-frequency financial modeling. Translates complex market signals into visual decision matrices.
-                            </p>
-<ul class="space-y-3">
-<li class="flex items-center gap-3 text-sm font-bold text-on-surface">
-<span class="w-2 h-2 rounded-full bg-primary"></span>
-                                    Next.js / AWS Lambda orchestration
-                                </li>
-<li class="flex items-center gap-3 text-sm font-bold text-on-surface">
-<span class="w-2 h-2 rounded-full bg-secondary"></span>
-                                    Predictive trend visualization
-                                </li>
-</ul>
-<div class="pt-4">
-<a class="inline-flex items-center gap-2 font-black text-primary hover:gap-4 transition-all" href="#">
-                                    System Architecture <span class="material-symbols-outlined">account_tree</span>
-</a>
-</div>
-</div>
-</div>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-<!-- Project Delta -->
-<div class="group cursor-pointer">
-<div class="relative aspect-[4/3] rounded-lg overflow-hidden bg-on-background mb-4 border border-white/10">
-<img alt="holographic futuristic interface" class="w-full h-full object-cover opacity-60 group-hover:scale-105 group-hover:opacity-80 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdFj4UBe0mQ-_YLIrBsua9SIIaWLkmFR5aUDqGPGlUMBuj7oX3L0rF6ZYL5OeXxRxEtoqS80IRm2X_ilYJlVlUKIbXOy62vE8P0RKfesd9NHnZ-33PEZWtx_sdI19XogJKaU3vlePB14RZ4eWH8xzMnmJR-qYBxhOomoFZ1go_1U-LaklC01F-gHx6F4Riea2KvcbyzvCdbkg0jLBwov7wD9PL56O0vU-eRGvFtTw5JiRhlt-6jh5_RPo-ZdVZ0nHkADN5I-mQWd3_"/>
-<div class="absolute inset-0 p-6 flex flex-col justify-between bg-gradient-to-t from-black/80 to-transparent">
-<div class="flex justify-between items-start">
-<div class="bg-primary/90 text-on-primary px-2 py-0.5 rounded text-[10px] font-mono">ID: PROJECT_04</div>
-<div class="bg-on-background/80 backdrop-blur-sm text-secondary px-2 py-0.5 rounded text-[10px] font-mono border border-secondary">DEPLOYED</div>
-</div>
-<div class="space-y-1">
-<h3 class="text-2xl font-black text-white uppercase">VISTA ANALYTICS</h3>
-<div class="flex gap-3">
-<span class="text-white/60 text-[10px] font-mono uppercase">D3.js</span>
-<span class="text-white/60 text-[10px] font-mono uppercase">Go</span>
-</div>
-</div>
+<div class="flex items-center gap-14 px-7" aria-hidden="true">
+<span class="font-display font-700 text-base text-cream/15 uppercase tracking-wide whitespace-nowrap">Power BI</span><span class="text-accent/20">·</span>
+<span class="font-display font-700 text-base text-cream/15 uppercase tracking-wide whitespace-nowrap">DAX</span><span class="text-accent/20">·</span>
+<span class="font-display font-700 text-base text-cream/15 uppercase tracking-wide whitespace-nowrap">n8n</span><span class="text-accent/20">·</span>
+<span class="font-display font-700 text-base text-cream/15 uppercase tracking-wide whitespace-nowrap">Google Apps Script</span><span class="text-accent/20">·</span>
+<span class="font-display font-700 text-base text-cream/15 uppercase tracking-wide whitespace-nowrap">Docker</span><span class="text-accent/20">·</span>
+<span class="font-display font-700 text-base text-cream/15 uppercase tracking-wide whitespace-nowrap">Obsidian</span><span class="text-accent/20">·</span>
+<span class="font-display font-700 text-base text-cream/15 uppercase tracking-wide whitespace-nowrap">BPMN 2.0</span><span class="text-accent/20">·</span>
+<span class="font-display font-700 text-base text-cream/15 uppercase tracking-wide whitespace-nowrap">Mermaid</span><span class="text-accent/20">·</span>
+<span class="font-display font-700 text-base text-cream/15 uppercase tracking-wide whitespace-nowrap">Supabase</span><span class="text-accent/20">·</span>
+<span class="font-display font-700 text-base text-cream/15 uppercase tracking-wide whitespace-nowrap">TMDL</span><span class="text-accent/20">·</span>
+<span class="font-display font-700 text-base text-cream/15 uppercase tracking-wide whitespace-nowrap">MongoDB</span><span class="text-accent/20">·</span>
+<span class="font-display font-700 text-base text-cream/15 uppercase tracking-wide whitespace-nowrap">Tailscale</span><span class="text-accent/20">·</span>
+<span class="font-display font-700 text-base text-cream/15 uppercase tracking-wide whitespace-nowrap">Python</span><span class="text-accent/20">·</span>
+<span class="font-display font-700 text-base text-cream/15 uppercase tracking-wide whitespace-nowrap">Regex</span><span class="text-accent/20">·</span>
 </div>
 </div>
-<div class="flex justify-between items-center px-1">
-<p class="text-on-surface-variant text-sm font-medium">Large-scale multidimensional data visualization tool.</p>
-<span class="material-symbols-outlined text-primary group-hover:translate-x-2 transition-transform duration-500 text-sm">arrow_forward</span>
+</section>
+
+<!-- ═══ ABOUT (Clay: short, centered, portrait + text) ═══ -->
+<section id="about" class="relative z-10 max-w-6xl mx-auto px-8 py-28">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-14 items-center">
+<div class="lg:col-span-4 sr">
+<div class="rounded-[24px] overflow-hidden border border-border shadow-lg">
+<img alt="Raymond Paredes" class="w-full aspect-[4/5] object-cover grayscale hover:grayscale-0 transition-all duration-700" src="https://drive.google.com/thumbnail?id=1KujG5uES7CLkgMCdTFFRYwdwxamXIp6w&view?sz=1000"/>
 </div>
 </div>
-<!-- Project Epsilon -->
-<div class="group cursor-pointer">
-<div class="relative aspect-[4/3] rounded-lg overflow-hidden bg-on-background mb-4 border border-white/10">
-<img alt="industrial robotic sensors" class="w-full h-full object-cover opacity-60 group-hover:scale-105 group-hover:opacity-80 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOemS_P3kCbf2_G-ruOSQTqtO092vQOp8-7Jb6MCyjIYPVOyhUxK3tHuG04-nP3Fj4WTGAyMue3PZKe2VwHxb1DlUY-yAX-GcB53064TTg8O-x-KBfSRIqqWUWrnXJY5j8es2dgH870XfQ7rvGufgKJEYaGfyUtIsv2mrbEOuV4vOOWVFyhOhGIA1c5zvegW2stvOlsZQ0_KYbqHGmAnbNlAApMYP0oys24V1afj0jGrGOhqsyYnaes_unxxn0SwuUvCTthF9bqGD-"/>
-<div class="absolute inset-0 p-6 flex flex-col justify-between bg-gradient-to-t from-black/80 to-transparent">
-<div class="flex justify-between items-start">
-<div class="bg-primary/90 text-on-primary px-2 py-0.5 rounded text-[10px] font-mono">ID: PROJECT_05</div>
-<div class="bg-on-background/80 backdrop-blur-sm text-secondary px-2 py-0.5 rounded text-[10px] font-mono border border-secondary">STABLE</div>
-</div>
-<div class="space-y-1">
-<h3 class="text-2xl font-black text-white uppercase">Automated File Management</h3>
-<div class="flex gap-3">
-<span class="text-white/60 text-[10px] font-mono uppercase">C++</span>
-<span class="text-white/60 text-[10px] font-mono uppercase">Rust</span>
-</div>
-</div>
-</div>
-</div>
-<div class="flex justify-between items-center px-1">
-<p class="text-on-surface-variant text-sm font-medium">Hardware-level sensor fusion for autonomous nav.</p>
-<span class="material-symbols-outlined text-primary group-hover:translate-x-2 transition-transform duration-500 text-sm">arrow_forward</span>
-</div>
-</div>
-<!-- Project Zeta -->
-<div class="group cursor-pointer">
-<div class="relative aspect-[4/3] rounded-lg overflow-hidden bg-on-background mb-4 border border-white/10">
-<img alt="cyber security digital padlock" class="w-full h-full object-cover opacity-60 group-hover:scale-105 group-hover:opacity-80 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAICVGsXJ68OmDZqKUtZpU0BnmTYGVntALI7m_QIVQX-SrbCSxSf2RMxffF4T1Ev7q-MQtfbubVC4MRtQRPtrYwZQLjbK-D6pG40IPhlchOzrtWxUZQQsc_eONk7vtzbN71uBzlxFeFOl3pfVYN4LK_RGamf7K3PbN4SSF9qmLvk56l77oUNTadnXtT2Rc0aHdyuu4FmRJVLaTC250ScLNqe1-8x6l_ORtjdR94N0e2EsNv_ItGeHYxqFi0TS0NgLFHGSb74L2m3S50"/>
-<div class="absolute inset-0 p-6 flex flex-col justify-between bg-gradient-to-t from-black/80 to-transparent">
-<div class="flex justify-between items-start">
-<div class="bg-primary/90 text-on-primary px-2 py-0.5 rounded text-[10px] font-mono">ID: PROJECT_06</div>
-<div class="bg-on-background/80 backdrop-blur-sm text-secondary px-2 py-0.5 rounded text-[10px] font-mono border border-secondary">SECURE</div>
-</div>
-<div class="space-y-1">
-<h3 class="text-2xl font-black text-white uppercase">CRYPT GUARD</h3>
-<div class="flex gap-3">
-<span class="text-white/60 text-[10px] font-mono uppercase">Solidity</span>
-<span class="text-white/60 text-[10px] font-mono uppercase">React</span>
-</div>
-</div>
-</div>
-</div>
-<div class="flex justify-between items-center px-1">
-<p class="text-on-surface-variant text-sm font-medium">Decentralized asset protection and monitoring.</p>
-<span class="material-symbols-outlined text-primary group-hover:translate-x-2 transition-transform duration-500 text-sm">arrow_forward</span>
-</div>
-</div>
+<div class="lg:col-span-8 space-y-5 sr d1">
+<span class="font-mono text-[11px] tracking-[.2em] uppercase text-accent">About</span>
+<h2 class="font-display font-800 text-4xl md:text-5xl tracking-tight text-cream leading-[1.1]">Raymond Paredes</h2>
+<p class="text-subtle text-lg leading-relaxed max-w-xl">Based in Metro Manila, I build Power BI dashboards with optimized DAX, automate financial data pipelines with n8n, and create Google Apps Script integrations that eliminate the repetitive tasks teams shouldn't be doing manually.</p>
+<div class="flex flex-wrap gap-2 pt-2">
+<span class="mt">Power BI</span><span class="mt">n8n</span><span class="mt">Google Apps Script</span><span class="mt">Python</span><span class="mt">Docker</span><span class="mt">Excel</span>
 </div>
 </div>
 </div>
 </section>
-<!-- Contact Section -->
-<section class="max-w-7xl mx-auto px-8 py-24" id="contact">
-<div class="flex flex-col items-center mb-16 text-center">
-<span class="material-symbols-outlined text-5xl text-primary mb-6 animate-pulse">sensors</span>
-<span class="text-primary font-bold label-md uppercase tracking-[0.3em] block mb-2">Signaling Requests</span>
-<h2 class="text-6xl font-black tracking-tighter uppercase">Let's Collab</h2>
+
+<!-- ═══ SERVICE 1 (Clay: left text + right embed, with stat callout) ═══ -->
+<section id="services" class="relative z-10 max-w-6xl mx-auto px-8 py-20">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center sr">
+<div class="space-y-6">
+<h2 class="font-display font-800 text-3xl md:text-4xl tracking-tight text-cream leading-[1.1]">Every operational metric your team needs, in one dashboard</h2>
+<p class="text-subtle leading-relaxed">I build interactive Power BI reports that transform procurement data, vendor performance, and budget variance into real-time visuals your team can actually use.</p>
+<ul class="space-y-3">
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-accent text-lg mt-0.5">check_circle</span><span class="text-warm text-[15px]"><b>DAX optimization:</b> Sub-second loading on 100K+ row datasets with custom measures</span></li>
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-accent text-lg mt-0.5">check_circle</span><span class="text-warm text-[15px]"><b>TMDL exports:</b> Version-controlled data models for structured deployment</span></li>
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-accent text-lg mt-0.5">check_circle</span><span class="text-warm text-[15px]"><b>Drill-through pages:</b> Bookmark navigation with dynamic cross-filtering</span></li>
+</ul>
+<div class="stat-pill"><div class="stat-val">20+</div><span class="text-sm text-subtle">Dashboards built for procurement & operations teams</span></div>
 </div>
-<div class="max-w-3xl mx-auto">
-<div class="glass-panel-light border-white/20 rounded-2xl overflow-hidden relative shadow-lg">
-<div class="absolute inset-0 opacity-[0.03] pointer-events-none grid-pattern"></div>
-<form id="contact-form" class="p-8 md:p-12 space-y-8 relative z-10">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div class="space-y-2">
-            <label class="font-mono text-[10px] uppercase tracking-widest text-on-surface/60 block" for="name">Name</label>
-            <input id="name" class="w-full bg-white/50 border border-on-surface/10 focus:border-primary/50 focus:ring-1 focus:ring-primary/20 rounded-lg px-4 py-3 font-mono text-sm uppercase tracking-wider transition-all duration-300" placeholder="ENTER NAME" type="text" required/>
+<div class="rounded-2xl overflow-hidden border border-border shadow-lg relative" style="height:500px" id="embedContainer">
+<iframe title="Procurement Dashboard" width="100%" height="100%" src="https://app.powerbi.com/view?r=eyJrIjoiZTQ0OWU2ODktZDVlNy00NTlhLWJmYjItYTJlMGVmZDAwZWM5IiwidCI6ImJkMmIyOGI4LTc2OWMtNGFjZC04YzdlLTE1MDc1ZmE2NWVmOCIsImMiOjEwfQ%3D%3D" frameborder="0" allowFullScreen="true" class="absolute inset-0"></iframe>
+</div>
+</div>
+</section>
+
+<!-- ═══ SERVICE 2 (Clay: right text + left embed, reversed) ═══ -->
+<section class="relative z-10 max-w-6xl mx-auto px-8 py-20">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center sr">
+<div class="order-2 lg:order-1 rounded-2xl overflow-hidden border border-border shadow-lg relative" style="height:500px" id="n8n-container">
+  <!-- n8n workflow iframe — replace YOUR_N8N_URL with your self-hosted instance -->
+  <iframe
+    id="n8n-workflow-iframe"
+    src="https://n8n-rcp.taild30d6e.ts.net/workflow/E5yYGjJaJ0bkCWa5"
+    width="100%"
+    height="100%"
+    frameborder="0"
+    allow="fullscreen"
+    style="display:block;width:100%;height:100%;border:none;background:#1a1816;"
+    title="n8n Workflow — Bank Statement Extraction Pipeline"
+    onerror="this.style.display='none';document.getElementById('n8n-fallback').style.display='flex';"
+  ></iframe>
+  <!-- Fallback shown if iframe fails to load (e.g. n8n not reachable) -->
+  <div id="n8n-fallback" style="display:none;position:absolute;inset:0;background:#1a1816;flex-direction:column;align-items:center;justify-content:center;gap:12px;">
+    <span class="material-symbols-outlined" style="font-size:40px;color:#c47a1e;">sync_alt</span>
+    <p style="color:#6b6660;font-family:'JetBrains Mono',monospace;font-size:12px;text-align:center;max-width:260px;">n8n workflow not reachable.<br>Update <code style="color:#e8973e">https://n8n-rcp.taild30d6e.ts.net/workflow/E5yYGjJaJ0bkCWa5</code> in the source.</p>
+  </div>
+</div>
+<div class="order-1 lg:order-2 space-y-6">
+<h2 class="font-display font-800 text-3xl md:text-4xl tracking-tight text-cream leading-[1.1]">Automation that replaces hours of copy-paste with one-click pipelines</h2>
+<p class="text-subtle leading-relaxed">I design n8n workflows that extract bank statements, trigger Gmail actions, and sync spreadsheets — all containerized with Docker and secured via Tailscale.</p>
+<ul class="space-y-3">
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-accent text-lg mt-0.5">check_circle</span><span class="text-warm text-[15px]"><b>Bank statement parsing:</b> PDF/OCR extraction for BPI, BDO, UnionBank, Robinsons Bank</span></li>
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-accent text-lg mt-0.5">check_circle</span><span class="text-warm text-[15px]"><b>Apps Script integrations:</b> Gmail analysis, Calendar export, Tasks auto-sync to Sheets</span></li>
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-accent text-lg mt-0.5">check_circle</span><span class="text-warm text-[15px]"><b>Self-hosted infra:</b> Docker + Tailscale mesh for secure remote pipeline access</span></li>
+</ul>
+<div class="stat-pill"><div class="stat-val">50+</div><span class="text-sm text-subtle">Workflows automated across financial & operational data</span></div>
+</div>
+</div>
+</section>
+
+<!-- ═══ SERVICE 3 (Clay: left text + right visual) ═══ -->
+<section class="relative z-10 max-w-6xl mx-auto px-8 py-20">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center sr">
+<div class="space-y-6">
+<h2 class="font-display font-800 text-3xl md:text-4xl tracking-tight text-cream leading-[1.1]">Knowledge systems that make institutional know-how searchable and actionable</h2>
+<p class="text-subtle leading-relaxed">I structure organizational knowledge into Obsidian vaults with BPMN process maps, Mermaid diagrams, and AI-powered retrieval layers — so your team finds answers, not documents.</p>
+<ul class="space-y-3">
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-accent text-lg mt-0.5">check_circle</span><span class="text-warm text-[15px]"><b>Obsidian vault architecture:</b> Maps of Content with cross-referenced accounting notes</span></li>
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-accent text-lg mt-0.5">check_circle</span><span class="text-warm text-[15px]"><b>Process documentation:</b> BPMN 2.0 procurement workflow diagrams</span></li>
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-accent text-lg mt-0.5">check_circle</span><span class="text-warm text-[15px]"><b>RAG prototyping:</b> LLM-powered retrieval with vector search over documentation</span></li>
+</ul>
+<div class="stat-pill"><div class="stat-val">12</div><span class="text-sm text-subtle">Active interconnected data models across operations</span></div>
+</div>
+<div class="bg-dark rounded-2xl p-8 space-y-4 border border-dark" style="min-height:420px;display:flex;flex-direction:column;justify-content:space-between">
+<div class="space-y-4">
+<div class="flex items-center gap-3 p-5 rounded-xl border border-white/8 bg-white/3"><img alt="Obsidian" class="w-10 h-10 rounded-lg object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4i4LxfbB5-R9mLT6WaMG9H3fl7cqq6md4pGGfn1GqeZTiVZO9-5y5_9VkG7f3EMcFBoQZgiABXO3lxFex81qWDJ6NSuv_rvxFQf6RFB0Eq8U4vk4U-9VQ7kozqT-NWuwGxGKeBHFBxAtxjFBJL_jicwy0dIib_y4_5Wwne65xUuOfGnMlGLIjuwRjGNBNQK1etdRqTzbfIyiVJuuYJukTBzWj_-7XgGJWZxb2pa_tfMAWFK1uEaxmxOMQHjVibePVxLO0zkeG6QUF"/><div><h4 class="font-semibold text-white text-base">Obsidian Vault</h4><p class="text-xs text-white/40 mt-0.5">MOC structure · 200+ cross-referenced notes</p></div></div>
+<div class="flex items-center gap-3 p-5 rounded-xl border border-white/8 bg-white/3"><span class="material-symbols-outlined text-accent text-2xl ml-0.5">auto_awesome</span><div><h4 class="font-semibold text-white text-base">LLM & RAG</h4><p class="text-xs text-white/40 mt-0.5">AI-powered contextual retrieval over docs</p></div></div>
+<div class="flex items-center gap-3 p-5 rounded-xl border border-white/8 bg-white/3"><span class="material-symbols-outlined text-accent text-2xl ml-0.5">schema</span><div><h4 class="font-semibold text-white text-base">BPMN & Mermaid</h4><p class="text-xs text-white/40 mt-0.5">Formal process diagrams & procurement flows</p></div></div>
+<div class="flex items-center gap-3 p-5 rounded-xl border border-white/8 bg-white/3"><span class="material-symbols-outlined text-accent text-2xl ml-0.5">hub</span><div><h4 class="font-semibold text-white text-base">Graph View</h4><p class="text-xs text-white/40 mt-0.5">12 active data models, fully interconnected</p></div></div>
+</div>
+<div class="pt-2 flex flex-wrap gap-2">
+<span class="mt" style="color:#7ecf8e;border-color:#7ecf8e33">Obsidian</span>
+<span class="mt" style="color:#b48eff;border-color:#b48eff33">BPMN 2.0</span>
+<span class="mt" style="color:#4a9eff;border-color:#4a9eff33">Mermaid</span>
+<span class="mt" style="color:#c47a1e;border-color:#c47a1e33">RAG / LLM</span>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ═══ FEATURE GRID (Clay: icon + title + description) ═══ -->
+<section class="relative z-10 max-w-6xl mx-auto px-8 py-20">
+<div class="text-center mb-14 sr">
+<h2 class="font-display font-800 text-3xl md:text-4xl tracking-tight text-cream">Turn data into action with flexible, iterable systems</h2>
+<p class="text-subtle text-lg mt-4 max-w-2xl mx-auto font-light">Getting the right data is only half the battle — the real value comes from putting it into action across every workflow.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-5 sr">
+<div class="feat-card"><span class="material-symbols-outlined text-accent text-2xl mb-4">tune</span><h3 class="font-display font-700 text-lg text-cream mb-2">DAX Optimization</h3><p class="text-muted text-sm leading-relaxed">Clean, performant measures that load sub-second on enterprise-scale datasets. No bloated models.</p></div>
+<div class="feat-card"><span class="material-symbols-outlined text-accent text-2xl mb-4">sync_alt</span><h3 class="font-display font-700 text-lg text-cream mb-2">Regex-Based Parsing</h3><p class="text-muted text-sm leading-relaxed">Robust pattern matching that handles OCR artifacts, messy bank formats, and edge cases gracefully.</p></div>
+<div class="feat-card"><span class="material-symbols-outlined text-accent text-2xl mb-4">cloud_sync</span><h3 class="font-display font-700 text-lg text-cream mb-2">Google Sheets API</h3><p class="text-muted text-sm leading-relaxed">Structured insertion and time-based triggers that keep spreadsheets in sync without manual intervention.</p></div>
+<div class="feat-card"><span class="material-symbols-outlined text-accent text-2xl mb-4">deployed_code</span><h3 class="font-display font-700 text-lg text-cream mb-2">Docker Containers</h3><p class="text-muted text-sm leading-relaxed">Self-hosted n8n, MongoDB, Supabase, Nginx — reproducible environments secured with Tailscale.</p></div>
+<div class="feat-card"><span class="material-symbols-outlined text-accent text-2xl mb-4">schema</span><h3 class="font-display font-700 text-lg text-cream mb-2">BPMN 2.0 Process Maps</h3><p class="text-muted text-sm leading-relaxed">Formal procurement workflow documentation that makes handoffs clear and auditable.</p></div>
+<div class="feat-card"><span class="material-symbols-outlined text-accent text-2xl mb-4">psychology</span><h3 class="font-display font-700 text-lg text-cream mb-2">LLM / RAG Retrieval</h3><p class="text-muted text-sm leading-relaxed">AI-powered search over structured documentation — ask questions, get answers with source context.</p></div>
+</div>
+</section>
+
+<!-- ═══ SKILLS & TECH DEMO (Clay: split — left bullet features, right interactive panel) ═══ -->
+<section id="skills" class="relative z-10 max-w-7xl mx-auto px-8 py-28">
+  <!-- Section label -->
+  <div class="text-center mb-16 sr">
+    <span class="font-mono text-[11px] tracking-[.15em] uppercase text-accent border border-accent/30 rounded-full px-4 py-1.5">Skills & Tech Stack</span>
+    <h2 class="font-display font-800 text-3xl md:text-[2.6rem] tracking-tight text-cream mt-5 leading-[1.1]">Every data point, workflow, and knowledge node — in one stack</h2>
+    <p class="text-subtle text-lg mt-4 max-w-2xl mx-auto font-light">Understand your operations, your pipelines, and the gaps between them. Then automate.</p>
+  </div>
+
+  <!-- Clay split: text left + demo right -->
+  <div class="grid grid-cols-1 lg:grid-cols-[1fr_1.15fr] gap-10 items-start sr">
+
+    <!-- LEFT: Feature bullets (Clay-style) -->
+    <div class="space-y-5">
+      <div class="clay-feat group">
+        <div class="clay-feat-icon"><span class="material-symbols-outlined">bar_chart</span></div>
+        <div>
+          <h3 class="font-display font-700 text-[17px] text-cream mb-1">Analytics Dashboards:</h3>
+          <p class="text-subtle text-[14px] leading-relaxed">Build enterprise Power BI reports with DAX optimization, TMDL modeling, and drill-through KPIs — sub-second on large datasets.</p>
         </div>
-        <div class="space-y-2">
-            <label class="font-mono text-[10px] uppercase tracking-widest text-on-surface/60 block" for="email">Email</label>
-            <input id="email" class="w-full bg-white/50 border border-on-surface/10 focus:border-primary/50 focus:ring-1 focus:ring-primary/20 rounded-lg px-4 py-3 font-mono text-sm uppercase tracking-wider transition-all duration-300" placeholder="EMAIL@HOST.COM" type="email" required/>
+      </div>
+      <div class="clay-feat group">
+        <div class="clay-feat-icon"><span class="material-symbols-outlined">sync_alt</span></div>
+        <div>
+          <h3 class="font-display font-700 text-[17px] text-cream mb-1">Workflow Automation:</h3>
+          <p class="text-subtle text-[14px] leading-relaxed">Design n8n pipelines that extract PH bank PDFs, trigger Gmail actions, and sync spreadsheets — all containerized with Docker + Tailscale.</p>
         </div>
-    </div>
-    <div class="space-y-2">
-        <label class="font-mono text-[10px] uppercase tracking-widest text-on-surface/60 block" for="message">Message</label>
-        <textarea id="message" class="w-full bg-white/50 border border-on-surface/10 focus:border-primary/50 focus:ring-1 focus:ring-primary/20 rounded-lg px-4 py-3 font-mono text-sm uppercase tracking-wider transition-all duration-300 resize-none" placeholder="INPUT MESSAGE SEQUENCE..." rows="4" required></textarea>
-    </div>
-    <div class="flex flex-col items-center pt-4">
-        <button id="submit-btn" type="submit" class="bg-primary hover:bg-primary-container text-on-primary px-12 py-4 rounded-full font-black tracking-[0.2em] transition-all flex items-center gap-3 shadow-lg group uppercase">
-            <span>Send</span>
-            <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">send</span>
-        </button>
-        
-        <div class="mt-8 flex gap-8 items-center justify-center grayscale opacity-50">
-            <div class="flex flex-col items-center">
-                <span class="font-mono text-[9px] text-on-surface/40 uppercase tracking-tighter">LATENCY</span>
-                <span class="font-mono text-[11px] font-bold">14MS</span>
-            </div>
-            <div class="w-px h-6 bg-on-surface/10"></div>
-            <div class="flex flex-col items-center">
-                <span class="font-mono text-[9px] text-on-surface/40 uppercase tracking-tighter">ENCRYPTION</span>
-                <span class="font-mono text-[11px] font-bold">AES-256</span>
-            </div>
-            <div class="w-px h-6 bg-on-surface/10"></div>
-            <div class="flex flex-col items-center">
-                <span class="font-mono text-[9px] text-on-surface/40 uppercase tracking-tighter">STATUS</span>
-                <span class="font-mono text-[11px] font-bold text-primary">SECURE</span>
-            </div>
+      </div>
+      <div class="clay-feat group">
+        <div class="clay-feat-icon"><span class="material-symbols-outlined">hub</span></div>
+        <div>
+          <h3 class="font-display font-700 text-[17px] text-cream mb-1">Knowledge Systems:</h3>
+          <p class="text-subtle text-[14px] leading-relaxed">Structure Obsidian vaults with BPMN process maps, Mermaid diagrams, and AI-powered retrieval — so your team finds answers, not documents.</p>
         </div>
+      </div>
+
+      <!-- Stat pills -->
+      <div class="flex flex-wrap gap-3 pt-4">
+        <div class="stat-pill"><div class="stat-val">150+</div><span class="text-sm text-subtle">DAX measures authored across projects</span></div>
+        <div class="stat-pill"><div class="stat-val">50+</div><span class="text-sm text-subtle">n8n workflows automated</span></div>
+        <div class="stat-pill"><div class="stat-val">12</div><span class="text-sm text-subtle">Active Obsidian data models</span></div>
+      </div>
+
+      <!-- Tool tag cloud -->
+      <div class="pt-2 flex flex-wrap gap-2">
+        <span class="mt">Power BI</span><span class="mt">DAX</span><span class="mt">TMDL</span><span class="mt">n8n</span><span class="mt">Docker</span><span class="mt">Tailscale</span><span class="mt">Google Apps Script</span><span class="mt">Obsidian</span><span class="mt">BPMN 2.0</span><span class="mt">Mermaid</span><span class="mt">Supabase</span><span class="mt">MongoDB</span><span class="mt">Python</span><span class="mt">Regex</span>
+      </div>
     </div>
+
+    <!-- RIGHT: Interactive demo panel -->
+    <div class="demo-shell sr d1">
+      <!-- Panel chrome bar -->
+      <div class="demo-chrome">
+        <div class="flex items-center gap-1.5">
+          <span class="demo-dot" style="background:#ff5f57"></span>
+          <span class="demo-dot" style="background:#febc2e"></span>
+          <span class="demo-dot" style="background:#28c840"></span>
+        </div>
+        <!-- Tabs -->
+        <div class="flex items-center gap-1 mx-auto">
+          <button class="demo-tab active" data-tab="powerbi" onclick="switchTab('powerbi',this)">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><rect x="2" y="12" width="5" height="10" rx="1" fill="currentColor" opacity=".5"/><rect x="9.5" y="7" width="5" height="15" rx="1" fill="currentColor" opacity=".75"/><rect x="17" y="2" width="5" height="20" rx="1" fill="currentColor"/></svg>
+            Power BI
+          </button>
+          <button class="demo-tab" data-tab="n8n" onclick="switchTab('n8n',this)">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><circle cx="5" cy="12" r="3" stroke="currentColor" stroke-width="2"/><circle cx="19" cy="5" r="3" stroke="currentColor" stroke-width="2"/><circle cx="19" cy="19" r="3" stroke="currentColor" stroke-width="2"/><path d="M8 12h4m3-5l-3 4m3 3l-3-2" stroke="currentColor" stroke-width="1.5"/></svg>
+            n8n
+          </button>
+          <button class="demo-tab" data-tab="obsidian" onclick="switchTab('obsidian',this)">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><polygon points="12,2 20,8 17,20 7,20 4,8" stroke="currentColor" stroke-width="2" fill="none"/><circle cx="12" cy="12" r="2.5" fill="currentColor"/></svg>
+            Obsidian
+          </button>
+        </div>
+        <div class="w-20"></div>
+      </div>
+
+      <!-- Power BI panel -->
+      <div id="tab-powerbi" class="demo-panel active">
+        <!-- Mini KPI row -->
+        <div class="grid grid-cols-3 gap-2 mb-4">
+          <div class="pbi-kpi"><div class="pbi-kpi-val">₱4.2M</div><div class="pbi-kpi-label">Total PO Value</div><div class="pbi-kpi-change up">+12.4%</div></div>
+          <div class="pbi-kpi"><div class="pbi-kpi-val">93%</div><div class="pbi-kpi-label">On-Time Delivery</div><div class="pbi-kpi-change up">+3.1%</div></div>
+          <div class="pbi-kpi"><div class="pbi-kpi-val">18d</div><div class="pbi-kpi-label">Avg Lead Time</div><div class="pbi-kpi-change down">-2.3d</div></div>
+        </div>
+        <!-- Mini bar chart -->
+        <div class="pbi-chart-wrap">
+          <div class="pbi-chart-title"><span class="material-symbols-outlined" style="font-size:13px">bar_chart</span> PO Value by Supplier — Q1 2026</div>
+          <div class="pbi-bars">
+            <div class="pbi-bar-row"><span class="pbi-bar-label">Jollibee Supplies</span><div class="pbi-bar-track"><div class="pbi-bar-fill" style="width:85%">₱1.2M</div></div></div>
+            <div class="pbi-bar-row"><span class="pbi-bar-label">SM Trading</span><div class="pbi-bar-track"><div class="pbi-bar-fill" style="width:68%">₱960K</div></div></div>
+            <div class="pbi-bar-row"><span class="pbi-bar-label">Meralco Parts</span><div class="pbi-bar-track"><div class="pbi-bar-fill" style="width:54%">₱760K</div></div></div>
+            <div class="pbi-bar-row"><span class="pbi-bar-label">PLDT Corp</span><div class="pbi-bar-track"><div class="pbi-bar-fill" style="width:42%">₱590K</div></div></div>
+            <div class="pbi-bar-row"><span class="pbi-bar-label">Others</span><div class="pbi-bar-track"><div class="pbi-bar-fill" style="width:30%">₱420K</div></div></div>
+          </div>
+        </div>
+        <!-- Data table -->
+        <div class="pbi-table-wrap">
+          <div class="pbi-table-header"><span>PO #</span><span>Supplier</span><span>Status</span><span class="text-right">Amount</span></div>
+          <div class="pbi-table-row"><span class="pbi-mono">PO-2026-0041</span><span>Jollibee Supplies</span><span><span class="badge green">Delivered</span></span><span class="text-right pbi-mono">₱248,000</span></div>
+          <div class="pbi-table-row"><span class="pbi-mono">PO-2026-0042</span><span>SM Trading Co.</span><span><span class="badge amber">In Transit</span></span><span class="text-right pbi-mono">₱115,500</span></div>
+          <div class="pbi-table-row"><span class="pbi-mono">PO-2026-0043</span><span>Meralco Parts</span><span><span class="badge blue">Approved</span></span><span class="text-right pbi-mono">₱320,750</span></div>
+          <div class="pbi-table-row"><span class="pbi-mono">PO-2026-0044</span><span>PLDT Corp.</span><span><span class="badge gray">Pending</span></span><span class="text-right pbi-mono">₱89,200</span></div>
+        </div>
+        <div class="demo-dax-badge"><span class="material-symbols-outlined" style="font-size:11px">code</span> DAX · TMDL · Drill-Through</div>
+      </div>
+
+      <!-- n8n panel -->
+      <div id="tab-n8n" class="demo-panel">
+        <div class="n8n-label">Bank Statement Extraction Pipeline</div>
+        <div class="n8n-canvas" id="n8n-interactive">
+          <!-- Nodes rendered by JS -->
+        </div>
+        <div class="n8n-legend">
+          <span class="n8n-leg-item trigger">Trigger</span>
+          <span class="n8n-leg-item process">Process</span>
+          <span class="n8n-leg-item output">Output</span>
+        </div>
+        <div class="demo-dax-badge"><span class="material-symbols-outlined" style="font-size:11px">play_arrow</span> Click a node to inspect</div>
+      </div>
+
+      <!-- Obsidian graph panel -->
+      <div id="tab-obsidian" class="demo-panel">
+        <div class="obs-label">Knowledge Vault — Graph View</div>
+        <canvas id="obs-graph" style="width:100%;height:380px;display:block;cursor:grab"></canvas>
+        <div class="obs-legend">
+          <span class="obs-leg" style="--c:#c47a1e">● MOC</span>
+          <span class="obs-leg" style="--c:#4a9eff">● Workflow</span>
+          <span class="obs-leg" style="--c:#7ecf8e">● Finance</span>
+          <span class="obs-leg" style="--c:#b48eff">● Process</span>
+        </div>
+        <div class="demo-dax-badge"><span class="material-symbols-outlined" style="font-size:11px">drag_pan</span> Drag to explore · Hover nodes</div>
+      </div>
+    </div><!-- /demo-shell -->
+  </div>
+</section>
+
+<style>
+/* Clay feat rows */
+.clay-feat{display:flex;gap:16px;align-items:flex-start;background:#fff;border:1px solid #e2ddd5;border-radius:18px;padding:20px 22px;transition:all .35s cubic-bezier(.16,1,.3,1)}
+.clay-feat:hover{border-color:#c47a1e;box-shadow:0 12px 40px -8px rgba(196,122,30,.09);transform:translateX(4px)}
+.clay-feat-icon{flex-shrink:0;width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,#fdf6ec,#fce8c8);display:flex;align-items:center;justify-content:center;color:#c47a1e;transition:background .35s}
+.clay-feat:hover .clay-feat-icon{background:linear-gradient(135deg,#c47a1e,#e8973e);color:#fff}
+.clay-feat-icon .material-symbols-outlined{font-size:20px}
+
+/* Demo shell */
+.demo-shell{background:#fff;border:1px solid #e2ddd5;border-radius:24px;overflow:hidden;box-shadow:0 8px 48px -8px rgba(26,24,22,.06)}
+.demo-chrome{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:#f5f3ef;border-bottom:1px solid #e2ddd5;gap:8px}
+.demo-dot{display:inline-block;width:11px;height:11px;border-radius:50%}
+.demo-tab{display:flex;align-items:center;gap:5px;padding:5px 11px;border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;color:#6b6660;background:transparent;border:none;cursor:pointer;transition:all .22s;white-space:nowrap}
+.demo-tab:hover{background:#ece9e3;color:#1a1816}
+.demo-tab.active{background:#fff;color:#c47a1e;box-shadow:0 1px 6px rgba(0,0,0,.07);border:1px solid #e2ddd5}
+.demo-tab svg{opacity:.7}
+.demo-tab.active svg{opacity:1}
+
+/* Panels */
+.demo-panel{display:none;padding:24px;animation:fadeSlideIn .3s ease}
+.demo-panel.active{display:block}
+@keyframes fadeSlideIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+
+/* Power BI styles */
+.pbi-kpi{background:#f8f7f4;border:1px solid #e8e4de;border-radius:14px;padding:16px 18px;text-align:center}
+.pbi-kpi-val{font-family:'Syne',sans-serif;font-weight:800;font-size:1.7rem;color:#1a1816;line-height:1.1}
+.pbi-kpi-label{font-size:10px;color:#999590;margin:3px 0 5px;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.05em}
+.pbi-kpi-change{font-size:10px;font-weight:600;font-family:'JetBrains Mono',monospace;padding:2px 7px;border-radius:999px;display:inline-block}
+.pbi-kpi-change.up{background:#d1fae5;color:#047857}
+.pbi-kpi-change.down{background:#fce7f3;color:#be185d}
+.pbi-chart-wrap{background:#f8f7f4;border:1px solid #e8e4de;border-radius:14px;padding:16px 18px;margin-bottom:12px}
+.pbi-chart-title{font-size:10px;color:#999590;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.05em;display:flex;align-items:center;gap:4px;margin-bottom:12px}
+.pbi-bars{space-y:5px;display:flex;flex-direction:column;gap:8px}
+.pbi-bar-row{display:flex;align-items:center;gap:8px}
+.pbi-bar-label{font-size:11px;color:#6b6660;width:110px;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pbi-bar-track{flex:1;background:#e8e4de;border-radius:6px;height:22px;overflow:hidden}
+.pbi-bar-fill{height:100%;background:linear-gradient(90deg,#c47a1e,#e8973e);border-radius:6px;display:flex;align-items:center;justify-content:flex-end;padding-right:8px;font-size:10px;color:#fff;font-weight:700;font-family:'JetBrains Mono',monospace;transition:width 1.2s cubic-bezier(.16,1,.3,1)}
+.pbi-table-wrap{border:1px solid #e8e4de;border-radius:12px;overflow:hidden;font-size:11px;margin-top:10px}
+.pbi-table-header{display:grid;grid-template-columns:1fr 1.2fr .8fr .9fr;padding:8px 12px;background:#f5f3ef;color:#999590;font-family:'JetBrains Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.06em;gap:8px}
+.pbi-table-row{display:grid;grid-template-columns:1fr 1.2fr .8fr .9fr;padding:8px 12px;border-top:1px solid #f0ede8;align-items:center;gap:8px;transition:background .15s}
+.pbi-table-row:hover{background:#faf9f7}
+.pbi-mono{font-family:'JetBrains Mono',monospace;font-size:10px;color:#6b6660}
+.badge{padding:2px 8px;border-radius:999px;font-size:9px;font-weight:600;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.04em}
+.badge.green{background:#d1fae5;color:#047857}
+.badge.amber{background:#fef3c7;color:#d97706}
+.badge.blue{background:#dbeafe;color:#1d4ed8}
+.badge.gray{background:#f3f4f6;color:#6b7280}
+.demo-dax-badge{margin-top:12px;display:flex;align-items:center;justify-content:center;gap:5px;font-family:'JetBrains Mono',monospace;font-size:10px;color:#999590;letter-spacing:.05em}
+
+/* n8n canvas styles */
+.n8n-label,.obs-label{font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:#999590;margin-bottom:10px}
+.n8n-canvas{background:#1a1816;border-radius:14px;padding:20px;height:380px;position:relative;overflow:hidden}
+.n8n-node{position:absolute;display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer;transition:transform .25s}
+.n8n-node:hover{transform:scale(1.1)}
+.n8n-box{padding:7px 10px;border-radius:10px;font-size:10px;font-family:'JetBrains Mono',monospace;font-weight:600;text-align:center;border:1.5px solid transparent;min-width:80px;box-shadow:0 4px 16px rgba(0,0,0,.3);transition:all .25s}
+.n8n-box.trigger{background:#2d1f0a;border-color:#c47a1e;color:#e8973e}
+.n8n-box.process{background:#0d1f2d;border-color:#4a9eff;color:#7ec8ff}
+.n8n-box.output{background:#0d2116;border-color:#4ab87e;color:#7ecfa8}
+.n8n-box:hover{box-shadow:0 0 20px rgba(196,122,30,.3)}
+.n8n-label-text{font-size:9px;color:#6b6660;font-family:'JetBrains Mono',monospace;white-space:nowrap}
+.n8n-legend{display:flex;gap:12px;margin-top:10px;justify-content:center}
+.n8n-leg-item{font-size:9px;font-family:'JetBrains Mono',monospace;padding:3px 10px;border-radius:999px;font-weight:600;text-transform:uppercase;letter-spacing:.05em}
+.n8n-leg-item.trigger{background:#2d1f0a;color:#e8973e;border:1px solid #c47a1e}
+.n8n-leg-item.process{background:#0d1f2d;color:#7ec8ff;border:1px solid #4a9eff}
+.n8n-leg-item.output{background:#0d2116;color:#7ecfa8;border:1px solid #4ab87e}
+
+/* Obsidian graph */
+.obs-legend{display:flex;gap:12px;justify-content:center;margin-top:8px;flex-wrap:wrap}
+.obs-leg{font-size:10px;font-family:'JetBrains Mono',monospace;color:var(--c)}
+</style>
+
+<script>
+/* ── Tab switcher ── */
+function switchTab(name,btn){
+  document.querySelectorAll('.demo-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.demo-tab').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+name).classList.add('active');
+  btn.classList.add('active');
+  if(name==='obsidian')setTimeout(initObsGraph,50);
+  if(name==='n8n')renderN8nCanvas();
+  if(name==='powerbi')animateBars();
+}
+
+/* ── Power BI bar animation ── */
+function animateBars(){
+  const fills=document.querySelectorAll('.pbi-bar-fill');
+  fills.forEach(f=>{const w=f.style.width;f.style.width='0';setTimeout(()=>f.style.width=w,80)});
+}
+setTimeout(animateBars,400);
+
+/* ── n8n workflow canvas ── */
+const wfNodes=[
+  {id:'webhook',label:'PDF Upload',sub:'Webhook',type:'trigger',x:12,y:155},
+  {id:'parse',label:'OCR Parse',sub:'Regex Engine',type:'process',x:140,y:70},
+  {id:'classify',label:'Classify',sub:'Bank Type',type:'process',x:140,y:240},
+  {id:'transform',label:'Transform',sub:'JSON Builder',type:'process',x:268,y:155},
+  {id:'sheets',label:'Sheets',sub:'Google API',type:'output',x:396,y:70},
+  {id:'notify',label:'Notify',sub:'Gmail Send',type:'output',x:396,y:240},
+];
+const wfEdges=[
+  ['webhook','parse'],['webhook','classify'],
+  ['parse','transform'],['classify','transform'],
+  ['transform','sheets'],['transform','notify'],
+];
+
+let activeNode=null;
+function renderN8nCanvas(){
+  const c=document.getElementById('n8n-interactive');
+  if(!c||c.dataset.rendered)return;
+  c.dataset.rendered='1';
+  c.innerHTML='';
+
+  // SVG edges
+  const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
+  svg.setAttribute('style','position:absolute;inset:0;width:100%;height:100%;pointer-events:none');
+  svg.setAttribute('viewBox','0 0 520 380');
+  const defs=document.createElementNS('http://www.w3.org/2000/svg','defs');
+  const mk=document.createElementNS('http://www.w3.org/2000/svg','marker');
+  mk.setAttribute('id','arr');mk.setAttribute('markerWidth','6');mk.setAttribute('markerHeight','6');
+  mk.setAttribute('refX','5');mk.setAttribute('refY','3');mk.setAttribute('orient','auto');
+  const poly=document.createElementNS('http://www.w3.org/2000/svg','polygon');
+  poly.setAttribute('points','0 0, 6 3, 0 6');poly.setAttribute('fill','#3d3530');
+  mk.appendChild(poly);defs.appendChild(mk);svg.appendChild(defs);
+
+  const nw=100,nh=46;
+  const nodeMap={};
+  wfNodes.forEach(n=>{
+    // centre of box in 480x260 space (px: x*460/440, y*220/200)
+    nodeMap[n.id]={cx:(n.x+nw/2)*1.0, cy:(n.y+nh/2)*1.0};
+  });
+
+  wfEdges.forEach(([a,b])=>{
+    const s=nodeMap[a],t=nodeMap[b];
+    if(!s||!t)return;
+    const line=document.createElementNS('http://www.w3.org/2000/svg','line');
+    line.setAttribute('x1',s.cx+52);line.setAttribute('y1',s.cy);
+    line.setAttribute('x2',t.cx-52);line.setAttribute('y2',t.cy);
+    line.setAttribute('stroke','#3d3530');line.setAttribute('stroke-width','1.5');
+    line.setAttribute('marker-end','url(#arr)');
+    svg.appendChild(line);
+  });
+  c.appendChild(svg);
+
+  // Node elements
+  wfNodes.forEach(n=>{
+    const el=document.createElement('div');
+    el.className='n8n-node';
+    el.style.left=n.x+'px';el.style.top=n.y+'px';
+    el.innerHTML=`<div class="n8n-box ${n.type}">${n.label}</div><div class="n8n-label-text">${n.sub}</div>`;
+    el.addEventListener('click',()=>{
+      document.querySelectorAll('.n8n-box').forEach(b=>b.style.boxShadow='');
+      el.querySelector('.n8n-box').style.boxShadow='0 0 0 2px #c47a1e, 0 0 24px rgba(196,122,30,.4)';
+      activeNode=n.id;
+    });
+    c.appendChild(el);
+  });
+}
+
+/* ── Obsidian graph ── */
+let obsAnimId=null;
+function initObsGraph(){
+  const canvas=document.getElementById('obs-graph');
+  if(!canvas)return;
+  if(obsAnimId)cancelAnimationFrame(obsAnimId);
+  const ctx=canvas.getContext('2d');
+  const W=canvas.offsetWidth,H=canvas.offsetHeight||280;
+  canvas.width=W*2;canvas.height=H*2;ctx.scale(2,2);
+
+  const nodes=[
+    {id:0,label:'📂 Dashboard MOC',x:W*.5,y:H*.38,r:14,col:'#c47a1e',cat:'moc'},
+    {id:1,label:'Procurement v2',x:W*.28,y:H*.2,r:10,col:'#c47a1e',cat:'moc'},
+    {id:2,label:'TMDL Exports',x:W*.18,y:H*.5,r:9,col:'#4a9eff',cat:'workflow'},
+    {id:3,label:'DAX Measures',x:W*.32,y:H*.68,r:9,col:'#4a9eff',cat:'workflow'},
+    {id:4,label:'📂 Automation MOC',x:W*.72,y:H*.25,r:13,col:'#c47a1e',cat:'moc'},
+    {id:5,label:'Bank Extraction',x:W*.85,y:H*.42,r:10,col:'#4a9eff',cat:'workflow'},
+    {id:6,label:'n8n Pipelines',x:W*.78,y:H*.62,r:9,col:'#4a9eff',cat:'workflow'},
+    {id:7,label:'Gmail Sync',x:W*.6,y:H*.75,r:8,col:'#4a9eff',cat:'workflow'},
+    {id:8,label:'📂 Finance MOC',x:W*.5,y:H*.12,r:12,col:'#c47a1e',cat:'moc'},
+    {id:9,label:'BPI Parser',x:W*.72,y:H*.12,r:8,col:'#7ecf8e',cat:'finance'},
+    {id:10,label:'BDO Parser',x:W*.88,y:H*.18,r:8,col:'#7ecf8e',cat:'finance'},
+    {id:11,label:'BPMN Procure',x:W*.2,y:H*.82,r:9,col:'#b48eff',cat:'process'},
+    {id:12,label:'Mermaid Flows',x:W*.4,y:H*.88,r:8,col:'#b48eff',cat:'process'},
+  ];
+  const edges=[[0,1],[0,3],[0,2],[1,3],[1,8],[8,9],[8,10],[4,5],[4,6],[4,7],[5,9],[5,10],[6,7],[0,4],[3,11],[11,12],[7,12]];
+
+  // Physics
+  nodes.forEach(n=>{n.vx=0;n.vy=0});
+  let drag=null,mx=0,my=0,hovNode=null;
+  const lx=W*.5,ly=H*.5,ls=.03;
+
+  canvas.addEventListener('mousemove',e=>{
+    const r=canvas.getBoundingClientRect(),px=(e.clientX-r.left)*(W/r.width),py=(e.clientY-r.top)*(H/r.height);
+    mx=px;my=py;
+    if(drag){drag.x=px;drag.y=py;drag.vx=0;drag.vy=0}
+    hovNode=nodes.find(n=>Math.hypot(n.x-px,n.y-py)<n.r+8)||null;
+    canvas.style.cursor=hovNode?'pointer':drag?'grabbing':'grab';
+  });
+  canvas.addEventListener('mousedown',e=>{
+    const r=canvas.getBoundingClientRect(),px=(e.clientX-r.left)*(W/r.width),py=(e.clientY-r.top)*(H/r.height);
+    drag=nodes.find(n=>Math.hypot(n.x-px,n.y-py)<n.r+8)||null;
+  });
+  canvas.addEventListener('mouseup',()=>drag=null);
+
+  function tick(){
+    // repulsion
+    for(let i=0;i<nodes.length;i++)for(let j=i+1;j<nodes.length;j++){
+      const a=nodes[i],b=nodes[j];
+      const dx=a.x-b.x,dy=a.y-b.y,d=Math.max(Math.hypot(dx,dy),1),f=180/d/d;
+      a.vx+=dx*f;a.vy+=dy*f;b.vx-=dx*f;b.vy-=dy*f;
+    }
+    // edge attraction
+    edges.forEach(([ai,bi])=>{
+      const a=nodes[ai],b=nodes[bi];
+      const dx=b.x-a.x,dy=b.y-a.y,d=Math.hypot(dx,dy),f=.006*d;
+      a.vx+=dx*f;a.vy+=dy*f;b.vx-=dx*f;b.vy-=dy*f;
+    });
+    // gravity to center
+    nodes.forEach(n=>{n.vx+=(lx-n.x)*ls;n.vy+=(ly-n.y)*ls});
+    // integrate
+    nodes.forEach(n=>{
+      if(drag===n)return;
+      n.vx*=.85;n.vy*=.85;
+      n.x=Math.max(n.r,Math.min(W-n.r,n.x+n.vx));
+      n.y=Math.max(n.r,Math.min(H-n.r,n.y+n.vy));
+    });
+
+    // draw
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle='#0f0e0d';
+    ctx.fillRect(0,0,W,H);
+
+    // edges
+    edges.forEach(([ai,bi])=>{
+      const a=nodes[ai],b=nodes[bi];
+      ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);
+      ctx.strokeStyle='rgba(255,255,255,.09)';ctx.lineWidth=1;ctx.stroke();
+    });
+
+    // nodes
+    nodes.forEach(n=>{
+      const hov=hovNode===n;
+      // glow
+      if(hov){const g=ctx.createRadialGradient(n.x,n.y,n.r,n.x,n.y,n.r*2.5);g.addColorStop(0,n.col+'66');g.addColorStop(1,'transparent');ctx.fillStyle=g;ctx.beginPath();ctx.arc(n.x,n.y,n.r*2.5,0,Math.PI*2);ctx.fill()}
+      // circle
+      ctx.beginPath();ctx.arc(n.x,n.y,hov?n.r+2:n.r,0,Math.PI*2);
+      ctx.fillStyle=n.col+(hov?'ff':'cc');ctx.fill();
+      ctx.strokeStyle='rgba(255,255,255,.18)';ctx.lineWidth=1;ctx.stroke();
+      // label
+      if(hov||n.r>=12){
+        ctx.font=`${hov?600:400} ${n.r>=12?10:9}px 'Outfit',sans-serif`;
+        ctx.fillStyle=hov?'#fff':'rgba(255,255,255,.7)';
+        ctx.textAlign='center';ctx.textBaseline='top';
+        ctx.fillText(n.label,n.x,n.y+n.r+4);
+      }
+    });
+    obsAnimId=requestAnimationFrame(tick);
+  }
+  tick();
+}
+</script>
+
+<!-- ═══ PROJECTS (Clay: centered heading + cards) ═══ -->
+<section id="projects" class="relative z-10 max-w-6xl mx-auto px-8 py-24">
+<div class="text-center mb-14 sr">
+<h2 class="font-display font-800 text-3xl md:text-4xl tracking-tight text-cream">Selected projects</h2>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<div class="proj-card sr"><div class="relative aspect-[4/3] overflow-hidden"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBL4E07TjeuYx74uyz7aKn8owtchPJ6Ox94Q0lAskNJGDMAMt2g5Bj_cqozXI_5GyPNnjzfOIv_bH7rZqQNLuL9J2dbqQTyamwJHO8Nv_RI_3-zO3AtRNdPmfxbfCm1mjqRMSVRGETRiQl_glP-PCSUsA1GuIoHnLhBUZlkHxzJa_U09Fl9besO6TyOY5_SP1wrsRuFsIby8EYhvfY1JAStzZkINO9h_eLNH7UUBE3u2eoMj2zVMJ3XdTI4gBYTnT9t8IyitGPwsizl" alt="Procurement Dashboard" class="pi w-full h-full object-cover"/></div><div class="p-6 space-y-3"><span class="mt text-[9px]">Featured</span><h3 class="font-display font-700 text-xl text-cream">Procurement Dashboard v2</h3><p class="text-muted text-sm leading-relaxed">Enterprise Power BI dashboard — DAX, TMDL, drill-through, real-time KPIs.</p><div class="flex flex-wrap gap-1.5"><span class="mt">Power BI</span><span class="mt">DAX</span><span class="mt">TMDL</span></div></div></div>
+
+<div class="proj-card sr d1"><div class="relative aspect-[4/3] overflow-hidden"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAX8mR1bzMO-UZ0PVtjcjy_5vlr2td9tES5dnLnfR40mt2frsKcCKTHfesmHf1AgBm5AE0FwtfVixLOqcij8EOIVkIv7SOI6rz1qp5ZxvsJvaPJeol7VJrE5MCULHKmvQuYFxPxeue4QQFM8XNQaWXWLdqnVBy8m63yB_fSls_wOVgRHn4sUxdBtbPAomIGvtjs3V7ORVV9rG2jzzh9qelGzafv9qF8xwADBe9ktnsp9WCX90gUy5i4hyMQ_U1mk82PodfwzA_ZLGiN" alt="Bank Statement Pipeline" class="pi w-full h-full object-cover"/></div><div class="p-6 space-y-3"><h3 class="font-display font-700 text-xl text-cream">Bank Statement Extraction</h3><p class="text-muted text-sm leading-relaxed">n8n pipeline parsing PH bank PDFs into structured JSON → Google Sheets.</p><div class="flex flex-wrap gap-1.5"><span class="mt">n8n</span><span class="mt">Regex</span><span class="mt">Sheets</span></div></div></div>
+
+<div class="proj-card sr d2"><div class="relative aspect-[4/3] overflow-hidden"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJj7biKMXXhkl2nND-9wYCtpN0szpXWYX4tba6qIcqnkg0Ky3GYfRUDalrg5idLAmXBoPdjv1CsB2o2xjgQe7cSaUXeA49bkr0Hmest_BjUvvwGeevzvQitgojW5bTe-VM2qZ1gsxFZhTMXgex1yVIDy7tMNqtB_zI9Tu1Yh-7H2UK4ZuSi-I_XGmEsYJ7uXswRbS3T8nMls1I1xINSKK2pTCkeN41InjmsQa5EWeqDSlL0Rh0oOBH6ag72NhiMwRgCs4WCxsNXXEV" alt="Knowledge Management" class="pi w-full h-full object-cover"/></div><div class="p-6 space-y-3"><h3 class="font-display font-700 text-xl text-cream">Knowledge Management</h3><p class="text-muted text-sm leading-relaxed">Obsidian vault with BPMN process maps and Mermaid diagrams.</p><div class="flex flex-wrap gap-1.5"><span class="mt">Obsidian</span><span class="mt">BPMN</span><span class="mt">Mermaid</span></div></div></div>
+
+<div class="proj-card sr"><div class="relative aspect-[4/3] overflow-hidden"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdFj4UBe0mQ-_YLIrBsua9SIIaWLkmFR5aUDqGPGlUMBuj7oX3L0rF6ZYL5OeXxRxEtoqS80IRm2X_ilYJlVlUKIbXOy62vE8P0RKfesd9NHnZ-33PEZWtx_sdI19XogJKaU3vlePB14RZ4eWH8xzMnmJR-qYBxhOomoFZ1go_1U-LaklC01F-gHx6F4Riea2KvcbyzvCdbkg0jLBwov7wD9PL56O0vU-eRGvFtTw5JiRhlt-6jh5_RPo-ZdVZ0nHkADN5I-mQWd3_" alt="Gmail automation" class="pi w-full h-full object-cover"/></div><div class="p-6 space-y-3"><h3 class="font-display font-700 text-xl text-cream">Gmail & Calendar Sync</h3><p class="text-muted text-sm leading-relaxed">GAS suite for Gmail analysis, Calendar export, Tasks auto-sync.</p><div class="flex flex-wrap gap-1.5"><span class="mt">GAS</span><span class="mt">Gmail API</span></div></div></div>
+
+<div class="proj-card sr d1"><div class="relative aspect-[4/3] overflow-hidden"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOemS_P3kCbf2_G-ruOSQTqtO092vQOp8-7Jb6MCyjIYPVOyhUxK3tHuG04-nP3Fj4WTGAyMue3PZKe2VwHxb1DlUY-yAX-GcB53064TTg8O-x-KBfSRIqqWUWrnXJY5j8es2dgH870XfQ7rvGufgKJEYaGfyUtIsv2mrbEOuV4vOOWVFyhOhGIA1c5zvegW2stvOlsZQ0_KYbqHGmAnbNlAApMYP0oys24V1afj0jGrGOhqsyYnaes_unxxn0SwuUvCTthF9bqGD-" alt="Finance Dashboard" class="pi w-full h-full object-cover"/></div><div class="p-6 space-y-3"><h3 class="font-display font-700 text-xl text-cream">Personal Finance Dashboard</h3><p class="text-muted text-sm leading-relaxed">Excel dashboard with PH bank data (BPI, BDO, Metrobank).</p><div class="flex flex-wrap gap-1.5"><span class="mt">Excel</span><span class="mt">Power Query</span></div></div></div>
+
+<div class="proj-card sr d2"><div class="relative aspect-[4/3] overflow-hidden"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAICVGsXJ68OmDZqKUtZpU0BnmTYGVntALI7m_QIVQX-SrbCSxSf2RMxffF4T1Ev7q-MQtfbubVC4MRtQRPtrYwZQLjbK-D6pG40IPhlchOzrtWxUZQQsc_eONk7vtzbN71uBzlxFeFOl3pfVYN4LK_RGamf7K3PbN4SSF9qmLvk56l77oUNTadnXtT2Rc0aHdyuu4FmRJVLaTC250ScLNqe1-8x6l_ORtjdR94N0e2EsNv_ItGeHYxqFi0TS0NgLFHGSb74L2m3S50" alt="Docker infra" class="pi w-full h-full object-cover"/></div><div class="p-6 space-y-3"><h3 class="font-display font-700 text-xl text-cream">Self-Hosted Stack</h3><p class="text-muted text-sm leading-relaxed">Docker-composed n8n, MongoDB, Supabase, Nginx + Tailscale.</p><div class="flex flex-wrap gap-1.5"><span class="mt">Docker</span><span class="mt">Tailscale</span><span class="mt">Nginx</span></div></div></div>
+</div>
+</section>
+
+<!-- ═══ CTA + CONTACT (Clay: centered headline + form) ═══ -->
+<section id="contact" class="relative z-10 max-w-3xl mx-auto px-8 py-28 text-center">
+<h2 class="sr font-display font-800 text-3xl md:text-4xl tracking-tight text-cream mb-4">Let's turn your data ideas into reality</h2>
+<p class="sr d1 text-subtle text-lg mb-12 font-light">Have a project that needs dashboards, automation, or knowledge systems? Send me a message.</p>
+<div class="sr d2 bg-white border border-border rounded-[24px] p-8 md:p-10 shadow-lg text-left">
+<form id="contact-form" class="space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div><label class="font-mono text-[10px] uppercase tracking-[.12em] text-muted block mb-1" for="name">Name</label><input id="name" type="text" class="ff" placeholder="Your name" required/></div>
+<div><label class="font-mono text-[10px] uppercase tracking-[.12em] text-muted block mb-1" for="email">Email</label><input id="email" type="email" class="ff" placeholder="hello@example.com" required/></div>
+</div>
+<div><label class="font-mono text-[10px] uppercase tracking-[.12em] text-muted block mb-1" for="message">Message</label><textarea id="message" class="ff resize-none" rows="3" placeholder="Tell me about your project..." required></textarea></div>
+<button id="submit-btn" type="submit" class="w-full bg-accent text-white py-3.5 rounded-xl font-semibold text-[14px] hover:bg-glow transition-all flex items-center justify-center gap-2 group">
+<span>Send Message</span><span class="material-symbols-outlined text-lg group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
 </form>
 </div>
-</div>
-<div class="flex justify-center gap-12 pt-16">
-<div class="text-center group cursor-pointer">
-<p class="text-[10px] font-bold uppercase tracking-widest text-outline mb-2 font-mono">Network</p>
-<p class="font-bold text-on-background group-hover:text-primary transition-colors duration-500 uppercase tracking-tight">LinkedIn</p>
-</div>
-<div class="text-center group cursor-pointer">
-<p class="text-[10px] font-bold uppercase tracking-widest text-outline mb-2 font-mono">Codebase</p>
-<p class="font-bold text-on-background group-hover:text-primary transition-colors duration-500 uppercase tracking-tight">GitHub</p>
-</div>
-<div class="text-center group cursor-pointer">
-<p class="text-[10px] font-bold uppercase tracking-widest text-outline mb-2 font-mono">Location</p>
-<p class="font-bold text-on-background group-hover:text-primary transition-colors duration-500 uppercase tracking-tight">METRO MANILA</p>
-</div>
+<div class="flex justify-center gap-8 mt-10 sr d3">
+<div class="flex items-center gap-2 text-muted text-sm"><span class="material-symbols-outlined text-accent text-base">location_on</span>Metro Manila</div>
+<a href="#" class="flex items-center gap-2 text-muted text-sm hover:text-accent transition-colors"><span class="material-symbols-outlined text-accent text-base">link</span>LinkedIn</a>
+<a href="#" class="flex items-center gap-2 text-muted text-sm hover:text-accent transition-colors"><span class="material-symbols-outlined text-accent text-base">code</span>GitHub</a>
 </div>
 </section>
-</main>
-<!-- Footer -->
-<footer class="w-full py-12 bg-slate-100 dark:bg-slate-900 border-t border-outline/10 relative z-10">
-<div class="flex flex-col md:flex-row justify-between items-center px-8 max-w-7xl mx-auto">
-<div class="font-bold text-slate-900 dark:text-slate-100 mb-4 md:mb-0 uppercase tracking-tighter">RCP</div>
-<div class="font-['Inter'] text-xs uppercase tracking-widest text-slate-500 mb-4 md:mb-0">
-            © 2026 DESIGNED AND SERVED By Yours Truly
-        </div>
-<div class="flex gap-6">
-<a class="text-xs uppercase tracking-widest text-slate-500 hover:text-primary transition-all opacity-100 hover:opacity-80" href="#">LinkedIn</a>
-<a class="text-xs uppercase tracking-widest text-slate-500 hover:text-primary transition-all opacity-100 hover:opacity-80" href="#">GitHub</a>
-<a class="text-xs uppercase tracking-widest text-slate-500 hover:text-primary transition-all opacity-100 hover:opacity-80" href="#">Resume</a>
+
+<!-- ═══ FOOTER (Clay: multi-column) ═══ -->
+<footer class="relative z-10 border-t border-border/50 bg-bg">
+<div class="max-w-6xl mx-auto px-8 py-16">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-10 mb-14">
+<div>
+<h4 class="font-display font-700 text-sm text-cream mb-4">Services</h4>
+<div class="space-y-2.5"><a href="#services" class="block text-sm text-muted hover:text-accent transition-colors">Analytics Dashboards</a><a href="#services" class="block text-sm text-muted hover:text-accent transition-colors">Workflow Automation</a><a href="#services" class="block text-sm text-muted hover:text-accent transition-colors">Knowledge Systems</a><a href="#services" class="block text-sm text-muted hover:text-accent transition-colors">Process Documentation</a></div>
+</div>
+<div>
+<h4 class="font-display font-700 text-sm text-cream mb-4">Tools</h4>
+<div class="space-y-2.5"><span class="block text-sm text-muted">Power BI / DAX</span><span class="block text-sm text-muted">n8n / Docker</span><span class="block text-sm text-muted">Google Apps Script</span><span class="block text-sm text-muted">Obsidian / Notion</span></div>
+</div>
+<div>
+<h4 class="font-display font-700 text-sm text-cream mb-4">Projects</h4>
+<div class="space-y-2.5"><a href="#projects" class="block text-sm text-muted hover:text-accent transition-colors">Procurement Dashboard</a><a href="#projects" class="block text-sm text-muted hover:text-accent transition-colors">Bank Statement Extraction</a><a href="#projects" class="block text-sm text-muted hover:text-accent transition-colors">Knowledge Management</a><a href="#projects" class="block text-sm text-muted hover:text-accent transition-colors">Self-Hosted Stack</a></div>
+</div>
+<div>
+<h4 class="font-display font-700 text-sm text-cream mb-4">Connect</h4>
+<div class="space-y-2.5"><a href="#" class="block text-sm text-muted hover:text-accent transition-colors">LinkedIn</a><a href="#" class="block text-sm text-muted hover:text-accent transition-colors">GitHub</a><a href="resume.html" class="block text-sm text-muted hover:text-accent transition-colors">Resume</a><a href="#contact" class="block text-sm text-muted hover:text-accent transition-colors">Contact</a></div>
+</div>
+</div>
+<div class="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-border/40 gap-4">
+<div class="font-display font-800 text-lg text-cream tracking-tight">RCP<span class="text-accent">.</span></div>
+<p class="font-mono text-[10px] text-muted/50 tracking-wider uppercase">© 2026 Raymond Paredes · Metro Manila</p>
 </div>
 </div>
 </footer>
-<script>
-    const canvas = document.getElementById('hero-canvas');
-    const ctx = canvas.getContext('2d');
-    const root = document.documentElement;
 
-    let width, height;
-    let particles = [];
-    let mouse = { x: -1000, y: -1000 };
-
-    const PARTICLE_COUNT = 150; 
-    const CONNECTION_DISTANCE = 160; 
-    const MOUSE_REPEL_RADIUS = 250; 
-    const PARTICLE_SIZE_RANGE = [1, 2.5]; 
-
-    class Particle {
-        constructor() {
-            this.init();
-        }
-        init() {
-            this.x = Math.random() * width;
-            this.y = Math.random() * height;
-            this.vx = (Math.random() - 0.5) * 1.2;
-            this.vy = (Math.random() - 0.5) * 1.2;
-            this.radius = Math.random() * (PARTICLE_SIZE_RANGE[1] - PARTICLE_SIZE_RANGE[0]) + PARTICLE_SIZE_RANGE[0];
-            this.pulse = Math.random() * Math.PI * 2;
-            this.pulseSpeed = 0.01 + Math.random() * 0.03;
-        }
-        update() {
-            this.x += this.vx;
-            this.y += this.vy;
-            const dx = this.x - mouse.x;
-            const dy = this.y - mouse.y;
-            const dist = Math.sqrt(dx * dx + dy * dy);
-            if (dist < MOUSE_REPEL_RADIUS) {
-                const force = (MOUSE_REPEL_RADIUS - dist) / MOUSE_REPEL_RADIUS;
-                this.x += (dx / dist) * force * 3;
-                this.y += (dy / dist) * force * 3;
-            }
-            if (this.x < 0) this.x = width;
-            if (this.x > width) this.x = 0;
-            if (this.y < 0) this.y = height;
-            if (this.y > height) this.y = 0;
-            this.pulse += this.pulseSpeed;
-        }
-        draw() {
-            const opacity = 0.15 + (Math.sin(this.pulse) + 1) * 0.25;
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(255, 140, 0, ${opacity})`;
-            ctx.fill();
-        }
-    }
-
-    function resize() {
-        width = window.innerWidth;
-        height = window.innerHeight;
-        canvas.width = width;
-        canvas.height = height;
-        particles = [];
-        for (let i = 0; i < PARTICLE_COUNT; i++) {
-            particles.push(new Particle());
-        }
-    }
-
-    function animate() {
-        ctx.clearRect(0, 0, width, height);
-        for (let i = 0; i < particles.length; i++) {
-            const p1 = particles[i];
-            p1.update();
-            p1.draw();
-            for (let j = i + 1; j < particles.length; j++) {
-                const p2 = particles[j];
-                const dx = p1.x - p2.x;
-                const dy = p1.y - p2.y;
-                const dist = Math.sqrt(dx * dx + dy * dy);
-                if (dist < CONNECTION_DISTANCE) {
-                    const opacity = (1 - dist / CONNECTION_DISTANCE) * 0.35;
-                    ctx.beginPath();
-                    ctx.moveTo(p1.x, p1.y);
-                    ctx.lineTo(p2.x, p2.y);
-                    ctx.strokeStyle = `rgba(255, 140, 0, ${opacity})`;
-                    ctx.lineWidth = 0.8;
-                    ctx.stroke();
-                }
-            }
-        }
-        requestAnimationFrame(animate);
-    }
-
-    window.addEventListener('resize', resize);
-    window.addEventListener('mousemove', (e) => {
-        mouse.x = e.clientX;
-        mouse.y = e.clientY;
-        const xPct = e.clientX / window.innerWidth;
-        const yPct = e.clientY / window.innerHeight;
-        const hue = 25 + (xPct * 20); 
-        const sat = 80 + (yPct * 20); 
-        const light = 40 + (yPct * 10); 
-        const containerHue = 30 + (xPct * 30); 
-        root.style.setProperty('--primary-color', `hsl(${hue}, ${sat}%, ${light}%)`);
-        root.style.setProperty('--primary-container-color', `hsl(${containerHue}, 100%, 57%)`);
-        const bgSat = 5 * xPct;
-        root.style.setProperty('--dynamic-bg-mix', `hsl(${hue}, ${bgSat}%, 98%)`);
-    });
-
-    resize();
-    animate();
-</script>
+<!-- ═══ SCRIPTS ═══ -->
+<script>addEventListener('scroll',()=>{document.getElementById('scroll-bar').style.width=(scrollY/(document.documentElement.scrollHeight-innerHeight))*100+'%'})</script>
+<script>document.addEventListener('DOMContentLoaded',()=>{const o=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('v');o.unobserve(x.target)}})},{threshold:.06});document.querySelectorAll('.sr').forEach(el=>o.observe(el))})</script>
+<script>function handleFullScreen(){const el=document.getElementById('embedContainer');if(el.requestFullscreen)el.requestFullscreen();else if(el.webkitRequestFullscreen)el.webkitRequestFullscreen()}</script>
 <script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.0.0/webcomponents-loader.js"></script>
 <script src="https://www.unpkg.com/lit@2.0.0-rc.2/polyfill-support.js"></script>
-<script type="module" src="https://cdn.jsdelivr.net/npm/@n8n_io/n8n-demo-component/n8n-demo.bundled.js"></script>
 <script>
-    // Google Apps Script Form Integration
-    document.getElementById('contact-form').addEventListener('submit', async function(event) {
-        event.preventDefault(); // Stop standard form submission reload
-        
-        const form = event.target;
-        const submitBtn = document.getElementById('submit-btn');
-        const originalBtnHTML = submitBtn.innerHTML;
-        
-        // 1. Show loading state
-        submitBtn.innerHTML = '<span>Sending now...</span><span class="material-symbols-outlined animate-spin">sync</span>';
-        submitBtn.disabled = true;
-
-        // 2. YOUR APPS SCRIPT WEB APP URL HERE
-        const scriptUrl = "https://script.google.com/macros/s/AKfycby_uNku4B679qg8qSaahUbJUw1d7Po015l2U9j_bOINDK9F9uS3hkE7nkWpMNbwE-S1/exec"; 
-        
-        // 3. Gather data
-        const formData = {
-            name: document.getElementById("name").value,
-            email: document.getElementById("email").value,
-            message: document.getElementById("message").value
-        };
-
-        try {
-            // 4. Send request
-            const response = await fetch(scriptUrl, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "text/plain;charset=utf-8", 
-                },
-                body: JSON.stringify(formData) 
-            });
-
-            const result = await response.json();
-            
-            if (result.status === "success") {
-                // 5. Success state handling
-                submitBtn.innerHTML = '<span>Sequence Complete</span><span class="material-symbols-outlined">check_circle</span>';
-                submitBtn.style.backgroundColor = '#10b981'; // Tailwind emerald-500
-                form.reset();
-                
-                // Revert button back to normal after 3.5 seconds
-                setTimeout(() => {
-                    submitBtn.innerHTML = originalBtnHTML;
-                    submitBtn.style.backgroundColor = ''; // Clear inline style to return to Tailwind classes
-                    submitBtn.disabled = false;
-                }, 3500);
-            } else {
-                console.error("Server Error:", result.message);
-                alert("Transmission failed: " + result.message);
-                submitBtn.innerHTML = originalBtnHTML;
-                submitBtn.disabled = false;
-            }
-            
-        } catch (error) {
-            console.error("Network Error:", error);
-            alert("Network error. Please check your connection and try again.");
-            submitBtn.innerHTML = originalBtnHTML;
-            submitBtn.disabled = false;
-        }
-    });
-</script>
-<script>
-// Native HTML5 Full Screen Handler for the iframe container
-function handleFullScreen() {
-    const embedContainer = document.getElementById('embedContainer');
-    if (embedContainer.requestFullscreen) {
-        embedContainer.requestFullscreen();
-    } else if (embedContainer.webkitRequestFullscreen) { /* Safari */
-        embedContainer.webkitRequestFullscreen();
-    } else if (embedContainer.msRequestFullscreen) { /* IE11 */
-        embedContainer.msRequestFullscreen();
+/* n8n iframe load check — show fallback if unreachable */
+(function(){
+  const iframe = document.getElementById('n8n-workflow-iframe');
+  if(!iframe) return;
+  const timer = setTimeout(function(){
+    // If src is still the placeholder, show fallback immediately
+    if(iframe.src.indexOf('YOUR_N8N_URL') !== -1){
+      iframe.style.display='none';
+      const fb=document.getElementById('n8n-fallback');
+      if(fb) fb.style.display='flex';
     }
-}
-
-// Ensure the Skills and Projects sections have breathing room
-document.getElementById('projects').classList.add('mt-40');
+  }, 800);
+  iframe.addEventListener('load', function(){ clearTimeout(timer); });
+})();
 </script>
 <script>
-// n8n JS API Initialization - Fixed Target ID
-const n8nCanvas = document.getElementById('n8n-canvas'); // Changed from 'n8n-node'
-
-// Example Workflow Data (JSON format)
-const workflowData = {
-    nodes: [
-        {
-            parameters: { path: "webhook", httpMethod: "POST" },
-            name: "Webhook",
-            type: "n8n-nodes-base.webhook",
-            typeVersion: 1,
-            position: [100, 200]
-        },
-        {
-            parameters: { content: "Data Received" },
-            name: "AI Agent",
-            type: "n8n-nodes-base.set",
-            typeVersion: 1,
-            position: [350, 200]
-        }
-    ],
-    connections: {
-        "Webhook": {
-            main: [
-                [{ node: "AI Agent", type: "main", index: 0 }]
-            ]
-        }
-    }
-};
-
-// Wait for the Web Component to be defined before loading workflow
-customElements.whenDefined('n8n-demo').then(() => {
-    n8nCanvas.workflow = workflowData;
-});
-
-// Optional: Function to switch workflows on click
-function updateWorkflow(newWorkflow) {
-    n8nCanvas.workflow = newWorkflow;
-}
+document.getElementById('contact-form').addEventListener('submit',async function(e){
+e.preventDefault();const f=e.target,b=document.getElementById('submit-btn'),orig=b.innerHTML;
+b.innerHTML='<span>Sending...</span><span class="material-symbols-outlined animate-spin text-lg">sync</span>';b.disabled=true;
+const url="https://script.google.com/macros/s/AKfycby_uNku4B679qg8qSaahUbJUw1d7Po015l2U9j_bOINDK9F9uS3hkE7nkWpMNbwE-S1/exec";
+const d={name:document.getElementById("name").value,email:document.getElementById("email").value,message:document.getElementById("message").value};
+try{const r=await fetch(url,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(d)});const res=await r.json();
+if(res.status==="success"){b.innerHTML='<span>Sent!</span><span class="material-symbols-outlined text-lg">check_circle</span>';b.classList.remove('bg-accent');b.classList.add('bg-green-600');f.reset();setTimeout(()=>{b.innerHTML=orig;b.classList.remove('bg-green-600');b.classList.add('bg-accent');b.disabled=false},3500)}
+else{alert("Failed: "+res.message);b.innerHTML=orig;b.disabled=false}}catch(err){alert("Network error.");b.innerHTML=orig;b.disabled=false}});
 </script>
-</body></html>
+</body>
+</html>

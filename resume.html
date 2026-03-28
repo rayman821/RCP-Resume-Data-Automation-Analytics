@@ -1,535 +1,191 @@
 <!DOCTYPE html>
-
-<html class="scroll-smooth light" lang="en"><head>
+<html lang="en" class="scroll-smooth">
+<head>
 <meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Raymond Paredes - RESUME</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Raymond Paredes — Resume</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Outfit:wght@200;300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "on-tertiary-fixed": "#00201b",
-                        "on-background": "#191c1d",
-                        "secondary": "#005fae",
-                        "inverse-surface": "#2e3132",
-                        "inverse-primary": "#ffb783",
-                        "inverse-on-surface": "#eff1f2",
-                        "secondary-fixed-dim": "#a5c8ff",
-                        "surface-tint": "#944b00",
-                        "on-tertiary-container": "#00473e",
-                        "primary-fixed": "#ffdcc5",
-                        "tertiary": "#006b5d",
-                        "secondary-fixed": "#d4e3ff",
-                        "outline": "#897362",
-                        "error-container": "#ffdad6",
-                        "error": "#ba1a1a",
-                        "surface-container-highest": "#e1e3e4",
-                        "background": "#f8fafb",
-                        "primary": "var(--primary-color, #944b00)",
-                        "on-secondary": "#ffffff",
-                        "tertiary-container": "#00bfa8",
-                        "primary-fixed-dim": "#ffb783",
-                        "primary-container": "var(--primary-container-color, #ff8c23)",
-                        "on-secondary-container": "#002f5b",
-                        "on-primary": "#ffffff",
-                        "on-secondary-fixed-variant": "#004785",
-                        "tertiary-fixed": "#60fae0",
-                        "secondary-container": "#3e97fd",
-                        "on-primary-container": "#643000",
-                        "on-surface": "#191c1d",
-                        "on-secondary-fixed": "#001c3a",
-                        "on-surface-variant": "#564334",
-                        "surface-variant": "#e1e3e4",
-                        "on-error": "#ffffff",
-                        "surface-container-lowest": "#ffffff",
-                        "on-primary-fixed-variant": "#703700",
-                        "surface-container": "#eceeef",
-                        "surface-container-low": "#f2f4f5",
-                        "on-error-container": "#93000a",
-                        "on-tertiary-fixed-variant": "#005046",
-                        "on-primary-fixed": "#301400",
-                        "surface-dim": "#d8dadb",
-                        "surface": "#f8fafb",
-                        "outline-variant": "#ddc1ae",
-                        "on-tertiary": "#ffffff",
-                        "surface-container-high": "#e6e8e9",
-                        "surface-bright": "#f8fafb",
-                        "tertiary-fixed-dim": "#39ddc4"
-                    },
-                    fontFamily: {
-                        "headline": ["Inter"],
-                        "body": ["Inter"],
-                        "label": ["Inter"]
-                    },
-                    borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
-                },
-            },
-        }
-    </script>
+<script>
+tailwind.config={theme:{extend:{colors:{
+bg:'#f8f7f4',surface:'#f0eee9',card:'#ffffff',border:'#e2ddd5',
+muted:'#999590',subtle:'#6b6660',cream:'#1a1816',warm:'#3d3530',
+accent:'#c47a1e',glow:'#e8973e',dark:'#1a1816',darkcard:'#242120',
+},fontFamily:{
+display:['Syne','sans-serif'],body:['Outfit','sans-serif'],mono:['"JetBrains Mono"','monospace'],
+}}}}
+</script>
 <style>
-        :root {
-            --primary-color: #944b00;
-            --primary-container-color: #ff8c23;
-            --dynamic-bg-mix: #f8fafb;
-            --timeline-primary: #FF8C00;
-        }
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-        .grid-pattern {
-            background-image: radial-gradient(circle, #897362 1px, transparent 1px);
-            background-size: 32px 32px;
-            background-color: var(--dynamic-bg-mix);
-            transition: background-color 0.3s ease-out;
-        }
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(148, 75, 0, 0.1);
-        }
-        #hero-canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-        }
-        .timeline-line {
-            width: 3px;
-            background-color: var(--timeline-primary);
-            box-shadow: 0 0 10px rgba(255, 140, 0, 0.5), 0 0 20px rgba(255, 140, 0, 0.2);
-        }
-    </style>
+*,*::before,*::after{box-sizing:border-box}
+::selection{background:#c47a1e;color:#fff}
+html{background:#f8f7f4}
+body{background:#f8f7f4;color:#1a1816;font-family:'Outfit',sans-serif;overflow-x:hidden;
+background-image:radial-gradient(circle,#c4b8a8 .8px,transparent .8px);background-size:28px 28px}
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9998;opacity:.02;
+background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.sr{opacity:0;transform:translateY(36px);transition:opacity .85s cubic-bezier(.16,1,.3,1),transform .85s cubic-bezier(.16,1,.3,1)}
+.sr.v{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+.nl{position:relative}
+.nl::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1.5px;background:#c47a1e;transition:width .35s ease}
+.nl:hover::after{width:100%}
+.stat-pill{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid #e2ddd5;border-radius:16px;padding:12px 20px;transition:all .3s}
+.stat-pill:hover{border-color:#c47a1e;box-shadow:0 8px 30px -8px rgba(196,122,30,.12)}
+.stat-pill .stat-val{font-family:'Syne',sans-serif;font-weight:800;font-size:1.5rem;color:#c47a1e;line-height:1}
+.feat-card{background:#fff;border:1px solid #e2ddd5;border-radius:20px;padding:32px;transition:all .4s cubic-bezier(.16,1,.3,1)}
+.feat-card:hover{border-color:#c47a1e;transform:translateY(-3px);box-shadow:0 16px 50px -10px rgba(196,122,30,.08)}
+.mt{display:inline-flex;padding:4px 12px;border:1px solid #d5cfc5;border-radius:999px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:#6b6660;transition:all .3s;white-space:nowrap}
+.mt:hover{border-color:#c47a1e;color:#c47a1e}
+.bdot{display:flex;align-items:flex-start;gap:10px}
+.bdot::before{content:'';width:6px;height:6px;border-radius:50%;background:#c47a1e;flex-shrink:0;margin-top:7px}
+.tl-line{position:absolute;left:23px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,#c47a1e 0%,#e2ddd5 100%)}
+.tl-dot{width:12px;height:12px;border-radius:50%;border:3px solid #c47a1e;background:#fff;position:absolute;left:18px;top:8px;z-index:2;transition:all .3s}
+.tl-item:hover .tl-dot{background:#c47a1e;box-shadow:0 0 0 5px rgba(196,122,30,.12)}
+@media(max-width:768px){.tl-line{left:15px}.tl-dot{left:10px}}
+#scroll-bar{position:fixed;top:0;left:0;height:2px;z-index:9999;background:linear-gradient(90deg,#c47a1e,#e8973e)}
+</style>
 </head>
-<body class="font-body text-on-background grid-pattern min-h-screen transition-colors duration-500">
-<!-- TopAppBar -->
-<nav class="fixed top-0 w-full z-50 bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur-md">
-<div class="flex justify-between items-center px-8 h-16 max-w-7xl mx-auto">
-<div class="text-lg font-black tracking-tighter text-primary uppercase">RCP</div>
-<div class="hidden md:flex items-center gap-8">
-<a class="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors duration-300" href="index.html">HOME</a>
-<a class="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors duration-300" href="index.html#skills">SKILLS</a>
-<a class="text-slate-600 dark:text-slate-400 hover:text-primary transition-colors duration-300" href="index.html#projects">PROJECTS</a>
+<body>
+<div id="scroll-bar" style="width:0%"></div>
+
+<!-- NAV -->
+<nav class="fixed top-0 w-full z-50 backdrop-blur-2xl bg-bg/80 border-b border-border/40">
+<div class="max-w-7xl mx-auto flex justify-between items-center px-8 h-[68px]">
+<a href="index-clay.html" class="font-display text-xl font-800 tracking-tight text-cream">RCP<span class="text-accent">.</span></a>
+<div class="hidden md:flex items-center gap-9">
+<a href="index-clay.html" class="nl text-[13px] font-medium text-subtle hover:text-cream transition-colors">Home</a>
+<a href="index-clay.html#services" class="nl text-[13px] font-medium text-subtle hover:text-cream transition-colors">Services</a>
+<a href="index-clay.html#projects" class="nl text-[13px] font-medium text-subtle hover:text-cream transition-colors">Projects</a>
+<a href="#" class="text-[13px] font-semibold text-accent">Resume</a>
 </div>
-<button class="bg-primary text-on-primary px-6 py-2 rounded-full font-bold scale-95 active:opacity-80 transition-all" href="index.html#contact">
-            Message Now!
-        </button>
+<div class="flex items-center gap-3">
+<a href="index-clay.html#contact" class="bg-accent text-white px-5 py-2 rounded-xl text-[13px] font-semibold hover:bg-glow transition-all">Get in Touch</a>
+</div>
 </div>
 </nav>
-<main class="pt-16">
-<!-- Canvas for interactive background -->
-<div class="fixed inset-0 pointer-events-none" id="hero-container" style="z-index: -1;">
-<canvas id="hero-canvas"></canvas>
+
+<!-- HERO -->
+<section class="relative z-10 pt-32 pb-16 px-8">
+<div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-14 items-center sr">
+<div class="lg:col-span-3">
+<div class="relative group"><div class="absolute -inset-2 rounded-[24px] bg-gradient-to-br from-accent/10 to-transparent opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500"></div>
+<div class="relative rounded-2xl overflow-hidden border border-border shadow-lg"><img alt="Raymond Paredes" class="w-full aspect-square object-cover" src="https://drive.google.com/thumbnail?id=1KujG5uES7CLkgMCdTFFRYwdwxamXIp6w&view?sz=1000"/></div></div>
 </div>
-<!-- Hero Section -->
-<section class="max-w-7xl mx-auto px-6 pt-20 pb-16 flex flex-col items-center text-center relative z-10">
-<div class="relative mb-8 group">
-<div class="absolute -inset-4 bg-primary/10 blur-2xl group-hover:bg-primary/20 transition-all rounded-3xl"></div>
-<img alt="Raymond Paredes" class="relative w-48 h-48 border-4 border-primary object-cover shadow-xl rounded-2xl" src="https://drive.google.com/thumbnail?id=1KujG5uES7CLkgMCdTFFRYwdwxamXIp6w&view?sz=1000"/>
-<div class="absolute bottom-2 right-2 bg-primary text-on-primary p-2 rounded-full shadow-lg">
-<span class="material-symbols-outlined text-sm" data-icon="verified">verified</span>
+<div class="lg:col-span-9 space-y-5">
+<div><h1 class="font-display font-800 text-[clamp(2rem,5vw,3.5rem)] leading-[1.1] tracking-tight text-cream">Raymond Paredes</h1>
+<p class="font-mono text-[12px] text-accent tracking-wider uppercase mt-2">Data Analyst · Operations Architect · Procurement Lead</p></div>
+<p class="text-subtle text-lg leading-relaxed max-w-2xl">Data analytics specialist who transforms raw operational data into decision-ready dashboards and automates the manual processes that slow teams down. Based in Metro Manila, Philippines.</p>
+<div class="flex flex-wrap gap-6 pt-1">
+<div class="flex items-center gap-2"><span class="material-symbols-outlined text-accent text-lg">mail</span><span class="text-sm text-warm">rcparedes.work@gmail.com</span></div>
+<div class="flex items-center gap-2"><span class="material-symbols-outlined text-accent text-lg">location_on</span><span class="text-sm text-warm">Manila, PH · Remote</span></div>
+<div class="flex items-center gap-2"><span class="material-symbols-outlined text-accent text-lg">link</span><a href="https://www.linkedin.com/in/raymond-paredes-805b5415a/" class="text-sm text-warm hover:text-accent transition-colors">LinkedIn</a></div>
 </div>
-</div>
-<h1 class="text-5xl md:text-7xl font-black tracking-tighter text-on-surface mb-2">RAYMOND <span class="text-primary">PAREDES</span></h1>
-<p class="font-['Inter'] text-[0.75rem] font-bold tracking-[0.2em] uppercase text-slate-500 mb-8">DATA_ANALYST // OPS_ARCHITECT // PROCUREMENT_LEAD</p>
-<button class="bg-primary text-on-primary font-bold px-8 py-4 rounded-full flex items-center gap-3 shadow-lg hover:scale-105 transition-transform">
-<span class="material-symbols-outlined" data-icon="download">download</span>
-            DOWNLOAD_RESUME_PDF
-        </button>
-</section>
-<!-- Identity & Metrics -->
-<section class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-8 mb-20 relative z-10">
-<!-- ID Card -->
-<div class="lg:col-span-5 glass-panel p-8 rounded-lg flex flex-col justify-between">
-<div>
-<div class="flex justify-between items-start mb-12">
-<div class="flex flex-col">
-<span class="text-[0.6rem] font-bold text-primary tracking-widest uppercase mb-1">NODE</span>
-<span class="text-xl font-bold font-mono">CONTACT INFORMATION</span>
-</div>
-<span class="material-symbols-outlined text-primary/40 text-4xl" data-icon="fingerprint">fingerprint</span>
-</div>
-<div class="space-y-6">
-<div class="flex items-center gap-4">
-<span class="material-symbols-outlined text-primary" data-icon="mail">mail</span>
-<div>
-<p class="text-[0.65rem] text-slate-500 uppercase font-bold tracking-wider">Email</p>
-<p class="font-medium">reiman.par@gmail.com</p>
-</div>
-</div>
-<div class="flex items-center gap-4">
-<span class="material-symbols-outlined text-primary" data-icon="location_on">location_on</span>
-<div>
-<p class="text-[0.65rem] text-slate-500 uppercase font-bold tracking-wider">Location</p>
-<p class="font-medium">Manila, PH // Worldwide Remote</p>
-</div>
-</div>
-<div class="flex items-center gap-4">
-<span class="material-symbols-outlined text-primary" data-icon="linkedin">link</span>
-<div>
-<p class="text-[0.65rem] text-slate-500 uppercase font-bold tracking-wider">LinkdIn</p>
-<p class="font-medium" href="https://www.linkedin.com/in/raymond-paredes-805b5415a/">Raymond Paredes</p>
-</div>
-</div>
-</div>
-</div>
-<div class="mt-12 pt-8 border-t border-primary/10 flex justify-between">
-<span class="text-[0.6rem] font-bold text-slate-400">STATUS: ACTIVE</span>
-<span class="text-[0.6rem] font-bold text-slate-400">ENCRYPTION: Shhhh</span>
-</div>
-</div>
-<!-- Metrics Table -->
-<div class="lg:col-span-7 glass-panel p-8 rounded-lg">
-<div class="flex items-center gap-2 mb-8">
-<span class="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
-<h3 class="font-['Inter'] text-[0.75rem] font-bold tracking-[0.15em] uppercase text-primary">EXPERIENCE_METRICS</h3>
-</div>
-<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-<div class="bg-surface-container-low p-6 rounded-md border border-primary/5">
-<p class="text-3xl font-black text-on-surface">05+</p>
-<p class="text-[0.6rem] font-bold text-slate-500 uppercase mt-2">Years_Active</p>
-</div>
-<div class="bg-surface-container-low p-6 rounded-md border border-primary/5">
-<p class="text-3xl font-black text-on-surface">30+</p>
-<p class="text-[0.6rem] font-bold text-slate-500 uppercase mt-2">Projects</p>
-</div>
-<div class="bg-surface-container-low p-6 rounded-md border border-primary/5">
-<p class="text-3xl font-black text-on-surface">98%</p>
-<p class="text-[0.6rem] font-bold text-slate-500 uppercase mt-2">Efficiency</p>
-</div>
-<div class="bg-surface-container-low p-6 rounded-md border border-primary/5">
-<p class="text-3xl font-black text-on-surface">MULTI</p>
-<p class="text-[0.6rem] font-bold text-slate-500 uppercase mt-2">Tasker</p>
-</div>
-</div>
-<div class="mt-8 space-y-4">
-<div class="flex justify-between items-end">
-<span class="text-[0.65rem] font-bold uppercase">Analytics_Load</span>
-<span class="text-[0.65rem] font-bold text-primary">85%</span>
-</div>
-<div class="w-full h-1 bg-surface-container-highest rounded-full overflow-hidden">
-<div class="h-full bg-primary w-[85%]"></div>
+<div class="flex flex-wrap gap-3 pt-2">
+<div class="stat-pill"><span class="stat-val">5+</span><span class="text-xs text-warm">Years</span></div>
+<div class="stat-pill"><span class="stat-val">30+</span><span class="text-xs text-warm">Projects</span></div>
+<div class="stat-pill"><span class="stat-val">50+</span><span class="text-xs text-warm">Workflows</span></div>
+<div class="stat-pill"><span class="stat-val">20+</span><span class="text-xs text-warm">Dashboards</span></div>
 </div>
 </div>
 </div>
 </section>
-<!-- Professional Journey (Timeline) -->
-<section class="max-w-7xl mx-auto px-6 mb-20 relative z-10">
-<div class="mb-12 text-center md:text-left">
-<span class="text-[10px] uppercase tracking-[0.3em] font-bold text-primary block mb-2">TIMELINE</span>
-<h2 class="text-4xl font-black text-on-surface uppercase tracking-tighter">THE PROFESSION JOURNEY</h2>
+
+<!-- EXPERIENCE -->
+<section class="relative z-10 max-w-7xl mx-auto px-8 py-20">
+<div class="text-center mb-14 sr"><h2 class="font-display font-800 text-3xl md:text-4xl tracking-tight text-cream">Professional experience</h2><p class="text-subtle mt-3 max-w-xl mx-auto">A progression from procurement operations to data analytics and workflow automation leadership.</p></div>
+<div class="relative max-w-3xl mx-auto pl-14 md:pl-16">
+<div class="tl-line"></div>
+<!-- Role 1 -->
+<div class="tl-item relative pb-14 sr"><div class="tl-dot"></div><div class="feat-card ml-6">
+<div class="flex flex-wrap items-center gap-3 mb-4"><span class="font-mono text-[10px] bg-accent/10 text-accent px-3 py-1 rounded-full font-medium tracking-wider uppercase border border-accent/20">Current</span><span class="font-mono text-[11px] text-muted tracking-wider">2023 — Present</span></div>
+<h3 class="font-display font-700 text-xl text-cream mb-1">Lead Data Analyst</h3>
+<p class="font-mono text-[11px] text-accent tracking-wider uppercase mb-4">IPM Construction &amp; Development Corp.</p>
+<div class="space-y-2.5">
+<div class="bdot"><span class="text-[14px] text-warm">Designing real-time Power BI dashboards for infrastructure project monitoring with optimized DAX measures across 100K+ row datasets.</span></div>
+<div class="bdot"><span class="text-[14px] text-warm">Building n8n automation workflows for procurement data extraction, vendor tracking, and budget variance reporting.</span></div>
+<div class="bdot"><span class="text-[14px] text-warm">Leading BPMN 2.0 process documentation for procurement and operations workflows, improving cross-team alignment.</span></div>
+<div class="bdot"><span class="text-[14px] text-warm">Managing self-hosted Docker infrastructure (n8n, Supabase, MongoDB) secured with Tailscale mesh networking.</span></div>
 </div>
-<div class="relative space-y-12 max-w-5xl mx-auto mt-20">
-<!-- Timeline Line -->
-<div class="absolute left-1/2 -translate-x-1/2 -top-20 bottom-0 timeline-line"></div>
-<!-- Entry 01 -->
-<div class="relative flex flex-col md:flex-row items-center gap-8 group">
-<div class="hidden md:flex flex-1 justify-end text-right">
-<div>
-<span class="text-primary font-bold text-sm tracking-widest uppercase">2023 — PRST</span>
-<h4 class="text-xl font-bold text-on-surface mt-1 uppercase">CURRENT_PHASE</h4>
+<div class="flex flex-wrap gap-2 mt-5"><span class="mt">Power BI</span><span class="mt">DAX</span><span class="mt">n8n</span><span class="mt">Docker</span><span class="mt">BPMN</span></div>
+</div></div>
+<!-- Role 2 -->
+<div class="tl-item relative pb-14 sr"><div class="tl-dot"></div><div class="feat-card ml-6">
+<div class="flex flex-wrap items-center gap-3 mb-4"><span class="font-mono text-[11px] text-muted tracking-wider">2021 — 2023</span></div>
+<h3 class="font-display font-700 text-xl text-cream mb-1">Admin Operations Manager</h3>
+<p class="font-mono text-[11px] text-accent tracking-wider uppercase mb-4">IPM Environmental Services</p>
+<div class="space-y-2.5">
+<div class="bdot"><span class="text-[14px] text-warm">Optimized supply chain workflows for waste management logistics across 5 major municipalities.</span></div>
+<div class="bdot"><span class="text-[14px] text-warm">Managed PHP 50M annual operational budget with 100% audit compliance through Excel-based tracking systems.</span></div>
+<div class="bdot"><span class="text-[14px] text-warm">Implemented Google Apps Script automations for document management and scheduling workflows.</span></div>
 </div>
+<div class="flex flex-wrap gap-2 mt-5"><span class="mt">Excel</span><span class="mt">Google Apps Script</span><span class="mt">Operations</span></div>
+</div></div>
+<!-- Role 3 -->
+<div class="tl-item relative pb-4 sr"><div class="tl-dot"></div><div class="feat-card ml-6">
+<div class="flex flex-wrap items-center gap-3 mb-4"><span class="font-mono text-[11px] text-muted tracking-wider">2019 — 2021</span></div>
+<h3 class="font-display font-700 text-xl text-cream mb-1">Procurement Specialist</h3>
+<p class="font-mono text-[11px] text-accent tracking-wider uppercase mb-4">IPM Holdings Inc.</p>
+<div class="space-y-2.5">
+<div class="bdot"><span class="text-[14px] text-warm">Executed procurement strategies for high-value heavy equipment acquisition and vendor negotiations.</span></div>
+<div class="bdot"><span class="text-[14px] text-warm">Developed vendor evaluation matrices reducing procurement cycles by 15 days on average.</span></div>
+<div class="bdot"><span class="text-[14px] text-warm">Built Excel-based supplier databases and price comparison tools for Metro Manila concrete/construction vendors.</span></div>
 </div>
-<div class="z-10 w-12 h-12 rounded-full bg-white border-4 border-primary shadow-[0_0_20px_rgba(148,75,0,0.3)] flex items-center justify-center shrink-0 transition-transform group-hover:scale-125">
-<span class="material-symbols-outlined text-primary text-xl" style="font-variation-settings: 'FILL' 1;">insights</span>
-</div>
-<div class="flex-1 w-full">
-<div class="glass-panel p-6 rounded-lg border border-primary/10 group-hover:border-primary/40 transition-all">
-<h3 class="text-lg font-bold text-on-surface uppercase">Lead Data Analyst</h3>
-<p class="text-primary font-bold text-xs uppercase mb-2">IPM CONSTRUCTION &amp; DEVELOPMENT CORP.</p>
-<ul class="space-y-2 text-slate-600 text-sm italic">
-<li>Orchestrating real-time data visualization dashboards for massive infrastructure projects.</li>
-<li>Implementing predictive maintenance models reducing operational downtime by 22%.</li>
-<li>Leading a cross-functional team of 12 for digital transformation initiatives.</li>
-</ul>
-</div>
-</div>
-</div>
-<!-- Entry 02 -->
-<div class="relative flex flex-col md:flex-row-reverse items-center gap-8 group">
-<div class="hidden md:flex flex-1 justify-end md:justify-start text-left">
-<div>
-<span class="text-secondary font-bold text-sm tracking-widest uppercase">2021 — 2023</span>
-<h4 class="text-xl font-bold text-on-surface mt-1 uppercase">PREVIOUS_PHASE</h4>
-</div>
-</div>
-<div class="z-10 w-12 h-12 rounded-full bg-white border-4 border-secondary shadow-[0_0_20px_rgba(0,95,174,0.3)] flex items-center justify-center shrink-0 transition-transform group-hover:scale-125">
-<span class="material-symbols-outlined text-secondary text-xl" style="font-variation-settings: 'FILL' 1;">hub</span>
-</div>
-<div class="flex-1 w-full">
-<div class="glass-panel p-6 rounded-lg border border-secondary/10 group-hover:border-secondary/40 transition-all text-right md:text-left">
-<h3 class="text-lg font-bold text-on-surface uppercase">Admin Operations Manager</h3>
-<p class="text-secondary font-bold text-xs uppercase mb-2">IPM ENVIRONMENTAL SERVICES</p>
-<ul class="space-y-2 text-slate-600 text-sm italic">
-<li>Optimized supply chain workflows for waste management logistics across 5 major municipalities.</li>
-<li>Managed a PHP 50M annual operational budget with 100% audit compliance.</li>
-</ul>
-</div>
-</div>
-</div>
-<!-- Entry 03 -->
-<div class="relative flex flex-col md:flex-row items-center gap-8 group">
-<div class="hidden md:flex flex-1 justify-end text-right">
-<div>
-<span class="text-tertiary font-bold text-sm tracking-widest uppercase">2019 — 2021</span>
-<h4 class="text-xl font-bold text-on-surface mt-1 uppercase">LEGACY_PHASE</h4>
-</div>
-</div>
-<div class="z-10 w-12 h-12 rounded-full bg-white border-4 border-tertiary shadow-[0_0_20px_rgba(0,107,93,0.3)] flex items-center justify-center shrink-0 transition-transform group-hover:scale-125">
-<span class="material-symbols-outlined text-tertiary text-xl" style="font-variation-settings: 'FILL' 1;">shopping_cart</span>
-</div>
-<div class="flex-1 w-full">
-<div class="glass-panel p-6 rounded-lg border border-tertiary/10 group-hover:border-tertiary/40 transition-all">
-<h3 class="text-lg font-bold text-on-surface uppercase">Procurement Specialist</h3>
-<p class="text-tertiary font-bold text-xs uppercase mb-2">IPM HOLDINGS INC.</p>
-<ul class="space-y-2 text-slate-600 text-sm italic">
-<li>Executed procurement strategies for high-value heavy equipment acquisition.</li>
-<li>Developed vendor evaluation matrices reducing procurement cycles by 15 days.</li>
-</ul>
-</div>
-</div>
-</div>
+<div class="flex flex-wrap gap-2 mt-5"><span class="mt">Procurement</span><span class="mt">Excel</span><span class="mt">Vendor Management</span></div>
+</div></div>
 </div>
 </section>
-<!-- Technical Matrix -->
-<section class="max-w-7xl mx-auto px-6 mb-20 relative z-10">
-<div class="flex items-center gap-4 mb-12">
-<h2 class="text-3xl font-black tracking-tight uppercase">TECHNICAL MATRIX</h2>
-<div class="flex-grow h-px bg-primary/10"></div>
-</div>
+
+<!-- SKILLS -->
+<section class="relative z-10 max-w-7xl mx-auto px-8 py-20">
+<div class="text-center mb-14 sr"><h2 class="font-display font-800 text-3xl md:text-4xl tracking-tight text-cream">Technical skills</h2><p class="text-subtle mt-3 max-w-xl mx-auto">Three core competency areas — analytics, automation, and data infrastructure.</p></div>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-<!-- Analytics -->
-<div class="glass-panel p-8 rounded-lg border-l-4 border-l-primary">
-<div class="flex items-center gap-3 mb-6">
-<span class="material-symbols-outlined text-primary" data-icon="analytics">analytics</span>
-<h3 class="font-bold text-lg uppercase tracking-wider">Analytics</h3>
+<div class="feat-card sr"><div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-5"><span class="material-symbols-outlined text-accent text-xl">analytics</span></div><h3 class="font-display font-700 text-lg text-cream mb-4">Analytics &amp; BI</h3><div class="space-y-2.5 mb-5"><div class="bdot"><span class="text-sm text-warm">Advanced Power BI (DAX, M, TMDL)</span></div><div class="bdot"><span class="text-sm text-warm">SQL (PostgreSQL, Supabase)</span></div><div class="bdot"><span class="text-sm text-warm">Statistical trend analysis</span></div><div class="bdot"><span class="text-sm text-warm">KPI dashboard engineering</span></div><div class="bdot"><span class="text-sm text-warm">Excel &amp; Google Sheets (advanced)</span></div></div><div class="flex flex-wrap gap-2"><span class="mt">Power BI</span><span class="mt">DAX</span><span class="mt">SQL</span><span class="mt">Excel</span></div></div>
+<div class="feat-card sr d1"><div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-5"><span class="material-symbols-outlined text-accent text-xl">account_tree</span></div><h3 class="font-display font-700 text-lg text-cream mb-4">Automation &amp; ETL</h3><div class="space-y-2.5 mb-5"><div class="bdot"><span class="text-sm text-warm">n8n workflow orchestration</span></div><div class="bdot"><span class="text-sm text-warm">Google Apps Script (Gmail, Calendar, Sheets)</span></div><div class="bdot"><span class="text-sm text-warm">Python regex &amp; OCR text parsing</span></div><div class="bdot"><span class="text-sm text-warm">RESTful API integration</span></div><div class="bdot"><span class="text-sm text-warm">Web scraping (Firecrawl, BeautifulSoup)</span></div></div><div class="flex flex-wrap gap-2"><span class="mt">n8n</span><span class="mt">GAS</span><span class="mt">Python</span><span class="mt">Regex</span></div></div>
+<div class="feat-card sr d2"><div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-5"><span class="material-symbols-outlined text-accent text-xl">dns</span></div><h3 class="font-display font-700 text-lg text-cream mb-4">Infrastructure &amp; Knowledge</h3><div class="space-y-2.5 mb-5"><div class="bdot"><span class="text-sm text-warm">Docker containerization</span></div><div class="bdot"><span class="text-sm text-warm">Tailscale mesh networking</span></div><div class="bdot"><span class="text-sm text-warm">MongoDB, Supabase, Nginx</span></div><div class="bdot"><span class="text-sm text-warm">Obsidian vault architecture</span></div><div class="bdot"><span class="text-sm text-warm">BPMN 2.0 &amp; Mermaid diagrams</span></div></div><div class="flex flex-wrap gap-2"><span class="mt">Docker</span><span class="mt">Obsidian</span><span class="mt">BPMN</span><span class="mt">Mermaid</span></div></div>
 </div>
-<div class="flex flex-wrap gap-2">
-<span class="px-3 py-1 bg-surface-container-highest text-[0.65rem] font-bold rounded uppercase">Advanced Power BI (DAX/M)</span>
-<span class="px-3 py-1 bg-surface-container-highest text-[0.65rem] font-bold rounded uppercase">SQL (PostgreSQL/Supabase)</span>
-<span class="px-3 py-1 bg-surface-container-highest text-[0.65rem] font-bold rounded uppercase">Statistical Trend Analysis</span>
-<span class="px-3 py-1 bg-surface-container-highest text-[0.65rem] font-bold rounded uppercase">KPI Dashboard Engineering</span>
-</div>
-</div>
-<!-- Automation -->
-<div class="glass-panel p-8 rounded-lg border-l-4 border-l-secondary">
-<div class="flex items-center gap-3 mb-6">
-<span class="material-symbols-outlined text-secondary" data-icon="robot_2">robot_2</span>
-<h3 class="font-bold text-lg uppercase tracking-wider">Automation</h3>
-</div>
-<div class="flex flex-wrap gap-2">
-<span class="px-3 py-1 bg-surface-container-highest text-[0.65rem] font-bold rounded uppercase">n8n &amp; Power Automate (Complex API Orchestration)</span>
-<span class="px-3 py-1 bg-surface-container-highest text-[0.65rem] font-bold rounded uppercase">Zapier/Make Workflow Optimization</span>
-<span class="px-3 py-1 bg-surface-container-highest text-[0.65rem] font-bold rounded uppercase">Web Scraping (Firecrawl/BeautifulSoup)</span>
-</div>
-</div>
-<!-- Data Handling -->
-<div class="glass-panel p-8 rounded-lg border-l-4 border-l-tertiary">
-<div class="flex items-center gap-3 mb-6">
-<span class="material-symbols-outlined text-tertiary" data-icon="database">database</span>
-<h3 class="font-bold text-lg uppercase tracking-wider">Data Handling</h3>
-</div>
-<div class="flex flex-wrap gap-2">
-<span class="px-3 py-1 bg-surface-container-highest text-[0.65rem] font-bold rounded uppercase">RESTful API Integration</span>
-<span class="px-3 py-1 bg-surface-container-highest text-[0.65rem] font-bold rounded uppercase">ETL Pipeline Architecture</span>
-<span class="px-3 py-1 bg-surface-container-highest text-[0.65rem] font-bold rounded uppercase">Data Warehousing</span>
-<span class="px-3 py-1 bg-surface-container-highest text-[0.65rem] font-bold rounded uppercase">Cloud Infrastructure (AWS/Azure)</span>
-</div>
+</section>
+
+<!-- EDUCATION -->
+<section class="relative z-10 max-w-7xl mx-auto px-8 py-20">
+<div class="text-center mb-14 sr"><h2 class="font-display font-800 text-3xl md:text-4xl tracking-tight text-cream">Education</h2></div>
+<div class="max-w-3xl mx-auto sr"><div class="feat-card"><div class="flex flex-col md:flex-row items-center gap-8">
+<div class="w-20 h-20 rounded-2xl bg-surface border border-border flex items-center justify-center p-3 shrink-0"><img alt="De La Salle College of Saint Benilde" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfVeLK-ZKScyB_LgUtQtkcY2LVILKLu6tlC8EaqXxL9HiRnOllNFDo3PKF6Sxu8znU-RFU13EyqOQT0VFgjm1YfvUE71asazZ1ix11lxrf54iwCf26Vn0o9_UC4q23U9GvIv0fL8aCNMXUNB5FVdoTFW_fjiIAmzveycnzkRxG7XmfqsJWZpVYcySC8J014XlzE1hBiH-6AhLuDoshvfZ6Vb02Rhjz7EXEK4ncy32vmWufh4bPDz01YGSzqglTRvld0kUOgmiRqRpV"/></div>
+<div class="flex-grow text-center md:text-left"><h3 class="font-display font-700 text-xl text-cream mb-1">BS Business Administration &amp; Export Management</h3><p class="text-subtle text-sm mb-3">De La Salle College of Saint Benilde</p>
+<div class="flex flex-wrap justify-center md:justify-start gap-4"><div class="flex items-center gap-2"><span class="material-symbols-outlined text-accent text-sm">calendar_today</span><span class="text-xs text-muted font-medium">Class of 2017</span></div><div class="flex items-center gap-2"><span class="material-symbols-outlined text-accent text-sm">verified</span><span class="text-xs text-muted font-medium">Verified</span></div></div>
+</div></div></div></div>
+</section>
+
+<!-- CTA -->
+<section class="relative z-10 max-w-7xl mx-auto px-8 py-12 sr">
+<div class="bg-dark rounded-3xl p-10 md:p-14 text-center" style="background-image:radial-gradient(circle,#2a2520 .5px,transparent .5px);background-size:22px 22px">
+<h3 class="font-display font-800 text-2xl md:text-3xl tracking-tight text-white mb-4">Ready to work together?</h3>
+<p class="text-white/50 max-w-xl mx-auto mb-6">I'm open to project collaborations, full-time roles, and freelance opportunities in data analytics and workflow automation.</p>
+<div class="flex flex-wrap justify-center gap-3">
+<a href="index-clay.html#contact" class="bg-accent text-white px-7 py-3 rounded-xl text-[14px] font-semibold hover:bg-glow transition-colors">Get in touch</a>
+<a href="index-clay.html" class="border border-white/15 text-white/70 px-7 py-3 rounded-xl text-[14px] font-medium hover:border-accent hover:text-accent transition-all">View portfolio</a>
 </div>
 </div>
 </section>
-<!-- Academic Log -->
-<section class="max-w-7xl mx-auto px-6 mb-24 relative z-10">
-<div class="flex items-center gap-4 mb-12">
-<h2 class="text-3xl font-black tracking-tight uppercase">ACADEMIC Background</h2>
-<div class="flex-grow h-px bg-primary/10"></div>
+
+<!-- FOOTER -->
+<footer class="relative z-10 border-t border-border mt-12">
+<div class="max-w-7xl mx-auto px-8 py-14">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-10 mb-12">
+<div><h5 class="font-display font-700 text-sm text-cream mb-4">Services</h5><div class="space-y-2.5"><a href="index-clay.html#services" class="block text-sm text-muted hover:text-accent transition-colors">Analytics Dashboards</a><a href="index-clay.html#services" class="block text-sm text-muted hover:text-accent transition-colors">Workflow Automation</a><a href="index-clay.html#services" class="block text-sm text-muted hover:text-accent transition-colors">Knowledge Systems</a></div></div>
+<div><h5 class="font-display font-700 text-sm text-cream mb-4">Tools</h5><div class="space-y-2.5"><span class="block text-sm text-muted">Power BI / DAX</span><span class="block text-sm text-muted">n8n / Docker</span><span class="block text-sm text-muted">Google Apps Script</span><span class="block text-sm text-muted">Obsidian / BPMN</span></div></div>
+<div><h5 class="font-display font-700 text-sm text-cream mb-4">Projects</h5><div class="space-y-2.5"><a href="index-clay.html#projects" class="block text-sm text-muted hover:text-accent transition-colors">Procurement Dashboard</a><a href="index-clay.html#projects" class="block text-sm text-muted hover:text-accent transition-colors">Bank Statement Pipeline</a><a href="index-clay.html#projects" class="block text-sm text-muted hover:text-accent transition-colors">Self-Hosted Stack</a></div></div>
+<div><h5 class="font-display font-700 text-sm text-cream mb-4">Connect</h5><div class="space-y-2.5"><a href="https://www.linkedin.com/in/raymond-paredes-805b5415a/" class="block text-sm text-muted hover:text-accent transition-colors">LinkedIn</a><a href="#" class="block text-sm text-muted hover:text-accent transition-colors">GitHub</a><a href="index-clay.html#contact" class="block text-sm text-muted hover:text-accent transition-colors">Contact</a></div></div>
 </div>
-<div class="glass-panel p-10 rounded-lg flex flex-col md:flex-row items-center gap-10">
-<div class="w-32 h-32 bg-surface-container-highest rounded-full flex items-center justify-center p-4 border-2 border-primary/20">
-<img alt="De La Salle Logo" class="w-full h-full object-contain grayscale hover:grayscale-0 transition-all" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfVeLK-ZKScyB_LgUtQtkcY2LVILKLu6tlC8EaqXxL9HiRnOllNFDo3PKF6Sxu8znU-RFU13EyqOQT0VFgjm1YfvUE71asazZ1ix11lxrf54iwCf26Vn0o9_UC4q23U9GvIv0fL8aCNMXUNB5FVdoTFW_fjiIAmzveycnzkRxG7XmfqsJWZpVYcySC8J014XlzE1hBiH-6AhLuDoshvfZ6Vb02Rhjz7EXEK4ncy32vmWufh4bPDz01YGSzqglTRvld0kUOgmiRqRpV"/>
-</div>
-<div class="flex-grow text-center md:text-left">
-<span class="text-primary font-black text-sm tracking-[0.2em] uppercase">Degree_Conferred</span>
-<h3 class="text-2xl font-bold mt-1">Bachelor of Science in Business Administration &amp; Export Management</h3>
-<p class="text-lg text-slate-500 font-medium">De La Salle College of Saint Benilde</p>
-<div class="mt-4 flex flex-wrap justify-center md:justify-start gap-6">
-<div class="flex items-center gap-2">
-<span class="material-symbols-outlined text-primary text-sm" data-icon="calendar_today">calendar_today</span>
-<span class="text-xs font-bold text-slate-600 uppercase">Class of 2017</span>
-</div>
-<div class="flex items-center gap-2">
-</div>
-</div>
-</div>
-<div class="hidden lg:block w-px h-24 bg-primary/10"></div>
-<div class="text-center md:text-right">
-<p class="text-[0.6rem] font-bold text-slate-400 uppercase tracking-widest mb-1">CREDENTIALS</p>
-<div class="inline-flex items-center gap-2 px-4 py-2 bg-tertiary/10 text-tertiary rounded-full border border-tertiary/20">
-<span class="w-1.5 h-1.5 bg-tertiary rounded-full"></span>
-<span class="text-[0.65rem] font-black uppercase">Verified</span>
-</div>
-</div>
-</div>
-</section>
-<!-- Initiate Connection Footer -->
-<section class="max-w-4xl mx-auto px-6 text-center relative z-10 mb-20">
-<div class="glass-panel p-12 rounded-xl border-t-4 border-t-primary">
-<h2 class="text-3xl font-black mb-4">INITIATE_CONNECTION</h2>
-<p class="text-slate-500 mb-10 max-w-xl mx-auto">Ready to bridge data insights with operational excellence? Open a communication channel for project collaborations or strategic opportunities.</p>
-<div class="flex flex-col sm:flex-row gap-4 justify-center">
-<button class="bg-slate-900 text-primary border border-primary/20 px-10 py-4 rounded-full font-bold hover:bg-primary hover:text-white transition-all">
-                    SEND_MESSAGE
-                </button>
-<button class="bg-surface-container-high text-on-surface px-10 py-4 rounded-full font-bold hover:bg-surface-container-highest transition-all">
-                    LINKEDIN_SYNC
-                </button>
-</div>
-</div>
-</section>
-</main>
-<!-- Footer -->
-<footer class="w-full py-12 bg-slate-100 dark:bg-slate-900 border-t border-outline/10">
-<div class="flex flex-col md:flex-row justify-between items-center px-8 max-w-7xl mx-auto">
-<div class="font-bold text-slate-900 dark:text-slate-100 mb-4 md:mb-0">RCP</div>
-<div class="font-['Inter'] text-xs uppercase tracking-widest text-slate-500 mb-4 md:mb-0">
-            © 2026 RAYMOND PAREDES RESUME
-        </div>
-<div class="flex gap-6">
-<a class="text-xs uppercase tracking-widest text-slate-500 hover:text-primary transition-all opacity-100 hover:opacity-80" href="#">LinkedIn</a>
-<a class="text-xs uppercase tracking-widest text-slate-500 hover:text-primary transition-all opacity-100 hover:opacity-80" href="#">GitHub</a>
-<a class="text-xs uppercase tracking-widest text-slate-500 hover:text-primary transition-all opacity-100 hover:opacity-80" href="#">Resume</a>
+<div class="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-border gap-4">
+<div class="font-display font-800 text-lg text-cream">RCP<span class="text-accent">.</span></div>
+<p class="font-mono text-[11px] text-muted/60 tracking-wider uppercase">&copy; 2026 Raymond Paredes — Metro Manila, Philippines</p>
 </div>
 </div>
 </footer>
-<script>
-    const canvas = document.getElementById('hero-canvas');
-    const ctx = canvas.getContext('2d');
-    const container = document.getElementById('hero-container');
-    const root = document.documentElement;
 
-    let width, height;
-    let particles = [];
-    let mouse = { x: -1000, y: -1000 };
-
-    const PARTICLE_COUNT = 150; 
-    const CONNECTION_DISTANCE = 160; 
-    const MOUSE_REPEL_RADIUS = 250; 
-    const PARTICLE_SIZE_RANGE = [1, 2.5]; 
-
-    class Particle {
-        constructor() {
-            this.init();
-        }
-
-        init() {
-            this.x = Math.random() * width;
-            this.y = Math.random() * height;
-            this.vx = (Math.random() - 0.5) * 1.2;
-            this.vy = (Math.random() - 0.5) * 1.2;
-            this.radius = Math.random() * (PARTICLE_SIZE_RANGE[1] - PARTICLE_SIZE_RANGE[0]) + PARTICLE_SIZE_RANGE[0];
-            this.pulse = Math.random() * Math.PI * 2;
-            this.pulseSpeed = 0.01 + Math.random() * 0.03;
-        }
-
-        update() {
-            this.x += this.vx;
-            this.y += this.vy;
-
-            const dx = this.x - mouse.x;
-            const dy = this.y - mouse.y;
-            const dist = Math.sqrt(dx * dx + dy * dy);
-            if (dist < MOUSE_REPEL_RADIUS) {
-                const force = (MOUSE_REPEL_RADIUS - dist) / MOUSE_REPEL_RADIUS;
-                this.x += (dx / dist) * force * 3;
-                this.y += (dy / dist) * force * 3;
-            }
-
-            if (this.x < 0) this.x = width;
-            if (this.x > width) this.x = 0;
-            if (this.y < 0) this.y = height;
-            if (this.y > height) this.y = 0;
-
-            this.pulse += this.pulseSpeed;
-        }
-
-        draw() {
-            const opacity = 0.15 + (Math.sin(this.pulse) + 1) * 0.25;
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(148, 75, 0, ${opacity})`;
-            ctx.fill();
-        }
-    }
-
-    function resize() {
-        if (!container) return;
-        width = window.innerWidth;
-        height = window.innerHeight;
-        canvas.width = width;
-        canvas.height = height;
-        particles = [];
-        for (let i = 0; i < PARTICLE_COUNT; i++) {
-            particles.push(new Particle());
-        }
-    }
-
-    function animate() {
-        ctx.clearRect(0, 0, width, height);
-
-        for (let i = 0; i < particles.length; i++) {
-            const p1 = particles[i];
-            p1.update();
-            p1.draw();
-
-            for (let j = i + 1; j < particles.length; j++) {
-                const p2 = particles[j];
-                const dx = p1.x - p2.x;
-                const dy = p1.y - p2.y;
-                const dist = Math.sqrt(dx * dx + dy * dy);
-
-                if (dist < CONNECTION_DISTANCE) {
-                    const opacity = (1 - dist / CONNECTION_DISTANCE) * 0.35;
-                    ctx.beginPath();
-                    ctx.moveTo(p1.x, p1.y);
-                    ctx.lineTo(p2.x, p2.y);
-                    ctx.strokeStyle = `rgba(148, 75, 0, ${opacity})`;
-                    ctx.lineWidth = 0.8;
-                    ctx.stroke();
-                }
-            }
-        }
-        requestAnimationFrame(animate);
-    }
-
-    window.addEventListener('resize', resize);
-    window.addEventListener('mousemove', (e) => {
-        const rect = canvas.getBoundingClientRect();
-        mouse.x = e.clientX - rect.left;
-        mouse.y = e.clientY - rect.top;
-
-        const xPct = e.clientX / window.innerWidth;
-        const yPct = e.clientY / window.innerHeight;
-
-        const hue = 25 + (xPct * 20); 
-        const sat = 80 + (yPct * 20); 
-        const light = 40 + (yPct * 10); 
-        
-        const containerHue = 30 + (xPct * 30); 
-
-        root.style.setProperty('--primary-color', `hsl(${hue}, ${sat}%, ${light}%)`);
-        root.style.setProperty('--primary-container-color', `hsl(${containerHue}, 100%, 57%)`);
-        
-        const bgSat = 5 * xPct;
-        root.style.setProperty('--dynamic-bg-mix', `hsl(${hue}, ${bgSat}%, 98%)`);
-    });
-
-    resize();
-    animate();
-</script>
-</body></html>
+<script>addEventListener('scroll',()=>{document.getElementById('scroll-bar').style.width=(scrollY/(document.documentElement.scrollHeight-innerHeight))*100+'%'});</script>
+<script>document.addEventListener('DOMContentLoaded',()=>{const o=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('v');o.unobserve(x.target)}})},{threshold:.06});document.querySelectorAll('.sr').forEach(el=>o.observe(el))});</script>
+</body>
+</html>
