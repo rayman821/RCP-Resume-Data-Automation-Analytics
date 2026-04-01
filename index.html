@@ -59,14 +59,25 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='htt
 .ff{width:100%;background:transparent;border:none;border-bottom:1px solid #d5cfc5;padding:16px 0;font-family:'Outfit',sans-serif;font-size:16px;color:#1a1816;outline:none;transition:border-color .3s}
 .ff:focus{border-bottom-color:#c47a1e}.ff::placeholder{color:#999590}
 
+/* n8n.io-style base frame */
+.n8n-base-frame{position:relative;border-radius:16px;padding:8px;order:3}
+.n8n-base-frame-inner{overflow:hidden;border-radius:12px;height:500px;border:1px solid #e2ddd5}
+.n8n-canvas-bg{background:transparent;height:100%;position:relative}
+.n8n-canvas-bg n8n-demo{display:block;width:100%;height:100%}
+@media(min-width:1024px){.n8n-base-frame{order:1}}
+
 #n8n-container n8n-demo{display:block;width:100%;height:100%}
+/* Force n8n-demo web component internals to fill */
+n8n-demo{display:block}
+n8n-demo .canvas-container,
+n8n-demo .embedded_workflow,
+n8n-demo .embedded_workflow_iframe{width:100%!important;height:100%!important;border:none!important}
 #scroll-bar{position:fixed;top:0;left:0;height:2px;z-index:9999;background:linear-gradient(90deg,#c47a1e,#e8973e)}
 </style>
 </head>
 <body>
 <div id="scroll-bar" style="width:0%"></div>
 
-<!-- ═══ NAV ═══ -->
 <nav class="fixed top-0 w-full z-50 backdrop-blur-2xl bg-bg/80 border-b border-border/40">
 <div class="max-w-7xl mx-auto flex justify-between items-center px-8 h-[68px]">
 <a href="#" class="font-display text-xl font-800 tracking-tight text-cream">RCP<span class="text-accent">.</span></a>
@@ -82,13 +93,10 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='htt
 </div>
 </nav>
 
-<!-- ═══ HERO (Kontenta-style: centered brand word + subtitle + animated dashboard) ═══ -->
 <section class="relative z-10 pt-28 pb-8 px-8 overflow-hidden">
-<!-- BG glow -->
 <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-accent/6 rounded-full blur-[180px] pointer-events-none"></div>
 
 <div class="max-w-5xl mx-auto text-center relative z-10">
-    <!-- Brand word (kontenta: oversized single word) -->
     <h1 class="sr font-display font-800 text-[clamp(3.5rem,10vw,8rem)] leading-[.9] tracking-tighter text-cream">
         DATA in NARRATIVES<span class="text-accent">.</span>
     </h1>
@@ -102,12 +110,8 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='htt
     <p class="sr d3 font-mono text-[11px] text-muted tracking-wider uppercase mt-6">The data analytics & automation portfolio</p>
 </div>
 
-<!-- ═══ ANIMATED DASHBOARD VISUAL ═══ -->
 <div class="sr d2 relative mx-auto mt-16 mb-4" style="max-width:900px;height:480px;perspective:1200px">
-
-    <!-- Central dashboard panel -->
     <div class="absolute inset-x-8 top-8 bottom-8 bg-white/90 backdrop-blur-xl border border-border rounded-3xl shadow-2xl shadow-cream/8 overflow-hidden" style="transform:rotateX(8deg) rotateY(-2deg);transform-style:preserve-3d">
-        <!-- Dashboard header bar -->
         <div class="flex items-center justify-between px-6 py-3 border-b border-border/60 bg-surface/50">
             <div class="flex items-center gap-2">
                 <div class="w-3 h-3 rounded-full bg-red-400/60"></div>
@@ -117,9 +121,7 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='htt
             <span class="font-mono text-[10px] text-muted tracking-wider">RCP_ANALYTICS_DASHBOARD</span>
             <div class="flex items-center gap-1"><div class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></div><span class="font-mono text-[9px] text-accent">LIVE</span></div>
         </div>
-        <!-- Dashboard body grid -->
         <div class="p-5 grid grid-cols-12 gap-3 h-[calc(100%-44px)]">
-            <!-- KPI row -->
             <div class="col-span-3 bg-surface/60 rounded-xl p-4 border border-border/40 flex flex-col justify-between">
                 <span class="font-mono text-[9px] text-muted uppercase tracking-wider">Revenue</span>
                 <span class="font-display font-800 text-2xl text-cream">₱4.2M</span>
@@ -140,7 +142,6 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='htt
                 <span class="font-display font-800 text-2xl text-accent">94.2%</span>
                 <span class="font-mono text-[9px] text-green-600">▲ 3.2%</span>
             </div>
-            <!-- Chart area -->
             <div class="col-span-8 bg-surface/40 rounded-xl p-4 border border-border/30 relative overflow-hidden" style="min-height:120px">
                 <span class="font-mono text-[9px] text-muted uppercase tracking-wider block mb-2">Procurement Spend — 12 Months</span>
                 <svg viewBox="0 0 400 100" class="w-full h-[80px]" preserveAspectRatio="none">
@@ -152,7 +153,6 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='htt
                     <circle cx="400" cy="15" r="4" fill="#c47a1e"><animate attributeName="opacity" values="0;1" dur="2.5s" fill="freeze"/></circle>
                 </svg>
             </div>
-            <!-- Side mini widgets -->
             <div class="col-span-4 space-y-3">
                 <div class="bg-surface/40 rounded-xl p-3 border border-border/30">
                     <span class="font-mono text-[9px] text-muted uppercase tracking-wider block mb-1">Top Vendor</span>
@@ -168,7 +168,6 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='htt
                     </div>
                 </div>
             </div>
-            <!-- Bottom bar -->
             <div class="col-span-12 bg-surface/30 rounded-xl p-3 border border-border/20 flex items-center justify-between">
                 <div class="flex items-center gap-4">
                     <span class="font-mono text-[9px] text-muted">Last sync: 2 min ago</span>
@@ -179,16 +178,10 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='htt
             </div>
         </div>
     </div>
-
-    <!-- ═══ FLOATING ANALYTICS CARDS (orbiting the dashboard) ═══ -->
-
-    <!-- Float card: DAX -->
     <div class="absolute top-2 -left-4 md:left-2 bg-white/95 backdrop-blur-lg border border-border rounded-2xl p-3 shadow-xl shadow-cream/8 z-20" style="animation:floatA 6s ease-in-out infinite;width:140px">
         <div class="flex items-center gap-2 mb-1"><span class="material-symbols-outlined text-accent text-sm">function</span><span class="font-mono text-[9px] text-accent uppercase tracking-wider font-medium">DAX Measure</span></div>
         <span class="font-mono text-[10px] text-cream leading-tight block">CALCULATE(SUM(Sales[Amount]), FILTER(...))</span>
     </div>
-
-    <!-- Float card: Workflow -->
     <div class="absolute top-16 -right-2 md:right-4 bg-white/95 backdrop-blur-lg border border-accent/30 rounded-2xl p-3 shadow-xl shadow-accent/8 z-20" style="animation:floatB 7s ease-in-out infinite;width:155px">
         <div class="flex items-center gap-2 mb-1"><span class="material-symbols-outlined text-accent text-sm">account_tree</span><span class="font-mono text-[9px] text-accent uppercase tracking-wider font-medium">n8n Pipeline</span></div>
         <div class="flex items-center gap-1 mt-1">
@@ -199,22 +192,16 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='htt
             <div class="w-5 h-5 rounded-md bg-green-500/15 flex items-center justify-center"><span class="text-[8px] text-green-600 font-bold">✓</span></div>
         </div>
     </div>
-
-    <!-- Float card: Metric -->
     <div class="absolute bottom-4 -left-2 md:left-6 bg-accent text-white rounded-2xl p-3 shadow-xl shadow-accent/20 z-20" style="animation:floatC 5.5s ease-in-out infinite;width:130px">
         <span class="font-mono text-[9px] uppercase tracking-wider opacity-70">Uptime</span>
         <span class="font-display font-800 text-xl block">99.8%</span>
         <span class="font-mono text-[9px] opacity-60">All pipelines</span>
     </div>
-
-    <!-- Float card: Sheets sync -->
     <div class="absolute bottom-12 -right-3 md:right-8 bg-white/95 backdrop-blur-lg border border-border rounded-2xl p-3 shadow-xl shadow-cream/8 z-20" style="animation:floatD 6.5s ease-in-out infinite;width:145px">
         <div class="flex items-center gap-2 mb-1"><span class="material-symbols-outlined text-green-600 text-sm">table_chart</span><span class="font-mono text-[9px] text-green-600 uppercase tracking-wider font-medium">Sheets Sync</span></div>
         <span class="text-[11px] text-cream font-medium">1,247 rows updated</span>
         <span class="font-mono text-[9px] text-muted block">BPI · BDO · UnionBank</span>
     </div>
-
-    <!-- Float card: BPMN mini -->
     <div class="absolute top-1/2 -translate-y-1/2 -left-6 md:left-0 bg-white/90 backdrop-blur-lg border border-border rounded-xl p-2 shadow-lg z-20 hidden lg:block" style="animation:floatE 8s ease-in-out infinite;width:100px">
         <span class="font-mono text-[8px] text-muted uppercase tracking-wider block mb-1">BPMN</span>
         <div class="flex items-center gap-1">
@@ -236,7 +223,6 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='htt
 @keyframes floatE{0%,100%{transform:translateY(-50%) translateX(0)}50%{transform:translateY(calc(-50% - 12px)) translateX(6px)}}
 </style>
 
-<!-- ═══ TRUST BAR (Clay: logo marquee) ═══ -->
 <section class="relative z-10 border-y border-border/40 py-6 overflow-hidden">
 <p class="text-center text-muted text-sm mb-5 font-medium">Tools & platforms I work with daily</p>
 <div class="mq">
@@ -275,7 +261,6 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='htt
 </div>
 </section>
 
-<!-- ═══ ABOUT (Clay: short, centered, portrait + text) ═══ -->
 <section id="about" class="relative z-10 max-w-6xl mx-auto px-8 py-28">
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-14 items-center">
 <div class="lg:col-span-4 sr">
@@ -294,7 +279,6 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='htt
 </div>
 </section>
 
-<!-- ═══ SERVICE 1 (Clay: left text + right embed, with stat callout) ═══ -->
 <section id="services" class="relative z-10 max-w-6xl mx-auto px-8 py-20">
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center sr">
 <div class="space-y-6">
@@ -313,26 +297,13 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='htt
 </div>
 </section>
 
-<!-- ═══ SERVICE 2 (Clay: right text + left embed, reversed) ═══ -->
 <section class="relative z-10 max-w-6xl mx-auto px-8 py-20">
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center sr">
-<div class="order-2 lg:order-1 rounded-2xl overflow-hidden border border-border shadow-lg relative" style="height:500px" id="n8n-container">
-  <!-- n8n workflow iframe — replace YOUR_N8N_URL with your self-hosted instance -->
-  <iframe
-    id="n8n-workflow-iframe"
-    src="https://n8n-rcp.taild30d6e.ts.net/workflow/E5yYGjJaJ0bkCWa5"
-    width="100%"
-    height="100%"
-    frameborder="0"
-    allow="fullscreen"
-    style="display:block;width:100%;height:100%;border:none;background:#1a1816;"
-    title="n8n Workflow — Bank Statement Extraction Pipeline"
-    onerror="this.style.display='none';document.getElementById('n8n-fallback').style.display='flex';"
-  ></iframe>
-  <!-- Fallback shown if iframe fails to load (e.g. n8n not reachable) -->
-  <div id="n8n-fallback" style="display:none;position:absolute;inset:0;background:#1a1816;flex-direction:column;align-items:center;justify-content:center;gap:12px;">
-    <span class="material-symbols-outlined" style="font-size:40px;color:#c47a1e;">sync_alt</span>
-    <p style="color:#6b6660;font-family:'JetBrains Mono',monospace;font-size:12px;text-align:center;max-width:260px;">n8n workflow not reachable.<br>Update <code style="color:#e8973e">https://n8n-rcp.taild30d6e.ts.net/workflow/E5yYGjJaJ0bkCWa5</code> in the source.</p>
+<div class="order-2 lg:order-1 n8n-base-frame" id="n8n-container">
+  <div class="n8n-base-frame-inner">
+    <div class="n8n-canvas-bg">
+      <n8n-demo id="n8n-service-demo" collapseformobile="false" clicktointeract="false" hidecanvaserrors="true" theme="light" style="display:block;width:100%;height:100%;"></n8n-demo>
+    </div>
   </div>
 </div>
 <div class="order-1 lg:order-2 space-y-6">
@@ -348,7 +319,6 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='htt
 </div>
 </section>
 
-<!-- ═══ SERVICE 3 (Clay: left text + right visual) ═══ -->
 <section class="relative z-10 max-w-6xl mx-auto px-8 py-20">
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center sr">
 <div class="space-y-6">
@@ -378,7 +348,6 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='htt
 </div>
 </section>
 
-<!-- ═══ FEATURE GRID (Clay: icon + title + description) ═══ -->
 <section class="relative z-10 max-w-6xl mx-auto px-8 py-20">
 <div class="text-center mb-14 sr">
 <h2 class="font-display font-800 text-3xl md:text-4xl tracking-tight text-cream">Turn data into action with flexible, iterable systems</h2>
@@ -394,19 +363,14 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='htt
 </div>
 </section>
 
-<!-- ═══ SKILLS & TECH DEMO (Clay: split — left bullet features, right interactive panel) ═══ -->
 <section id="skills" class="relative z-10 max-w-7xl mx-auto px-8 py-28">
-  <!-- Section label -->
   <div class="text-center mb-16 sr">
     <span class="font-mono text-[11px] tracking-[.15em] uppercase text-accent border border-accent/30 rounded-full px-4 py-1.5">Skills & Tech Stack</span>
     <h2 class="font-display font-800 text-3xl md:text-[2.6rem] tracking-tight text-cream mt-5 leading-[1.1]">Every data point, workflow, and knowledge node — in one stack</h2>
     <p class="text-subtle text-lg mt-4 max-w-2xl mx-auto font-light">Understand your operations, your pipelines, and the gaps between them. Then automate.</p>
   </div>
 
-  <!-- Clay split: text left + demo right -->
   <div class="grid grid-cols-1 lg:grid-cols-[1fr_1.15fr] gap-10 items-start sr">
-
-    <!-- LEFT: Feature bullets (Clay-style) -->
     <div class="space-y-5">
       <div class="clay-feat group">
         <div class="clay-feat-icon"><span class="material-symbols-outlined">bar_chart</span></div>
@@ -419,7 +383,7 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='htt
         <div class="clay-feat-icon"><span class="material-symbols-outlined">sync_alt</span></div>
         <div>
           <h3 class="font-display font-700 text-[17px] text-cream mb-1">Workflow Automation:</h3>
-          <p class="text-subtle text-[14px] leading-relaxed">Design n8n pipelines that extract PH bank PDFs, trigger Gmail actions, and sync spreadsheets — all containerized with Docker + Tailscale.</p>
+          <p class="text-subtle text-[14px] leading-relaxed">Design n8n pipelines ranging from OCR document parsing, complex RAG architectures, to autonomous AI agent messaging. Fully containerized.</p>
         </div>
       </div>
       <div class="clay-feat group">
@@ -430,29 +394,24 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='htt
         </div>
       </div>
 
-      <!-- Stat pills -->
       <div class="flex flex-wrap gap-3 pt-4">
         <div class="stat-pill"><div class="stat-val">150+</div><span class="text-sm text-subtle">DAX measures authored across projects</span></div>
         <div class="stat-pill"><div class="stat-val">50+</div><span class="text-sm text-subtle">n8n workflows automated</span></div>
         <div class="stat-pill"><div class="stat-val">12</div><span class="text-sm text-subtle">Active Obsidian data models</span></div>
       </div>
 
-      <!-- Tool tag cloud -->
       <div class="pt-2 flex flex-wrap gap-2">
         <span class="mt">Power BI</span><span class="mt">DAX</span><span class="mt">TMDL</span><span class="mt">n8n</span><span class="mt">Docker</span><span class="mt">Tailscale</span><span class="mt">Google Apps Script</span><span class="mt">Obsidian</span><span class="mt">BPMN 2.0</span><span class="mt">Mermaid</span><span class="mt">Supabase</span><span class="mt">MongoDB</span><span class="mt">Python</span><span class="mt">Regex</span>
       </div>
     </div>
 
-    <!-- RIGHT: Interactive demo panel -->
     <div class="demo-shell sr d1">
-      <!-- Panel chrome bar -->
       <div class="demo-chrome">
         <div class="flex items-center gap-1.5">
           <span class="demo-dot" style="background:#ff5f57"></span>
           <span class="demo-dot" style="background:#febc2e"></span>
           <span class="demo-dot" style="background:#28c840"></span>
         </div>
-        <!-- Tabs -->
         <div class="flex items-center gap-1 mx-auto">
           <button class="demo-tab active" data-tab="powerbi" onclick="switchTab('powerbi',this)">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><rect x="2" y="12" width="5" height="10" rx="1" fill="currentColor" opacity=".5"/><rect x="9.5" y="7" width="5" height="15" rx="1" fill="currentColor" opacity=".75"/><rect x="17" y="2" width="5" height="20" rx="1" fill="currentColor"/></svg>
@@ -470,15 +429,12 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='htt
         <div class="w-20"></div>
       </div>
 
-      <!-- Power BI panel -->
       <div id="tab-powerbi" class="demo-panel active">
-        <!-- Mini KPI row -->
         <div class="grid grid-cols-3 gap-2 mb-4">
           <div class="pbi-kpi"><div class="pbi-kpi-val">₱4.2M</div><div class="pbi-kpi-label">Total PO Value</div><div class="pbi-kpi-change up">+12.4%</div></div>
           <div class="pbi-kpi"><div class="pbi-kpi-val">93%</div><div class="pbi-kpi-label">On-Time Delivery</div><div class="pbi-kpi-change up">+3.1%</div></div>
           <div class="pbi-kpi"><div class="pbi-kpi-val">18d</div><div class="pbi-kpi-label">Avg Lead Time</div><div class="pbi-kpi-change down">-2.3d</div></div>
         </div>
-        <!-- Mini bar chart -->
         <div class="pbi-chart-wrap">
           <div class="pbi-chart-title"><span class="material-symbols-outlined" style="font-size:13px">bar_chart</span> PO Value by Supplier — Q1 2026</div>
           <div class="pbi-bars">
@@ -489,7 +445,6 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='htt
             <div class="pbi-bar-row"><span class="pbi-bar-label">Others</span><div class="pbi-bar-track"><div class="pbi-bar-fill" style="width:30%">₱420K</div></div></div>
           </div>
         </div>
-        <!-- Data table -->
         <div class="pbi-table-wrap">
           <div class="pbi-table-header"><span>PO #</span><span>Supplier</span><span>Status</span><span class="text-right">Amount</span></div>
           <div class="pbi-table-row"><span class="pbi-mono">PO-2026-0041</span><span>Jollibee Supplies</span><span><span class="badge green">Delivered</span></span><span class="text-right pbi-mono">₱248,000</span></div>
@@ -500,34 +455,64 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='htt
         <div class="demo-dax-badge"><span class="material-symbols-outlined" style="font-size:11px">code</span> DAX · TMDL · Drill-Through</div>
       </div>
 
-      <!-- n8n panel -->
-      <div id="tab-n8n" class="demo-panel">
-        <div class="n8n-label">Bank Statement Extraction Pipeline</div>
-        <div class="n8n-canvas" id="n8n-interactive">
-          <!-- Nodes rendered by JS -->
+      <div id="tab-n8n" class="demo-panel flex-col h-full" style="padding:0; overflow:hidden;">
+        
+        <div class="n8n-wf-tabs">
+          <button class="n8n-wf-tab active" data-wf="ocr" onclick="loadN8nWF('ocr')">OCR Parsing</button>
+          <button class="n8n-wf-tab" data-wf="rag" onclick="loadN8nWF('rag')">RAG Pipeline</button>
+          <button class="n8n-wf-tab" data-wf="agent" onclick="loadN8nWF('agent')">AI Agent Messaging</button>
         </div>
-        <div class="n8n-legend">
-          <span class="n8n-leg-item trigger">Trigger</span>
-          <span class="n8n-leg-item process">Process</span>
-          <span class="n8n-leg-item output">Output</span>
+        
+        <div class="n8n-label" id="n8n-wf-desc" style="padding:14px 20px 0; margin-bottom:4px; font-weight:600; color:#1a1816;">
+          OCR Parsing — PDF to Structured Data
         </div>
-        <div class="demo-dax-badge"><span class="material-symbols-outlined" style="font-size:11px">play_arrow</span> Click a node to inspect</div>
+
+        <div class="n8n-demo-container">
+          <n8n-demo id="n8n-tab-demo" tidyup="true" collapseformobile="false" clicktointeract="true" hidecanvaserrors="true" theme="light" style="display:block; width:100%; height:100%;"></n8n-demo>
+        </div>
+
+        <div class="n8n-chat-wrapper">
+          <div id="n8n-chat-area">
+            <div id="n8n-empty" style="display:flex;align-items:center;gap:6px;justify-content:center;height:100%;">
+              <span class="material-symbols-outlined" style="font-size:13px;color:#c47a1e">bolt</span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#999590;">Live · send a message to trigger the workflow</span>
+            </div>
+          </div>
+          <div style="display:flex; border-top:1px solid #e2ddd5; align-items:stretch; background:#fff;">
+            <button id="n8n-reset-btn" onclick="n8nReset()" title="New session"
+              style="padding:0 10px;background:transparent;border:none;border-right:1px solid #e2ddd5;cursor:pointer;color:#999590;transition:color .2s;display:flex;align-items:center;"
+              onmouseover="this.style.color='#c47a1e'" onmouseout="this.style.color='#999590'">
+              <span class="material-symbols-outlined" style="font-size:14px">refresh</span>
+            </button>
+            <input id="n8n-chat-input" type="text" maxlength="300" placeholder="Interact with the selected pipeline..."
+              style="flex:1;background:transparent;border:none;outline:none;padding:9px 13px;font-family:'Outfit',sans-serif;font-size:12.5px;color:#1a1816;"
+              onkeydown="if(event.key==='Enter')n8nFire()"/>
+            <button id="n8n-fire-btn" onclick="n8nFire()"
+              style="padding:0 15px;background:#c47a1e;color:#fff;border:none;cursor:pointer;font-family:'Syne',sans-serif;font-weight:700;font-size:11px;transition:background .2s;display:flex;align-items:center;gap:4px;"
+              onmouseover="this.style.background='#e8973e'" onmouseout="this.style.background='#c47a1e'">
+              <span class="material-symbols-outlined" style="font-size:13px">send</span>Send
+            </button>
+          </div>
+        </div>
+
+        <div class="demo-dax-badge" id="n8n-dax-badge-text" style="margin-top:8px; margin-bottom:16px;">
+          <span class="material-symbols-outlined" style="font-size:11px">play_arrow</span>
+          Webhook → Read PDF → AI Extraction → Format → Sheets
+        </div>
       </div>
 
-      <!-- Obsidian graph panel -->
       <div id="tab-obsidian" class="demo-panel">
-        <div class="obs-label">Knowledge Vault — Graph View</div>
-        <canvas id="obs-graph" style="width:100%;height:380px;display:block;cursor:grab"></canvas>
+        <div class="obs-label">Knowledge Vault — Schema Visualizer</div>
+        <canvas id="obs-graph" style="width:100%;height:390px;display:block;cursor:grab;border-radius:12px;overflow:hidden;"></canvas>
         <div class="obs-legend">
-          <span class="obs-leg" style="--c:#c47a1e">● MOC</span>
-          <span class="obs-leg" style="--c:#4a9eff">● Workflow</span>
-          <span class="obs-leg" style="--c:#7ecf8e">● Finance</span>
-          <span class="obs-leg" style="--c:#b48eff">● Process</span>
+          <span class="obs-leg" style="--c:#c47a1e">■ MOC</span>
+          <span class="obs-leg" style="--c:#4a9eff">■ Workflow</span>
+          <span class="obs-leg" style="--c:#7ecf8e">■ Finance</span>
+          <span class="obs-leg" style="--c:#b48eff">■ Process</span>
         </div>
-        <div class="demo-dax-badge"><span class="material-symbols-outlined" style="font-size:11px">drag_pan</span> Drag to explore · Hover nodes</div>
+        <div class="demo-dax-badge"><span class="material-symbols-outlined" style="font-size:11px">drag_pan</span> Pan/Zoom · Drag nodes · Hover to highlight · Entity mapping</div>
       </div>
-    </div><!-- /demo-shell -->
-  </div>
+    </div></div>
 </section>
 
 <style>
@@ -538,8 +523,13 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='htt
 .clay-feat:hover .clay-feat-icon{background:linear-gradient(135deg,#c47a1e,#e8973e);color:#fff}
 .clay-feat-icon .material-symbols-outlined{font-size:20px}
 
-/* Demo shell */
-.demo-shell{background:#fff;border:1px solid #e2ddd5;border-radius:24px;overflow:hidden;box-shadow:0 8px 48px -8px rgba(26,24,22,.06)}
+/* Responsive Demo shell overrides */
+.demo-shell {
+  background: #fff; border: 1px solid #e2ddd5; border-radius: 24px; overflow: hidden;
+  box-shadow: 0 8px 48px -8px rgba(26,24,22,.06);
+  display: flex; flex-direction: column;
+  height: 100%; min-height: 680px;
+}
 .demo-chrome{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:#f5f3ef;border-bottom:1px solid #e2ddd5;gap:8px}
 .demo-dot{display:inline-block;width:11px;height:11px;border-radius:50%}
 .demo-tab{display:flex;align-items:center;gap:5px;padding:5px 11px;border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;color:#6b6660;background:transparent;border:none;cursor:pointer;transition:all .22s;white-space:nowrap}
@@ -549,8 +539,10 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='htt
 .demo-tab.active svg{opacity:1}
 
 /* Panels */
-.demo-panel{display:none;padding:24px;animation:fadeSlideIn .3s ease}
-.demo-panel.active{display:block}
+.demo-panel{display:none; padding:24px; animation:fadeSlideIn .3s ease;}
+.demo-panel.active{display:block;}
+#tab-n8n.active { display: flex; flex: 1; }
+
 @keyframes fadeSlideIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
 
 /* Power BI styles */
@@ -562,7 +554,7 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='htt
 .pbi-kpi-change.down{background:#fce7f3;color:#be185d}
 .pbi-chart-wrap{background:#f8f7f4;border:1px solid #e8e4de;border-radius:14px;padding:16px 18px;margin-bottom:12px}
 .pbi-chart-title{font-size:10px;color:#999590;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.05em;display:flex;align-items:center;gap:4px;margin-bottom:12px}
-.pbi-bars{space-y:5px;display:flex;flex-direction:column;gap:8px}
+.pbi-bars{display:flex;flex-direction:column;gap:8px}
 .pbi-bar-row{display:flex;align-items:center;gap:8px}
 .pbi-bar-label{font-size:11px;color:#6b6660;width:110px;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .pbi-bar-track{flex:1;background:#e8e4de;border-radius:6px;height:22px;overflow:hidden}
@@ -577,245 +569,693 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='htt
 .badge.amber{background:#fef3c7;color:#d97706}
 .badge.blue{background:#dbeafe;color:#1d4ed8}
 .badge.gray{background:#f3f4f6;color:#6b7280}
-.demo-dax-badge{margin-top:12px;display:flex;align-items:center;justify-content:center;gap:5px;font-family:'JetBrains Mono',monospace;font-size:10px;color:#999590;letter-spacing:.05em}
+.demo-dax-badge{display:flex;align-items:center;justify-content:center;gap:5px;font-family:'JetBrains Mono',monospace;font-size:10px;color:#999590;letter-spacing:.05em}
 
-/* n8n canvas styles */
-.n8n-label,.obs-label{font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:#999590;margin-bottom:10px}
-.n8n-canvas{background:#1a1816;border-radius:14px;padding:20px;height:380px;position:relative;overflow:hidden}
-.n8n-node{position:absolute;display:flex;flex-direction:column;align-items:center;gap:6px;cursor:pointer;transition:transform .25s}
-.n8n-node:hover{transform:scale(1.1)}
-.n8n-box{padding:7px 10px;border-radius:10px;font-size:10px;font-family:'JetBrains Mono',monospace;font-weight:600;text-align:center;border:1.5px solid transparent;min-width:80px;box-shadow:0 4px 16px rgba(0,0,0,.3);transition:all .25s}
-.n8n-box.trigger{background:#2d1f0a;border-color:#c47a1e;color:#e8973e}
-.n8n-box.process{background:#0d1f2d;border-color:#4a9eff;color:#7ec8ff}
-.n8n-box.output{background:#0d2116;border-color:#4ab87e;color:#7ecfa8}
-.n8n-box:hover{box-shadow:0 0 20px rgba(196,122,30,.3)}
-.n8n-label-text{font-size:9px;color:#6b6660;font-family:'JetBrains Mono',monospace;white-space:nowrap}
-.n8n-legend{display:flex;gap:12px;margin-top:10px;justify-content:center}
-.n8n-leg-item{font-size:9px;font-family:'JetBrains Mono',monospace;padding:3px 10px;border-radius:999px;font-weight:600;text-transform:uppercase;letter-spacing:.05em}
-.n8n-leg-item.trigger{background:#2d1f0a;color:#e8973e;border:1px solid #c47a1e}
-.n8n-leg-item.process{background:#0d1f2d;color:#7ec8ff;border:1px solid #4a9eff}
-.n8n-leg-item.output{background:#0d2116;color:#7ecfa8;border:1px solid #4ab87e}
+/* n8n Dynamic & Responsive layout */
+.n8n-wf-tabs { display: flex; gap: 8px; padding: 16px 20px 0; overflow-x: auto; scrollbar-width: none; flex-shrink: 0; }
+.n8n-wf-tabs::-webkit-scrollbar { display: none; }
+.n8n-wf-tab { padding: 6px 14px; font-size: 11px; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.05em; border: 1px solid #e2ddd5; border-radius: 8px; background: #f8f7f4; color: #6b6660; cursor: pointer; white-space: nowrap; transition: all 0.2s; }
+.n8n-wf-tab:hover { background: #ece9e3; color: #1a1816; }
+.n8n-wf-tab.active { background: #c47a1e; color: #fff; border-color: #c47a1e; font-weight: 600; }
+.n8n-label{font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:#999590;margin-bottom:10px}
+.n8n-demo-container { flex: 1; min-height: 250px; border-radius: 14px; overflow: hidden; margin: 10px 20px; background: rgba(196,122,30,0.08); padding: 8px; }
+.n8n-demo-container n8n-demo { display:block; width:100%; height:100%; border-radius: 10px; }
+.n8n-chat-wrapper { margin: 0 20px; border: 1px solid #e2ddd5; border-radius: 14px; overflow: hidden; flex-shrink: 0; }
+#n8n-chat-area { height: 90px; overflow-y: auto; display: flex; flex-direction: column; gap: 8px; padding: 10px 14px; background: #f8f7f4; scroll-behavior: smooth; }
 
 /* Obsidian graph */
 .obs-legend{display:flex;gap:12px;justify-content:center;margin-top:8px;flex-wrap:wrap}
 .obs-leg{font-size:10px;font-family:'JetBrains Mono',monospace;color:var(--c)}
 </style>
 
+<style>
+.n8nc-row{display:flex;gap:7px;align-items:flex-end;animation:n8ncPop .28s cubic-bezier(.16,1,.3,1);}
+.n8nc-row.user{flex-direction:row-reverse;}
+@keyframes n8ncPop{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.n8nc-av{width:20px;height:20px;border-radius:6px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:8px;font-family:'Syne',sans-serif;font-weight:800;}
+.n8nc-bub{max-width:82%;padding:6px 10px;border-radius:10px;font-size:11.5px;line-height:1.5;}
+.n8nc-bub.bot{background:#fff;border:1px solid #e2ddd5;border-bottom-left-radius:3px;color:#1a1816;}
+.n8nc-bub.user{background:#1a1816;color:#fff;border-bottom-right-radius:3px;}
+.n8nc-pre{margin-top:4px;background:#f0eee9;border:1px solid #e2ddd5;border-radius:6px;padding:6px 8px;font-family:'JetBrains Mono',monospace;font-size:9.5px;color:#6b6660;white-space:pre-wrap;word-break:break-all;max-height:60px;overflow-y:auto;line-height:1.4;}
+.n8nc-chip{display:inline-flex;align-items:center;gap:3px;padding:2px 5px;border-radius:999px;font-family:'JetBrains Mono',monospace;font-size:8.5px;margin-top:3px;}
+.n8nc-chip.ok{background:#d1fae5;color:#047857;}.n8nc-chip.err{background:#fee2e2;color:#b91c1c;}
+.n8nc-tdot{width:4px;height:4px;border-radius:50%;background:#999590;animation:n8ncB .9s ease-in-out infinite;display:inline-block;}
+.n8nc-tdot:nth-child(2){animation-delay:.15s}.n8nc-tdot:nth-child(3){animation-delay:.3s}
+@keyframes n8ncB{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-3px)}}
+#n8n-chat-area::-webkit-scrollbar{width:3px}
+#n8n-chat-area::-webkit-scrollbar-thumb{background:#e2ddd5;border-radius:99px}
+</style>
+
 <script>
-/* ── Tab switcher ── */
+/* ── Workflow JSON Definitions ── */
+const wfOcr = {
+  nodes: [
+    {id:'1', name:'PDF Upload (Webhook)', type:'n8n-nodes-base.webhook', position:[0,200]},
+    {id:'2', name:'Extract PDF Text', type:'n8n-nodes-base.extractFromFile', position:[200,200]},
+    {id:'3', name:'AI Data Extraction', type:'@n8n/n8n-nodes-langchain.agent', position:[400,200]},
+    {id:'4', name:'OpenAI Model', type:'@n8n/n8n-nodes-langchain.lmChatOpenAi', position:[350,380]},
+    {id:'5', name:'Format Output', type:'n8n-nodes-base.code', position:[650,200]},
+    {id:'6', name:'Google Sheets', type:'n8n-nodes-base.googleSheets', position:[850,200]}
+  ],
+  connections: {
+    'PDF Upload (Webhook)': {main: [[{node:'Extract PDF Text', type:'main', index:0}]]},
+    'Extract PDF Text': {main: [[{node:'AI Data Extraction', type:'main', index:0}]]},
+    'AI Data Extraction': {main: [[{node:'Format Output', type:'main', index:0}]]},
+    'Format Output': {main: [[{node:'Google Sheets', type:'main', index:0}]]},
+    'OpenAI Model': {ai_languageModel: [[{node:'AI Data Extraction', type:'ai_languageModel', index:0}]]}
+  }
+};
+
+const wfRag = {
+  nodes: [
+    {id:'1', name:'Query Webhook', type:'n8n-nodes-base.webhook', position:[0,200]},
+    {id:'2', name:'Q&A Chain', type:'@n8n/n8n-nodes-langchain.chainQa', position:[200,200]},
+    {id:'3', name:'Anthropic Claude', type:'@n8n/n8n-nodes-langchain.lmChatAnthropic', position:[150,380]},
+    {id:'4', name:'Pinecone Vector Store', type:'@n8n/n8n-nodes-langchain.vectorStorePinecone', position:[300,380]},
+    {id:'5', name:'OpenAI Embeddings', type:'@n8n/n8n-nodes-langchain.embeddingsOpenAi', position:[300,550]},
+    {id:'6', name:'Webhook Response', type:'n8n-nodes-base.respondToWebhook', position:[500,200]}
+  ],
+  connections: {
+    'Query Webhook': {main: [[{node:'Q&A Chain', type:'main', index:0}]]},
+    'Q&A Chain': {main: [[{node:'Webhook Response', type:'main', index:0}]]},
+    'Anthropic Claude': {ai_languageModel: [[{node:'Q&A Chain', type:'ai_languageModel', index:0}]]},
+    'Pinecone Vector Store': {ai_vectorStore: [[{node:'Q&A Chain', type:'ai_vectorStore', index:0}]]},
+    'OpenAI Embeddings': {ai_embedding: [[{node:'Pinecone Vector Store', type:'ai_embedding', index:0}]]}
+  }
+};
+
+const wfAgent = {
+  nodes: [
+    {id:'1', name:'Chat Trigger', type:'@n8n/n8n-nodes-langchain.chatTrigger', position:[0,200]},
+    {id:'2', name:'Autonomous AI Agent', type:'@n8n/n8n-nodes-langchain.agent', position:[200,200]},
+    {id:'3', name:'OpenAI Model', type:'@n8n/n8n-nodes-langchain.lmChatOpenAi', position:[100,380]},
+    {id:'4', name:'Window Memory', type:'@n8n/n8n-nodes-langchain.memoryBufferWindow', position:[250,380]},
+    {id:'5', name:'Database Tool', type:'@n8n/n8n-nodes-langchain.toolPostgres', position:[400,380]},
+    {id:'6', name:'API Integration Tool', type:'@n8n/n8n-nodes-langchain.toolHttpRequest', position:[550,380]}
+  ],
+  connections: {
+    'Chat Trigger': {main: [[{node:'Autonomous AI Agent', type:'main', index:0}]]},
+    'OpenAI Model': {ai_languageModel: [[{node:'Autonomous AI Agent', type:'ai_languageModel', index:0}]]},
+    'Window Memory': {ai_memory: [[{node:'Autonomous AI Agent', type:'ai_memory', index:0}]]},
+    'Database Tool': {ai_tool: [[{node:'Autonomous AI Agent', type:'ai_tool', index:0}]]},
+    'API Integration Tool': {ai_tool: [[{node:'Autonomous AI Agent', type:'ai_tool', index:0}]]}
+  }
+};
+
+/* ── Tab & Workflow switch logic ── */
+window.loadN8nWF = function(type) {
+  document.querySelectorAll('.n8n-wf-tab').forEach(b => b.classList.remove('active'));
+  document.querySelector(`[data-wf="${type}"]`).classList.add('active');
+
+  const demo = document.getElementById('n8n-tab-demo');
+  const desc = document.getElementById('n8n-wf-desc');
+  const badge = document.getElementById('n8n-dax-badge-text');
+
+  if(type === 'ocr') {
+    if(demo) demo.workflow = JSON.stringify(wfOcr);
+    desc.textContent = "OCR Parsing — PDF to Structured Data";
+    badge.innerHTML = '<span class="material-symbols-outlined" style="font-size:11px">play_arrow</span> Webhook → Read PDF → AI Extraction → Format → Sheets';
+  } else if(type === 'rag') {
+    if(demo) demo.workflow = JSON.stringify(wfRag);
+    desc.textContent = "RAG Pipeline — Enterprise Vector Search";
+    badge.innerHTML = '<span class="material-symbols-outlined" style="font-size:11px">play_arrow</span> Webhook → QA Chain → Vector Store (Pinecone) → Response';
+  } else if(type === 'agent') {
+    if(demo) demo.workflow = JSON.stringify(wfAgent);
+    desc.textContent = "AI Agent Messaging — Autonomous Tool Calling";
+    badge.innerHTML = '<span class="material-symbols-outlined" style="font-size:11px">play_arrow</span> Chat Trigger → AI Agent → Tools (DB, API) + Memory';
+  }
+}
+
 function switchTab(name,btn){
   document.querySelectorAll('.demo-panel').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.demo-tab').forEach(b=>b.classList.remove('active'));
   document.getElementById('tab-'+name).classList.add('active');
   btn.classList.add('active');
-  if(name==='obsidian')setTimeout(initObsGraph,50);
-  if(name==='n8n')renderN8nCanvas();
-  if(name==='powerbi')animateBars();
+  if(name==='obsidian') setTimeout(initObsGraph, 60);
+  if(name==='powerbi') animateBars();
+  if(name==='n8n'){
+    // Ensure default workflow is loaded if needed
+    if(!document.getElementById('n8n-tab-demo').workflow) {
+      loadN8nWF('ocr');
+    }
+  }
 }
 
-/* ── Power BI bar animation ── */
 function animateBars(){
-  const fills=document.querySelectorAll('.pbi-bar-fill');
-  fills.forEach(f=>{const w=f.style.width;f.style.width='0';setTimeout(()=>f.style.width=w,80)});
-}
-setTimeout(animateBars,400);
-
-/* ── n8n workflow canvas ── */
-const wfNodes=[
-  {id:'webhook',label:'PDF Upload',sub:'Webhook',type:'trigger',x:12,y:155},
-  {id:'parse',label:'OCR Parse',sub:'Regex Engine',type:'process',x:140,y:70},
-  {id:'classify',label:'Classify',sub:'Bank Type',type:'process',x:140,y:240},
-  {id:'transform',label:'Transform',sub:'JSON Builder',type:'process',x:268,y:155},
-  {id:'sheets',label:'Sheets',sub:'Google API',type:'output',x:396,y:70},
-  {id:'notify',label:'Notify',sub:'Gmail Send',type:'output',x:396,y:240},
-];
-const wfEdges=[
-  ['webhook','parse'],['webhook','classify'],
-  ['parse','transform'],['classify','transform'],
-  ['transform','sheets'],['transform','notify'],
-];
-
-let activeNode=null;
-function renderN8nCanvas(){
-  const c=document.getElementById('n8n-interactive');
-  if(!c||c.dataset.rendered)return;
-  c.dataset.rendered='1';
-  c.innerHTML='';
-
-  // SVG edges
-  const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
-  svg.setAttribute('style','position:absolute;inset:0;width:100%;height:100%;pointer-events:none');
-  svg.setAttribute('viewBox','0 0 520 380');
-  const defs=document.createElementNS('http://www.w3.org/2000/svg','defs');
-  const mk=document.createElementNS('http://www.w3.org/2000/svg','marker');
-  mk.setAttribute('id','arr');mk.setAttribute('markerWidth','6');mk.setAttribute('markerHeight','6');
-  mk.setAttribute('refX','5');mk.setAttribute('refY','3');mk.setAttribute('orient','auto');
-  const poly=document.createElementNS('http://www.w3.org/2000/svg','polygon');
-  poly.setAttribute('points','0 0, 6 3, 0 6');poly.setAttribute('fill','#3d3530');
-  mk.appendChild(poly);defs.appendChild(mk);svg.appendChild(defs);
-
-  const nw=100,nh=46;
-  const nodeMap={};
-  wfNodes.forEach(n=>{
-    // centre of box in 480x260 space (px: x*460/440, y*220/200)
-    nodeMap[n.id]={cx:(n.x+nw/2)*1.0, cy:(n.y+nh/2)*1.0};
-  });
-
-  wfEdges.forEach(([a,b])=>{
-    const s=nodeMap[a],t=nodeMap[b];
-    if(!s||!t)return;
-    const line=document.createElementNS('http://www.w3.org/2000/svg','line');
-    line.setAttribute('x1',s.cx+52);line.setAttribute('y1',s.cy);
-    line.setAttribute('x2',t.cx-52);line.setAttribute('y2',t.cy);
-    line.setAttribute('stroke','#3d3530');line.setAttribute('stroke-width','1.5');
-    line.setAttribute('marker-end','url(#arr)');
-    svg.appendChild(line);
-  });
-  c.appendChild(svg);
-
-  // Node elements
-  wfNodes.forEach(n=>{
-    const el=document.createElement('div');
-    el.className='n8n-node';
-    el.style.left=n.x+'px';el.style.top=n.y+'px';
-    el.innerHTML=`<div class="n8n-box ${n.type}">${n.label}</div><div class="n8n-label-text">${n.sub}</div>`;
-    el.addEventListener('click',()=>{
-      document.querySelectorAll('.n8n-box').forEach(b=>b.style.boxShadow='');
-      el.querySelector('.n8n-box').style.boxShadow='0 0 0 2px #c47a1e, 0 0 24px rgba(196,122,30,.4)';
-      activeNode=n.id;
-    });
-    c.appendChild(el);
+  document.querySelectorAll('.pbi-bar-fill').forEach(f=>{
+    const w=f.style.width; f.style.width='0';
+    setTimeout(()=>f.style.width=w, 80);
   });
 }
+setTimeout(animateBars, 400);
 
-/* ── Obsidian graph ── */
-let obsAnimId=null;
+/* ── Chat Functionality for n8n Demo ── */
+(function(){
+  var _W = 'https://n8n-rcp.taild30d6e.ts.net/webhook/n8n-chat-demo';
+  var _SESSION_KEY = 'sessionId';
+  var _INPUT_KEY   = 'chatInput';
+  var _sessionId   = 'sess_' + Math.random().toString(36).slice(2, 10) + '_' + Date.now();
+  var _busy = false;
+  function _time(){return new Date().toLocaleTimeString('en-PH',{hour:'2-digit',minute:'2-digit',hour12:true});}
+  function _row(role,content){
+    var ca=document.getElementById('n8n-chat-area'),em=document.getElementById('n8n-empty');if(em)em.remove();
+    var row=document.createElement('div');row.className='n8nc-row '+role;
+    var av=document.createElement('div');av.className='n8nc-av';
+    av.style.cssText=role==='user'?'background:#1a1816;color:#fff;':'background:linear-gradient(135deg,#fdf6ec,#fce8c8);color:#c47a1e;';
+    av.textContent=role==='user'?'RC':'n8';
+    var col=document.createElement('div');col.style.cssText='display:flex;flex-direction:column;gap:2px;';
+    var bub=document.createElement('div');bub.className='n8nc-bub '+role;
+    if(typeof content==='string'){bub.textContent=content;}else{bub.appendChild(content);}
+    var t=document.createElement('div');
+    t.style.cssText='font-family:"JetBrains Mono",monospace;font-size:8px;color:#999590;padding:0 2px;'+(role==='user'?'text-align:right;':'');
+    t.textContent=_time();col.appendChild(bub);col.appendChild(t);row.appendChild(av);row.appendChild(col);
+    ca.appendChild(row);ca.scrollTop=ca.scrollHeight;return bub;
+  }
+  function _typing(){
+    var ca=document.getElementById('n8n-chat-area'),row=document.createElement('div');row.className='n8nc-row';row.id='n8nc-ty';
+    var av=document.createElement('div');av.className='n8nc-av';av.style.cssText='background:linear-gradient(135deg,#fdf6ec,#fce8c8);color:#c47a1e;';av.textContent='n8';
+    var bub=document.createElement('div');bub.className='n8nc-bub bot';bub.style.cssText='display:flex;gap:3px;align-items:center;padding:8px 10px;';
+    bub.innerHTML='<div class="n8nc-tdot"></div><div class="n8nc-tdot"></div><div class="n8nc-tdot"></div>';
+    row.appendChild(av);row.appendChild(bub);ca.appendChild(row);ca.scrollTop=ca.scrollHeight;
+  }
+  window.n8nFire=async function(){
+    var inp=document.getElementById('n8n-chat-input'),msg=inp.value.trim();if(!msg||_busy)return;
+    _busy=true;var btn=document.getElementById('n8n-fire-btn');btn.disabled=true;
+    btn.innerHTML='<span class="material-symbols-outlined" style="font-size:13px;animation:n8ncSpin .8s linear infinite">progress_activity</span>';
+    _row('user',msg);inp.value='';_typing();
+    var t0=Date.now(),ok=false,status=null,body='';
+    var payload = {}; payload[_INPUT_KEY] = msg; payload[_SESSION_KEY] = _sessionId;
+    try{var r=await fetch(_W,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});status=r.status;body=await r.text();ok=r.ok;}
+    catch(e){body=e.message;}
+    var el=document.getElementById('n8nc-ty');if(el)el.remove();
+    var elapsed=((Date.now()-t0)/1000).toFixed(2),wrap=document.createElement('div'),disp=body,isJson=false,parsed=null;
+    try{parsed=JSON.parse(body);isJson=true;disp=parsed.output||parsed.text||parsed.message||JSON.stringify(parsed,null,2);}catch{}
+    if(!isJson&&disp.length<140||isJson&&typeof(parsed.output||parsed.text||parsed.message)==='string'){wrap.textContent=disp||(ok?'\u2713 Done':'No response');}
+    else{var lbl=document.createElement('div');lbl.style.cssText='font-family:"JetBrains Mono",monospace;font-size:8.5px;text-transform:uppercase;letter-spacing:.05em;color:#999590;margin-bottom:3px;';lbl.textContent=isJson?'JSON Response':'Response';var pre=document.createElement('pre');pre.className='n8nc-pre';pre.textContent=disp;wrap.appendChild(lbl);wrap.appendChild(pre);}
+    var chip=document.createElement('div');chip.className='n8nc-chip '+(ok?'ok':'err');
+    chip.innerHTML='<span class="material-symbols-outlined" style="font-size:10px">'+(ok?'check_circle':'error')+'</span>'+(status?status+' \u00b7 ':'')+elapsed+'s';
+    wrap.appendChild(chip);_row('bot',wrap);_busy=false;btn.disabled=false;
+    btn.innerHTML='<span class="material-symbols-outlined" style="font-size:13px">send</span>Send';
+  };
+  window.n8nReset = function(){
+    _sessionId = 'sess_' + Math.random().toString(36).slice(2,10) + '_' + Date.now();
+    var ca = document.getElementById('n8n-chat-area');
+    ca.innerHTML = '';
+    var em = document.createElement('div');
+    em.id = 'n8n-empty';
+    em.style.cssText = 'display:flex;align-items:center;gap:6px;justify-content:center;height:100%;';
+    em.innerHTML = '<span class="material-symbols-outlined" style="font-size:13px;color:#c47a1e">bolt</span><span style="font-family:\'JetBrains Mono\',monospace;font-size:10px;color:#999590;">New session — live · send a message to trigger your n8n workflow</span>';
+    ca.appendChild(em);
+    document.getElementById('n8n-chat-input').focus();
+  };
+  var s=document.createElement('style');s.textContent='@keyframes n8ncSpin{to{transform:rotate(360deg)}}';document.head.appendChild(s);
+})();
+</script>
+
+<script>
+/* ── Obsidian Schema visualizer graph ── */
+let obsAnimId = null;
 function initObsGraph(){
-  const canvas=document.getElementById('obs-graph');
-  if(!canvas)return;
-  if(obsAnimId)cancelAnimationFrame(obsAnimId);
-  const ctx=canvas.getContext('2d');
-  const W=canvas.offsetWidth,H=canvas.offsetHeight||280;
-  canvas.width=W*2;canvas.height=H*2;ctx.scale(2,2);
+  const canvas = document.getElementById('obs-graph');
+  if(!canvas) return;
+  if(obsAnimId){ cancelAnimationFrame(obsAnimId); obsAnimId = null; }
 
-  const nodes=[
-    {id:0,label:'📂 Dashboard MOC',x:W*.5,y:H*.38,r:14,col:'#c47a1e',cat:'moc'},
-    {id:1,label:'Procurement v2',x:W*.28,y:H*.2,r:10,col:'#c47a1e',cat:'moc'},
-    {id:2,label:'TMDL Exports',x:W*.18,y:H*.5,r:9,col:'#4a9eff',cat:'workflow'},
-    {id:3,label:'DAX Measures',x:W*.32,y:H*.68,r:9,col:'#4a9eff',cat:'workflow'},
-    {id:4,label:'📂 Automation MOC',x:W*.72,y:H*.25,r:13,col:'#c47a1e',cat:'moc'},
-    {id:5,label:'Bank Extraction',x:W*.85,y:H*.42,r:10,col:'#4a9eff',cat:'workflow'},
-    {id:6,label:'n8n Pipelines',x:W*.78,y:H*.62,r:9,col:'#4a9eff',cat:'workflow'},
-    {id:7,label:'Gmail Sync',x:W*.6,y:H*.75,r:8,col:'#4a9eff',cat:'workflow'},
-    {id:8,label:'📂 Finance MOC',x:W*.5,y:H*.12,r:12,col:'#c47a1e',cat:'moc'},
-    {id:9,label:'BPI Parser',x:W*.72,y:H*.12,r:8,col:'#7ecf8e',cat:'finance'},
-    {id:10,label:'BDO Parser',x:W*.88,y:H*.18,r:8,col:'#7ecf8e',cat:'finance'},
-    {id:11,label:'BPMN Procure',x:W*.2,y:H*.82,r:9,col:'#b48eff',cat:'process'},
-    {id:12,label:'Mermaid Flows',x:W*.4,y:H*.88,r:8,col:'#b48eff',cat:'process'},
+  const shell = canvas.closest('.demo-shell') || canvas.parentElement;
+  const W = shell.clientWidth - 48;
+  const H = 390;
+  const DPR = window.devicePixelRatio || 1;
+
+  canvas.width  = W * DPR;
+  canvas.height = H * DPR;
+  canvas.style.width  = W + 'px';
+  canvas.style.height = H + 'px';
+
+  const ctx = canvas.getContext('2d');
+  ctx.scale(DPR, DPR);
+
+  // Quick roundRect polyfill for schema cards
+  if (!CanvasRenderingContext2D.prototype.roundRect) {
+    CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
+      r = Array.isArray(r) ? r[0] : r;
+      if (w < 2 * r) r = w / 2;
+      if (h < 2 * r) r = h / 2;
+      this.moveTo(x+r, y);
+      this.arcTo(x+w, y,   x+w, y+h, r);
+      this.arcTo(x+w, y+h, x,   y+h, r);
+      this.arcTo(x,   y+h, x,   y,   r);
+      this.arcTo(x,   y,   x+w, y,   r);
+      return this;
+    }
+  }
+
+  const nodes = [
+    {id:0,  label:'Dashboard MOC', x:W*.50, y:H*.38, col:'#c47a1e', fields:['type: Folder','nodes: 14 items']},
+    {id:1,  label:'Procurement',   x:W*.28, y:H*.20, col:'#c47a1e', fields:['type: pbix','refresh: daily']},
+    {id:2,  label:'TMDL Exports',  x:W*.14, y:H*.50, col:'#4a9eff', fields:['type: Schema','vcs: Git']},
+    {id:3,  label:'DAX Measures',  x:W*.32, y:H*.66, col:'#4a9eff', fields:['type: Snippet','count: 150+']},
+    {id:4,  label:'Automation MOC',x:W*.72, y:H*.25, col:'#c47a1e', fields:['type: Folder','nodes: 8 flows']},
+    {id:5,  label:'Bank Pipeline', x:W*.88, y:H*.42, col:'#4a9eff', fields:['type: Webhook','status: Live']},
+    {id:6,  label:'n8n Configs',   x:W*.80, y:H*.62, col:'#4a9eff', fields:['type: Docker','infra: Local']},
+    {id:7,  label:'Gmail Sync',    x:W*.60, y:H*.76, col:'#4a9eff', fields:['type: Script','trigger: 1h']},
+    {id:8,  label:'Finance MOC',   x:W*.50, y:H*.10, col:'#c47a1e', fields:['type: Folder','nodes: 20 notes']},
+    {id:9,  label:'BPI Parser',    x:W*.70, y:H*.10, col:'#7ecf8e', fields:['type: Regex','lang: JS']},
+    {id:10, label:'BDO Parser',    x:W*.86, y:H*.16, col:'#7ecf8e', fields:['type: Regex','lang: JS']},
+    {id:11, label:'BPMN Procure',  x:W*.18, y:H*.82, col:'#b48eff', fields:['type: Diagram','fmt: XML']},
+    {id:12, label:'Mermaid Flows', x:W*.40, y:H*.90, col:'#b48eff', fields:['type: Markdown','engine: v9']}
   ];
-  const edges=[[0,1],[0,3],[0,2],[1,3],[1,8],[8,9],[8,10],[4,5],[4,6],[4,7],[5,9],[5,10],[6,7],[0,4],[3,11],[11,12],[7,12]];
+  
+  const edges = [
+    [0,1],[0,3],[0,2],[1,3],[1,8],[8,9],[8,10],
+    [4,5],[4,6],[4,7],[5,9],[5,10],[6,7],
+    [0,4],[3,11],[11,12],[7,12]
+  ];
 
-  // Physics
-  nodes.forEach(n=>{n.vx=0;n.vy=0});
-  let drag=null,mx=0,my=0,hovNode=null;
-  const lx=W*.5,ly=H*.5,ls=.03;
+  nodes.forEach(n=>{ n.vx=0; n.vy=0; });
 
-  canvas.addEventListener('mousemove',e=>{
-    const r=canvas.getBoundingClientRect(),px=(e.clientX-r.left)*(W/r.width),py=(e.clientY-r.top)*(H/r.height);
-    mx=px;my=py;
-    if(drag){drag.x=px;drag.y=py;drag.vx=0;drag.vy=0}
-    hovNode=nodes.find(n=>Math.hypot(n.x-px,n.y-py)<n.r+8)||null;
-    canvas.style.cursor=hovNode?'pointer':drag?'grabbing':'grab';
+  let drag = null, hovNode = null;
+  const cx = W*.5, cy = H*.5, gravity = .025;
+  const nodeW = 104, nodeH = 54;
+
+  function toLocal(e){
+    const r = canvas.getBoundingClientRect();
+    return [(e.clientX-r.left)*(W/r.width), (e.clientY-r.top)*(H/r.height)];
+  }
+  function hitNode([px,py]){ 
+    return nodes.find(n => px >= n.x - nodeW/2 && px <= n.x + nodeW/2 && py >= n.y - nodeH/2 && py <= n.y + nodeH/2) || null; 
+  }
+
+  canvas.addEventListener('mousemove', e=>{
+    const pt = toLocal(e);
+    hovNode = hitNode(pt);
+    canvas.style.cursor = hovNode ? 'pointer' : drag ? 'grabbing' : 'grab';
+    if(drag){ drag.x=pt[0]; drag.y=pt[1]; drag.vx=0; drag.vy=0; }
   });
-  canvas.addEventListener('mousedown',e=>{
-    const r=canvas.getBoundingClientRect(),px=(e.clientX-r.left)*(W/r.width),py=(e.clientY-r.top)*(H/r.height);
-    drag=nodes.find(n=>Math.hypot(n.x-px,n.y-py)<n.r+8)||null;
-  });
-  canvas.addEventListener('mouseup',()=>drag=null);
+  canvas.addEventListener('mousedown', e=>{ drag = hitNode(toLocal(e)); });
+  canvas.addEventListener('mouseup',   ()=>{ drag = null; });
+  canvas.addEventListener('mouseleave',()=>{ drag = null; hovNode = null; });
+
+  canvas.addEventListener('touchstart', e=>{
+    e.preventDefault();
+    const pt=[(e.touches[0].clientX-canvas.getBoundingClientRect().left)*(W/canvas.getBoundingClientRect().width),(e.touches[0].clientY-canvas.getBoundingClientRect().top)*(H/canvas.getBoundingClientRect().height)];
+    drag = hitNode(pt);
+  },{passive:false});
+  canvas.addEventListener('touchmove', e=>{
+    e.preventDefault();
+    if(!drag) return;
+    const pt=[(e.touches[0].clientX-canvas.getBoundingClientRect().left)*(W/canvas.getBoundingClientRect().width),(e.touches[0].clientY-canvas.getBoundingClientRect().top)*(H/canvas.getBoundingClientRect().height)];
+    drag.x=pt[0]; drag.y=pt[1];
+    drag.vx=0; drag.vy=0;
+  },{passive:false});
+  canvas.addEventListener('touchend', ()=>{ drag=null; });
 
   function tick(){
-    // repulsion
-    for(let i=0;i<nodes.length;i++)for(let j=i+1;j<nodes.length;j++){
-      const a=nodes[i],b=nodes[j];
-      const dx=a.x-b.x,dy=a.y-b.y,d=Math.max(Math.hypot(dx,dy),1),f=180/d/d;
-      a.vx+=dx*f;a.vy+=dy*f;b.vx-=dx*f;b.vy-=dy*f;
+    for(let i=0;i<nodes.length;i++) for(let j=i+1;j<nodes.length;j++){
+      const a=nodes[i], b=nodes[j];
+      const dx=a.x-b.x, dy=a.y-b.y;
+      const d=Math.max(Math.hypot(dx,dy), 1);
+      const f=500/(d*d);
+      a.vx+=dx*f; a.vy+=dy*f;
+      b.vx-=dx*f; b.vy-=dy*f;
     }
-    // edge attraction
     edges.forEach(([ai,bi])=>{
-      const a=nodes[ai],b=nodes[bi];
-      const dx=b.x-a.x,dy=b.y-a.y,d=Math.hypot(dx,dy),f=.006*d;
-      a.vx+=dx*f;a.vy+=dy*f;b.vx-=dx*f;b.vy-=dy*f;
+      const a=nodes[ai], b=nodes[bi];
+      const dx=b.x-a.x, dy=b.y-a.y, d=Math.hypot(dx,dy);
+      const f=.004*d;
+      a.vx+=dx*f; a.vy+=dy*f;
+      b.vx-=dx*f; b.vy-=dy*f;
     });
-    // gravity to center
-    nodes.forEach(n=>{n.vx+=(lx-n.x)*ls;n.vy+=(ly-n.y)*ls});
-    // integrate
+    nodes.forEach(n=>{ n.vx+=(cx-n.x)*gravity; n.vy+=(cy-n.y)*gravity; });
     nodes.forEach(n=>{
-      if(drag===n)return;
-      n.vx*=.85;n.vy*=.85;
-      n.x=Math.max(n.r,Math.min(W-n.r,n.x+n.vx));
-      n.y=Math.max(n.r,Math.min(H-n.r,n.y+n.vy));
+      if(n===drag) return;
+      n.vx*=.82; n.vy*=.82;
+      n.x = Math.max(nodeW/2 + 2, Math.min(W - nodeW/2 - 2, n.x+n.vx));
+      n.y = Math.max(nodeH/2 + 2, Math.min(H - nodeH/2 - 2, n.y+n.vy));
     });
 
-    // draw
     ctx.clearRect(0,0,W,H);
     ctx.fillStyle='#0f0e0d';
     ctx.fillRect(0,0,W,H);
 
-    // edges
     edges.forEach(([ai,bi])=>{
-      const a=nodes[ai],b=nodes[bi];
-      ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);
-      ctx.strokeStyle='rgba(255,255,255,.09)';ctx.lineWidth=1;ctx.stroke();
+      const a=nodes[ai], b=nodes[bi];
+      const isHov = hovNode && (hovNode.id===ai || hovNode.id===bi);
+      ctx.beginPath();
+      ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y);
+      ctx.strokeStyle = isHov ? 'rgba(255,255,255,.4)' : 'rgba(255,255,255,.1)';
+      ctx.lineWidth = isHov ? 2 : 1;
+      ctx.stroke();
     });
 
-    // nodes
     nodes.forEach(n=>{
-      const hov=hovNode===n;
-      // glow
-      if(hov){const g=ctx.createRadialGradient(n.x,n.y,n.r,n.x,n.y,n.r*2.5);g.addColorStop(0,n.col+'66');g.addColorStop(1,'transparent');ctx.fillStyle=g;ctx.beginPath();ctx.arc(n.x,n.y,n.r*2.5,0,Math.PI*2);ctx.fill()}
-      // circle
-      ctx.beginPath();ctx.arc(n.x,n.y,hov?n.r+2:n.r,0,Math.PI*2);
-      ctx.fillStyle=n.col+(hov?'ff':'cc');ctx.fill();
-      ctx.strokeStyle='rgba(255,255,255,.18)';ctx.lineWidth=1;ctx.stroke();
-      // label
-      if(hov||n.r>=12){
-        ctx.font=`${hov?600:400} ${n.r>=12?10:9}px 'Outfit',sans-serif`;
-        ctx.fillStyle=hov?'#fff':'rgba(255,255,255,.7)';
-        ctx.textAlign='center';ctx.textBaseline='top';
-        ctx.fillText(n.label,n.x,n.y+n.r+4);
+      const hov = hovNode===n;
+      const nx = n.x - nodeW/2;
+      const ny = n.y - nodeH/2;
+
+      if(hov){
+        ctx.shadowColor = n.col;
+        ctx.shadowBlur = 12;
+      } else {
+        ctx.shadowColor = 'rgba(0,0,0,0.6)';
+        ctx.shadowBlur = 6;
+        ctx.shadowOffsetY = 3;
       }
+
+      ctx.fillStyle = '#1a1816';
+      ctx.beginPath();
+      ctx.roundRect(nx, ny, nodeW, nodeH, 6);
+      ctx.fill();
+      ctx.shadowColor = 'transparent'; 
+
+      ctx.fillStyle = n.col + 'e6';
+      ctx.beginPath();
+      ctx.roundRect(nx, ny, nodeW, 16, [6, 6, 0, 0]);
+      ctx.fill();
+
+      ctx.strokeStyle = hov ? '#fff' : 'rgba(255,255,255,0.15)';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+
+      ctx.font = "600 9px 'Outfit', sans-serif";
+      ctx.fillStyle = '#ffffff';
+      ctx.textAlign = 'left';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(n.label, nx + 6, ny + 8);
+
+      ctx.font = "400 8.5px 'JetBrains Mono', monospace";
+      n.fields.forEach((f, i) => {
+        const parts = f.split(': ');
+        ctx.fillStyle = 'rgba(255,255,255,0.65)';
+        ctx.fillText(parts[0] + ':', nx + 6, ny + 27 + (i*13));
+        ctx.fillStyle = n.col; 
+        ctx.fillText(parts[1], nx + 6 + ctx.measureText(parts[0]+': ').width, ny + 27 + (i*13));
+      });
     });
-    obsAnimId=requestAnimationFrame(tick);
+
+    obsAnimId = requestAnimationFrame(tick);
   }
   tick();
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  loadN8nWF('ocr');
+});
 </script>
 
-<!-- ═══ PROJECTS (Clay: centered heading + cards) ═══ -->
+<style>
+/* ══ Naledi-inspired Portfolio Grid ══ */
+.portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media(max-width:1023px){.portfolio-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:639px){.portfolio-grid{grid-template-columns:1fr}}
+
+.portfolio-card{
+  position:relative;
+  border-radius:20px;
+  overflow:hidden;
+  aspect-ratio:4/3;
+  cursor:pointer;
+  group:true;
+}
+.portfolio-card .pc-img{
+  width:100%;height:100%;object-fit:cover;
+  transition:transform .7s cubic-bezier(.16,1,.3,1),filter .7s ease;
+  filter:brightness(.92) saturate(.9);
+}
+.portfolio-card:hover .pc-img{
+  transform:scale(1.06);
+  filter:brightness(.5) saturate(.7);
+}
+
+/* Overlay — slides up on hover */
+.pc-overlay{
+  position:absolute;inset:0;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:28px;
+  background:linear-gradient(0deg,rgba(26,24,22,.92) 0%,rgba(26,24,22,.6) 50%,rgba(26,24,22,.15) 100%);
+  opacity:0;
+  transition:opacity .45s cubic-bezier(.16,1,.3,1);
+}
+.portfolio-card:hover .pc-overlay{opacity:1}
+
+/* Category pill at top */
+.pc-category{
+  position:absolute;top:20px;left:20px;
+  display:inline-flex;align-items:center;gap:6px;
+  padding:6px 14px;
+  background:rgba(255,255,255,.95);
+  border-radius:999px;
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  color:#1a1816;
+  opacity:0;
+  transform:translateY(-8px);
+  transition:all .4s cubic-bezier(.16,1,.3,1) .05s;
+  backdrop-filter:blur(8px);
+}
+.portfolio-card:hover .pc-category{
+  opacity:1;transform:translateY(0);
+}
+.pc-category-dot{
+  width:7px;height:7px;border-radius:50%;background:#c47a1e;
+}
+
+/* Featured badge */
+.pc-featured{
+  position:absolute;top:20px;right:20px;
+  display:inline-flex;align-items:center;gap:5px;
+  padding:5px 12px;
+  background:#c47a1e;
+  border-radius:999px;
+  font-family:'JetBrains Mono',monospace;
+  font-size:9px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  color:#fff;
+  opacity:0;
+  transform:translateY(-8px);
+  transition:all .4s cubic-bezier(.16,1,.3,1) .1s;
+}
+.portfolio-card:hover .pc-featured{
+  opacity:1;transform:translateY(0);
+}
+
+/* Bottom text content */
+.pc-title{
+  font-family:'Syne',sans-serif;
+  font-weight:700;
+  font-size:1.35rem;
+  color:#fff;
+  line-height:1.2;
+  margin-bottom:8px;
+  transform:translateY(14px);
+  transition:transform .45s cubic-bezier(.16,1,.3,1) .08s;
+}
+.portfolio-card:hover .pc-title{transform:translateY(0)}
+
+.pc-desc{
+  font-family:'Outfit',sans-serif;
+  font-size:13.5px;
+  color:rgba(255,255,255,.72);
+  line-height:1.55;
+  margin-bottom:14px;
+  transform:translateY(14px);
+  opacity:0;
+  transition:all .45s cubic-bezier(.16,1,.3,1) .14s;
+}
+.portfolio-card:hover .pc-desc{
+  transform:translateY(0);opacity:1;
+}
+
+.pc-tags{
+  display:flex;flex-wrap:wrap;gap:6px;
+  transform:translateY(14px);
+  opacity:0;
+  transition:all .45s cubic-bezier(.16,1,.3,1) .2s;
+}
+.portfolio-card:hover .pc-tags{
+  transform:translateY(0);opacity:1;
+}
+.pc-tag{
+  display:inline-flex;align-items:center;
+  padding:4px 11px;
+  border:1px solid rgba(255,255,255,.25);
+  border-radius:999px;
+  font-family:'JetBrains Mono',monospace;
+  font-size:9.5px;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.8);
+  transition:all .3s;
+  white-space:nowrap;
+}
+.pc-tag:hover{
+  border-color:#c47a1e;
+  color:#e8973e;
+  background:rgba(196,122,30,.15);
+}
+
+/* Resting state — subtle bottom gradient + title always visible */
+.pc-rest{
+  position:absolute;bottom:0;left:0;right:0;
+  padding:24px 28px;
+  background:linear-gradient(0deg,rgba(26,24,22,.75) 0%,transparent 100%);
+  transition:opacity .35s ease;
+}
+.portfolio-card:hover .pc-rest{opacity:0}
+
+.pc-rest-title{
+  font-family:'Syne',sans-serif;
+  font-weight:700;
+  font-size:1.15rem;
+  color:#fff;
+  line-height:1.3;
+}
+.pc-rest-sub{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10px;
+  color:rgba(255,255,255,.55);
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  margin-top:4px;
+}
+
+/* Span 2 cols for featured */
+.portfolio-card.featured{grid-column:span 2;aspect-ratio:2/1}
+@media(max-width:639px){.portfolio-card.featured{grid-column:span 1;aspect-ratio:4/3}}
+</style>
+
 <section id="projects" class="relative z-10 max-w-6xl mx-auto px-8 py-24">
-<div class="text-center mb-14 sr">
-<h2 class="font-display font-800 text-3xl md:text-4xl tracking-tight text-cream">Selected projects</h2>
+<div class="sr" style="margin-bottom:48px">
+  <h2 class="font-display font-800 text-3xl md:text-4xl tracking-tight text-cream">Portfolio</h2>
+  <p class="text-subtle text-base mt-3 font-light max-w-xl">A sample of my work across analytics, automation, and knowledge systems.</p>
 </div>
 
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-<div class="proj-card sr"><div class="relative aspect-[4/3] overflow-hidden"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBL4E07TjeuYx74uyz7aKn8owtchPJ6Ox94Q0lAskNJGDMAMt2g5Bj_cqozXI_5GyPNnjzfOIv_bH7rZqQNLuL9J2dbqQTyamwJHO8Nv_RI_3-zO3AtRNdPmfxbfCm1mjqRMSVRGETRiQl_glP-PCSUsA1GuIoHnLhBUZlkHxzJa_U09Fl9besO6TyOY5_SP1wrsRuFsIby8EYhvfY1JAStzZkINO9h_eLNH7UUBE3u2eoMj2zVMJ3XdTI4gBYTnT9t8IyitGPwsizl" alt="Procurement Dashboard" class="pi w-full h-full object-cover"/></div><div class="p-6 space-y-3"><span class="mt text-[9px]">Featured</span><h3 class="font-display font-700 text-xl text-cream">Procurement Dashboard v2</h3><p class="text-muted text-sm leading-relaxed">Enterprise Power BI dashboard — DAX, TMDL, drill-through, real-time KPIs.</p><div class="flex flex-wrap gap-1.5"><span class="mt">Power BI</span><span class="mt">DAX</span><span class="mt">TMDL</span></div></div></div>
+<div class="portfolio-grid">
 
-<div class="proj-card sr d1"><div class="relative aspect-[4/3] overflow-hidden"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAX8mR1bzMO-UZ0PVtjcjy_5vlr2td9tES5dnLnfR40mt2frsKcCKTHfesmHf1AgBm5AE0FwtfVixLOqcij8EOIVkIv7SOI6rz1qp5ZxvsJvaPJeol7VJrE5MCULHKmvQuYFxPxeue4QQFM8XNQaWXWLdqnVBy8m63yB_fSls_wOVgRHn4sUxdBtbPAomIGvtjs3V7ORVV9rG2jzzh9qelGzafv9qF8xwADBe9ktnsp9WCX90gUy5i4hyMQ_U1mk82PodfwzA_ZLGiN" alt="Bank Statement Pipeline" class="pi w-full h-full object-cover"/></div><div class="p-6 space-y-3"><h3 class="font-display font-700 text-xl text-cream">Bank Statement Extraction</h3><p class="text-muted text-sm leading-relaxed">n8n pipeline parsing PH bank PDFs into structured JSON → Google Sheets.</p><div class="flex flex-wrap gap-1.5"><span class="mt">n8n</span><span class="mt">Regex</span><span class="mt">Sheets</span></div></div></div>
+  <!-- 1 · Featured: Procurement Dashboard (spans 2 cols) -->
+  <div class="portfolio-card featured sr">
+    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBL4E07TjeuYx74uyz7aKn8owtchPJ6Ox94Q0lAskNJGDMAMt2g5Bj_cqozXI_5GyPNnjzfOIv_bH7rZqQNLuL9J2dbqQTyamwJHO8Nv_RI_3-zO3AtRNdPmfxbfCm1mjqRMSVRGETRiQl_glP-PCSUsA1GuIoHnLhBUZlkHxzJa_U09Fl9besO6TyOY5_SP1wrsRuFsIby8EYhvfY1JAStzZkINO9h_eLNH7UUBE3u2eoMj2zVMJ3XdTI4gBYTnT9t8IyitGPwsizl" alt="Procurement Dashboard v2" class="pc-img"/>
+    <div class="pc-rest">
+      <div class="pc-rest-title">Procurement Dashboard v2</div>
+      <div class="pc-rest-sub">Power BI · DAX · TMDL</div>
+    </div>
+    <div class="pc-overlay">
+      <div class="pc-category"><span class="pc-category-dot"></span>IPM Construction</div>
+      <div class="pc-featured"><span class="material-symbols-outlined" style="font-size:11px">star</span> Featured</div>
+      <div class="pc-title">Procurement Dashboard v2</div>
+      <div class="pc-desc">Enterprise Power BI dashboard with DAX-optimized measures, TMDL version control, drill-through pages, and real-time procurement KPIs tracking ₱4.2M+ in PO value.</div>
+      <div class="pc-tags">
+        <span class="pc-tag">Power BI</span>
+        <span class="pc-tag">DAX</span>
+        <span class="pc-tag">TMDL</span>
+        <span class="pc-tag">Drill-Through</span>
+      </div>
+    </div>
+  </div>
 
-<div class="proj-card sr d2"><div class="relative aspect-[4/3] overflow-hidden"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJj7biKMXXhkl2nND-9wYCtpN0szpXWYX4tba6qIcqnkg0Ky3GYfRUDalrg5idLAmXBoPdjv1CsB2o2xjgQe7cSaUXeA49bkr0Hmest_BjUvvwGeevzvQitgojW5bTe-VM2qZ1gsxFZhTMXgex1yVIDy7tMNqtB_zI9Tu1Yh-7H2UK4ZuSi-I_XGmEsYJ7uXswRbS3T8nMls1I1xINSKK2pTCkeN41InjmsQa5EWeqDSlL0Rh0oOBH6ag72NhiMwRgCs4WCxsNXXEV" alt="Knowledge Management" class="pi w-full h-full object-cover"/></div><div class="p-6 space-y-3"><h3 class="font-display font-700 text-xl text-cream">Knowledge Management</h3><p class="text-muted text-sm leading-relaxed">Obsidian vault with BPMN process maps and Mermaid diagrams.</p><div class="flex flex-wrap gap-1.5"><span class="mt">Obsidian</span><span class="mt">BPMN</span><span class="mt">Mermaid</span></div></div></div>
+  <!-- 2 · Bank Statement Extraction -->
+  <div class="portfolio-card sr d1">
+    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAX8mR1bzMO-UZ0PVtjcjy_5vlr2td9tES5dnLnfR40mt2frsKcCKTHfesmHf1AgBm5AE0FwtfVixLOqcij8EOIVkIv7SOI6rz1qp5ZxvsJvaPJeol7VJrE5MCULHKmvQuYFxPxeue4QQFM8XNQaWXWLdqnVBy8m63yB_fSls_wOVgRHn4sUxdBtbPAomIGvtjs3V7ORVV9rG2jzzh9qelGzafv9qF8xwADBe9ktnsp9WCX90gUy5i4hyMQ_U1mk82PodfwzA_ZLGiN" alt="Bank Statement Pipeline" class="pc-img"/>
+    <div class="pc-rest">
+      <div class="pc-rest-title">Bank Statement Extraction</div>
+      <div class="pc-rest-sub">n8n · Regex · Google Sheets</div>
+    </div>
+    <div class="pc-overlay">
+      <div class="pc-category"><span class="pc-category-dot"></span>Workflow Automation</div>
+      <div class="pc-title">Bank Statement Extraction</div>
+      <div class="pc-desc">n8n pipeline parsing PH bank PDFs (BPI, BDO, UnionBank) via OCR into structured JSON, auto-categorised and synced to Google Sheets.</div>
+      <div class="pc-tags">
+        <span class="pc-tag">n8n</span>
+        <span class="pc-tag">Regex</span>
+        <span class="pc-tag">Sheets API</span>
+      </div>
+    </div>
+  </div>
 
-<div class="proj-card sr"><div class="relative aspect-[4/3] overflow-hidden"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdFj4UBe0mQ-_YLIrBsua9SIIaWLkmFR5aUDqGPGlUMBuj7oX3L0rF6ZYL5OeXxRxEtoqS80IRm2X_ilYJlVlUKIbXOy62vE8P0RKfesd9NHnZ-33PEZWtx_sdI19XogJKaU3vlePB14RZ4eWH8xzMnmJR-qYBxhOomoFZ1go_1U-LaklC01F-gHx6F4Riea2KvcbyzvCdbkg0jLBwov7wD9PL56O0vU-eRGvFtTw5JiRhlt-6jh5_RPo-ZdVZ0nHkADN5I-mQWd3_" alt="Gmail automation" class="pi w-full h-full object-cover"/></div><div class="p-6 space-y-3"><h3 class="font-display font-700 text-xl text-cream">Gmail & Calendar Sync</h3><p class="text-muted text-sm leading-relaxed">GAS suite for Gmail analysis, Calendar export, Tasks auto-sync.</p><div class="flex flex-wrap gap-1.5"><span class="mt">GAS</span><span class="mt">Gmail API</span></div></div></div>
+  <!-- 3 · Knowledge Management -->
+  <div class="portfolio-card sr d2">
+    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJj7biKMXXhkl2nND-9wYCtpN0szpXWYX4tba6qIcqnkg0Ky3GYfRUDalrg5idLAmXBoPdjv1CsB2o2xjgQe7cSaUXeA49bkr0Hmest_BjUvvwGeevzvQitgojW5bTe-VM2qZ1gsxFZhTMXgex1yVIDy7tMNqtB_zI9Tu1Yh-7H2UK4ZuSi-I_XGmEsYJ7uXswRbS3T8nMls1I1xINSKK2pTCkeN41InjmsQa5EWeqDSlL0Rh0oOBH6ag72NhiMwRgCs4WCxsNXXEV" alt="Knowledge Management" class="pc-img"/>
+    <div class="pc-rest">
+      <div class="pc-rest-title">Knowledge Management</div>
+      <div class="pc-rest-sub">Obsidian · BPMN · Mermaid</div>
+    </div>
+    <div class="pc-overlay">
+      <div class="pc-category"><span class="pc-category-dot"></span>Knowledge Systems</div>
+      <div class="pc-title">Knowledge Management</div>
+      <div class="pc-desc">Obsidian vault with 200+ MOC notes, BPMN 2.0 procurement process maps, and Mermaid documentation diagrams.</div>
+      <div class="pc-tags">
+        <span class="pc-tag">Obsidian</span>
+        <span class="pc-tag">BPMN 2.0</span>
+        <span class="pc-tag">Mermaid</span>
+      </div>
+    </div>
+  </div>
 
-<div class="proj-card sr d1"><div class="relative aspect-[4/3] overflow-hidden"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOemS_P3kCbf2_G-ruOSQTqtO092vQOp8-7Jb6MCyjIYPVOyhUxK3tHuG04-nP3Fj4WTGAyMue3PZKe2VwHxb1DlUY-yAX-GcB53064TTg8O-x-KBfSRIqqWUWrnXJY5j8es2dgH870XfQ7rvGufgKJEYaGfyUtIsv2mrbEOuV4vOOWVFyhOhGIA1c5zvegW2stvOlsZQ0_KYbqHGmAnbNlAApMYP0oys24V1afj0jGrGOhqsyYnaes_unxxn0SwuUvCTthF9bqGD-" alt="Finance Dashboard" class="pi w-full h-full object-cover"/></div><div class="p-6 space-y-3"><h3 class="font-display font-700 text-xl text-cream">Personal Finance Dashboard</h3><p class="text-muted text-sm leading-relaxed">Excel dashboard with PH bank data (BPI, BDO, Metrobank).</p><div class="flex flex-wrap gap-1.5"><span class="mt">Excel</span><span class="mt">Power Query</span></div></div></div>
+  <!-- 4 · Gmail & Calendar Sync -->
+  <div class="portfolio-card sr">
+    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdFj4UBe0mQ-_YLIrBsua9SIIaWLkmFR5aUDqGPGlUMBuj7oX3L0rF6ZYL5OeXxRxEtoqS80IRm2X_ilYJlVlUKIbXOy62vE8P0RKfesd9NHnZ-33PEZWtx_sdI19XogJKaU3vlePB14RZ4eWH8xzMnmJR-qYBxhOomoFZ1go_1U-LaklC01F-gHx6F4Riea2KvcbyzvCdbkg0jLBwov7wD9PL56O0vU-eRGvFtTw5JiRhlt-6jh5_RPo-ZdVZ0nHkADN5I-mQWd3_" alt="Gmail & Calendar Sync" class="pc-img"/>
+    <div class="pc-rest">
+      <div class="pc-rest-title">Gmail & Calendar Sync</div>
+      <div class="pc-rest-sub">Google Apps Script</div>
+    </div>
+    <div class="pc-overlay">
+      <div class="pc-category"><span class="pc-category-dot"></span>Automation</div>
+      <div class="pc-title">Gmail & Calendar Sync</div>
+      <div class="pc-desc">Google Apps Script suite for Gmail sender analysis, Calendar export to per-calendar sheets, and Google Tasks auto-sync.</div>
+      <div class="pc-tags">
+        <span class="pc-tag">GAS</span>
+        <span class="pc-tag">Gmail API</span>
+        <span class="pc-tag">Calendar</span>
+      </div>
+    </div>
+  </div>
 
-<div class="proj-card sr d2"><div class="relative aspect-[4/3] overflow-hidden"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAICVGsXJ68OmDZqKUtZpU0BnmTYGVntALI7m_QIVQX-SrbCSxSf2RMxffF4T1Ev7q-MQtfbubVC4MRtQRPtrYwZQLjbK-D6pG40IPhlchOzrtWxUZQQsc_eONk7vtzbN71uBzlxFeFOl3pfVYN4LK_RGamf7K3PbN4SSF9qmLvk56l77oUNTadnXtT2Rc0aHdyuu4FmRJVLaTC250ScLNqe1-8x6l_ORtjdR94N0e2EsNv_ItGeHYxqFi0TS0NgLFHGSb74L2m3S50" alt="Docker infra" class="pi w-full h-full object-cover"/></div><div class="p-6 space-y-3"><h3 class="font-display font-700 text-xl text-cream">Self-Hosted Stack</h3><p class="text-muted text-sm leading-relaxed">Docker-composed n8n, MongoDB, Supabase, Nginx + Tailscale.</p><div class="flex flex-wrap gap-1.5"><span class="mt">Docker</span><span class="mt">Tailscale</span><span class="mt">Nginx</span></div></div></div>
+  <!-- 5 · Personal Finance Dashboard -->
+  <div class="portfolio-card sr d1">
+    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOemS_P3kCbf2_G-ruOSQTqtO092vQOp8-7Jb6MCyjIYPVOyhUxK3tHuG04-nP3Fj4WTGAyMue3PZKe2VwHxb1DlUY-yAX-GcB53064TTg8O-x-KBfSRIqqWUWrnXJY5j8es2dgH870XfQ7rvGufgKJEYaGfyUtIsv2mrbEOuV4vOOWVFyhOhGIA1c5zvegW2stvOlsZQ0_KYbqHGmAnbNlAApMYP0oys24V1afj0jGrGOhqsyYnaes_unxxn0SwuUvCTthF9bqGD-" alt="Personal Finance Dashboard" class="pc-img"/>
+    <div class="pc-rest">
+      <div class="pc-rest-title">Personal Finance Dashboard</div>
+      <div class="pc-rest-sub">Excel · Power Query</div>
+    </div>
+    <div class="pc-overlay">
+      <div class="pc-category"><span class="pc-category-dot"></span>Personal Project</div>
+      <div class="pc-title">Personal Finance Dashboard</div>
+      <div class="pc-desc">Excel dashboard with PH bank data (BPI, BDO, Metrobank), Power Query transformations, and automated categorisation.</div>
+      <div class="pc-tags">
+        <span class="pc-tag">Excel</span>
+        <span class="pc-tag">Power Query</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6 · Self-Hosted Stack -->
+  <div class="portfolio-card sr d2">
+    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAICVGsXJ68OmDZqKUtZpU0BnmTYGVntALI7m_QIVQX-SrbCSxSf2RMxffF4T1Ev7q-MQtfbubVC4MRtQRPtrYwZQLjbK-D6pG40IPhlchOzrtWxUZQQsc_eONk7vtzbN71uBzlxFeFOl3pfVYN4LK_RGamf7K3PbN4SSF9qmLvk56l77oUNTadnXtT2Rc0aHdyuu4FmRJVLaTC250ScLNqe1-8x6l_ORtjdR94N0e2EsNv_ItGeHYxqFi0TS0NgLFHGSb74L2m3S50" alt="Self-Hosted Stack" class="pc-img"/>
+    <div class="pc-rest">
+      <div class="pc-rest-title">Self-Hosted Stack</div>
+      <div class="pc-rest-sub">Docker · Tailscale · Nginx</div>
+    </div>
+    <div class="pc-overlay">
+      <div class="pc-category"><span class="pc-category-dot"></span>Infrastructure</div>
+      <div class="pc-title">Self-Hosted Stack</div>
+      <div class="pc-desc">Docker-composed n8n, MongoDB, Supabase, and Nginx reverse proxy on a Tailscale mesh network with 99.8% uptime.</div>
+      <div class="pc-tags">
+        <span class="pc-tag">Docker</span>
+        <span class="pc-tag">Tailscale</span>
+        <span class="pc-tag">Nginx</span>
+      </div>
+    </div>
+  </div>
+
 </div>
 </section>
 
-<!-- ═══ CTA + CONTACT (Clay: centered headline + form) ═══ -->
 <section id="contact" class="relative z-10 max-w-3xl mx-auto px-8 py-28 text-center">
-<h2 class="sr font-display font-800 text-3xl md:text-4xl tracking-tight text-cream mb-4">Let's turn your data ideas into reality</h2>
-<p class="sr d1 text-subtle text-lg mb-12 font-light">Have a project that needs dashboards, automation, or knowledge systems? Send me a message.</p>
+<h2 class="sr font-display font-800 text-3xl md:text-4xl tracking-tight text-cream mb-4">Let's talk and see what we can do for your business</h2>
+<p class="sr d1 text-subtle text-lg mb-12 font-light">Have a project that needs the data trifecta of dashboards, automation, or knowledge systems? Send me a message.</p>
 <div class="sr d2 bg-white border border-border rounded-[24px] p-8 md:p-10 shadow-lg text-left">
 <form id="contact-form" class="space-y-6">
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -835,7 +1275,6 @@ function initObsGraph(){
 </div>
 </section>
 
-<!-- ═══ FOOTER (Clay: multi-column) ═══ -->
 <footer class="relative z-10 border-t border-border/50 bg-bg">
 <div class="max-w-6xl mx-auto px-8 py-16">
 <div class="grid grid-cols-2 md:grid-cols-4 gap-10 mb-14">
@@ -863,27 +1302,99 @@ function initObsGraph(){
 </div>
 </footer>
 
-<!-- ═══ SCRIPTS ═══ -->
 <script>addEventListener('scroll',()=>{document.getElementById('scroll-bar').style.width=(scrollY/(document.documentElement.scrollHeight-innerHeight))*100+'%'})</script>
 <script>document.addEventListener('DOMContentLoaded',()=>{const o=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('v');o.unobserve(x.target)}})},{threshold:.06});document.querySelectorAll('.sr').forEach(el=>o.observe(el))})</script>
 <script>function handleFullScreen(){const el=document.getElementById('embedContainer');if(el.requestFullscreen)el.requestFullscreen();else if(el.webkitRequestFullscreen)el.webkitRequestFullscreen()}</script>
 <script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.0.0/webcomponents-loader.js"></script>
 <script src="https://www.unpkg.com/lit@2.0.0-rc.2/polyfill-support.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/@n8n_io/n8n-demo-component/n8n-demo.bundled.js"></script>
 <script>
-/* n8n iframe load check — show fallback if unreachable */
-(function(){
-  const iframe = document.getElementById('n8n-workflow-iframe');
-  if(!iframe) return;
-  const timer = setTimeout(function(){
-    // If src is still the placeholder, show fallback immediately
-    if(iframe.src.indexOf('YOUR_N8N_URL') !== -1){
-      iframe.style.display='none';
-      const fb=document.getElementById('n8n-fallback');
-      if(fb) fb.style.display='flex';
+/* ── Service Section n8n Demo Initialization ── */
+const rcpWorkflow = {
+  nodes: [
+    {
+      id:'wh1', name:'PDF Upload',
+      type:'n8n-nodes-base.webhook', typeVersion:1,
+      position:[60,260],
+      parameters:{
+        path:'bank-pdf-upload',
+        httpMethod:'POST',
+        responseMode:'onReceived'
+      },
+      webhookId:'bank-pdf-upload'
+    },
+    {
+      id:'sw1', name:'Bank Router',
+      type:'n8n-nodes-base.switch', typeVersion:1,
+      position:[260,260],
+      parameters:{
+        dataType:'string',
+        value1:'={{ $json["bank"] }}',
+        rules:{ rules:[
+          {value2:'BPI',      output:0},
+          {value2:'BDO',      output:1},
+          {value2:'UnionBank',output:2}
+        ]}
+      }
+    },
+    {
+      id:'c1', name:'BPI Parser',
+      type:'n8n-nodes-base.code', typeVersion:2,
+      position:[460,140],
+      parameters:{jsCode:`const re=/^(\\d{2}\\/\\d{2})\\s+(.+?)\\s+([\\-\\d,]+\\.\\d{2})$/gm;\nconst txns=[];\nlet m;\nwhile((m=re.exec($input.first().json.text||''))!==null)\n  txns.push({date:m[1],desc:m[2].trim(),amount:parseFloat(m[3].replace(/,/g,'')),bank:'BPI'});\nreturn txns.map(t=>({json:t}));`}
+    },
+    {
+      id:'c2', name:'BDO Parser',
+      type:'n8n-nodes-base.code', typeVersion:2,
+      position:[460,260],
+      parameters:{jsCode:`const re=/^(\\d{2}-[A-Z]{3}-\\d{2})\\s+(.+?)\\s+([\\-\\d,]+\\.\\d{2})$/gm;\nconst txns=[];\nlet m;\nwhile((m=re.exec($input.first().json.text||''))!==null)\n  txns.push({date:m[1],desc:m[2].trim(),amount:parseFloat(m[3].replace(/,/g,'')),bank:'BDO'});\nreturn txns.map(t=>({json:t}));`}
+    },
+    {
+      id:'c3', name:'UnionBank Parser',
+      type:'n8n-nodes-base.code', typeVersion:2,
+      position:[460,380],
+      parameters:{jsCode:`const re=/^([A-Z]{3}\\s\\d{1,2},\\s\\d{4})\\s+(.+?)\\s+([\\-\\d,]+\\.\\d{2})$/gm;\nconst txns=[];\nlet m;\nwhile((m=re.exec($input.first().json.text||''))!==null)\n  txns.push({date:m[1],desc:m[2].trim(),amount:parseFloat(m[3].replace(/,/g,'')),bank:'UnionBank'});\nreturn txns.map(t=>({json:t}));`}
+    },
+    {
+      id:'mg1', name:'Merge',
+      type:'n8n-nodes-base.merge', typeVersion:2,
+      position:[660,260],
+      parameters:{mode:'append'}
+    },
+    {
+      id:'se1', name:'Categorise',
+      type:'n8n-nodes-base.code', typeVersion:2,
+      position:[860,260],
+      parameters:{jsCode:`const cats={MERALCO:'Utilities',PLDT:'Utilities',GRAB:'Transport',LAZADA:'Shopping',ROBINSONS:'Grocery',JOLLIBEE:'Food'};\nreturn $input.all().map(item=>{\n  const d=(item.json.desc||'').toUpperCase();\n  const cat=Object.keys(cats).find(k=>d.includes(k))||'Other';\n  return {json:{...item.json,category:cats[cat]||cat,extracted_at:new Date().toISOString()}};\n});`}
+    },
+    {
+      id:'gs1', name:'Google Sheets',
+      type:'n8n-nodes-base.googleSheets', typeVersion:4,
+      position:[1060,180],
+      parameters:{operation:'append',documentId:{value:'YOUR_SHEET_ID',mode:'id'},sheetName:{value:'Transactions',mode:'name'}}
+    },
+    {
+      id:'gm1', name:'Gmail Notify',
+      type:'n8n-nodes-base.gmail', typeVersion:2,
+      position:[1060,340],
+      parameters:{operation:'send',toList:'raymond@ipmconstructionanddevelopment.com',subject:'✅ Bank extraction done — {{ $json["bank"] }}',message:'{{ $items().length }} transactions logged at {{ $json["extracted_at"] }}.'}
     }
-  }, 800);
-  iframe.addEventListener('load', function(){ clearTimeout(timer); });
-})();
+  ],
+  connections:{
+    'PDF Upload':       {main:[[{node:'Bank Router',      type:'main',index:0}]]},
+    'Bank Router':      {main:[[{node:'BPI Parser',       type:'main',index:0}],[{node:'BDO Parser',type:'main',index:0}],[{node:'UnionBank Parser',type:'main',index:0}]]},
+    'BPI Parser':       {main:[[{node:'Merge',type:'main',index:0}]]},
+    'BDO Parser':       {main:[[{node:'Merge',type:'main',index:1}]]},
+    'UnionBank Parser': {main:[[{node:'Merge',type:'main',index:2}]]},
+    'Merge':            {main:[[{node:'Categorise',type:'main',index:0}]]},
+    'Categorise':       {main:[[{node:'Google Sheets',type:'main',index:0},{node:'Gmail Notify',type:'main',index:0}]]}
+  }
+};
+
+customElements.whenDefined('n8n-demo').then(()=>{
+  const svc = document.getElementById('n8n-service-demo');
+  if(svc) svc.workflow = JSON.stringify(rcpWorkflow);
+});
 </script>
 <script>
 document.getElementById('contact-form').addEventListener('submit',async function(e){
@@ -895,5 +1406,220 @@ try{const r=await fetch(url,{method:"POST",headers:{"Content-Type":"text/plain;c
 if(res.status==="success"){b.innerHTML='<span>Sent!</span><span class="material-symbols-outlined text-lg">check_circle</span>';b.classList.remove('bg-accent');b.classList.add('bg-green-600');f.reset();setTimeout(()=>{b.innerHTML=orig;b.classList.remove('bg-green-600');b.classList.add('bg-accent');b.disabled=false},3500)}
 else{alert("Failed: "+res.message);b.innerHTML=orig;b.disabled=false}}catch(err){alert("Network error.");b.innerHTML=orig;b.disabled=false}});
 </script>
+<style>
+/* ── Chat FAB ── */
+#chat-fab{position:fixed;bottom:28px;right:28px;z-index:9990;width:56px;height:56px;border-radius:18px;background:linear-gradient(135deg,#c47a1e,#e8973e);color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 32px -4px rgba(196,122,30,.35);transition:all .35s cubic-bezier(.16,1,.3,1)}
+#chat-fab:hover{transform:translateY(-3px) scale(1.05);box-shadow:0 12px 40px -4px rgba(196,122,30,.45)}
+#chat-fab .material-symbols-outlined{font-size:26px;transition:transform .3s}
+#chat-fab.open .material-symbols-outlined{transform:rotate(90deg)}
+#chat-fab-badge{position:absolute;top:-2px;right:-2px;width:14px;height:14px;background:#16a34a;border:2px solid #f8f7f4;border-radius:50%;animation:fabPulse 2.5s ease-in-out infinite}
+@keyframes fabPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.25)}}
+
+/* ── Chat Panel ── */
+#chat-panel{position:fixed;bottom:96px;right:28px;z-index:9989;width:390px;max-width:calc(100vw - 32px);height:520px;max-height:calc(100dvh - 130px);background:#f8f7f4;border:1px solid #e2ddd5;border-radius:24px;box-shadow:0 24px 80px -12px rgba(26,24,22,.18),0 0 0 1px rgba(226,221,213,.5);display:flex;flex-direction:column;overflow:hidden;opacity:0;transform:translateY(16px) scale(.96);pointer-events:none;transition:opacity .3s cubic-bezier(.16,1,.3,1),transform .3s cubic-bezier(.16,1,.3,1)}
+#chat-panel.open{opacity:1;transform:translateY(0) scale(1);pointer-events:auto}
+
+/* ── Chat Header ── */
+.cb-header{display:flex;align-items:center;gap:10px;padding:14px 18px;background:#fff;border-bottom:1px solid #e2ddd5;flex-shrink:0}
+.cb-header-av{width:34px;height:34px;border-radius:12px;background:linear-gradient(135deg,#fdf6ec,#fce8c8);border:1px solid #e8d5b8;display:flex;align-items:center;justify-content:center}
+.cb-header-av .material-symbols-outlined{font-size:18px;color:#c47a1e}
+.cb-header-text{flex:1}
+.cb-header-name{font-family:'Syne',sans-serif;font-weight:700;font-size:.85rem;color:#1a1816}
+.cb-header-status{font-family:'JetBrains Mono',monospace;font-size:9px;color:#999590;letter-spacing:.08em;text-transform:uppercase;display:flex;align-items:center;gap:4px}
+.cb-header-status::before{content:'';width:5px;height:5px;border-radius:50%;background:#16a34a}
+.cb-close{background:none;border:none;cursor:pointer;color:#999590;transition:color .2s;padding:4px}
+.cb-close:hover{color:#1a1816}
+
+/* ── Messages ── */
+.cb-msgs{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:8px;scroll-behavior:smooth}
+.cb-msgs::-webkit-scrollbar{width:3px}.cb-msgs::-webkit-scrollbar-thumb{background:#e2ddd5;border-radius:99px}
+
+/* Welcome */
+.cb-welcome{display:flex;flex-direction:column;align-items:center;gap:12px;padding:24px 16px;text-align:center;flex:1;justify-content:center}
+.cb-welcome-icon{width:48px;height:48px;border-radius:16px;background:linear-gradient(135deg,#fdf6ec,#fce8c8);border:1px solid #e8d5b8;display:flex;align-items:center;justify-content:center}
+.cb-welcome-icon .material-symbols-outlined{font-size:22px;color:#c47a1e}
+.cb-welcome h3{font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;color:#1a1816;letter-spacing:-.02em}
+.cb-welcome p{font-size:13px;color:#6b6660;line-height:1.55;max-width:300px}
+.cb-chips{display:flex;flex-wrap:wrap;gap:5px;justify-content:center}
+.cb-chip{background:#fff;border:1px solid #e2ddd5;border-radius:10px;padding:6px 11px;font-family:'Outfit',sans-serif;font-size:11.5px;color:#6b6660;cursor:pointer;transition:all .2s;line-height:1.35}
+.cb-chip:hover{border-color:#c47a1e;color:#c47a1e;transform:translateY(-1px)}
+
+/* Message rows */
+.cb-row{display:flex;gap:8px;align-items:flex-end;animation:cbPop .3s cubic-bezier(.16,1,.3,1)}
+.cb-row.user{flex-direction:row-reverse}
+@keyframes cbPop{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.cb-av{width:24px;height:24px;border-radius:8px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:8px}
+.cb-av.bot{background:linear-gradient(135deg,#fdf6ec,#fce8c8);color:#c47a1e;border:1px solid #e8d5b8}
+.cb-av.user{background:#1a1816;color:#fff}
+.cb-bubble{max-width:80%;padding:10px 14px;font-size:13px;line-height:1.6;border-radius:14px;font-family:'Outfit',sans-serif}
+.cb-bubble.bot{background:#fff;border:1px solid #e2ddd5;border-bottom-left-radius:4px;color:#1a1816}
+.cb-bubble.user{background:#1a1816;color:#fff;border-bottom-right-radius:4px}
+.cb-bubble.bot strong{color:#c47a1e;font-weight:600}
+.cb-bubble.bot code{font-family:'JetBrains Mono',monospace;font-size:10.5px;background:#f0eee9;border:1px solid #e2ddd5;padding:1px 4px;border-radius:3px}
+
+/* Typing */
+.cb-typing{display:flex;gap:3px;padding:12px 16px}
+.cb-typing i{width:5px;height:5px;border-radius:50%;background:#999590;display:block;animation:cbBounce .85s ease-in-out infinite}
+.cb-typing i:nth-child(2){animation-delay:.13s}
+.cb-typing i:nth-child(3){animation-delay:.26s}
+@keyframes cbBounce{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-4px)}}
+
+/* Input */
+.cb-input-bar{display:flex;align-items:stretch;border-top:1px solid #e2ddd5;background:#fff;flex-shrink:0}
+.cb-input-bar input{flex:1;border:none;outline:none;padding:12px 16px;font-family:'Outfit',sans-serif;font-size:13.5px;color:#1a1816;background:transparent}
+.cb-input-bar input::placeholder{color:#999590}
+.cb-send{padding:0 14px;background:#c47a1e;color:#fff;border:none;cursor:pointer;transition:background .2s;display:flex;align-items:center}
+.cb-send:hover{background:#e8973e}
+.cb-send:disabled{opacity:.4;cursor:not-allowed}
+.cb-send .material-symbols-outlined{font-size:18px}
+.cb-footer{text-align:center;padding:5px 0;font-family:'JetBrains Mono',monospace;font-size:8px;color:#999590;letter-spacing:.06em;text-transform:uppercase;background:#fff;border-top:1px solid #f0eee9}
+
+@media(max-width:480px){
+  #chat-panel{right:8px;bottom:88px;width:calc(100vw - 16px);height:calc(100dvh - 110px);border-radius:20px}
+  #chat-fab{bottom:20px;right:16px;width:50px;height:50px;border-radius:16px}
+}
+</style>
+
+<button id="chat-fab" onclick="toggleChat()" aria-label="Open chat">
+  <span class="material-symbols-outlined">chat</span>
+  <div id="chat-fab-badge"></div>
+</button>
+
+<div id="chat-panel">
+  <div class="cb-header">
+    <div class="cb-header-av"><span class="material-symbols-outlined">auto_awesome</span></div>
+    <div class="cb-header-text">
+      <div class="cb-header-name">RCP Assistant</div>
+      <div class="cb-header-status">Online · AI-powered</div>
+    </div>
+    <button class="cb-close" onclick="toggleChat()"><span class="material-symbols-outlined" style="font-size:20px">close</span></button>
+  </div>
+  <div class="cb-msgs" id="cb-msgs">
+    <div class="cb-welcome" id="cb-welcome">
+      <div class="cb-welcome-icon"><span class="material-symbols-outlined">waving_hand</span></div>
+      <h3>Hi! Ask me anything</h3>
+      <p>I know all about Raymond's services, projects, tools, and how to get in touch.</p>
+      <div class="cb-chips" id="cb-chips">
+        <button class="cb-chip" onclick="cbQuick(this)">What services does Raymond offer?</button>
+        <button class="cb-chip" onclick="cbQuick(this)">Tell me about the Procurement Dashboard</button>
+        <button class="cb-chip" onclick="cbQuick(this)">What's his tech stack?</button>
+        <button class="cb-chip" onclick="cbQuick(this)">How can I contact him?</button>
+        <button class="cb-chip" onclick="cbQuick(this)">What is the n8n bank pipeline?</button>
+      </div>
+    </div>
+  </div>
+  <div class="cb-input-bar">
+    <input type="text" id="cb-input" placeholder="Ask about the portfolio…" maxlength="500" onkeydown="if(event.key==='Enter')cbSend()"/>
+    <button class="cb-send" id="cb-send-btn" onclick="cbSend()"><span class="material-symbols-outlined">arrow_upward</span></button>
+  </div>
+  <div class="cb-footer">Powered by Gemini · rcp portfolio assistant</div>
+</div>
+
+<script>
+(function(){
+/* ═══ KNOWLEDGE BASE ═══ */
+const SYSTEM = `You are a friendly, concise Q&A assistant embedded on Raymond Paredes' portfolio site "DATA in NARRATIVES." Answer ONLY from the facts below. Use **bold** sparingly. Keep answers short (2-4 sentences) unless more detail is requested.
+
+OWNER: Raymond Paredes (RCP), Metro Manila, Philippines. Data analyst & operations architect. Tagline: "I turn operational data into dashboards your team actually uses — and automate the workflows you shouldn't be doing manually."
+
+SERVICES:
+1) Analytics Dashboards — Interactive Power BI reports for procurement, vendor performance, budget variance. DAX optimization (sub-second on 100K+ rows), TMDL exports (version-controlled), drill-through pages with bookmarks. 20+ dashboards built, 150+ DAX measures.
+2) Workflow Automation — n8n pipelines parsing PH bank statements (BPI, BDO, UnionBank, Robinsons Bank) from PDF/OCR to JSON → Google Sheets. Gmail automation, Calendar export, Tasks auto-sync via Google Apps Script. Self-hosted Docker + Tailscale. 50+ workflows, 99.8% uptime.
+3) Knowledge Systems — Obsidian vaults (200+ MOC notes), BPMN 2.0 procurement diagrams, Mermaid docs, LLM/RAG retrieval over documentation. 12 active data models.
+
+PROJECTS:
+• Procurement Dashboard v2 (Featured) — Power BI, DAX, TMDL, drill-through KPIs. Shows ₱4.2M total PO value (+12.4%), 93% on-time delivery, 18d avg lead time. Suppliers: Jollibee Supplies, SM Trading, Meralco Parts, PLDT Corp.
+• Bank Statement Extraction — n8n webhook pipeline: PDF Upload → Bank Router → BPI/BDO/UnionBank Parsers → Merge → Categorise → Google Sheets + Gmail Notify. Categories: Utilities, Transport, Shopping, Grocery, Food. Live demo on site.
+• Knowledge Management — Obsidian vault with BPMN and Mermaid diagrams.
+• Gmail & Calendar Sync — GAS suite for Gmail analysis, Calendar export, Tasks sync.
+• Personal Finance Dashboard — Excel with PH bank data (BPI, BDO, Metrobank), Power Query.
+• Self-Hosted Stack — Docker-composed n8n, MongoDB, Supabase, Nginx + Tailscale mesh.
+
+TECH STACK: Power BI, DAX, TMDL, n8n, Docker, Tailscale, Google Apps Script, Obsidian, BPMN 2.0, Mermaid, Supabase, MongoDB, Python, Regex, Excel, Power Query, Nginx.
+
+FEATURES: DAX Optimization, Regex-Based Parsing (OCR/bank formats), Google Sheets API sync, Docker Containers, BPMN 2.0 Process Maps, LLM/RAG Retrieval.
+
+INTERACTIVE DEMOS: The site has tabs for Power BI (KPIs + bar chart + data table), n8n (live workflow canvas + webhook chat), Obsidian (force-directed graph).
+
+CONTACT: Form on site (Name, Email, Message) via Google Apps Script backend. Located in Metro Manila. LinkedIn, GitHub, Resume page available.
+
+DESIGN: Clay.com-inspired. Fonts: Syne, Outfit, JetBrains Mono. Accent: #c47a1e amber. Background: #f8f7f4 cream with dot grid.
+
+If the answer isn't in the above, politely say you only know about what's on the portfolio site and suggest they use the contact form.`;
+
+let busy = false;
+const msgsEl = document.getElementById('cb-msgs');
+const inputEl = document.getElementById('cb-input');
+const sendBtn = document.getElementById('cb-send-btn');
+
+/* Toggle */
+window.toggleChat = function(){
+  const panel = document.getElementById('chat-panel');
+  const fab = document.getElementById('chat-fab');
+  const badge = document.getElementById('chat-fab-badge');
+  const isOpen = panel.classList.toggle('open');
+  fab.classList.toggle('open', isOpen);
+  if(badge) badge.style.display = 'none';
+  if(isOpen) inputEl.focus();
+};
+
+/* Helpers */
+function scroll(){ msgsEl.scrollTo({top:msgsEl.scrollHeight,behavior:'smooth'}); }
+
+function killWelcome(){ const w=document.getElementById('cb-welcome'); if(w) w.remove(); }
+
+function addRow(role, html){
+  const row=document.createElement('div'); row.className='cb-row '+role;
+  const av=document.createElement('div'); av.className='cb-av '+role; av.textContent=role==='user'?'You':'R';
+  const bub=document.createElement('div'); bub.className='cb-bubble '+role; bub.innerHTML=html;
+  row.appendChild(av); row.appendChild(bub); msgsEl.appendChild(row); scroll();
+  return bub;
+}
+
+function showTyping(){
+  const row=document.createElement('div'); row.className='cb-row bot'; row.id='cb-typing';
+  const av=document.createElement('div'); av.className='cb-av bot'; av.textContent='R';
+  const bub=document.createElement('div'); bub.className='cb-bubble bot';
+  bub.innerHTML='<div class="cb-typing"><i></i><i></i><i></i></div>';
+  row.appendChild(av); row.appendChild(bub); msgsEl.appendChild(row); scroll();
+}
+function hideTyping(){ const t=document.getElementById('cb-typing'); if(t) t.remove(); }
+
+function md(t){
+  return t
+    .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')
+    .replace(/`(.+?)`/g,'<code>$1</code>')
+    .replace(/\n{2,}/g,'</p><p>')
+    .replace(/\n- /g,'<br>• ')
+    .replace(/\n(\d+)\. /g,'<br>$1. ')
+    .replace(/\n/g,'<br>');
+}
+
+/* API */
+async function callAPI(msg){
+  const r = await fetch('https://api.anthropic.com/v1/messages',{
+    method:'POST', headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({ model:'claude-sonnet-4-20250514', max_tokens:800, system:SYSTEM, messages:[{role:'user',content:msg}] })
+  });
+  const d = await r.json();
+  return (d.content||[]).filter(b=>b.type==='text').map(b=>b.text).join('\n') || 'Sorry, I couldn\'t respond. Please try again.';
+}
+
+/* Send */
+window.cbSend = async function(){
+  const val=inputEl.value.trim(); if(!val||busy) return;
+  busy=true; sendBtn.disabled=true; inputEl.value='';
+  killWelcome();
+  addRow('user','<p>'+val.replace(/</g,'<')+'</p>');
+  showTyping();
+  try{ const reply=await callAPI(val); hideTyping(); addRow('bot','<p>'+md(reply)+'</p>'); }
+  catch(e){ hideTyping(); addRow('bot','<p>Something went wrong — please try again.</p>'); console.error(e); }
+  busy=false; sendBtn.disabled=false; inputEl.focus();
+};
+
+window.cbQuick = function(btn){ inputEl.value=btn.textContent; cbSend(); };
+})();
+</script>
+
 </body>
 </html>
