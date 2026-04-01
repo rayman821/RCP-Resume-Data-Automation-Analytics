@@ -1138,7 +1138,7 @@ document.addEventListener('DOMContentLoaded', () => {
 <div class="portfolio-grid">
 
   <!-- 1 · Featured: Procurement Dashboard (spans 2 cols) -->
-  <div class="portfolio-card featured sr">
+  <div class="portfolio-card featured sr" data-url="https://app.powerbi.com/view?r=eyJrIjoiMzYxNTc2NjAtMGQxMy00ZmQ5LWE0OGUtYmYwMzY1Y2JkMWE0IiwidCI6ImJkMmIyOGI4LTc2OWMtNGFjZC04YzdlLTE1MDc1ZmE2NWVmOCIsImMiOjEwfQ%3D%3D" data-title="Procurement Dashboard v2">
     <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBL4E07TjeuYx74uyz7aKn8owtchPJ6Ox94Q0lAskNJGDMAMt2g5Bj_cqozXI_5GyPNnjzfOIv_bH7rZqQNLuL9J2dbqQTyamwJHO8Nv_RI_3-zO3AtRNdPmfxbfCm1mjqRMSVRGETRiQl_glP-PCSUsA1GuIoHnLhBUZlkHxzJa_U09Fl9besO6TyOY5_SP1wrsRuFsIby8EYhvfY1JAStzZkINO9h_eLNH7UUBE3u2eoMj2zVMJ3XdTI4gBYTnT9t8IyitGPwsizl" alt="Procurement Dashboard v2" class="pc-img"/>
     <div class="pc-rest">
       <div class="pc-rest-title">Procurement Dashboard v2</div>
@@ -1159,7 +1159,7 @@ document.addEventListener('DOMContentLoaded', () => {
   </div>
 
   <!-- 2 · Bank Statement Extraction -->
-  <div class="portfolio-card sr d1">
+  <div class="portfolio-card sr d1" data-url="https://n8n-rcp.taild30d6e.ts.net" data-title="Bank Statement Extraction Pipeline">
     <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAX8mR1bzMO-UZ0PVtjcjy_5vlr2td9tES5dnLnfR40mt2frsKcCKTHfesmHf1AgBm5AE0FwtfVixLOqcij8EOIVkIv7SOI6rz1qp5ZxvsJvaPJeol7VJrE5MCULHKmvQuYFxPxeue4QQFM8XNQaWXWLdqnVBy8m63yB_fSls_wOVgRHn4sUxdBtbPAomIGvtjs3V7ORVV9rG2jzzh9qelGzafv9qF8xwADBe9ktnsp9WCX90gUy5i4hyMQ_U1mk82PodfwzA_ZLGiN" alt="Bank Statement Pipeline" class="pc-img"/>
     <div class="pc-rest">
       <div class="pc-rest-title">Bank Statement Extraction</div>
@@ -1303,6 +1303,320 @@ document.addEventListener('DOMContentLoaded', () => {
 </div>
 </div>
 </footer>
+
+<!-- ═══ Project Browser Modal ═══ -->
+<style>
+/* Backdrop */
+#proj-modal-backdrop {
+  position: fixed; inset: 0; z-index: 10000;
+  background: rgba(26,24,22,.55);
+  backdrop-filter: blur(6px);
+  opacity: 0; pointer-events: none;
+  transition: opacity .35s cubic-bezier(.16,1,.3,1);
+}
+#proj-modal-backdrop.open { opacity: 1; pointer-events: all; }
+
+/* Modal window */
+#proj-modal {
+  position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -46%) scale(.97);
+  z-index: 10001;
+  width: min(92vw, 1100px);
+  height: min(88vh, 780px);
+  background: #f8f7f4;
+  border: 1px solid #e2ddd5;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 40px 120px -20px rgba(26,24,22,.38), 0 0 0 1px rgba(196,122,30,.08);
+  display: flex; flex-direction: column;
+  opacity: 0; pointer-events: none;
+  transition: transform .42s cubic-bezier(.16,1,.3,1), opacity .35s cubic-bezier(.16,1,.3,1);
+}
+#proj-modal.open {
+  opacity: 1; pointer-events: all;
+  transform: translate(-50%,-50%) scale(1);
+}
+
+/* Chrome bar */
+#proj-modal-chrome {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 16px;
+  background: #f0eee9;
+  border-bottom: 1px solid #e2ddd5;
+  flex-shrink: 0;
+  user-select: none;
+}
+.pm-dot { width: 12px; height: 12px; border-radius: 50%; cursor: pointer; flex-shrink: 0; transition: filter .2s; }
+.pm-dot:hover { filter: brightness(.85); }
+.pm-dot-red   { background: #ff5f57; }
+.pm-dot-yellow{ background: #ffbd2e; }
+.pm-dot-green { background: #28c840; }
+
+#proj-modal-url-bar {
+  flex: 1;
+  display: flex; align-items: center; gap: 8px;
+  background: #fff;
+  border: 1px solid #ddd8cf;
+  border-radius: 9px;
+  padding: 5px 12px;
+  margin: 0 6px;
+  min-width: 0;
+}
+.pm-lock { font-size: 13px !important; color: #28c840; flex-shrink: 0; }
+#proj-modal-url-text {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11.5px;
+  color: #6b6660;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+  min-width: 0;
+}
+#proj-modal-title-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: #999590;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 220px;
+}
+
+/* Action buttons */
+.pm-btn {
+  display: flex; align-items: center; justify-content: center;
+  width: 30px; height: 30px;
+  border-radius: 8px;
+  border: none; background: transparent; cursor: pointer;
+  color: #6b6660; flex-shrink: 0;
+  transition: background .2s, color .2s;
+}
+.pm-btn:hover { background: #e8e4de; color: #1a1816; }
+.pm-btn .material-symbols-outlined { font-size: 17px; }
+#pm-open-external {
+  background: #c47a1e; color: #fff; width: auto; padding: 0 12px;
+  border-radius: 8px; gap: 5px;
+  font-family: 'Syne', sans-serif; font-weight: 700; font-size: 11px;
+  white-space: nowrap;
+}
+#pm-open-external:hover { background: #e8973e; }
+
+/* Loading bar */
+#pm-load-bar {
+  height: 2px;
+  background: linear-gradient(90deg, #c47a1e, #e8973e);
+  width: 0%; flex-shrink: 0;
+  transition: width .3s ease;
+}
+
+/* iframe wrapper */
+#proj-modal-iframe-wrap {
+  flex: 1; min-height: 0; position: relative;
+  background: #fff;
+}
+#proj-modal-iframe {
+  width: 100%; height: 100%; border: none; display: block;
+}
+/* Loading state overlay */
+#pm-loading-overlay {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  background: #f8f7f4; gap: 16px;
+  transition: opacity .4s ease;
+}
+#pm-loading-overlay.hidden { opacity: 0; pointer-events: none; }
+.pm-spinner {
+  width: 36px; height: 36px;
+  border: 3px solid #e2ddd5;
+  border-top-color: #c47a1e;
+  border-radius: 50%;
+  animation: pmSpin .8s linear infinite;
+}
+@keyframes pmSpin { to { transform: rotate(360deg); } }
+#pm-loading-text {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px; color: #999590;
+  text-transform: uppercase; letter-spacing: .08em;
+}
+
+/* Click-to-open hint on portfolio cards */
+.portfolio-card[data-url] { cursor: pointer; }
+.pc-view-link {
+  display: inline-flex; align-items: center; gap: 5px;
+  margin-top: 12px;
+  padding: 6px 14px;
+  background: rgba(196,122,30,.18);
+  border: 1px solid rgba(196,122,30,.4);
+  border-radius: 999px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: .06em;
+  color: #e8973e;
+  transition: background .25s, border-color .25s;
+}
+.pc-view-link:hover { background: rgba(196,122,30,.3); border-color: #c47a1e; }
+.pc-view-link .material-symbols-outlined { font-size: 13px; }
+</style>
+
+<!-- Modal backdrop -->
+<div id="proj-modal-backdrop" onclick="closeProjModal()"></div>
+
+<!-- Modal window -->
+<div id="proj-modal" role="dialog" aria-modal="true">
+  <div id="proj-modal-chrome">
+    <!-- Traffic lights -->
+    <div class="pm-dot pm-dot-red"    onclick="closeProjModal()" title="Close"></div>
+    <div class="pm-dot pm-dot-yellow" onclick="closeProjModal()" title="Close"></div>
+    <div class="pm-dot pm-dot-green"  title="Fullscreen" onclick="pmToggleFullscreen()"></div>
+
+    <!-- URL bar -->
+    <div id="proj-modal-url-bar">
+      <span class="material-symbols-outlined pm-lock">lock</span>
+      <span id="proj-modal-url-text">—</span>
+    </div>
+
+    <!-- Title label -->
+    <span id="proj-modal-title-label"></span>
+
+    <!-- Reload -->
+    <button class="pm-btn" onclick="pmReload()" title="Reload">
+      <span class="material-symbols-outlined">refresh</span>
+    </button>
+
+    <!-- Open in new tab -->
+    <button id="pm-open-external" class="pm-btn" onclick="pmOpenExternal()" title="Open in new tab">
+      <span class="material-symbols-outlined" style="font-size:13px">open_in_new</span>
+      Open
+    </button>
+
+    <!-- Close -->
+    <button class="pm-btn" onclick="closeProjModal()" title="Close (Esc)" style="margin-left:2px">
+      <span class="material-symbols-outlined">close</span>
+    </button>
+  </div>
+
+  <!-- Loading bar -->
+  <div id="pm-load-bar"></div>
+
+  <!-- iframe area -->
+  <div id="proj-modal-iframe-wrap">
+    <div id="pm-loading-overlay">
+      <div class="pm-spinner"></div>
+      <span id="pm-loading-text">Loading project…</span>
+    </div>
+    <iframe id="proj-modal-iframe" sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-presentation" allowfullscreen></iframe>
+  </div>
+</div>
+
+<script>
+(function(){
+  let _currentUrl = '';
+
+  /* ── Open ── */
+  window.openProjModal = function(url, title){
+    if(!url) return;
+    _currentUrl = url;
+
+    // Set chrome
+    document.getElementById('proj-modal-url-text').textContent = url;
+    document.getElementById('proj-modal-title-label').textContent = title || '';
+
+    // Show loading
+    const overlay = document.getElementById('pm-loading-overlay');
+    document.getElementById('pm-loading-text').textContent = 'Loading ' + (title || 'project') + '…';
+    overlay.classList.remove('hidden');
+
+    // Animate load bar
+    const bar = document.getElementById('pm-load-bar');
+    bar.style.width = '0%';
+    bar.style.transition = 'width 2.5s ease';
+    setTimeout(() => bar.style.width = '75%', 50);
+
+    // Set iframe src
+    const frame = document.getElementById('proj-modal-iframe');
+    frame.onload = function(){
+      bar.style.transition = 'width .3s ease';
+      bar.style.width = '100%';
+      overlay.classList.add('hidden');
+      setTimeout(() => { bar.style.transition = 'none'; bar.style.width = '0%'; }, 350);
+    };
+    frame.src = url;
+
+    // Open backdrop + modal
+    document.getElementById('proj-modal-backdrop').classList.add('open');
+    document.getElementById('proj-modal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  };
+
+  /* ── Close ── */
+  window.closeProjModal = function(){
+    document.getElementById('proj-modal-backdrop').classList.remove('open');
+    document.getElementById('proj-modal').classList.remove('open');
+    document.body.style.overflow = '';
+    // Blank iframe after animation to stop background loading
+    setTimeout(() => {
+      document.getElementById('proj-modal-iframe').src = 'about:blank';
+    }, 400);
+  };
+
+  /* ── Reload ── */
+  window.pmReload = function(){
+    const frame = document.getElementById('proj-modal-iframe');
+    const overlay = document.getElementById('pm-loading-overlay');
+    overlay.classList.remove('hidden');
+    const bar = document.getElementById('pm-load-bar');
+    bar.style.transition = 'width 2s ease'; bar.style.width = '70%';
+    frame.src = _currentUrl;
+  };
+
+  /* ── Open external ── */
+  window.pmOpenExternal = function(){
+    if(_currentUrl) window.open(_currentUrl, '_blank', 'noopener');
+  };
+
+  /* ── Toggle fullscreen ── */
+  window.pmToggleFullscreen = function(){
+    const modal = document.getElementById('proj-modal');
+    if(!document.fullscreenElement){
+      modal.requestFullscreen && modal.requestFullscreen();
+    } else {
+      document.exitFullscreen && document.exitFullscreen();
+    }
+  };
+
+  /* ── ESC key closes ── */
+  document.addEventListener('keydown', e => {
+    if(e.key === 'Escape') closeProjModal();
+  });
+
+  /* ── Wire up portfolio cards on DOM ready ── */
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.portfolio-card[data-url]').forEach(card => {
+      const url   = card.getAttribute('data-url');
+      const title = card.getAttribute('data-title') || '';
+
+      // Inject a "View Project" pill inside pc-overlay pc-tags
+      const tagsEl = card.querySelector('.pc-tags');
+      if(tagsEl){
+        const pill = document.createElement('span');
+        pill.className = 'pc-view-link';
+        pill.innerHTML = '<span class="material-symbols-outlined">open_in_browser</span>View Project';
+        tagsEl.appendChild(pill);
+      }
+
+      card.addEventListener('click', e => {
+        // Don't open modal if clicking an inner link
+        if(e.target.closest('a')) return;
+        openProjModal(url, title);
+      });
+    });
+  });
+})();
+</script>
 
 <script>addEventListener('scroll',()=>{document.getElementById('scroll-bar').style.width=(scrollY/(document.documentElement.scrollHeight-innerHeight))*100+'%'})</script>
 <script>document.addEventListener('DOMContentLoaded',()=>{const o=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('v');o.unobserve(x.target)}})},{threshold:.06});document.querySelectorAll('.sr').forEach(el=>o.observe(el))})</script>
