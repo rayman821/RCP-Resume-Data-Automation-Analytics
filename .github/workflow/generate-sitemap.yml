@@ -20,7 +20,7 @@ on:
        id: generate-sitemap
        uses: cicirello/generate-sitemap@v1.10.4
        with:
-        base-url-path: https://raymondparedes.com/
+        base-url-path: https://www.raymondparedes.com/
          sitemap-format: xml
         include-html: true  # Set to true to include HTML files
         include-pdf: false  # Set to false to exclude PDFs
