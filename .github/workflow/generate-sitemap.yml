@@ -2,7 +2,7 @@ name: Generate xml sitemap
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
   workflow_dispatch:  # Allow manual execution of the workflow
 
  jobs:
@@ -12,7 +12,7 @@ on:
 
      steps:
     - name: Checkout the repo
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
        with:
        fetch-depth: 0 
 
@@ -20,7 +20,7 @@ on:
        id: generate-sitemap
        uses: cicirello/generate-sitemap@v1.10.4
        with:
-        base-url-path: https://raymondparedes.com
+        base-url-path: https://raymondparedes.com/
          sitemap-format: xml
         include-html: true  # Set to true to include HTML files
         include-pdf: false  # Set to false to exclude PDFs
@@ -38,7 +38,7 @@ on:
            /tools
 
      - name: Create Pull Request
-       uses: peter-evans/create-pull-request@v3
+       uses: peter-evans/create-pull-request@v8.1.0
        with:
          title: "Automated sitemap update"
          body: > 
