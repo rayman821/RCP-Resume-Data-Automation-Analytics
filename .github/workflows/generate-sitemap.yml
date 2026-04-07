@@ -5,6 +5,10 @@ on:
     branches: [ main ]
   workflow_dispatch:  # Allow manual execution of the workflow
 
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   sitemap_job:
     runs-on: ubuntu-latest
