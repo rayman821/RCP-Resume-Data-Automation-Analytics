@@ -6,7 +6,7 @@
 <title>Raymond Paredes — The Data in Narratives</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Outfit:wght@200;300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&family=Roboto:wght@400;700&family=Inter:wght@400;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Outfit:wght@200;300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&family=Space+Grotesk:wght@400;500;600;700&family=Roboto:wght@400;700&family=Inter:wght@400;700&display=swap" rel="stylesheet"/>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <script>
 tailwind.config={theme:{extend:{colors:{
@@ -44,7 +44,7 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='htt
 /* Clay-style feature card with stat callout */
 .stat-pill{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid #e2ddd5;border-radius:16px;padding:12px 20px;transition:all .3s}
 .stat-pill:hover{border-color:#c47a1e;box-shadow:0 8px 30px -8px rgba(196,122,30,.12)}
-.stat-pill .stat-val{font-family:'Syne',sans-serif;font-weight:800;font-size:1.5rem;color:#c47a1e;line-height:1}
+.stat-pill .stat-val{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.5rem;color:#c47a1e;line-height:1}
 
 /* Icon feature card (Clay grid pattern) */
 .feat-card{background:#fff;border:1px solid #e2ddd5;border-radius:20px;padding:32px;transition:all .4s cubic-bezier(.16,1,.3,1)}
@@ -76,6 +76,22 @@ n8n-demo .canvas-container,
 n8n-demo .embedded_workflow,
 n8n-demo .embedded_workflow_iframe{width:100%!important;height:100%!important;border:none!important}
 #scroll-bar{position:fixed;top:0;left:0;height:2px;z-index:9999;background:linear-gradient(90deg,#c47a1e,#e8973e)}
+
+/* ── Key Numbers Stats Section ── */
+.kn-section{position:relative;z-index:10;background:#f0eee9;overflow:hidden}
+.kn-section::before{content:'';position:absolute;inset:0;opacity:.018;
+background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");pointer-events:none}
+.kn-header{text-align:center;padding:56px 24px 0;position:relative;z-index:1}
+.kn-header-label{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:#999590}
+.kn-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#e2ddd5;margin-top:32px;position:relative;z-index:1}
+@media(max-width:768px){.kn-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.kn-grid{grid-template-columns:1fr}}
+.kn-card{background:#f0eee9;padding:52px 32px;text-align:center;transition:all .4s cubic-bezier(.16,1,.3,1)}
+.kn-card:hover{background:#faf9f7;transform:translateY(-2px)}
+.kn-num{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(3rem,7vw,5.5rem);color:#c47a1e;line-height:1;transition:color .3s}
+.kn-card:hover .kn-num{color:#e8973e}
+.kn-label{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#6b6660;margin-top:14px}
+.kn-ornaments{display:flex;gap:20px;justify-content:center;color:#d5cfc5;font-size:14px;padding:36px 0;background:#f0eee9;position:relative;z-index:1}
 </style>
 </head>
 <body>
@@ -310,6 +326,40 @@ n8n-demo .embedded_workflow_iframe{width:100%!important;height:100%!important;bo
 </div>
 </div>
 </div>
+</section>
+
+<!-- ═══ KEY NUMBERS ═══ -->
+<section class="kn-section">
+  <div class="kn-header sr">
+    <span class="kn-header-label">— Key Numbers —</span>
+  </div>
+  <div class="kn-grid">
+    <div class="kn-card sr">
+      <div class="kn-num" data-target="150" data-suffix="+">0</div>
+      <div class="kn-label">DAX Measures Authored</div>
+    </div>
+    <div class="kn-card sr d1">
+      <div class="kn-num" data-target="50" data-suffix="+">0</div>
+      <div class="kn-label">Workflows Automated</div>
+    </div>
+    <div class="kn-card sr d2">
+      <div class="kn-num" data-target="20" data-suffix="+">0</div>
+      <div class="kn-label">Dashboards Built</div>
+    </div>
+    <div class="kn-card sr">
+      <div class="kn-num" data-target="99.8" data-suffix="%" data-decimal="true">0</div>
+      <div class="kn-label">Pipeline Uptime</div>
+    </div>
+    <div class="kn-card sr d1">
+      <div class="kn-num" data-target="12" data-suffix="">0</div>
+      <div class="kn-label">Active Data Models</div>
+    </div>
+    <div class="kn-card sr d2">
+      <div class="kn-num" data-target="200" data-suffix="+">0</div>
+      <div class="kn-label">Obsidian Notes</div>
+    </div>
+  </div>
+  <div class="kn-ornaments" aria-hidden="true"><span>∗</span><span>❋</span><span>∗</span><span>❋</span></div>
 </section>
 
 <section id="services" class="relative z-10 max-w-6xl mx-auto px-8 py-20">
@@ -1289,18 +1339,25 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 
 <style>
-/* ══ Naledi-inspired Portfolio Grid ══ */
-.portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-@media(max-width:1023px){.portfolio-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:639px){.portfolio-grid{grid-template-columns:1fr}}
+/* ══ Portfolio Section — Key Numbers band layout ══ */
+.pf-section{position:relative;z-index:10;background:#f0eee9;overflow:hidden}
+.pf-header{text-align:center;padding:60px 24px 0;position:relative;z-index:1}
+.pf-header-label{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:#999590}
+.pf-header-title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.8rem,4vw,2.4rem);color:#1a1816;margin-top:12px;letter-spacing:-.02em}
+.pf-header-sub{font-family:'Outfit',sans-serif;font-size:15px;color:#6b6660;margin-top:8px;font-weight:300}
+.pf-ornaments{display:flex;gap:20px;justify-content:center;color:#d5cfc5;font-size:14px;padding:36px 0;background:#f0eee9;position:relative;z-index:1}
+
+.portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px;position:relative;z-index:1;padding:0 32px}
+@media(max-width:1023px){.portfolio-grid{grid-template-columns:repeat(2,1fr);padding:0 24px}}
+@media(max-width:639px){.portfolio-grid{grid-template-columns:1fr;padding:0 16px}}
 
 .portfolio-card{
   position:relative;
-  border-radius:20px;
   overflow:hidden;
   aspect-ratio:4/3;
   cursor:pointer;
   group:true;
+  border-radius:20px;
 }
 .portfolio-card .pc-img{
   width:100%;height:100%;object-fit:cover;
@@ -1454,10 +1511,10 @@ document.addEventListener('DOMContentLoaded', () => {
 @media(max-width:639px){.portfolio-card.featured{grid-column:span 1;aspect-ratio:4/3}}
 </style>
 
-<section id="projects" class="relative z-10 max-w-6xl mx-auto px-8 py-24">
-<div class="sr" style="margin-bottom:48px">
-  <h2 class="font-display font-800 text-3xl md:text-4xl tracking-tight text-cream">Portfolio</h2>
-  <p class="text-subtle text-base mt-3 font-light max-w-xl">A sample of my work across analytics, automation, and knowledge systems.</p>
+<section id="projects" class="pf-section">
+<div class="pf-header sr">
+  <span class="pf-header-label">— Portfolio —</span>
+  <h2 class="pf-header-title">Some Projects done so far.</h2>
 </div>
 
 <div class="portfolio-grid">
@@ -1578,6 +1635,7 @@ document.addEventListener('DOMContentLoaded', () => {
   </div>
 
 </div>
+<div class="pf-ornaments" aria-hidden="true"><span>∗</span><span>❋</span><span>∗</span><span>❋</span></div>
 </section>
 
 <section id="contact" class="relative z-10 max-w-3xl mx-auto px-8 py-28 text-center">
@@ -1945,6 +2003,44 @@ document.addEventListener('DOMContentLoaded', () => {
 
 <script>addEventListener('scroll',()=>{document.getElementById('scroll-bar').style.width=(scrollY/(document.documentElement.scrollHeight-innerHeight))*100+'%'})</script>
 <script>document.addEventListener('DOMContentLoaded',()=>{const o=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('v');o.unobserve(x.target)}})},{threshold:.06});document.querySelectorAll('.sr').forEach(el=>o.observe(el))})</script>
+
+<!-- Key Numbers Counter Animation -->
+<script>
+(function(){
+  var counted = false;
+  var statsObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting && !counted){
+        counted = true;
+        statsObs.disconnect();
+        document.querySelectorAll('.kn-num[data-target]').forEach(function(el){
+          var target = parseFloat(el.dataset.target);
+          var suffix = el.dataset.suffix || '';
+          var isDecimal = el.dataset.decimal === 'true';
+          var duration = 2200;
+          var start = performance.now();
+          function tick(now){
+            var elapsed = now - start;
+            var progress = Math.min(elapsed / duration, 1);
+            // cubic ease-out
+            var eased = 1 - Math.pow(1 - progress, 3);
+            var current = target * eased;
+            if(isDecimal){
+              el.textContent = current.toFixed(1) + (progress >= 1 ? suffix : '');
+            } else {
+              el.textContent = Math.floor(current) + (progress >= 1 ? suffix : '');
+            }
+            if(progress < 1) requestAnimationFrame(tick);
+          }
+          requestAnimationFrame(tick);
+        });
+      }
+    });
+  }, { threshold: 0.2 });
+  var knSection = document.querySelector('.kn-section');
+  if(knSection) statsObs.observe(knSection);
+})();
+</script>
 <script>function handleFullScreen(){const el=document.getElementById('embedContainer');if(el.requestFullscreen)el.requestFullscreen();else if(el.webkitRequestFullscreen)el.webkitRequestFullscreen()}</script>
 <script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2.0.0/webcomponents-loader.js"></script>
 <script src="https://www.unpkg.com/lit@2.0.0-rc.2/polyfill-support.js"></script>
