@@ -30,9 +30,12 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='htt
 .sr.v{opacity:1;transform:translateY(0)}
 .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
 
-@keyframes mql{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-.mq{animation:mql 60s linear infinite;display:flex;width:max-content}
-.mq:hover{animation-play-state:paused}
+/* Dual-row marquee animation */
+@keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(calc(-100% - 2.5rem))}}
+.marquee{display:flex;overflow:hidden;user-select:none;gap:2.5rem;mask-image:linear-gradient(to right,transparent,#000 10%,#000 90%,transparent)}
+.marquee__group{flex-shrink:0;display:flex;align-items:center;justify-content:space-around;gap:2.5rem;min-width:100%;animation:scroll 45s linear infinite}
+.marquee--reverse .marquee__group{animation-direction:reverse;animation-delay:-3s}
+.marquee:hover .marquee__group{animation-play-state:paused}
 
 .nl{position:relative}
 .nl::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1.5px;background:#c47a1e;transition:width .35s ease}
@@ -224,50 +227,71 @@ n8n-demo .embedded_workflow_iframe{width:100%!important;height:100%!important;bo
 @keyframes floatE{0%,100%{transform:translateY(-50%) translateX(0)}50%{transform:translateY(calc(-50% - 12px)) translateX(6px)}}
 </style>
 
-<section class="relative z-10 border-y border-border/40 py-6 overflow-hidden">
-<p class="text-center text-muted text-sm mb-5 font-medium">Tools & platforms I work with daily</p>
-<div class="mq">
-<div class="flex items-center gap-14 px-7">
-<div class="flex items-center gap-2"><img src="https://www.vectorlogo.zone/logos/microsoft_powerbi/microsoft_powerbi-icon.svg" alt="Power BI" class="w-6 h-6"><span class="font-display font-700 text-base text-cream uppercase tracking-wide whitespace-nowrap" style="font-family: 'Segoe UI', sans-serif;">Power BI</span></div><span class="text-accent/20">·</span>
-<div class="flex items-center gap-2"><img src="https://www.vectorlogo.zone/logos/microsoft_powerbi/microsoft_powerbi-icon.svg" alt="DAX" class="w-6 h-6"><span class="font-display font-700 text-base text-cream uppercase tracking-wide whitespace-nowrap" style="font-family: 'Segoe UI', sans-serif;">DAX</span></div><span class="text-accent/20">·</span>
-<div class="flex items-center gap-2"><img src="https://avatars.githubusercontent.com/u/45487711?s=200&v=4" alt="n8n" class="w-6 h-6"><span class="font-display font-700 text-base text-cream uppercase tracking-wide whitespace-nowrap" style="font-family: 'Inter', sans-serif;">n8n</span></div><span class="text-accent/20">·</span>
-<div class="flex items-center gap-2"><img src="https://www.gstatic.com/images/branding/product/1x/apps_script_64dp.png" alt="Google Apps Script" class="w-6 h-6"><span class="font-display font-700 text-base text-cream uppercase tracking-wide whitespace-nowrap" style="font-family: 'Roboto', sans-serif;">Google Apps Script</span></div><span class="text-accent/20">·</span>
-<div class="flex items-center gap-2"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" class="w-6 h-6"><span class="font-display font-700 text-base text-cream uppercase tracking-wide whitespace-nowrap" style="font-family: 'Outfit', sans-serif;">Docker</span></div><span class="text-accent/20">·</span>
-<div class="flex items-center gap-2"><img src="https://obsidian.md/images/obsidian-logo-gradient.svg" alt="Obsidian" class="w-6 h-6"><span class="font-display font-700 text-base text-cream uppercase tracking-wide whitespace-nowrap" style="font-family: 'Inter', sans-serif;">Obsidian</span></div><span class="text-accent/20">·</span>
-<div class="flex items-center gap-2"><span class="material-symbols-outlined text-base text-cream">schema</span><span class="font-display font-700 text-base text-cream uppercase tracking-wide whitespace-nowrap">BPMN 2.0</span></div><span class="text-accent/20">·</span>
-<div class="flex items-center gap-2"><img src="https://www.vectorlogo.zone/logos/mermaidjs/mermaidjs-icon.svg" alt="Mermaid" class="w-6 h-6"><span class="font-display font-700 text-base text-cream uppercase tracking-wide whitespace-nowrap">Mermaid</span></div><span class="text-accent/20">·</span>
-<div class="flex items-center gap-2"><img src="https://www.vectorlogo.zone/logos/excalidraw_io/excalidraw_io-icon.svg" alt="Excalidraw" class="w-6 h-6"><span class="font-display font-700 text-base text-cream uppercase tracking-wide whitespace-nowrap" style="font-family: 'Inter', sans-serif;">Excalidraw</span></div><span class="text-accent/20">·</span>
-<div class="flex items-center gap-2"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg" alt="Supabase" class="w-6 h-6"><span class="font-display font-700 text-base text-cream uppercase tracking-wide whitespace-nowrap" style="font-family: 'Inter', sans-serif;">Supabase</span></div><span class="text-accent/20">·</span>
-<div class="flex items-center gap-2"><img src="https://www.vectorlogo.zone/logos/microsoft_powerbi/microsoft_powerbi-icon.svg" alt="TMDL" class="w-6 h-6"><span class="font-display font-700 text-base text-cream uppercase tracking-wide whitespace-nowrap" style="font-family: 'Segoe UI', sans-serif;">TMDL</span></div><span class="text-accent/20">·</span>
-<div class="flex items-center gap-2"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" class="w-6 h-6"><span class="font-display font-700 text-base text-cream uppercase tracking-wide whitespace-nowrap" style="font-family: 'Outfit', sans-serif;">MongoDB</span></div><span class="text-accent/20">·</span>
-<div class="flex items-center gap-2"><img src="https://avatars.githubusercontent.com/u/48932923?s=200&v=4" alt="Tailscale" class="w-6 h-6"><span class="font-display font-700 text-base text-cream uppercase tracking-wide whitespace-nowrap">Tailscale</span></div><span class="text-accent/20">·</span>
-<div class="flex items-center gap-2"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" class="w-6 h-6"><span class="font-display font-700 text-base text-cream uppercase tracking-wide whitespace-nowrap" style="font-family: 'JetBrains Mono', monospace;">Python</span></div><span class="text-accent/20">·</span>
-<div class="flex items-center gap-2"><span class="material-symbols-outlined text-base text-cream">search</span><span class="font-display font-700 text-base text-cream uppercase tracking-wide whitespace-nowrap">Regex</span></div><span class="text-accent/20">·</span>
-</div>
-<div class="flex items-center gap-14 px-7" aria-hidden="true">
-<div class="flex items-center gap-2"><img src="https://www.vectorlogo.zone/logos/microsoft_powerbi/microsoft_powerbi-icon.svg" alt="Power BI" class="w-6 h-6"><span class="font-display font-700 text-base text-cream uppercase tracking-wide whitespace-nowrap" style="font-family: 'Segoe UI', sans-serif;">Power BI</span></div><span class="text-accent/20">·</span>
-<div class="flex items-center gap-2"><img src="https://www.vectorlogo.zone/logos/microsoft_powerbi/microsoft_powerbi-icon.svg" alt="DAX" class="w-6 h-6"><span class="font-display font-700 text-base text-cream uppercase tracking-wide whitespace-nowrap" style="font-family: 'Segoe UI', sans-serif;">DAX</span></div><span class="text-accent/20">·</span>
-<div class="flex items-center gap-2"><img src="https://avatars.githubusercontent.com/u/45487711?s=200&v=4" alt="n8n" class="w-6 h-6"><span class="font-display font-700 text-base text-cream uppercase tracking-wide whitespace-nowrap" style="font-family: 'Inter', sans-serif;">n8n</span></div><span class="text-accent/20">·</span>
-<div class="flex items-center gap-2"><img src="https://www.gstatic.com/images/branding/product/1x/apps_script_64dp.png" alt="Google Apps Script" class="w-6 h-6"><span class="font-display font-700 text-base text-cream uppercase tracking-wide whitespace-nowrap" style="font-family: 'Roboto', sans-serif;">Google Apps Script</span></div><span class="text-accent/20">·</span>
-<div class="flex items-center gap-2"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" class="w-6 h-6"><span class="font-display font-700 text-base text-cream uppercase tracking-wide whitespace-nowrap" style="font-family: 'Outfit', sans-serif;">Docker</span></div><span class="text-accent/20">·</span>
-<div class="flex items-center gap-2"><img src="https://obsidian.md/images/obsidian-logo-gradient.svg" alt="Obsidian" class="w-6 h-6"><span class="font-display font-700 text-base text-cream uppercase tracking-wide whitespace-nowrap" style="font-family: 'Inter', sans-serif;">Obsidian</span></div><span class="text-accent/20">·</span>
-<div class="flex items-center gap-2"><span class="material-symbols-outlined text-base text-cream">schema</span><span class="font-display font-700 text-base text-cream uppercase tracking-wide whitespace-nowrap">BPMN 2.0</span></div><span class="text-accent/20">·</span>
-<div class="flex items-center gap-2"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mermaid/mermaid-original.svg" alt="Mermaid" class="w-6 h-6"><span class="font-display font-700 text-base text-cream uppercase tracking-wide whitespace-nowrap">Mermaid</span></div><span class="text-accent/20">·</span>
-<div class="flex items-center gap-2"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg" alt="Supabase" class="w-6 h-6"><span class="font-display font-700 text-base text-cream uppercase tracking-wide whitespace-nowrap" style="font-family: 'Inter', sans-serif;">Supabase</span></div><span class="text-accent/20">·</span>
-<div class="flex items-center gap-2"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" class="w-6 h-6"><span class="font-display font-700 text-base text-cream uppercase tracking-wide whitespace-nowrap" style="font-family: 'Outfit', sans-serif;">MongoDB</span></div><span class="text-accent/20">·</span>
-<div class="flex items-center gap-2"><img src="https://avatars.githubusercontent.com/u/48932923?s=200&v=4" alt="Tailscale" class="w-6 h-6"><span class="font-display font-700 text-base text-cream uppercase tracking-wide whitespace-nowrap">Tailscale</span></div><span class="text-accent/20">·</span>
-<div class="flex items-center gap-2"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" class="w-6 h-6"><span class="font-display font-700 text-base text-cream uppercase tracking-wide whitespace-nowrap" style="font-family: 'JetBrains Mono', monospace;">Python</span></div><span class="text-accent/20">·</span>
-<div class="flex items-center gap-2"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/obsidian/obsidian-original.svg" alt="Obsidian" class="w-6 h-6"><span class="font-display font-700 text-base text-cream uppercase tracking-wide whitespace-nowrap" style="font-family: 'Inter', sans-serif;">Obsidian</span></div><span class="text-accent/20">·</span>
-<div class="flex items-center gap-2"><span class="material-symbols-outlined text-base text-cream">schema</span><span class="font-display font-700 text-base text-cream uppercase tracking-wide whitespace-nowrap">BPMN 2.0</span></div><span class="text-accent/20">·</span>
-<div class="flex items-center gap-2"><img src="https://www.vectorlogo.zone/logos/mermaidjs/mermaidjs-icon.svg" alt="Mermaid" class="w-6 h-6"><span class="font-display font-700 text-base text-cream uppercase tracking-wide whitespace-nowrap">Mermaid</span></div><span class="text-accent/20">·</span>
-<div class="flex items-center gap-2"><img src="https://www.vectorlogo.zone/logos/excalidraw_io/excalidraw_io-icon.svg" alt="Excalidraw" class="w-6 h-6"><span class="font-display font-700 text-base text-cream uppercase tracking-wide whitespace-nowrap" style="font-family: 'Inter', sans-serif;">Excalidraw</span></div><span class="text-accent/20">·</span>
-<div class="flex items-center gap-2"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg" alt="Supabase" class="w-6 h-6"><span class="font-display font-700 text-base text-cream uppercase tracking-wide whitespace-nowrap" style="font-family: 'Inter', sans-serif;">Supabase</span></div><span class="text-accent/20">·</span>
-<div class="flex items-center gap-2"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" class="w-6 h-6"><span class="font-display font-700 text-base text-cream uppercase tracking-wide whitespace-nowrap" style="font-family: 'Outfit', sans-serif;">MongoDB</span></div><span class="text-accent/20">·</span>
-<div class="flex items-center gap-2"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailscale/tailscale-original.svg" alt="Tailscale" class="w-6 h-6"><span class="font-display font-700 text-base text-cream uppercase tracking-wide whitespace-nowrap">Tailscale</span></div><span class="text-accent/20">·</span>
-<div class="flex items-center gap-2"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" class="w-6 h-6"><span class="font-display font-700 text-base text-cream uppercase tracking-wide whitespace-nowrap" style="font-family: 'JetBrains Mono', monospace;">Python</span></div><span class="text-accent/20">·</span>
-<div class="flex items-center gap-2"><span class="material-symbols-outlined text-base text-cream">search</span><span class="font-display font-700 text-base text-cream uppercase tracking-wide whitespace-nowrap">Regex</span></div><span class="text-accent/20">·</span>
-</div>
-</div>
+<section class="relative z-10 border-y border-border/40 py-8 overflow-hidden">
+<p class="text-center text-muted text-sm mb-6 font-medium">Tools & platforms I work with daily</p>
+<article class="flex flex-col gap-4">
+  <!-- Row 1: scrolls left -->
+  <div class="marquee">
+    <div class="marquee__group">
+      <div class="flex items-center gap-3 px-4 py-2 bg-white/60 border border-border/50 rounded-xl"><img src="https://www.vectorlogo.zone/logos/microsoft_powerbi/microsoft_powerbi-icon.svg" alt="Power BI" class="w-7 h-7"><span class="font-semibold text-sm text-cream whitespace-nowrap">Power BI</span></div>
+      <div class="flex items-center gap-3 px-4 py-2 bg-white/60 border border-border/50 rounded-xl"><img src="https://www.vectorlogo.zone/logos/microsoft_powerbi/microsoft_powerbi-icon.svg" alt="DAX" class="w-7 h-7"><span class="font-semibold text-sm text-cream whitespace-nowrap">DAX</span></div>
+      <div class="flex items-center gap-3 px-4 py-2 bg-white/60 border border-border/50 rounded-xl"><img src="https://avatars.githubusercontent.com/u/45487711?s=200&v=4" alt="n8n" class="w-7 h-7 rounded"><span class="font-semibold text-sm text-cream whitespace-nowrap">n8n</span></div>
+      <div class="flex items-center gap-3 px-4 py-2 bg-white/60 border border-border/50 rounded-xl"><img src="https://www.gstatic.com/images/branding/product/1x/apps_script_64dp.png" alt="Google Apps Script" class="w-7 h-7"><span class="font-semibold text-sm text-cream whitespace-nowrap">Apps Script</span></div>
+      <div class="flex items-center gap-3 px-4 py-2 bg-white/60 border border-border/50 rounded-xl"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" class="w-7 h-7"><span class="font-semibold text-sm text-cream whitespace-nowrap">Docker</span></div>
+      <div class="flex items-center gap-3 px-4 py-2 bg-white/60 border border-border/50 rounded-xl"><img src="https://obsidian.md/images/obsidian-logo-gradient.svg" alt="Obsidian" class="w-7 h-7"><span class="font-semibold text-sm text-cream whitespace-nowrap">Obsidian</span></div>
+      <div class="flex items-center gap-3 px-4 py-2 bg-white/60 border border-border/50 rounded-xl"><span class="material-symbols-outlined text-lg text-accent">schema</span><span class="font-semibold text-sm text-cream whitespace-nowrap">BPMN 2.0</span></div>
+      <div class="flex items-center gap-3 px-4 py-2 bg-white/60 border border-border/50 rounded-xl"><img src="https://www.vectorlogo.zone/logos/mermaidjs/mermaidjs-icon.svg" alt="Mermaid" class="w-7 h-7"><span class="font-semibold text-sm text-cream whitespace-nowrap">Mermaid</span></div>
+      <!-- New tools -->
+      <div class="flex items-center gap-3 px-4 py-2 bg-white/60 border border-border/50 rounded-xl"><svg class="w-7 h-7" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" rx="18" fill="#000"/><path d="M26 72V28h16.5l7.5 18 7.5-18H74v44H60V50l-10 22-10-22v22H26z" fill="#fff"/></svg><span class="font-semibold text-sm text-cream whitespace-nowrap">Notion</span></div>
+      <div class="flex items-center gap-3 px-4 py-2 bg-white/60 border border-border/50 rounded-xl"><svg class="w-7 h-7" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" rx="18" fill="#4A154B"/><path d="M26 58.5c0 4.14-3.36 7.5-7.5 7.5S11 62.64 11 58.5 14.36 51 18.5 51H26v7.5zm3.75 0c0-4.14 3.36-7.5 7.5-7.5s7.5 3.36 7.5 7.5V81.5c0 4.14-3.36 7.5-7.5 7.5s-7.5-3.36-7.5-7.5V58.5zM37.25 26c-4.14 0-7.5-3.36-7.5-7.5S33.11 11 37.25 11s7.5 3.36 7.5 7.5V26h-7.5zm0 3.75c4.14 0 7.5 3.36 7.5 7.5s-3.36 7.5-7.5 7.5H14.25c-4.14 0-7.5-3.36-7.5-7.5s3.36-7.5 7.5-7.5H37.25zM70 37.25c0-4.14 3.36-7.5 7.5-7.5S85 33.11 85 37.25s-3.36 7.5-7.5 7.5H70v-7.5zm-3.75 0c0 4.14-3.36 7.5-7.5 7.5s-7.5-3.36-7.5-7.5V14.25c0-4.14 3.36-7.5 7.5-7.5s7.5 3.36 7.5 7.5V37.25zM58.75 70c4.14 0 7.5 3.36 7.5 7.5S62.89 85 58.75 85s-7.5-3.36-7.5-7.5V70h7.5zm0-3.75c-4.14 0-7.5-3.36-7.5-7.5s3.36-7.5 7.5-7.5H81.75c4.14 0 7.5 3.36 7.5 7.5s-3.36 7.5-7.5 7.5H58.75z" fill="#fff"/></svg><span class="font-semibold text-sm text-cream whitespace-nowrap">Slack</span></div>
+      <div class="flex items-center gap-3 px-4 py-2 bg-white/60 border border-border/50 rounded-xl"><svg class="w-7 h-7" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" rx="18" fill="#F62B54"/><text x="50" y="68" text-anchor="middle" font-size="52" font-weight="900" font-family="Arial,sans-serif" fill="#fff">m</text></svg><span class="font-semibold text-sm text-cream whitespace-nowrap">Monday.com</span></div>
+    </div>
+    <div aria-hidden="true" class="marquee__group">
+      <div class="flex items-center gap-3 px-4 py-2 bg-white/60 border border-border/50 rounded-xl"><img src="https://www.vectorlogo.zone/logos/microsoft_powerbi/microsoft_powerbi-icon.svg" alt="Power BI" class="w-7 h-7"><span class="font-semibold text-sm text-cream whitespace-nowrap">Power BI</span></div>
+      <div class="flex items-center gap-3 px-4 py-2 bg-white/60 border border-border/50 rounded-xl"><img src="https://www.vectorlogo.zone/logos/microsoft_powerbi/microsoft_powerbi-icon.svg" alt="DAX" class="w-7 h-7"><span class="font-semibold text-sm text-cream whitespace-nowrap">DAX</span></div>
+      <div class="flex items-center gap-3 px-4 py-2 bg-white/60 border border-border/50 rounded-xl"><img src="https://avatars.githubusercontent.com/u/45487711?s=200&v=4" alt="n8n" class="w-7 h-7 rounded"><span class="font-semibold text-sm text-cream whitespace-nowrap">n8n</span></div>
+      <div class="flex items-center gap-3 px-4 py-2 bg-white/60 border border-border/50 rounded-xl"><img src="https://www.gstatic.com/images/branding/product/1x/apps_script_64dp.png" alt="Google Apps Script" class="w-7 h-7"><span class="font-semibold text-sm text-cream whitespace-nowrap">Apps Script</span></div>
+      <div class="flex items-center gap-3 px-4 py-2 bg-white/60 border border-border/50 rounded-xl"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" class="w-7 h-7"><span class="font-semibold text-sm text-cream whitespace-nowrap">Docker</span></div>
+      <div class="flex items-center gap-3 px-4 py-2 bg-white/60 border border-border/50 rounded-xl"><img src="https://obsidian.md/images/obsidian-logo-gradient.svg" alt="Obsidian" class="w-7 h-7"><span class="font-semibold text-sm text-cream whitespace-nowrap">Obsidian</span></div>
+      <div class="flex items-center gap-3 px-4 py-2 bg-white/60 border border-border/50 rounded-xl"><span class="material-symbols-outlined text-lg text-accent">schema</span><span class="font-semibold text-sm text-cream whitespace-nowrap">BPMN 2.0</span></div>
+      <div class="flex items-center gap-3 px-4 py-2 bg-white/60 border border-border/50 rounded-xl"><img src="https://www.vectorlogo.zone/logos/mermaidjs/mermaidjs-icon.svg" alt="Mermaid" class="w-7 h-7"><span class="font-semibold text-sm text-cream whitespace-nowrap">Mermaid</span></div>
+      <!-- New tools -->
+      <div class="flex items-center gap-3 px-4 py-2 bg-white/60 border border-border/50 rounded-xl"><svg class="w-7 h-7" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" rx="18" fill="#000"/><path d="M26 72V28h16.5l7.5 18 7.5-18H74v44H60V50l-10 22-10-22v22H26z" fill="#fff"/></svg><span class="font-semibold text-sm text-cream whitespace-nowrap">Notion</span></div>
+      <div class="flex items-center gap-3 px-4 py-2 bg-white/60 border border-border/50 rounded-xl"><svg class="w-7 h-7" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" rx="18" fill="#4A154B"/><path d="M26 58.5c0 4.14-3.36 7.5-7.5 7.5S11 62.64 11 58.5 14.36 51 18.5 51H26v7.5zm3.75 0c0-4.14 3.36-7.5 7.5-7.5s7.5 3.36 7.5 7.5V81.5c0 4.14-3.36 7.5-7.5 7.5s-7.5-3.36-7.5-7.5V58.5zM37.25 26c-4.14 0-7.5-3.36-7.5-7.5S33.11 11 37.25 11s7.5 3.36 7.5 7.5V26h-7.5zm0 3.75c4.14 0 7.5 3.36 7.5 7.5s-3.36 7.5-7.5 7.5H14.25c-4.14 0-7.5-3.36-7.5-7.5s3.36-7.5 7.5-7.5H37.25zM70 37.25c0-4.14 3.36-7.5 7.5-7.5S85 33.11 85 37.25s-3.36 7.5-7.5 7.5H70v-7.5zm-3.75 0c0 4.14-3.36 7.5-7.5 7.5s-7.5-3.36-7.5-7.5V14.25c0-4.14 3.36-7.5 7.5-7.5s7.5 3.36 7.5 7.5V37.25zM58.75 70c4.14 0 7.5 3.36 7.5 7.5S62.89 85 58.75 85s-7.5-3.36-7.5-7.5V70h7.5zm0-3.75c-4.14 0-7.5-3.36-7.5-7.5s3.36-7.5 7.5-7.5H81.75c4.14 0 7.5 3.36 7.5 7.5s-3.36 7.5-7.5 7.5H58.75z" fill="#fff"/></svg><span class="font-semibold text-sm text-cream whitespace-nowrap">Slack</span></div>
+      <div class="flex items-center gap-3 px-4 py-2 bg-white/60 border border-border/50 rounded-xl"><svg class="w-7 h-7" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" rx="18" fill="#F62B54"/><text x="50" y="68" text-anchor="middle" font-size="52" font-weight="900" font-family="Arial,sans-serif" fill="#fff">m</text></svg><span class="font-semibold text-sm text-cream whitespace-nowrap">Monday.com</span></div>
+    </div>
+  </div>
+
+  <!-- Row 2: scrolls right (reverse) -->
+  <div class="marquee marquee--reverse">
+    <div class="marquee__group">
+      <div class="flex items-center gap-3 px-4 py-2 bg-white/60 border border-border/50 rounded-xl"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg" alt="Supabase" class="w-7 h-7"><span class="font-semibold text-sm text-cream whitespace-nowrap">Supabase</span></div>
+      <div class="flex items-center gap-3 px-4 py-2 bg-white/60 border border-border/50 rounded-xl"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" class="w-7 h-7"><span class="font-semibold text-sm text-cream whitespace-nowrap">MongoDB</span></div>
+      <div class="flex items-center gap-3 px-4 py-2 bg-white/60 border border-border/50 rounded-xl"><img src="https://avatars.githubusercontent.com/u/48932923?s=200&v=4" alt="Tailscale" class="w-7 h-7 rounded"><span class="font-semibold text-sm text-cream whitespace-nowrap">Tailscale</span></div>
+      <div class="flex items-center gap-3 px-4 py-2 bg-white/60 border border-border/50 rounded-xl"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" class="w-7 h-7"><span class="font-semibold text-sm text-cream whitespace-nowrap">Python</span></div>
+      <div class="flex items-center gap-3 px-4 py-2 bg-white/60 border border-border/50 rounded-xl"><span class="material-symbols-outlined text-lg text-accent">search</span><span class="font-semibold text-sm text-cream whitespace-nowrap">Regex</span></div>
+      <div class="flex items-center gap-3 px-4 py-2 bg-white/60 border border-border/50 rounded-xl"><img src="https://www.vectorlogo.zone/logos/excalidraw_io/excalidraw_io-icon.svg" alt="Excalidraw" class="w-7 h-7"><span class="font-semibold text-sm text-cream whitespace-nowrap">Excalidraw</span></div>
+      <div class="flex items-center gap-3 px-4 py-2 bg-white/60 border border-border/50 rounded-xl"><img src="https://www.vectorlogo.zone/logos/microsoft_powerbi/microsoft_powerbi-icon.svg" alt="TMDL" class="w-7 h-7"><span class="font-semibold text-sm text-cream whitespace-nowrap">TMDL</span></div>
+      <!-- Google Workspace — inline SVG for reliable rendering -->
+      <div class="flex items-center gap-3 px-4 py-2 bg-white/60 border border-border/50 rounded-xl"><svg class="w-7 h-7" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"/><path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"/><path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34C2.85 17.09 2 20.45 2 24c0 3.55.85 6.91 2.34 9.88l7.35-5.7z"/><path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"/></svg><span class="font-semibold text-sm text-cream whitespace-nowrap">Google Workspace</span></div>
+      <!-- New tools -->
+      <div class="flex items-center gap-3 px-4 py-2 bg-white/60 border border-border/50 rounded-xl"><svg class="w-7 h-7" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="48" rx="8" fill="#0078D4"/><path d="M10 12h28v4H10zm0 8h18v4H10zm0 8h22v4H10zm0 8h16v4H10z" fill="#fff" opacity=".9"/><rect x="30" y="20" width="10" height="20" rx="2" fill="#fff" opacity=".7"/></svg><span class="font-semibold text-sm text-cream whitespace-nowrap">Microsoft 365</span></div>
+      <div class="flex items-center gap-3 px-4 py-2 bg-white/60 border border-border/50 rounded-xl"><svg class="w-7 h-7" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="48" rx="8" fill="#0052CC"/><rect x="8" y="8" width="13" height="13" rx="3" fill="#fff"/><rect x="27" y="8" width="13" height="13" rx="3" fill="#fff" opacity=".6"/><rect x="8" y="27" width="13" height="13" rx="3" fill="#fff" opacity=".6"/><path d="M27 27h13l-6.5 13L27 27z" fill="#fff"/></svg><span class="font-semibold text-sm text-cream whitespace-nowrap">Trello</span></div>
+    </div>
+    <div aria-hidden="true" class="marquee__group">
+      <div class="flex items-center gap-3 px-4 py-2 bg-white/60 border border-border/50 rounded-xl"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg" alt="Supabase" class="w-7 h-7"><span class="font-semibold text-sm text-cream whitespace-nowrap">Supabase</span></div>
+      <div class="flex items-center gap-3 px-4 py-2 bg-white/60 border border-border/50 rounded-xl"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" class="w-7 h-7"><span class="font-semibold text-sm text-cream whitespace-nowrap">MongoDB</span></div>
+      <div class="flex items-center gap-3 px-4 py-2 bg-white/60 border border-border/50 rounded-xl"><img src="https://avatars.githubusercontent.com/u/48932923?s=200&v=4" alt="Tailscale" class="w-7 h-7 rounded"><span class="font-semibold text-sm text-cream whitespace-nowrap">Tailscale</span></div>
+      <div class="flex items-center gap-3 px-4 py-2 bg-white/60 border border-border/50 rounded-xl"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" class="w-7 h-7"><span class="font-semibold text-sm text-cream whitespace-nowrap">Python</span></div>
+      <div class="flex items-center gap-3 px-4 py-2 bg-white/60 border border-border/50 rounded-xl"><span class="material-symbols-outlined text-lg text-accent">search</span><span class="font-semibold text-sm text-cream whitespace-nowrap">Regex</span></div>
+      <div class="flex items-center gap-3 px-4 py-2 bg-white/60 border border-border/50 rounded-xl"><img src="https://www.vectorlogo.zone/logos/excalidraw_io/excalidraw_io-icon.svg" alt="Excalidraw" class="w-7 h-7"><span class="font-semibold text-sm text-cream whitespace-nowrap">Excalidraw</span></div>
+      <div class="flex items-center gap-3 px-4 py-2 bg-white/60 border border-border/50 rounded-xl"><img src="https://www.vectorlogo.zone/logos/microsoft_powerbi/microsoft_powerbi-icon.svg" alt="TMDL" class="w-7 h-7"><span class="font-semibold text-sm text-cream whitespace-nowrap">TMDL</span></div>
+      <div class="flex items-center gap-3 px-4 py-2 bg-white/60 border border-border/50 rounded-xl"><svg class="w-7 h-7" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"/><path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"/><path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34C2.85 17.09 2 20.45 2 24c0 3.55.85 6.91 2.34 9.88l7.35-5.7z"/><path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"/></svg><span class="font-semibold text-sm text-cream whitespace-nowrap">Google Workspace</span></div>
+      <div class="flex items-center gap-3 px-4 py-2 bg-white/60 border border-border/50 rounded-xl"><svg class="w-7 h-7" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="48" rx="8" fill="#0078D4"/><path d="M10 12h28v4H10zm0 8h18v4H10zm0 8h22v4H10zm0 8h16v4H10z" fill="#fff" opacity=".9"/><rect x="30" y="20" width="10" height="20" rx="2" fill="#fff" opacity=".7"/></svg><span class="font-semibold text-sm text-cream whitespace-nowrap">Microsoft 365</span></div>
+      <div class="flex items-center gap-3 px-4 py-2 bg-white/60 border border-border/50 rounded-xl"><svg class="w-7 h-7" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="48" rx="8" fill="#0052CC"/><rect x="8" y="8" width="13" height="13" rx="3" fill="#fff"/><rect x="27" y="8" width="13" height="13" rx="3" fill="#fff" opacity=".6"/><rect x="8" y="27" width="13" height="13" rx="3" fill="#fff" opacity=".6"/><path d="M27 27h13l-6.5 13L27 27z" fill="#fff"/></svg><span class="font-semibold text-sm text-cream whitespace-nowrap">Trello</span></div>
+    </div>
+  </div>
+</article>
 </section>
 
 <section id="about" class="relative z-10 max-w-6xl mx-auto px-8 py-28">
@@ -343,19 +367,44 @@ n8n-demo .embedded_workflow_iframe{width:100%!important;height:100%!important;bo
 </ul>
 <div class="stat-pill"><div class="stat-val">12</div><span class="text-sm text-subtle">Active interconnected data models across operations</span></div>
 </div>
-<div class="bg-dark rounded-2xl p-8 space-y-4 border border-dark" style="min-height:420px;display:flex;flex-direction:column;justify-content:space-between">
-<div class="space-y-4">
-<div class="flex items-center gap-3 p-5 rounded-xl border border-white/8 bg-white/3"><img alt="Obsidian" class="w-10 h-10 rounded-lg object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4i4LxfbB5-R9mLT6WaMG9H3fl7cqq6md4pGGfn1GqeZTiVZO9-5y5_9VkG7f3EMcFBoQZgiABXO3lxFex81qWDJ6NSuv_rvxFQf6RFB0Eq8U4vk4U-9VQ7kozqT-NWuwGxGKeBHFBxAtxjFBJL_jicwy0dIib_y4_5Wwne65xUuOfGnMlGLIjuwRjGNBNQK1etdRqTzbfIyiVJuuYJukTBzWj_-7XgGJWZxb2pa_tfMAWFK1uEaxmxOMQHjVibePVxLO0zkeG6QUF"/><div><h4 class="font-semibold text-white text-base">Obsidian Vault</h4><p class="text-xs text-white/40 mt-0.5">MOC structure · 200+ cross-referenced notes</p></div></div>
-<div class="flex items-center gap-3 p-5 rounded-xl border border-white/8 bg-white/3"><span class="material-symbols-outlined text-accent text-2xl ml-0.5">auto_awesome</span><div><h4 class="font-semibold text-white text-base">LLM & RAG</h4><p class="text-xs text-white/40 mt-0.5">AI-powered contextual retrieval over docs</p></div></div>
-<div class="flex items-center gap-3 p-5 rounded-xl border border-white/8 bg-white/3"><span class="material-symbols-outlined text-accent text-2xl ml-0.5">schema</span><div><h4 class="font-semibold text-white text-base">BPMN & Mermaid</h4><p class="text-xs text-white/40 mt-0.5">Formal process diagrams & procurement flows</p></div></div>
-<div class="flex items-center gap-3 p-5 rounded-xl border border-white/8 bg-white/3"><span class="material-symbols-outlined text-accent text-2xl ml-0.5">hub</span><div><h4 class="font-semibold text-white text-base">Graph View</h4><p class="text-xs text-white/40 mt-0.5">12 active data models, fully interconnected</p></div></div>
-</div>
-<div class="pt-2 flex flex-wrap gap-2">
-<span class="mt" style="color:#7ecf8e;border-color:#7ecf8e33">Obsidian</span>
-<span class="mt" style="color:#b48eff;border-color:#b48eff33">BPMN 2.0</span>
-<span class="mt" style="color:#4a9eff;border-color:#4a9eff33">Mermaid</span>
-<span class="mt" style="color:#c47a1e;border-color:#c47a1e33">RAG / LLM</span>
-</div>
+<div id="ks-graph-shell" style="background:#0d0c0b;border-radius:20px;overflow:hidden;min-height:420px;display:flex;flex-direction:column;border:1px solid rgba(255,255,255,.07);box-shadow:0 20px 60px -12px rgba(0,0,0,.5);">
+  <!-- Header bar -->
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:#0a0908;border-bottom:1px solid rgba(255,255,255,.06);flex-shrink:0;">
+    <div style="display:flex;align-items:center;gap:8px;">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+        <circle cx="5"  cy="12" r="2.6" fill="#c47a1e"/>
+        <circle cx="19" cy="5"  r="2"   fill="#7ecf8e"/>
+        <circle cx="19" cy="19" r="2"   fill="#4a9eff"/>
+        <circle cx="12" cy="20" r="1.6" fill="#b48eff"/>
+        <line x1="7.4" y1="11"   x2="17.2" y2="6.4"  stroke="rgba(255,255,255,.2)" stroke-width="1.1"/>
+        <line x1="7.4" y1="13"   x2="17.2" y2="17.6" stroke="rgba(255,255,255,.2)" stroke-width="1.1"/>
+        <line x1="19"  y1="7.2"  x2="19"   y2="16.8" stroke="rgba(255,255,255,.15)" stroke-width="1"/>
+        <line x1="13.5" y1="20" x2="17.2"  y2="19"   stroke="rgba(255,255,255,.15)" stroke-width="1"/>
+      </svg>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.4);">Knowledge Graph</span>
+      <span id="ks-node-count" style="font-family:'JetBrains Mono',monospace;font-size:8px;background:rgba(196,122,30,.15);color:#c47a1e;border:1px solid rgba(196,122,30,.28);border-radius:999px;padding:1px 7px;letter-spacing:.06em;">12 nodes</span>
+    </div>
+    <button onclick="ksResetZoom()" title="Reset zoom"
+      style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:6px;width:24px;height:24px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;"
+      onmouseover="this.style.background='rgba(255,255,255,.13)'" onmouseout="this.style.background='rgba(255,255,255,.06)'">
+      <span class="material-symbols-outlined" style="font-size:12px;color:rgba(255,255,255,.45);">center_focus_strong</span>
+    </button>
+  </div>
+  <!-- D3 canvas -->
+  <div id="ks-wrap" style="flex:1;position:relative;min-height:330px;overflow:hidden;">
+    <svg id="ks-svg" style="width:100%;height:100%;display:block;"></svg>
+    <div id="ks-tip" style="position:absolute;pointer-events:none;opacity:0;background:#1a1816;border:1px solid rgba(255,255,255,.11);border-radius:9px;padding:9px 12px;font-family:'JetBrains Mono',monospace;font-size:9.5px;color:#fff;max-width:175px;transition:opacity .15s;box-shadow:0 10px 28px rgba(0,0,0,.55);z-index:20;line-height:1.65;"></div>
+  </div>
+  <!-- Legend footer -->
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 14px;background:#0a0908;border-top:1px solid rgba(255,255,255,.06);flex-shrink:0;flex-wrap:wrap;gap:6px;">
+    <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:8.5px;color:#c47a1e;display:flex;align-items:center;gap:4px;"><span style="width:6px;height:6px;border-radius:50%;background:#c47a1e;display:inline-block;box-shadow:0 0 7px #c47a1eaa"></span>MOC Hub</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:8.5px;color:#4a9eff;display:flex;align-items:center;gap:4px;"><span style="width:6px;height:6px;border-radius:50%;background:#4a9eff;display:inline-block;box-shadow:0 0 7px #4a9effaa"></span>Workflow</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:8.5px;color:#7ecf8e;display:flex;align-items:center;gap:4px;"><span style="width:6px;height:6px;border-radius:50%;background:#7ecf8e;display:inline-block;box-shadow:0 0 7px #7ecf8eaa"></span>Finance</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:8.5px;color:#b48eff;display:flex;align-items:center;gap:4px;"><span style="width:6px;height:6px;border-radius:50%;background:#b48eff;display:inline-block;box-shadow:0 0 7px #b48effaa"></span>Process</span>
+    </div>
+    <span style="font-family:'JetBrains Mono',monospace;font-size:8px;color:rgba(255,255,255,.2);white-space:nowrap;">Drag · Scroll · Hover</span>
+  </div>
 </div>
 </div>
 </section>
@@ -499,16 +548,64 @@ n8n-demo .embedded_workflow_iframe{width:100%!important;height:100%!important;bo
         </div>
       </div>
 
-      <div id="tab-obsidian" class="demo-panel">
-        <div class="obs-label">Knowledge Vault — Schema Visualizer</div>
-        <canvas id="obs-graph" style="width:100%;height:390px;display:block;cursor:grab;border-radius:12px;overflow:hidden;"></canvas>
-        <div class="obs-legend">
-          <span class="obs-leg" style="--c:#c47a1e">■ MOC</span>
-          <span class="obs-leg" style="--c:#4a9eff">■ Workflow</span>
-          <span class="obs-leg" style="--c:#7ecf8e">■ Finance</span>
-          <span class="obs-leg" style="--c:#b48eff">■ Process</span>
+      <div id="tab-obsidian" class="demo-panel" style="padding:0;overflow:hidden;background:#12110f;border-radius:0 0 20px 20px;flex-direction:column;position:relative;">
+        <!-- Quartz-style graph header -->
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:9px 14px;background:#0d0c0a;border-bottom:1px solid rgba(255,255,255,.06);flex-shrink:0;">
+          <div style="display:flex;align-items:center;gap:8px;">
+            <!-- Quartz graph icon (mimics their sidebar icon) -->
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
+              <circle cx="5"  cy="12" r="2.8" fill="#c47a1e"/>
+              <circle cx="19" cy="5"  r="2.2" fill="#7ecf8e"/>
+              <circle cx="19" cy="19" r="2.2" fill="#4a9eff"/>
+              <circle cx="12" cy="19" r="1.8" fill="#b48eff"/>
+              <line x1="7.5"  y1="11"   x2="17"  y2="6.5"  stroke="rgba(255,255,255,.22)" stroke-width="1.2"/>
+              <line x1="7.5"  y1="13"   x2="17"  y2="17.5" stroke="rgba(255,255,255,.22)" stroke-width="1.2"/>
+              <line x1="19"   y1="7.5"  x2="19"  y2="16.5" stroke="rgba(255,255,255,.18)" stroke-width="1"/>
+              <line x1="14"   y1="19"   x2="17.2" y2="19"  stroke="rgba(255,255,255,.18)" stroke-width="1"/>
+            </svg>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.45);">Graph View</span>
+            <span id="obs-mode-badge" style="font-family:'JetBrains Mono',monospace;font-size:8px;background:rgba(196,122,30,.18);color:#c47a1e;border:1px solid rgba(196,122,30,.3);border-radius:999px;padding:1px 7px;text-transform:uppercase;letter-spacing:.08em;">Global</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:6px;">
+            <!-- Search / filter pill -->
+            <div id="obs-search-wrap" style="display:flex;align-items:center;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:7px;padding:3px 8px;gap:5px;transition:border-color .2s;">
+              <span class="material-symbols-outlined" style="font-size:12px;color:rgba(255,255,255,.35);">search</span>
+              <input id="obs-search" placeholder="Filter nodes…" maxlength="30"
+                style="background:transparent;border:none;outline:none;font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.75);width:80px;"
+                oninput="obsFilterNodes(this.value)" onfocus="document.getElementById('obs-search-wrap').style.borderColor='rgba(196,122,30,.5)'" onblur="document.getElementById('obs-search-wrap').style.borderColor='rgba(255,255,255,.1)'"/>
+            </div>
+            <!-- Local / Global toggle -->
+            <button id="obs-toggle-btn" onclick="obsToggleView()" title="Toggle Global / Local view"
+              style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:7px;padding:4px 9px;cursor:pointer;display:flex;align-items:center;gap:5px;transition:all .2s;"
+              onmouseover="this.style.background='rgba(196,122,30,.2)';this.style.borderColor='rgba(196,122,30,.4)'"
+              onmouseout="this.style.background='rgba(255,255,255,.07)';this.style.borderColor='rgba(255,255,255,.12)'">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="rgba(255,255,255,.55)" stroke-width="2"/><circle cx="12" cy="12" r="3.5" fill="#c47a1e"/></svg>
+              <span id="obs-toggle-label" style="font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.06em;">Local</span>
+            </button>
+            <!-- Reset zoom -->
+            <button onclick="obsResetZoom()" title="Reset zoom"
+              style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:7px;width:26px;height:26px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;"
+              onmouseover="this.style.background='rgba(255,255,255,.14)'" onmouseout="this.style.background='rgba(255,255,255,.07)'">
+              <span class="material-symbols-outlined" style="font-size:13px;color:rgba(255,255,255,.5);">center_focus_strong</span>
+            </button>
+          </div>
         </div>
-        <div class="demo-dax-badge"><span class="material-symbols-outlined" style="font-size:11px">drag_pan</span> Pan/Zoom · Drag nodes · Hover to highlight · Entity mapping</div>
+        <!-- D3 SVG canvas -->
+        <div id="obs-graph-wrap" style="flex:1;position:relative;min-height:360px;overflow:hidden;">
+          <svg id="obs-svg" style="width:100%;height:100%;display:block;"></svg>
+          <!-- Tooltip -->
+          <div id="obs-tooltip" style="position:absolute;pointer-events:none;opacity:0;background:#1a1816;border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:10px 13px;font-family:'JetBrains Mono',monospace;font-size:10px;color:#fff;max-width:185px;transition:opacity .15s ease;box-shadow:0 12px 32px rgba(0,0,0,.6);z-index:20;line-height:1.7;"></div>
+        </div>
+        <!-- Legend + hint bar -->
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:7px 14px;background:#0d0c0a;border-top:1px solid rgba(255,255,255,.06);flex-shrink:0;flex-wrap:wrap;gap:6px;">
+          <div style="display:flex;gap:13px;flex-wrap:wrap;align-items:center;">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#c47a1e;display:flex;align-items:center;gap:4px;"><span style="width:7px;height:7px;border-radius:50%;background:#c47a1e;display:inline-block;box-shadow:0 0 8px #c47a1eaa;flex-shrink:0"></span>MOC Hub</span>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#4a9eff;display:flex;align-items:center;gap:4px;"><span style="width:7px;height:7px;border-radius:50%;background:#4a9eff;display:inline-block;box-shadow:0 0 8px #4a9effaa;flex-shrink:0"></span>Workflow</span>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#7ecf8e;display:flex;align-items:center;gap:4px;"><span style="width:7px;height:7px;border-radius:50%;background:#7ecf8e;display:inline-block;box-shadow:0 0 8px #7ecf8eaa;flex-shrink:0"></span>Finance</span>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#b48eff;display:flex;align-items:center;gap:4px;"><span style="width:7px;height:7px;border-radius:50%;background:#b48eff;display:inline-block;box-shadow:0 0 8px #b48effaa;flex-shrink:0"></span>Process</span>
+          </div>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:8.5px;color:rgba(255,255,255,.22);white-space:nowrap;">Scroll · Drag · Click to focus</span>
+        </div>
       </div>
     </div></div>
 </section>
@@ -540,6 +637,9 @@ n8n-demo .embedded_workflow_iframe{width:100%!important;height:100%!important;bo
 .demo-panel{display:none; padding:24px; animation:fadeSlideIn .3s ease;}
 .demo-panel.active{display:block;}
 #tab-n8n.active { display: flex; flex: 1; }
+#tab-obsidian.active { display: flex; flex-direction: column; padding: 0; }
+#tab-obsidian.active { display: flex; flex-direction: column; flex: 1; padding: 0; }
+#obs-graph-wrap { flex: 1; min-height: 340px; }
 
 @keyframes fadeSlideIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
 
@@ -689,10 +789,20 @@ function switchTab(name,btn){
   document.querySelectorAll('.demo-tab').forEach(b=>b.classList.remove('active'));
   document.getElementById('tab-'+name).classList.add('active');
   btn.classList.add('active');
-  if(name==='obsidian') setTimeout(initObsGraph, 60);
+  if(name==='obsidian'){
+    // Give the panel time to layout before measuring dimensions
+    setTimeout(() => {
+      if(typeof d3 !== 'undefined') initObsGraph();
+      else {
+        // D3 still loading — wait for it
+        const poll = setInterval(() => {
+          if(typeof d3 !== 'undefined'){ clearInterval(poll); initObsGraph(); }
+        }, 80);
+      }
+    }, 80);
+  }
   if(name==='powerbi') animateBars();
   if(name==='n8n'){
-    // Ensure default workflow is loaded if needed
     if(!document.getElementById('n8n-tab-demo').workflow) {
       loadN8nWF('ocr');
     }
@@ -770,192 +880,411 @@ setTimeout(animateBars, 400);
 })();
 </script>
 
+<!-- D3 for Quartz-style graph view -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
 <script>
-/* ── Obsidian Schema visualizer graph ── */
-let obsAnimId = null;
-function initObsGraph(){
-  const canvas = document.getElementById('obs-graph');
-  if(!canvas) return;
-  if(obsAnimId){ cancelAnimationFrame(obsAnimId); obsAnimId = null; }
+/* ══════════════════════════════════════════════════════════
+   QUARTZ-STYLE D3 FORCE GRAPH — Obsidian Tab
+   Faithful recreation of quartz.jzhao.xyz graph view:
+   · D3 force simulation with varying node radii (degree-based)
+   · Glow filters, dot-grid background, dark theme
+   · Zoom/pan, drag nodes, hover highlight + tooltip
+   · Global view (all notes) ↔ Local view (1-hop from focus)
+   · Click-to-focus in local mode, zoom-to-node in global mode
+   · Live search / node filter
+   ══════════════════════════════════════════════════════════ */
 
-  const shell = canvas.closest('.demo-shell') || canvas.parentElement;
-  const W = shell.clientWidth - 48;
-  const H = 390;
-  const DPR = window.devicePixelRatio || 1;
+/* ── Vault data ─────────────────────────────────────────── */
+const OBS_NODES = [
+  { id:'obsidian-vault',  label:'Obsidian Vault',   group:'moc',      info:'200+ notes · Master MOC · Hub' },
+  { id:'dashboard-moc',   label:'Dashboard MOC',    group:'moc',      info:'14 linked notes · Folder MOC' },
+  { id:'automation-moc',  label:'Automation MOC',   group:'moc',      info:'8 workflow nodes · n8n hub' },
+  { id:'finance-moc',     label:'Finance MOC',      group:'moc',      info:'20 notes · PH Banking · Excel' },
+  { id:'knowledge-moc',   label:'Knowledge MOC',    group:'moc',      info:'BPMN + Mermaid · Process docs' },
+  { id:'infra-moc',       label:'Infra MOC',        group:'moc',      info:'Docker · Tailscale · Nginx' },
+  { id:'procurement',     label:'Procurement',      group:'workflow', info:'Power BI · DAX · Daily refresh' },
+  { id:'tmdl-exports',    label:'TMDL Exports',     group:'workflow', info:'Schema · Git versioned · TMDL' },
+  { id:'dax-measures',    label:'DAX Measures',     group:'workflow', info:'150+ snippets · Optimized DAX' },
+  { id:'bank-pipeline',   label:'Bank Pipeline',    group:'workflow', info:'Webhook · Live · BPI BDO OCR' },
+  { id:'n8n-configs',     label:'n8n Configs',      group:'workflow', info:'Docker · Self-hosted · Local' },
+  { id:'gmail-sync',      label:'Gmail Sync',       group:'workflow', info:'Apps Script · 1h trigger · GAS' },
+  { id:'rag-pipeline',    label:'RAG Pipeline',     group:'workflow', info:'Qdrant · Anthropic Claude · LLM' },
+  { id:'calendar-sync',   label:'Calendar Sync',    group:'workflow', info:'Google Calendar · GAS · Auto' },
+  { id:'bpi-parser',      label:'BPI Parser',       group:'finance',  info:'Regex · JavaScript · OCR text' },
+  { id:'bdo-parser',      label:'BDO Parser',       group:'finance',  info:'Regex · JavaScript · PDF parse' },
+  { id:'unionbank',       label:'UnionBank Parser', group:'finance',  info:'Regex · OCR pipeline · UB' },
+  { id:'personal-fin',    label:'Personal Finance', group:'finance',  info:'Excel · 10 sheets · PH data' },
+  { id:'supabase-db',     label:'Supabase DB',      group:'workflow', info:'PostgreSQL · Self-hosted · Auth' },
+  { id:'bpmn-procure',    label:'BPMN Procure',     group:'process',  info:'BPMN 2.0 · XML · Swimlanes' },
+  { id:'mermaid-flows',   label:'Mermaid Flows',    group:'process',  info:'Markdown · v9 engine · Graphs' },
+];
 
-  canvas.width  = W * DPR;
-  canvas.height = H * DPR;
-  canvas.style.width  = W + 'px';
-  canvas.style.height = H + 'px';
+const OBS_LINKS = [
+  // Vault → MOC hubs
+  {s:'obsidian-vault', t:'dashboard-moc'},
+  {s:'obsidian-vault', t:'automation-moc'},
+  {s:'obsidian-vault', t:'finance-moc'},
+  {s:'obsidian-vault', t:'knowledge-moc'},
+  {s:'obsidian-vault', t:'infra-moc'},
+  // Dashboard cluster
+  {s:'dashboard-moc',  t:'procurement'},
+  {s:'dashboard-moc',  t:'tmdl-exports'},
+  {s:'dashboard-moc',  t:'dax-measures'},
+  {s:'procurement',    t:'dax-measures'},
+  {s:'procurement',    t:'tmdl-exports'},
+  {s:'dax-measures',   t:'tmdl-exports'},
+  // Automation cluster
+  {s:'automation-moc', t:'bank-pipeline'},
+  {s:'automation-moc', t:'n8n-configs'},
+  {s:'automation-moc', t:'gmail-sync'},
+  {s:'automation-moc', t:'rag-pipeline'},
+  {s:'bank-pipeline',  t:'bpi-parser'},
+  {s:'bank-pipeline',  t:'bdo-parser'},
+  {s:'bank-pipeline',  t:'unionbank'},
+  {s:'n8n-configs',    t:'supabase-db'},
+  {s:'n8n-configs',    t:'rag-pipeline'},
+  {s:'gmail-sync',     t:'calendar-sync'},
+  {s:'infra-moc',      t:'n8n-configs'},
+  {s:'infra-moc',      t:'supabase-db'},
+  // Finance cluster
+  {s:'finance-moc',    t:'bpi-parser'},
+  {s:'finance-moc',    t:'bdo-parser'},
+  {s:'finance-moc',    t:'personal-fin'},
+  {s:'bpi-parser',     t:'bdo-parser'},
+  // Knowledge / Process cluster
+  {s:'knowledge-moc',  t:'bpmn-procure'},
+  {s:'knowledge-moc',  t:'mermaid-flows'},
+  {s:'bpmn-procure',   t:'mermaid-flows'},
+  {s:'dax-measures',   t:'bpmn-procure'},
+  // Cross-cluster bridges
+  {s:'gmail-sync',     t:'bpi-parser'},
+  {s:'rag-pipeline',   t:'supabase-db'},
+];
 
-  const ctx = canvas.getContext('2d');
-  ctx.scale(DPR, DPR);
+const OBS_COLOR = { moc:'#c47a1e', workflow:'#4a9eff', finance:'#7ecf8e', process:'#b48eff' };
 
-  // Quick roundRect polyfill for schema cards
-  if (!CanvasRenderingContext2D.prototype.roundRect) {
-    CanvasRenderingContext2D.prototype.roundRect = function (x, y, w, h, r) {
-      r = Array.isArray(r) ? r[0] : r;
-      if (w < 2 * r) r = w / 2;
-      if (h < 2 * r) r = h / 2;
-      this.moveTo(x+r, y);
-      this.arcTo(x+w, y,   x+w, y+h, r);
-      this.arcTo(x+w, y+h, x,   y+h, r);
-      this.arcTo(x,   y+h, x,   y,   r);
-      this.arcTo(x,   y,   x+w, y,   r);
-      return this;
-    }
-  }
-
-  const nodes = [
-    {id:0,  label:'Dashboard MOC', x:W*.50, y:H*.38, col:'#c47a1e', fields:['type: Folder','nodes: 14 items']},
-    {id:1,  label:'Procurement',   x:W*.28, y:H*.20, col:'#c47a1e', fields:['type: pbix','refresh: daily']},
-    {id:2,  label:'TMDL Exports',  x:W*.14, y:H*.50, col:'#4a9eff', fields:['type: Schema','vcs: Git']},
-    {id:3,  label:'DAX Measures',  x:W*.32, y:H*.66, col:'#4a9eff', fields:['type: Snippet','count: 150+']},
-    {id:4,  label:'Automation MOC',x:W*.72, y:H*.25, col:'#c47a1e', fields:['type: Folder','nodes: 8 flows']},
-    {id:5,  label:'Bank Pipeline', x:W*.88, y:H*.42, col:'#4a9eff', fields:['type: Webhook','status: Live']},
-    {id:6,  label:'n8n Configs',   x:W*.80, y:H*.62, col:'#4a9eff', fields:['type: Docker','infra: Local']},
-    {id:7,  label:'Gmail Sync',    x:W*.60, y:H*.76, col:'#4a9eff', fields:['type: Script','trigger: 1h']},
-    {id:8,  label:'Finance MOC',   x:W*.50, y:H*.10, col:'#c47a1e', fields:['type: Folder','nodes: 20 notes']},
-    {id:9,  label:'BPI Parser',    x:W*.70, y:H*.10, col:'#7ecf8e', fields:['type: Regex','lang: JS']},
-    {id:10, label:'BDO Parser',    x:W*.86, y:H*.16, col:'#7ecf8e', fields:['type: Regex','lang: JS']},
-    {id:11, label:'BPMN Procure',  x:W*.18, y:H*.82, col:'#b48eff', fields:['type: Diagram','fmt: XML']},
-    {id:12, label:'Mermaid Flows', x:W*.40, y:H*.90, col:'#b48eff', fields:['type: Markdown','engine: v9']}
-  ];
-  
-  const edges = [
-    [0,1],[0,3],[0,2],[1,3],[1,8],[8,9],[8,10],
-    [4,5],[4,6],[4,7],[5,9],[5,10],[6,7],
-    [0,4],[3,11],[11,12],[7,12]
-  ];
-
-  nodes.forEach(n=>{ n.vx=0; n.vy=0; });
-
-  let drag = null, hovNode = null;
-  const cx = W*.5, cy = H*.5, gravity = .025;
-  const nodeW = 104, nodeH = 54;
-
-  function toLocal(e){
-    const r = canvas.getBoundingClientRect();
-    return [(e.clientX-r.left)*(W/r.width), (e.clientY-r.top)*(H/r.height)];
-  }
-  function hitNode([px,py]){ 
-    return nodes.find(n => px >= n.x - nodeW/2 && px <= n.x + nodeW/2 && py >= n.y - nodeH/2 && py <= n.y + nodeH/2) || null; 
-  }
-
-  canvas.addEventListener('mousemove', e=>{
-    const pt = toLocal(e);
-    hovNode = hitNode(pt);
-    canvas.style.cursor = hovNode ? 'pointer' : drag ? 'grabbing' : 'grab';
-    if(drag){ drag.x=pt[0]; drag.y=pt[1]; drag.vx=0; drag.vy=0; }
-  });
-  canvas.addEventListener('mousedown', e=>{ drag = hitNode(toLocal(e)); });
-  canvas.addEventListener('mouseup',   ()=>{ drag = null; });
-  canvas.addEventListener('mouseleave',()=>{ drag = null; hovNode = null; });
-
-  canvas.addEventListener('touchstart', e=>{
-    e.preventDefault();
-    const pt=[(e.touches[0].clientX-canvas.getBoundingClientRect().left)*(W/canvas.getBoundingClientRect().width),(e.touches[0].clientY-canvas.getBoundingClientRect().top)*(H/canvas.getBoundingClientRect().height)];
-    drag = hitNode(pt);
-  },{passive:false});
-  canvas.addEventListener('touchmove', e=>{
-    e.preventDefault();
-    if(!drag) return;
-    const pt=[(e.touches[0].clientX-canvas.getBoundingClientRect().left)*(W/canvas.getBoundingClientRect().width),(e.touches[0].clientY-canvas.getBoundingClientRect().top)*(H/canvas.getBoundingClientRect().height)];
-    drag.x=pt[0]; drag.y=pt[1];
-    drag.vx=0; drag.vy=0;
-  },{passive:false});
-  canvas.addEventListener('touchend', ()=>{ drag=null; });
-
-  function tick(){
-    for(let i=0;i<nodes.length;i++) for(let j=i+1;j<nodes.length;j++){
-      const a=nodes[i], b=nodes[j];
-      const dx=a.x-b.x, dy=a.y-b.y;
-      const d=Math.max(Math.hypot(dx,dy), 1);
-      const f=500/(d*d);
-      a.vx+=dx*f; a.vy+=dy*f;
-      b.vx-=dx*f; b.vy-=dy*f;
-    }
-    edges.forEach(([ai,bi])=>{
-      const a=nodes[ai], b=nodes[bi];
-      const dx=b.x-a.x, dy=b.y-a.y, d=Math.hypot(dx,dy);
-      const f=.004*d;
-      a.vx+=dx*f; a.vy+=dy*f;
-      b.vx-=dx*f; b.vy-=dy*f;
-    });
-    nodes.forEach(n=>{ n.vx+=(cx-n.x)*gravity; n.vy+=(cy-n.y)*gravity; });
-    nodes.forEach(n=>{
-      if(n===drag) return;
-      n.vx*=.82; n.vy*=.82;
-      n.x = Math.max(nodeW/2 + 2, Math.min(W - nodeW/2 - 2, n.x+n.vx));
-      n.y = Math.max(nodeH/2 + 2, Math.min(H - nodeH/2 - 2, n.y+n.vy));
-    });
-
-    ctx.clearRect(0,0,W,H);
-    ctx.fillStyle='#0f0e0d';
-    ctx.fillRect(0,0,W,H);
-
-    edges.forEach(([ai,bi])=>{
-      const a=nodes[ai], b=nodes[bi];
-      const isHov = hovNode && (hovNode.id===ai || hovNode.id===bi);
-      ctx.beginPath();
-      ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y);
-      ctx.strokeStyle = isHov ? 'rgba(255,255,255,.4)' : 'rgba(255,255,255,.1)';
-      ctx.lineWidth = isHov ? 2 : 1;
-      ctx.stroke();
-    });
-
-    nodes.forEach(n=>{
-      const hov = hovNode===n;
-      const nx = n.x - nodeW/2;
-      const ny = n.y - nodeH/2;
-
-      if(hov){
-        ctx.shadowColor = n.col;
-        ctx.shadowBlur = 12;
-      } else {
-        ctx.shadowColor = 'rgba(0,0,0,0.6)';
-        ctx.shadowBlur = 6;
-        ctx.shadowOffsetY = 3;
-      }
-
-      ctx.fillStyle = '#1a1816';
-      ctx.beginPath();
-      ctx.roundRect(nx, ny, nodeW, nodeH, 6);
-      ctx.fill();
-      ctx.shadowColor = 'transparent'; 
-
-      ctx.fillStyle = n.col + 'e6';
-      ctx.beginPath();
-      ctx.roundRect(nx, ny, nodeW, 16, [6, 6, 0, 0]);
-      ctx.fill();
-
-      ctx.strokeStyle = hov ? '#fff' : 'rgba(255,255,255,0.15)';
-      ctx.lineWidth = 1;
-      ctx.stroke();
-
-      ctx.font = "600 9px 'Outfit', sans-serif";
-      ctx.fillStyle = '#ffffff';
-      ctx.textAlign = 'left';
-      ctx.textBaseline = 'middle';
-      ctx.fillText(n.label, nx + 6, ny + 8);
-
-      ctx.font = "400 8.5px 'JetBrains Mono', monospace";
-      n.fields.forEach((f, i) => {
-        const parts = f.split(': ');
-        ctx.fillStyle = 'rgba(255,255,255,0.65)';
-        ctx.fillText(parts[0] + ':', nx + 6, ny + 27 + (i*13));
-        ctx.fillStyle = n.col; 
-        ctx.fillText(parts[1], nx + 6 + ctx.measureText(parts[0]+': ').width, ny + 27 + (i*13));
-      });
-    });
-
-    obsAnimId = requestAnimationFrame(tick);
-  }
-  tick();
+/* Compute node radius from degree (Quartz: radius ∝ link count) */
+function obsRadius(id) {
+  const deg = OBS_LINKS.filter(l => l.s === id || l.t === id).length;
+  return Math.max(6, 5 + deg * 2.2);
 }
+
+/* ── State ──────────────────────────────────────────────── */
+let obsSimulation = null;
+let obsIsGlobal   = true;
+let obsFocusId    = 'obsidian-vault';
+let obsZoomBeh    = null;
+let obsFilterStr  = '';
+
+/* ── Graph data resolver ────────────────────────────────── */
+function obsGetData() {
+  let nodeIds, links;
+
+  if (obsIsGlobal) {
+    // Global: all nodes, optionally filtered
+    const q = obsFilterStr.trim().toLowerCase();
+    if (q) {
+      const matched = new Set(OBS_NODES.filter(n =>
+        n.label.toLowerCase().includes(q) || n.info.toLowerCase().includes(q) || n.group.includes(q)
+      ).map(n => n.id));
+      // expand to 1-hop neighbours so graph stays connected
+      OBS_LINKS.forEach(l => { if(matched.has(l.s)||matched.has(l.t)){ matched.add(l.s); matched.add(l.t); } });
+      nodeIds = matched;
+    } else {
+      nodeIds = new Set(OBS_NODES.map(n => n.id));
+    }
+  } else {
+    // Local: focus node + 1-hop neighbours
+    const hub = obsFocusId || 'obsidian-vault';
+    nodeIds = new Set([hub]);
+    OBS_LINKS.forEach(l => { if(l.s===hub) nodeIds.add(l.t); if(l.t===hub) nodeIds.add(l.s); });
+  }
+
+  const nodes = OBS_NODES
+    .filter(n => nodeIds.has(n.id))
+    .map(n => ({ ...n, r: obsRadius(n.id) }));
+
+  links = OBS_LINKS
+    .filter(l => nodeIds.has(l.s) && nodeIds.has(l.t))
+    .map(l => ({ source: l.s, target: l.t }));
+
+  return { nodes, links };
+}
+
+/* ── Main render ────────────────────────────────────────── */
+function initObsGraph() {
+  const wrap = document.getElementById('obs-graph-wrap');
+  const svgEl = document.getElementById('obs-svg');
+  if (!wrap || !svgEl || typeof d3 === 'undefined') return;
+
+  const W = wrap.clientWidth  || 520;
+  const H = wrap.clientHeight || 370;
+
+  if (obsSimulation) obsSimulation.stop();
+  d3.select(svgEl).selectAll('*').remove();
+
+  const svgSel = d3.select(svgEl)
+    .attr('viewBox', `0 0 ${W} ${H}`)
+    .style('background', '#0d0c0b')
+    .style('cursor', 'grab');
+
+  /* ── Defs ── */
+  const defs = svgSel.append('defs');
+
+  // Per-group glow filters (Quartz uses feGaussianBlur glow)
+  Object.entries(OBS_COLOR).forEach(([grp, col], i) => {
+    const fid = `obs-glow-${grp}`;
+    const f = defs.append('filter').attr('id', fid)
+      .attr('x','-60%').attr('y','-60%').attr('width','220%').attr('height','220%');
+    f.append('feGaussianBlur').attr('stdDeviation', 3.5).attr('in','SourceGraphic').attr('result','blur');
+    const merge = f.append('feMerge');
+    merge.append('feMergeNode').attr('in','blur');
+    merge.append('feMergeNode').attr('in','SourceGraphic');
+  });
+
+  // Faint dot-grid background (authentic Quartz look)
+  const pat = defs.append('pattern').attr('id','obs-grid').attr('width',22).attr('height',22).attr('patternUnits','userSpaceOnUse');
+  pat.append('circle').attr('cx',1).attr('cy',1).attr('r',0.9).attr('fill','rgba(255,255,255,.04)');
+  svgSel.append('rect').attr('width',W).attr('height',H).attr('fill','url(#obs-grid)').attr('pointer-events','none');
+
+  /* ── Zoom/pan ── */
+  const gMain = svgSel.append('g').attr('class','obs-g');
+
+  obsZoomBeh = d3.zoom()
+    .scaleExtent([0.18, 5])
+    .on('zoom', ev => {
+      gMain.attr('transform', ev.transform);
+      svgSel.style('cursor','grabbing');
+    })
+    .on('end', () => svgSel.style('cursor','grab'));
+
+  svgSel.call(obsZoomBeh).on('dblclick.zoom', null);
+
+  // Initial translate to center
+  svgSel.call(obsZoomBeh.transform,
+    d3.zoomIdentity.translate(W / 2, H / 2).scale(obsIsGlobal ? 0.78 : 1.0));
+
+  /* ── Data ── */
+  const { nodes, links } = obsGetData();
+  const focusNode = nodes.find(n => n.id === obsFocusId);
+
+  /* ── Links ── */
+  const linkSel = gMain.append('g').attr('class','obs-links')
+    .selectAll('line').data(links).join('line')
+    .attr('stroke', 'rgba(255,255,255,0.13)')
+    .attr('stroke-width', 1.1)
+    .attr('stroke-linecap', 'round')
+    .attr('opacity', 0);
+
+  /* ── Nodes ── */
+  const nodeG = gMain.append('g').attr('class','obs-nodes')
+    .selectAll('g').data(nodes).join('g')
+    .attr('class', 'obs-node')
+    .style('cursor', 'pointer')
+    .attr('opacity', 0)
+    .call(d3.drag()
+      .on('start', (ev, d) => {
+        if (!ev.active) obsSimulation.alphaTarget(0.25).restart();
+        d.fx = d.x; d.fy = d.y;
+        svgSel.style('cursor','grabbing');
+      })
+      .on('drag', (ev, d) => { d.fx = ev.x; d.fy = ev.y; })
+      .on('end', (ev, d) => {
+        if (!ev.active) obsSimulation.alphaTarget(0);
+        d.fx = null; d.fy = null;
+        svgSel.style('cursor','grab');
+      })
+    );
+
+  // Outer glow halo (Quartz shows a subtle ring around hovered nodes)
+  nodeG.append('circle').attr('class','obs-halo')
+    .attr('r', d => d.r + 8)
+    .attr('fill', 'none')
+    .attr('stroke', d => OBS_COLOR[d.group])
+    .attr('stroke-width', 1.8)
+    .attr('opacity', 0)
+    .attr('filter', d => `url(#obs-glow-${d.group})`);
+
+  // Main filled circle (Quartz uses a lighter fill, solid stroke)
+  nodeG.append('circle').attr('class','obs-circle')
+    .attr('r', d => d.r)
+    .attr('fill', d => OBS_COLOR[d.group] + 'bb')
+    .attr('stroke', d => OBS_COLOR[d.group])
+    .attr('stroke-width', 1.8)
+    .attr('filter', d => `url(#obs-glow-${d.group})`);
+
+  // Focus node indicator (Quartz: current page has white ring)
+  if (!obsIsGlobal && focusNode) {
+    nodeG.filter(d => d.id === focusNode.id)
+      .append('circle')
+      .attr('r', d => d.r + 3)
+      .attr('fill', 'none')
+      .attr('stroke', '#ffffff')
+      .attr('stroke-width', 1.5)
+      .attr('stroke-dasharray', '3,2')
+      .attr('opacity', 0.55);
+  }
+
+  // Label (below the node, Quartz uses small monospace)
+  nodeG.append('text').attr('class','obs-label')
+    .attr('dy', d => d.r + 14)
+    .attr('text-anchor','middle')
+    .attr('font-family',"'JetBrains Mono', monospace")
+    .attr('font-size', d => Math.max(8, Math.min(10, d.r * 0.8)))
+    .attr('fill', 'rgba(255,255,255,0.72)')
+    .attr('pointer-events','none')
+    .text(d => d.label);
+
+  /* ── Interactions ── */
+  const tooltip = document.getElementById('obs-tooltip');
+
+  nodeG
+    .on('mouseenter', function(ev, d) {
+      const connIds = new Set([d.id]);
+      links.forEach(l => {
+        const si = typeof l.source==='object'?l.source.id:l.source;
+        const ti = typeof l.target==='object'?l.target.id:l.target;
+        if(si===d.id||ti===d.id){ connIds.add(si); connIds.add(ti); }
+      });
+
+      // Highlight edges
+      linkSel
+        .attr('stroke', l => {
+          const si=typeof l.source==='object'?l.source.id:l.source;
+          const ti=typeof l.target==='object'?l.target.id:l.target;
+          return (si===d.id||ti===d.id) ? OBS_COLOR[d.group] : 'rgba(255,255,255,.04)';
+        })
+        .attr('stroke-width', l => {
+          const si=typeof l.source==='object'?l.source.id:l.source;
+          const ti=typeof l.target==='object'?l.target.id:l.target;
+          return (si===d.id||ti===d.id) ? 2.2 : 1.1;
+        })
+        .attr('opacity', l => {
+          const si=typeof l.source==='object'?l.source.id:l.source;
+          const ti=typeof l.target==='object'?l.target.id:l.target;
+          return (si===d.id||ti===d.id) ? 1 : 0.3;
+        });
+
+      // Dim disconnected nodes (Quartz fades unrelated nodes to 0.2)
+      nodeG.attr('opacity', nd => connIds.has(nd.id) ? 1 : 0.18);
+      // Show halo on hover node
+      d3.select(this).select('.obs-halo').attr('opacity', 0.65);
+      // Scale up slightly
+      d3.select(this).select('.obs-circle').attr('r', d.r * 1.18);
+
+      // Tooltip
+      const deg = links.filter(l=>{
+        const si=typeof l.source==='object'?l.source.id:l.source;
+        const ti=typeof l.target==='object'?l.target.id:l.target;
+        return si===d.id||ti===d.id;
+      }).length;
+      tooltip.innerHTML =
+        `<div style="color:${OBS_COLOR[d.group]};font-weight:700;font-size:11px;margin-bottom:5px;">${d.label}</div>` +
+        `<div style="color:rgba(255,255,255,.5);font-size:8.5px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:5px;">${d.group}</div>` +
+        `<div style="color:rgba(255,255,255,.65);line-height:1.55;">${d.info}</div>` +
+        `<div style="margin-top:6px;color:rgba(255,255,255,.3);font-size:8.5px;">${deg} link${deg!==1?'s':''}</div>`;
+
+      const rect = wrap.getBoundingClientRect();
+      let tx = ev.clientX - rect.left + 16, ty = ev.clientY - rect.top - 12;
+      if (tx + 195 > W) tx = ev.clientX - rect.left - 210;
+      tooltip.style.cssText += `;opacity:1;left:${tx}px;top:${ty}px;`;
+    })
+    .on('mousemove', function(ev) {
+      const rect = wrap.getBoundingClientRect();
+      let tx = ev.clientX - rect.left + 16, ty = ev.clientY - rect.top - 12;
+      if (tx + 195 > W) tx = ev.clientX - rect.left - 210;
+      tooltip.style.left = tx + 'px'; tooltip.style.top = ty + 'px';
+    })
+    .on('mouseleave', function(ev, d) {
+      linkSel.attr('stroke','rgba(255,255,255,.13)').attr('stroke-width',1.1).attr('opacity',1);
+      nodeG.attr('opacity', 1);
+      d3.select(this).select('.obs-halo').attr('opacity', 0);
+      d3.select(this).select('.obs-circle').attr('r', d.r);
+      tooltip.style.opacity = '0';
+    })
+    .on('click', function(ev, d) {
+      ev.stopPropagation();
+      if (!obsIsGlobal) {
+        // Local mode: re-root the graph on clicked node
+        obsFocusId = d.id;
+        const badge = document.getElementById('obs-mode-badge');
+        if (badge) badge.textContent = 'Local · ' + d.label;
+        initObsGraph();
+      } else {
+        // Global mode: pulse + zoom-to-node (Quartz behaviour)
+        d3.select(this).select('.obs-circle')
+          .transition().duration(100).attr('r', d.r * 1.6)
+          .transition().duration(220).attr('r', d.r);
+        svgSel.transition().duration(500).call(
+          obsZoomBeh.transform,
+          d3.zoomIdentity.translate(W/2 - (d.x||0)*1.6, H/2 - (d.y||0)*1.6).scale(1.6)
+        );
+      }
+    });
+
+  /* ── Force simulation (Quartz parameters) ── */
+  obsSimulation = d3.forceSimulation(nodes)
+    .force('link', d3.forceLink(links).id(d => d.id)
+      .distance(obsIsGlobal ? 72 : 95).strength(0.45))
+    .force('charge', d3.forceManyBody()
+      .strength(obsIsGlobal ? -220 : -300).distanceMax(380))
+    .force('center', d3.forceCenter(0, 0).strength(0.06))
+    .force('collide', d3.forceCollide(d => d.r + 20).strength(0.75))
+    .alphaDecay(0.022)
+    .velocityDecay(0.38)
+    .on('tick', () => {
+      linkSel
+        .attr('x1', d => d.source.x).attr('y1', d => d.source.y)
+        .attr('x2', d => d.target.x).attr('y2', d => d.target.y);
+      nodeG.attr('transform', d => `translate(${d.x||0},${d.y||0})`);
+    });
+
+  /* ── Entrance animation (Quartz fades nodes in staggered) ── */
+  linkSel.transition().duration(700).delay((_,i)=>i*8+100).attr('opacity',1);
+  nodeG.transition().duration(550).delay((_,i)=>i*22+50).attr('opacity',1);
+}
+
+/* ── Controls ───────────────────────────────────────────── */
+window.obsToggleView = function() {
+  obsIsGlobal = !obsIsGlobal;
+  const lbl   = document.getElementById('obs-toggle-label');
+  const badge = document.getElementById('obs-mode-badge');
+  if (obsIsGlobal) {
+    if (lbl)   lbl.textContent   = 'Local';
+    if (badge) badge.textContent = 'Global';
+  } else {
+    if (lbl)   lbl.textContent   = 'Global';
+    const fn = OBS_NODES.find(n=>n.id===obsFocusId);
+    if (badge) badge.textContent = 'Local · ' + (fn ? fn.label : 'Obsidian Vault');
+  }
+  initObsGraph();
+};
+
+window.obsResetZoom = function() {
+  if (!obsZoomBeh) return;
+  const wrap = document.getElementById('obs-graph-wrap');
+  const W = wrap ? wrap.clientWidth  : 520;
+  const H = wrap ? wrap.clientHeight : 370;
+  d3.select('#obs-svg').transition().duration(480)
+    .call(obsZoomBeh.transform,
+      d3.zoomIdentity.translate(W/2, H/2).scale(obsIsGlobal ? 0.78 : 1.0));
+};
+
+window.obsFilterNodes = function(val) {
+  obsFilterStr = val || '';
+  initObsGraph();
+};
 
 document.addEventListener('DOMContentLoaded', () => {
   loadN8nWF('ocr');
+  // Graph initializes via switchTab('obsidian') when that tab is clicked.
+  // Only pre-render if the obsidian panel is already active on load.
+  setTimeout(() => {
+    const panel = document.getElementById('tab-obsidian');
+    if (panel && panel.classList.contains('active') && typeof d3 !== 'undefined') {
+      initObsGraph();
+    }
+  }, 200);
 });
 </script>
 
@@ -1930,6 +2259,283 @@ window.cbSend = async function(){
 };
 
 window.cbQuick = function(btn){ inputEl.value=btn.textContent; cbSend(); };
+})();
+</script>
+
+
+<script>
+/* ══════════════════════════════════════════════════════════════
+   KNOWLEDGE SYSTEMS SECTION — Inline Quartz-style graph
+   Self-contained, always-visible. Reuses the D3 already loaded.
+   Focused dataset: 12 nodes, knowledge-domain focused.
+   ══════════════════════════════════════════════════════════════ */
+(function(){
+
+const KS_NODES = [
+  { id:'obsidian-vault',  label:'Obsidian Vault',  g:'moc',      info:'200+ notes · Master hub' },
+  { id:'dashboard-moc',   label:'Dashboard MOC',   g:'moc',      info:'14 nodes · Power BI hub' },
+  { id:'automation-moc',  label:'Automation MOC',  g:'moc',      info:'8 nodes · n8n pipelines' },
+  { id:'finance-moc',     label:'Finance MOC',     g:'moc',      info:'20 notes · BPI BDO data' },
+  { id:'knowledge-moc',   label:'Knowledge MOC',   g:'moc',      info:'Process docs · BPMN hub' },
+  { id:'rag-pipeline',    label:'RAG Pipeline',    g:'workflow', info:'Qdrant · Claude · LLM' },
+  { id:'bpmn-procure',    label:'BPMN Procure',    g:'process',  info:'BPMN 2.0 · XML format' },
+  { id:'mermaid-flows',   label:'Mermaid Flows',   g:'process',  info:'Markdown diagrams · v9' },
+  { id:'dax-measures',    label:'DAX Measures',    g:'workflow', info:'150+ snippets · DAX' },
+  { id:'bank-pipeline',   label:'Bank Pipeline',   g:'workflow', info:'BPI BDO OCR · Webhook' },
+  { id:'bdo-parser',      label:'BDO Parser',      g:'finance',  info:'Regex · JS · PDF parse' },
+  { id:'bpi-parser',      label:'BPI Parser',      g:'finance',  info:'Regex · JS · OCR text' },
+];
+
+const KS_LINKS = [
+  {s:'obsidian-vault', t:'dashboard-moc'},
+  {s:'obsidian-vault', t:'automation-moc'},
+  {s:'obsidian-vault', t:'finance-moc'},
+  {s:'obsidian-vault', t:'knowledge-moc'},
+  {s:'knowledge-moc',  t:'bpmn-procure'},
+  {s:'knowledge-moc',  t:'mermaid-flows'},
+  {s:'knowledge-moc',  t:'rag-pipeline'},
+  {s:'bpmn-procure',   t:'mermaid-flows'},
+  {s:'dashboard-moc',  t:'dax-measures'},
+  {s:'automation-moc', t:'bank-pipeline'},
+  {s:'automation-moc', t:'rag-pipeline'},
+  {s:'finance-moc',    t:'bpi-parser'},
+  {s:'finance-moc',    t:'bdo-parser'},
+  {s:'bank-pipeline',  t:'bpi-parser'},
+  {s:'bank-pipeline',  t:'bdo-parser'},
+  {s:'dax-measures',   t:'bpmn-procure'},
+];
+
+const KS_COLOR = { moc:'#c47a1e', workflow:'#4a9eff', finance:'#7ecf8e', process:'#b48eff' };
+
+function ksRadius(id) {
+  const deg = KS_LINKS.filter(l => l.s === id || l.t === id).length;
+  return Math.max(5, 4.5 + deg * 2.4);
+}
+
+let ksSim = null;
+let ksZoom = null;
+let ksSvgSel = null;
+let ksInited = false;
+
+function initKsGraph() {
+  const wrap  = document.getElementById('ks-wrap');
+  const svgEl = document.getElementById('ks-svg');
+  if (!wrap || !svgEl || typeof d3 === 'undefined') return;
+
+  const W = wrap.clientWidth  || 460;
+  const H = wrap.clientHeight || 330;
+  if (W < 10) return; // panel not yet painted
+
+  if (ksSim) ksSim.stop();
+  d3.select(svgEl).selectAll('*').remove();
+
+  ksSvgSel = d3.select(svgEl)
+    .attr('viewBox', '0 0 ' + W + ' ' + H)
+    .style('background', '#0d0c0b')
+    .style('cursor', 'grab');
+
+  /* Defs: per-group glow filters + dot-grid */
+  const defs = ksSvgSel.append('defs');
+  Object.keys(KS_COLOR).forEach(function(grp) {
+    var f = defs.append('filter')
+      .attr('id', 'ks-glow-' + grp)
+      .attr('x','-60%').attr('y','-60%').attr('width','220%').attr('height','220%');
+    f.append('feGaussianBlur').attr('stdDeviation', 3.2).attr('in','SourceGraphic').attr('result','blur');
+    var m = f.append('feMerge');
+    m.append('feMergeNode').attr('in','blur');
+    m.append('feMergeNode').attr('in','SourceGraphic');
+  });
+  var pat = defs.append('pattern')
+    .attr('id','ks-grid').attr('width',22).attr('height',22).attr('patternUnits','userSpaceOnUse');
+  pat.append('circle').attr('cx',1).attr('cy',1).attr('r',0.85).attr('fill','rgba(255,255,255,.042)');
+  ksSvgSel.append('rect').attr('width',W).attr('height',H).attr('fill','url(#ks-grid)').attr('pointer-events','none');
+
+  /* Zoom / pan */
+  var gMain = ksSvgSel.append('g');
+  ksZoom = d3.zoom()
+    .scaleExtent([0.22, 5])
+    .on('zoom', function(ev) { gMain.attr('transform', ev.transform); ksSvgSel.style('cursor','grabbing'); })
+    .on('end',  function()   { ksSvgSel.style('cursor','grab'); });
+  ksSvgSel.call(ksZoom).on('dblclick.zoom', null);
+  ksSvgSel.call(ksZoom.transform, d3.zoomIdentity.translate(W/2, H/2).scale(0.88));
+
+  /* Node / link data */
+  var nodes = KS_NODES.map(function(n){ return Object.assign({}, n, {r: ksRadius(n.id)}); });
+  var links = KS_LINKS.map(function(l){ return {source: l.s, target: l.t}; });
+
+  var badge = document.getElementById('ks-node-count');
+  if (badge) badge.textContent = nodes.length + ' nodes';
+
+  /* Links */
+  var linkSel = gMain.append('g')
+    .selectAll('line').data(links).join('line')
+    .attr('stroke','rgba(255,255,255,0.11)')
+    .attr('stroke-width', 1.1)
+    .attr('stroke-linecap','round')
+    .attr('opacity', 0);
+
+  /* Node groups */
+  var nodeG = gMain.append('g')
+    .selectAll('g').data(nodes).join('g')
+    .style('cursor','pointer')
+    .attr('opacity', 0)
+    .call(d3.drag()
+      .on('start', function(ev, d){ if(!ev.active) ksSim.alphaTarget(0.28).restart(); d.fx=d.x; d.fy=d.y; ksSvgSel.style('cursor','grabbing'); })
+      .on('drag',  function(ev, d){ d.fx=ev.x; d.fy=ev.y; })
+      .on('end',   function(ev, d){ if(!ev.active) ksSim.alphaTarget(0); d.fx=null; d.fy=null; ksSvgSel.style('cursor','grab'); })
+    );
+
+  nodeG.append('circle').attr('class','ks-halo')
+    .attr('r', function(d){ return d.r+7; })
+    .attr('fill','none')
+    .attr('stroke', function(d){ return KS_COLOR[d.g]; })
+    .attr('stroke-width', 1.8)
+    .attr('opacity', 0)
+    .attr('filter', function(d){ return 'url(#ks-glow-'+d.g+')'; });
+
+  nodeG.append('circle').attr('class','ks-circle')
+    .attr('r', function(d){ return d.r; })
+    .attr('fill', function(d){ return KS_COLOR[d.g]+'bb'; })
+    .attr('stroke', function(d){ return KS_COLOR[d.g]; })
+    .attr('stroke-width', 1.7)
+    .attr('filter', function(d){ return 'url(#ks-glow-'+d.g+')'; });
+
+  nodeG.append('text')
+    .attr('dy', function(d){ return d.r+13; })
+    .attr('text-anchor','middle')
+    .attr('font-family',"'JetBrains Mono', monospace")
+    .attr('font-size', function(d){ return Math.max(7.5, Math.min(10, d.r*0.82)); })
+    .attr('fill','rgba(255,255,255,0.68)')
+    .attr('pointer-events','none')
+    .text(function(d){ return d.label; });
+
+  /* Interactions */
+  var tip = document.getElementById('ks-tip');
+
+  nodeG
+    .on('mouseenter', function(ev, d) {
+      var connIds = new Set([d.id]);
+      links.forEach(function(l){
+        var si=typeof l.source==='object'?l.source.id:l.source;
+        var ti=typeof l.target==='object'?l.target.id:l.target;
+        if(si===d.id||ti===d.id){ connIds.add(si); connIds.add(ti); }
+      });
+      linkSel
+        .attr('stroke', function(l){
+          var si=typeof l.source==='object'?l.source.id:l.source;
+          var ti=typeof l.target==='object'?l.target.id:l.target;
+          return (si===d.id||ti===d.id)?KS_COLOR[d.g]:'rgba(255,255,255,.04)';
+        })
+        .attr('stroke-width', function(l){
+          var si=typeof l.source==='object'?l.source.id:l.source;
+          var ti=typeof l.target==='object'?l.target.id:l.target;
+          return (si===d.id||ti===d.id)?2.2:1.1;
+        })
+        .attr('opacity', function(l){
+          var si=typeof l.source==='object'?l.source.id:l.source;
+          var ti=typeof l.target==='object'?l.target.id:l.target;
+          return (si===d.id||ti===d.id)?1:0.2;
+        });
+      nodeG.attr('opacity', function(nd){ return connIds.has(nd.id)?1:0.14; });
+      d3.select(this).select('.ks-halo').attr('opacity',0.62);
+      d3.select(this).select('.ks-circle').attr('r', d.r*1.22);
+      var deg = links.filter(function(l){
+        var si=typeof l.source==='object'?l.source.id:l.source;
+        var ti=typeof l.target==='object'?l.target.id:l.target;
+        return si===d.id||ti===d.id;
+      }).length;
+      tip.innerHTML =
+        '<div style="color:'+KS_COLOR[d.g]+';font-weight:700;font-size:10.5px;margin-bottom:4px;">'+d.label+'</div>'+
+        '<div style="color:rgba(255,255,255,.42);font-size:8px;text-transform:uppercase;letter-spacing:.07em;margin-bottom:4px;">'+d.g+'</div>'+
+        '<div style="color:rgba(255,255,255,.62);">'+d.info+'</div>'+
+        '<div style="margin-top:5px;color:rgba(255,255,255,.28);font-size:8px;">'+deg+' connection'+(deg!==1?'s':'')+'</div>';
+      var rect = wrap.getBoundingClientRect();
+      var tx = ev.clientX-rect.left+14, ty = ev.clientY-rect.top-10;
+      if(tx+185>W) tx=ev.clientX-rect.left-196;
+      tip.style.opacity='1'; tip.style.left=tx+'px'; tip.style.top=ty+'px';
+    })
+    .on('mousemove', function(ev){
+      var rect=wrap.getBoundingClientRect();
+      var tx=ev.clientX-rect.left+14, ty=ev.clientY-rect.top-10;
+      if(tx+185>W) tx=ev.clientX-rect.left-196;
+      tip.style.left=tx+'px'; tip.style.top=ty+'px';
+    })
+    .on('mouseleave', function(ev, d){
+      linkSel.attr('stroke','rgba(255,255,255,.11)').attr('stroke-width',1.1).attr('opacity',1);
+      nodeG.attr('opacity',1);
+      d3.select(this).select('.ks-halo').attr('opacity',0);
+      d3.select(this).select('.ks-circle').attr('r',d.r);
+      tip.style.opacity='0';
+    })
+    .on('click', function(ev, d){
+      d3.select(this).select('.ks-circle')
+        .transition().duration(100).attr('r', d.r*1.65)
+        .transition().duration(220).ease(d3.easeBounceOut).attr('r', d.r);
+      ksSvgSel.transition().duration(520).call(
+        ksZoom.transform,
+        d3.zoomIdentity.translate(W/2-(d.x||0)*1.5, H/2-(d.y||0)*1.5).scale(1.5)
+      );
+    });
+
+  /* Force simulation */
+  ksSim = d3.forceSimulation(nodes)
+    .force('link',    d3.forceLink(links).id(function(d){ return d.id; }).distance(68).strength(0.42))
+    .force('charge',  d3.forceManyBody().strength(-200).distanceMax(340))
+    .force('center',  d3.forceCenter(0,0).strength(0.05))
+    .force('collide', d3.forceCollide(function(d){ return d.r+18; }).strength(0.75))
+    .alphaDecay(0.022)
+    .velocityDecay(0.38)
+    .on('tick', function(){
+      linkSel
+        .attr('x1',function(d){ return d.source.x; }).attr('y1',function(d){ return d.source.y; })
+        .attr('x2',function(d){ return d.target.x; }).attr('y2',function(d){ return d.target.y; });
+      nodeG.attr('transform', function(d){ return 'translate('+(d.x||0)+','+(d.y||0)+')'; });
+    });
+
+  /* Staggered entrance */
+  linkSel.transition().duration(650).delay(function(_,i){ return i*9+80; }).attr('opacity',1);
+  nodeG.transition().duration(500).delay(function(_,i){  return i*28+60; }).attr('opacity',1);
+  ksInited = true;
+}
+
+/* Reset zoom */
+window.ksResetZoom = function(){
+  if(!ksZoom||!ksSvgSel) return;
+  var wrap=document.getElementById('ks-wrap');
+  var W=wrap?wrap.clientWidth:460, H=wrap?wrap.clientHeight:330;
+  ksSvgSel.transition().duration(460)
+    .call(ksZoom.transform, d3.zoomIdentity.translate(W/2,H/2).scale(0.88));
+};
+
+/* Boot: IntersectionObserver fires when section scrolls into view */
+function bootKsGraph(){
+  if(typeof d3==='undefined'){
+    var poll=setInterval(function(){ if(typeof d3!=='undefined'){ clearInterval(poll); initKsGraph(); } },100);
+    return;
+  }
+  initKsGraph();
+}
+
+var ksShell = document.getElementById('ks-graph-shell');
+if(ksShell && 'IntersectionObserver' in window){
+  var obs = new IntersectionObserver(function(entries){
+    if(entries[0].isIntersecting){ obs.disconnect(); bootKsGraph(); }
+  },{ threshold:0.12 });
+  obs.observe(ksShell);
+} else {
+  document.addEventListener('DOMContentLoaded', bootKsGraph);
+}
+
+/* Re-render on resize (debounced) */
+var ksResizeTimer;
+window.addEventListener('resize', function(){
+  clearTimeout(ksResizeTimer);
+  ksResizeTimer = setTimeout(function(){
+    var wrap=document.getElementById('ks-wrap');
+    if(wrap && wrap.clientWidth>10) initKsGraph();
+  }, 200);
+});
+
 })();
 </script>
 
