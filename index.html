@@ -125,7 +125,7 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='htt
     </p>
     <div class="sr d2 flex flex-wrap justify-center gap-4 mt-8">
         <a href="#projects" class="bg-accent text-white px-7 py-3.5 rounded-xl font-semibold text-[15px] hover:bg-glow transition-all">View Projects</a>
-        <a href="#contact" class="border border-border text-warm px-7 py-3.5 rounded-xl font-semibold text-[15px] hover:border-accent hover:text-accent transition-all">Get in Touch</a>
+        <a href="resume.html" class="border border-border text-warm px-7 py-3.5 rounded-xl font-semibold text-[15px] hover:border-accent hover:text-accent transition-all">View Resume</a>
     </div>
     <p class="sr d3 font-mono text-[11px] text-muted tracking-wider uppercase mt-6">The data analytics & automation portfolio</p>
 </div>
@@ -361,7 +361,7 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='htt
   <div class="kn-ornaments" aria-hidden="true"><span>∗</span><span>❋</span><span>∗</span><span>❋</span></div>
 </section>
 
-<section id="services" class="relative z-10 max-w-6xl mx-auto px-8 py-20">
+<section id="dashboard workflow" class="relative z-10 max-w-6xl mx-auto px-8 py-20">
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center sr">
 <div class="space-y-6">
    <span class="font-mono text-[11px] tracking-[.15em] uppercase text-accent border border-accent/30 rounded-full px-4 py-1.5">Tech Preview</span>
@@ -374,13 +374,87 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='htt
 </ul>
 <div class="stat-pill"><div class="stat-val">20+</div><span class="text-sm text-subtle">Dashboards built for creating effective operational action</span></div>
 </div>
-<div class="rounded-2xl overflow-hidden border border-border shadow-lg relative" style="height:500px" id="embedContainer">
-<iframe title="Artificial Intelligence Sample" width="100%" height="100%" src="https://app.powerbi.com/view?r=eyJrIjoiMzYxNTc2NjAtMGQxMy00ZmQ5LWE0OGUtYmYwMzY1Y2JkMWE0IiwidCI6ImJkMmIyOGI4LTc2OWMtNGFjZC04YzdlLTE1MDc1ZmE2NWVmOCIsImMiOjEwfQ%3D%3D" frameborder="0" allowFullScreen="true"></iframe>
+<!-- Dashboard Tool Tabs -->
+<div id="dashboardViewer" style="border-radius:16px;overflow:hidden;border:1px solid #e2ddd5;box-shadow:0 4px 24px -4px rgba(26,24,22,.08);background:#fff;">
+  <!-- Tab bar -->
+  <div style="display:flex;align-items:flex-end;gap:2px;padding:10px 12px 0;background:#f8f7f4;border-bottom:1px solid #e2ddd5;overflow-x:auto;scrollbar-width:none;">
+    <button class="dash-tool-tab active" data-tool="powerbi" onclick="switchDashTool('powerbi',this)">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><rect x="2" y="12" width="5" height="10" rx="1" fill="currentColor" opacity=".5"/><rect x="9.5" y="7" width="5" height="15" rx="1" fill="currentColor" opacity=".75"/><rect x="17" y="2" width="5" height="20" rx="1" fill="currentColor"/></svg>
+      Power BI
+    </button>
+    <button class="dash-tool-tab" data-tool="excel" onclick="switchDashTool('excel',this)">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="3" fill="currentColor" opacity=".85"/><path d="M7 8l3 4-3 4h2.5l1.75-2.5L13 16h2.5l-3-4 3-4H13l-1.75 2.5L9.5 8H7z" fill="#fff"/></svg>
+      Excel
+    </button>
+    <button class="dash-tool-tab" data-tool="sheets" onclick="switchDashTool('sheets',this)">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="3" fill="currentColor" opacity=".85"/><rect x="5" y="7" width="14" height="1.8" rx=".9" fill="#fff" opacity=".9"/><rect x="5" y="11" width="14" height="1.8" rx=".9" fill="#fff" opacity=".7"/><rect x="5" y="15" width="9" height="1.8" rx=".9" fill="#fff" opacity=".55"/></svg>
+      Sheets
+    </button>
+    <button class="dash-tool-tab" data-tool="looker" onclick="switchDashTool('looker',this)">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="currentColor" opacity=".85"/><circle cx="12" cy="9" r="3.5" fill="#fff"/><path d="M6.5 18c0-3.04 2.46-5.5 5.5-5.5s5.5 2.46 5.5 5.5" stroke="#fff" stroke-width="1.8" fill="none"/></svg>
+      Looker
+    </button>
+    <div style="flex:1"></div>
+    <span id="dashToolBadge" style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#999590;white-space:nowrap;padding:0 4px 10px;letter-spacing:.06em;align-self:center;">POWER BI · LIVE EMBED</span>
+  </div>
+
+  <!-- Power BI Panel -->
+  <div id="dashtool-powerbi" class="dash-tool-panel">
+    <iframe title="Artificial Intelligence Sample" width="100%" height="500" src="https://app.powerbi.com/view?r=eyJrIjoiMzYxNTc2NjAtMGQxMy00ZmQ5LWE0OGUtYmYwMzY1Y2JkMWE0IiwidCI6ImJkMmIyOGI4LTc2OWMtNGFjZC04YzdlLTE1MDc1ZmE2NWVmOCIsImMiOjEwfQ%3D%3D" frameborder="0" allowFullScreen="true" style="display:block;border:none;"></iframe>
+  </div>
+
+  <!-- Excel Panel -->
+  <div id="dashtool-excel" class="dash-tool-panel" style="display:none;">
+    <iframe src="https://onedrive.live.com/embed?resid=43EBDBC5D5265516%2110928&authkey=%21ANa8vC6B5ZNcO8E&em=2&wdAllowInteractivity=False&wdHideGridlines=True&wdHideHeaders=True&wdDownloadButton=False&wdInConfigurator=False" width="100%" height="500" frameborder="0" scrolling="no" style="display:block;border:none;"></iframe>
+  </div>
+
+  <!-- Google Sheets Panel -->
+  <div id="dashtool-sheets" class="dash-tool-panel" style="display:none;">
+    <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTGkYXLTU6FW1aoqUxaOAWwDbp1A2BFYqDKxDajQ72T_XTa92PkwtmYgArQL4Nx5I0eCVUU2EKIqOo8/pubhtml?widget=true&amp;headers=false" width="100%" height="500" frameborder="0" scrolling="yes" style="display:block;border:none;"></iframe>
+  </div>
+
+  <!-- Looker Studio Panel -->
+  <div id="dashtool-looker" class="dash-tool-panel" style="display:none;">
+    <iframe width="100%" height="500" src="https://lookerstudio.google.com/embed/reporting/1se-9ZRSukdgQUiRqYTSjT8nFLTV0v8Uq/page/y5MR" frameborder="0" style="display:block;border:none;" allowfullscreen sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
+  </div>
 </div>
+
+<style>
+.dash-tool-tab {
+  display:flex;align-items:center;gap:6px;
+  padding:7px 14px;border-radius:8px 8px 0 0;
+  border:1px solid transparent;border-bottom:none;
+  background:transparent;cursor:pointer;
+  font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:600;
+  color:#999590;white-space:nowrap;transition:all .2s;
+  position:relative;top:1px;
+}
+.dash-tool-tab.active{background:#fff;border-color:#e2ddd5;color:#c47a1e;}
+.dash-tool-tab:not(.active):hover{color:#6b6660;background:rgba(255,255,255,.5);}
+.dash-tool-panel{display:block;}
+</style>
+
+<script>
+var dashTabColors={powerbi:'#c47a1e',excel:'#217346',sheets:'#0F9D58',looker:'#1A73E8'};
+var dashTabBadges={powerbi:'POWER BI · LIVE EMBED',excel:'EXCEL · LIVE EMBED',sheets:'GOOGLE SHEETS · LIVE EMBED',looker:'LOOKER STUDIO · LIVE EMBED'};
+function switchDashTool(tool,btn){
+  document.querySelectorAll('.dash-tool-tab').forEach(function(t){t.classList.remove('active');t.style.color='';});
+  btn.classList.add('active');btn.style.color=dashTabColors[tool]||'#c47a1e';
+  document.querySelectorAll('.dash-tool-panel').forEach(function(p){p.style.display='none';});
+  var panel=document.getElementById('dashtool-'+tool);
+  if(panel)panel.style.display='block';
+  var badge=document.getElementById('dashToolBadge');
+  if(badge)badge.textContent=dashTabBadges[tool]||'';
+}
+document.addEventListener('DOMContentLoaded',function(){
+  var a=document.querySelector('.dash-tool-tab.active');
+  if(a)a.style.color='#c47a1e';
+});
+</script>
 </div>
 </section>
 
-<section class="relative z-10 max-w-6xl mx-auto px-8 py-20">
+<section id="automation workflow" class="relative z-10 max-w-6xl mx-auto px-8 py-20">
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center sr">
 <div class="order-2 lg:order-1 n8n-base-frame" id="n8n-container">
   <div class="base-frame relative rounded-2xl bg-dark bg-opacity-10 p-1 base-frame--default workflow-viewer">
@@ -404,11 +478,11 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='htt
 </div>
 </section>
 
-<section class="relative z-10 max-w-6xl mx-auto px-8 py-20">
+<section id="Knowledge Management workflow" class="relative z-10 max-w-6xl mx-auto px-8 py-20">
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center sr">
 <div class="space-y-6">
 <h2 class="font-display font-800 text-3xl md:text-4xl tracking-tight text-cream leading-[1.1]">Knowledge systems that make institutional know-how searchable and actionable</h2>
-<p class="text-subtle leading-relaxed">Knowledge systems are what give automation context and dashboards direction. I structure organizational knowledge into Obsidian vaults with BPMN process maps, Mermaid diagrams, and AI-powered retrieval layers — so the processes your workflows automate and your reports measure are documented, findable, and understood by the whole team.</p>
+<p class="text-subtle leading-relaxed">Knowledge systems are what give automation context and dashboards direction. I structure organizational knowledge into Obsidian vaults with BPMN process maps, Mermaid diagrams, and AI-powered retrieval layers — so the processes your workflows automate and your reports measure are documented, findable, and understood by the whole team. The Second Brain in your process</p>
 <ul class="space-y-3">
 <li class="flex items-start gap-3"><span class="material-symbols-outlined text-accent text-lg mt-0.5">check_circle</span><span class="text-warm text-[15px]"><b>Obsidian vault architecture:</b> Maps of Content to manage context and organization of each department and ensure standardization of documentation and find insights</span></li>
 <li class="flex items-start gap-3"><span class="material-symbols-outlined text-accent text-lg mt-0.5">check_circle</span><span class="text-warm text-[15px]"><b>Process documentation:</b> BPMN 2.0 to visualize workflow diagrams, Excalidraw to share a whiteboard to edit with the team</span></li>
@@ -416,45 +490,250 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='htt
 </ul>
 <div class="stat-pill"><div class="stat-val">12</div><span class="text-sm text-subtle">Proactive knowledge management and documentation to maintain Standardized Practices in any business workflow</span></div>
 </div>
-<div id="ks-graph-shell" style="background:#0d0c0b;border-radius:20px;overflow:hidden;min-height:420px;display:flex;flex-direction:column;border:1px solid rgba(255,255,255,.07);box-shadow:0 20px 60px -12px rgba(0,0,0,.5);">
-  <!-- Header bar -->
-  <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:#0a0908;border-bottom:1px solid rgba(255,255,255,.06);flex-shrink:0;">
-    <div style="display:flex;align-items:center;gap:8px;">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-        <circle cx="5"  cy="12" r="2.6" fill="#c47a1e"/>
-        <circle cx="19" cy="5"  r="2"   fill="#7ecf8e"/>
-        <circle cx="19" cy="19" r="2"   fill="#4a9eff"/>
-        <circle cx="12" cy="20" r="1.6" fill="#b48eff"/>
-        <line x1="7.4" y1="11"   x2="17.2" y2="6.4"  stroke="rgba(255,255,255,.2)" stroke-width="1.1"/>
-        <line x1="7.4" y1="13"   x2="17.2" y2="17.6" stroke="rgba(255,255,255,.2)" stroke-width="1.1"/>
-        <line x1="19"  y1="7.2"  x2="19"   y2="16.8" stroke="rgba(255,255,255,.15)" stroke-width="1"/>
-        <line x1="13.5" y1="20" x2="17.2"  y2="19"   stroke="rgba(255,255,255,.15)" stroke-width="1"/>
-      </svg>
-      <span style="font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.4);">Knowledge Graph</span>
-      <span id="ks-node-count" style="font-family:'JetBrains Mono',monospace;font-size:8px;background:rgba(196,122,30,.15);color:#c47a1e;border:1px solid rgba(196,122,30,.28);border-radius:999px;padding:1px 7px;letter-spacing:.06em;">12 nodes</span>
-    </div>
-    <button onclick="ksResetZoom()" title="Reset zoom"
-      style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:6px;width:24px;height:24px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;"
-      onmouseover="this.style.background='rgba(255,255,255,.13)'" onmouseout="this.style.background='rgba(255,255,255,.06)'">
-      <span class="material-symbols-outlined" style="font-size:12px;color:rgba(255,255,255,.45);">center_focus_strong</span>
+<!-- Knowledge Tools Tabbed Viewer — D3 graph + BPMN + Mermaid + Excalidraw -->
+<div id="ks-graph-shell" style="border-radius:20px;overflow:hidden;min-height:420px;display:flex;flex-direction:column;border:1px solid rgba(255,255,255,.07);box-shadow:0 20px 60px -12px rgba(0,0,0,.5);background:#0d0c0b;">
+
+  <!-- Tab bar -->
+  <div style="display:flex;align-items:flex-end;gap:2px;padding:8px 10px 0;background:#0a0908;border-bottom:1px solid rgba(255,255,255,.06);overflow-x:auto;scrollbar-width:none;flex-shrink:0;">
+    <button class="km-tab active" data-km="graph" onclick="switchKmTab('graph',this)" style="display:flex;align-items:center;gap:5px;padding:6px 12px;border-radius:7px 7px 0 0;border:1px solid rgba(255,255,255,.12);border-bottom:none;background:#0d0c0b;cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;color:#c47a1e;white-space:nowrap;transition:all .2s;position:relative;top:1px;">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><circle cx="5" cy="12" r="2.6" fill="currentColor"/><circle cx="19" cy="5" r="2" fill="currentColor" opacity=".7"/><circle cx="19" cy="19" r="2" fill="currentColor" opacity=".7"/><circle cx="12" cy="20" r="1.6" fill="currentColor" opacity=".5"/><line x1="7.4" y1="11" x2="17.2" y2="6.4" stroke="currentColor" stroke-width="1.1" opacity=".5"/><line x1="7.4" y1="13" x2="17.2" y2="17.6" stroke="currentColor" stroke-width="1.1" opacity=".5"/></svg>
+      Knowledge Graph
     </button>
+    <button class="km-tab" data-km="bpmn" onclick="switchKmTab('bpmn',this)" style="display:flex;align-items:center;gap:5px;padding:6px 12px;border-radius:7px 7px 0 0;border:1px solid transparent;border-bottom:none;background:transparent;cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;color:rgba(255,255,255,.35);white-space:nowrap;transition:all .2s;position:relative;top:1px;">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><rect x="2" y="8" width="6" height="4" rx="1" stroke="currentColor" stroke-width="1.6"/><rect x="16" y="4" width="6" height="4" rx="1" stroke="currentColor" stroke-width="1.6"/><rect x="16" y="16" width="6" height="4" rx="1" stroke="currentColor" stroke-width="1.6"/><path d="M8 10h4m0 0v-4h4M12 10v4h4" stroke="currentColor" stroke-width="1.4"/></svg>
+      BPMN 2.0
+    </button>
+    <button class="km-tab" data-km="mermaid" onclick="switchKmTab('mermaid',this)" style="display:flex;align-items:center;gap:5px;padding:6px 12px;border-radius:7px 7px 0 0;border:1px solid transparent;border-bottom:none;background:transparent;cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;color:rgba(255,255,255,.35);white-space:nowrap;transition:all .2s;position:relative;top:1px;">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 10h10M4 14h12M4 18h8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      Mermaid
+    </button>
+    <button class="km-tab" data-km="excalidraw" onclick="switchKmTab('excalidraw',this)" style="display:flex;align-items:center;gap:5px;padding:6px 12px;border-radius:7px 7px 0 0;border:1px solid transparent;border-bottom:none;background:transparent;cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;color:rgba(255,255,255,.35);white-space:nowrap;transition:all .2s;position:relative;top:1px;">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M4 20 L8 8 L14 14 L18 4 L20 20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="18" cy="4" r="1.5" fill="currentColor"/></svg>
+      Excalidraw
+    </button>
+    <div style="flex:1"></div>
+    <span id="km-badge" style="font-family:'JetBrains Mono',monospace;font-size:8px;color:rgba(255,255,255,.2);white-space:nowrap;padding:0 4px 10px;align-self:center;letter-spacing:.06em;">D3 · INTERACTIVE</span>
   </div>
-  <!-- D3 canvas -->
-  <div id="ks-wrap" style="flex:1;position:relative;min-height:330px;overflow:hidden;">
-    <svg id="ks-svg" style="width:100%;height:100%;display:block;"></svg>
-    <div id="ks-tip" style="position:absolute;pointer-events:none;opacity:0;background:#1a1816;border:1px solid rgba(255,255,255,.11);border-radius:9px;padding:9px 12px;font-family:'JetBrains Mono',monospace;font-size:9.5px;color:#fff;max-width:175px;transition:opacity .15s;box-shadow:0 10px 28px rgba(0,0,0,.55);z-index:20;line-height:1.65;"></div>
-  </div>
-  <!-- Legend footer -->
-  <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 14px;background:#0a0908;border-top:1px solid rgba(255,255,255,.06);flex-shrink:0;flex-wrap:wrap;gap:6px;">
-    <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
-      <span style="font-family:'JetBrains Mono',monospace;font-size:8.5px;color:#c47a1e;display:flex;align-items:center;gap:4px;"><span style="width:6px;height:6px;border-radius:50%;background:#c47a1e;display:inline-block;box-shadow:0 0 7px #c47a1eaa"></span>MOC Hub</span>
-      <span style="font-family:'JetBrains Mono',monospace;font-size:8.5px;color:#4a9eff;display:flex;align-items:center;gap:4px;"><span style="width:6px;height:6px;border-radius:50%;background:#4a9eff;display:inline-block;box-shadow:0 0 7px #4a9effaa"></span>Workflow</span>
-      <span style="font-family:'JetBrains Mono',monospace;font-size:8.5px;color:#7ecf8e;display:flex;align-items:center;gap:4px;"><span style="width:6px;height:6px;border-radius:50%;background:#7ecf8e;display:inline-block;box-shadow:0 0 7px #7ecf8eaa"></span>Finance</span>
-      <span style="font-family:'JetBrains Mono',monospace;font-size:8.5px;color:#b48eff;display:flex;align-items:center;gap:4px;"><span style="width:6px;height:6px;border-radius:50%;background:#b48eff;display:inline-block;box-shadow:0 0 7px #b48effaa"></span>Process</span>
+
+  <!-- ── TAB 1: D3 Knowledge Graph (original, unchanged) ── -->
+  <div id="kmtool-graph" class="km-panel" style="flex:1;display:flex;flex-direction:column;background:#0d0c0b;">
+    <!-- inner header -->
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:#0a0908;border-bottom:1px solid rgba(255,255,255,.06);flex-shrink:0;">
+      <div style="display:flex;align-items:center;gap:8px;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+          <circle cx="5"  cy="12" r="2.6" fill="#c47a1e"/>
+          <circle cx="19" cy="5"  r="2"   fill="#7ecf8e"/>
+          <circle cx="19" cy="19" r="2"   fill="#4a9eff"/>
+          <circle cx="12" cy="20" r="1.6" fill="#b48eff"/>
+          <line x1="7.4" y1="11"   x2="17.2" y2="6.4"  stroke="rgba(255,255,255,.2)" stroke-width="1.1"/>
+          <line x1="7.4" y1="13"   x2="17.2" y2="17.6" stroke="rgba(255,255,255,.2)" stroke-width="1.1"/>
+          <line x1="19"  y1="7.2"  x2="19"   y2="16.8" stroke="rgba(255,255,255,.15)" stroke-width="1"/>
+          <line x1="13.5" y1="20" x2="17.2"  y2="19"   stroke="rgba(255,255,255,.15)" stroke-width="1"/>
+        </svg>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.4);">Knowledge Graph</span>
+        <span id="ks-node-count" style="font-family:'JetBrains Mono',monospace;font-size:8px;background:rgba(196,122,30,.15);color:#c47a1e;border:1px solid rgba(196,122,30,.28);border-radius:999px;padding:1px 7px;letter-spacing:.06em;">12 nodes</span>
+      </div>
+      <button onclick="ksResetZoom()" title="Reset zoom"
+        style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:6px;width:24px;height:24px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;"
+        onmouseover="this.style.background='rgba(255,255,255,.13)'" onmouseout="this.style.background='rgba(255,255,255,.06)'">
+        <span class="material-symbols-outlined" style="font-size:12px;color:rgba(255,255,255,.45);">center_focus_strong</span>
+      </button>
     </div>
-    <span style="font-family:'JetBrains Mono',monospace;font-size:8px;color:rgba(255,255,255,.2);white-space:nowrap;">Drag · Scroll · Hover</span>
+    <!-- D3 canvas — untouched -->
+    <div id="ks-wrap" style="flex:1;position:relative;min-height:330px;overflow:hidden;">
+      <svg id="ks-svg" style="width:100%;height:100%;display:block;"></svg>
+      <div id="ks-tip" style="position:absolute;pointer-events:none;opacity:0;background:#1a1816;border:1px solid rgba(255,255,255,.11);border-radius:9px;padding:9px 12px;font-family:'JetBrains Mono',monospace;font-size:9.5px;color:#fff;max-width:175px;transition:opacity .15s;box-shadow:0 10px 28px rgba(0,0,0,.55);z-index:20;line-height:1.65;"></div>
+    </div>
+    <!-- Legend footer — untouched -->
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 14px;background:#0a0908;border-top:1px solid rgba(255,255,255,.06);flex-shrink:0;flex-wrap:wrap;gap:6px;">
+      <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:8.5px;color:#c47a1e;display:flex;align-items:center;gap:4px;"><span style="width:6px;height:6px;border-radius:50%;background:#c47a1e;display:inline-block;box-shadow:0 0 7px #c47a1eaa"></span>MOC Hub</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:8.5px;color:#4a9eff;display:flex;align-items:center;gap:4px;"><span style="width:6px;height:6px;border-radius:50%;background:#4a9eff;display:inline-block;box-shadow:0 0 7px #4a9effaa"></span>Workflow</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:8.5px;color:#7ecf8e;display:flex;align-items:center;gap:4px;"><span style="width:6px;height:6px;border-radius:50%;background:#7ecf8e;display:inline-block;box-shadow:0 0 7px #7ecf8eaa"></span>Finance</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:8.5px;color:#b48eff;display:flex;align-items:center;gap:4px;"><span style="width:6px;height:6px;border-radius:50%;background:#b48eff;display:inline-block;box-shadow:0 0 7px #b48effaa"></span>Process</span>
+      </div>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:8px;color:rgba(255,255,255,.2);white-space:nowrap;">Drag · Scroll · Hover</span>
+    </div>
   </div>
+
+  <!-- ── TAB 2: BPMN 2.0 — live bpmn-js render ── -->
+  <div id="kmtool-bpmn" class="km-panel" style="display:none;flex:1;flex-direction:column;background:#fafaf9;min-height:420px;">
+    <div id="bpmn-canvas" style="width:100%;height:420px;"></div>
+    <div style="padding:6px 14px;background:#f0eee9;border-top:1px solid #e2ddd5;font-family:'JetBrains Mono',monospace;font-size:8.5px;color:#999590;display:flex;justify-content:space-between;flex-shrink:0;">
+      <span>Procure-to-Pay · BPMN 2.0 · bpmn-js</span>
+      <span>Scroll to zoom · Drag to pan</span>
+    </div>
+  </div>
+
+  <!-- ── TAB 3: Mermaid — live mermaid.js render ── -->
+  <div id="kmtool-mermaid" class="km-panel" style="display:none;flex:1;flex-direction:column;background:#0d1117;min-height:420px;overflow:auto;">
+    <div style="padding:14px 20px 6px;font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:.14em;flex-shrink:0;">Procurement Flow · Mermaid Flowchart</div>
+    <div style="flex:1;display:flex;align-items:center;justify-content:center;padding:12px 16px;overflow:auto;">
+      <div class="mermaid" id="km-mermaid-diagram">
+flowchart TD
+    A([🚀 Purchase Request]) --> B{Budget\nApproved?}
+    B -- Yes --> C[Create RFQ]
+    B -- No --> B2[Request\nBudget Revision]
+    B2 --> B
+    C --> D[Evaluate\nQuotations]
+    D --> E{Best\nVendor?}
+    E -- Selected --> F[Issue Purchase\nOrder]
+    E -- None --> C
+    F --> G[Vendor\nConfirmation]
+    G --> H[Goods\nReceipt]
+    H --> I{Quality\nCheck}
+    I -- Pass --> J[3-Way Match\nVerification]
+    I -- Fail --> K[Return to\nVendor]
+    K --> G
+    J --> L[Invoice\nProcessing]
+    L --> M([✅ Payment\nReleased])
+    style A fill:#c47a1e,stroke:#a0621a,color:#fff
+    style M fill:#217346,stroke:#1a5c39,color:#fff
+    style B fill:#1e3a5f,stroke:#2d5a8e,color:#fff
+    style E fill:#1e3a5f,stroke:#2d5a8e,color:#fff
+    style I fill:#1e3a5f,stroke:#2d5a8e,color:#fff
+    style K fill:#8b2020,stroke:#6b1818,color:#fff
+      </div>
+    </div>
+    <div style="padding:6px 14px;background:#0a0908;border-top:1px solid rgba(255,255,255,.06);font-family:'JetBrains Mono',monospace;font-size:8.5px;color:rgba(255,255,255,.2);flex-shrink:0;">Rendered with mermaid.js · Procure-to-Pay Flow</div>
+  </div>
+
+  <!-- ── TAB 4: Excalidraw — iframe embed ── -->
+  <div id="kmtool-excalidraw" class="km-panel" style="display:none;flex:1;min-height:420px;">
+    <iframe
+      src="https://excalidraw.com/embed/readonly#json=5695519967936512,sLhjTgn1_wB1iVLLquX6Fg"
+      style="width:100%;height:420px;border:none;display:block;"
+      allowfullscreen
+      sandbox="allow-scripts allow-same-origin allow-popups"
+    ></iframe>
+  </div>
+
 </div>
+
+<link rel="stylesheet" href="https://unpkg.com/bpmn-js@17/dist/assets/bpmn-js.css">
+<link rel="stylesheet" href="https://unpkg.com/bpmn-js@17/dist/assets/diagram-js.css">
+<link rel="stylesheet" href="https://unpkg.com/bpmn-js@17/dist/assets/bpmn-font/css/bpmn.css">
+
+<script>
+/* ── KM Tab switcher ── */
+var kmColors = { graph:'#c47a1e', bpmn:'#e8973e', mermaid:'#4a9eff', excalidraw:'#b48eff' };
+var kmBadges = { graph:'D3 · INTERACTIVE', bpmn:'BPMN 2.0 · LIVE RENDER', mermaid:'MERMAID.JS · LIVE RENDER', excalidraw:'EXCALIDRAW · LIVE EMBED' };
+
+function switchKmTab(tool, btn) {
+  document.querySelectorAll('.km-tab').forEach(function(t) {
+    t.style.background = 'transparent';
+    t.style.borderColor = 'transparent';
+    t.style.color = 'rgba(255,255,255,.35)';
+  });
+  btn.style.background = '#0d0c0b';
+  btn.style.borderColor = 'rgba(255,255,255,.12)';
+  btn.style.color = kmColors[tool] || '#c47a1e';
+
+  document.querySelectorAll('.km-panel').forEach(function(p) { p.style.display = 'none'; });
+  var panel = document.getElementById('kmtool-' + tool);
+  if (panel) panel.style.display = 'flex';
+
+  var badge = document.getElementById('km-badge');
+  if (badge) badge.textContent = kmBadges[tool] || '';
+
+  if (tool === 'mermaid' && window.mermaid && !window._kmMermaidDone) {
+    window._kmMermaidDone = true;
+    mermaid.run({ nodes: [document.getElementById('km-mermaid-diagram')] });
+  }
+  if (tool === 'bpmn' && !window._kmBpmnDone) { initBpmnViewer(); }
+}
+
+/* ── Mermaid.js (ESM) ── */
+(function() {
+  var ms = document.createElement('script');
+  ms.type = 'module';
+  ms.textContent = [
+    "import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';",
+    "mermaid.initialize({ startOnLoad:false, theme:'dark', themeVariables:{ primaryColor:'#c47a1e', primaryTextColor:'#fff', primaryBorderColor:'#a0621a', lineColor:'#6b8cba', secondaryColor:'#1e3a5f', tertiaryColor:'#242120' }, flowchart:{ curve:'basis', htmlLabels:true } });",
+    "window.mermaid = mermaid;"
+  ].join('\n');
+  document.head.appendChild(ms);
+})();
+
+/* ── BPMN.js ── */
+var _bpmnXML = '<?xml version="1.0" encoding="UTF-8"?>' +
+'<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" targetNamespace="http://bpmn.io/schema/bpmn" id="Definitions_1">' +
+'<process id="ProcureToPay" name="Procure-to-Pay" isExecutable="false">' +
+'<startEvent id="Start" name="Purchase&#10;Request"><outgoing>f1</outgoing></startEvent>' +
+'<sequenceFlow id="f1" sourceRef="Start" targetRef="GW1"/>' +
+'<exclusiveGateway id="GW1" name="Budget&#10;Approved?"><incoming>f1</incoming><outgoing>f2</outgoing><outgoing>f_no1</outgoing></exclusiveGateway>' +
+'<task id="T1" name="Create RFQ"><incoming>f2</incoming><outgoing>f3</outgoing></task>' +
+'<sequenceFlow id="f2" name="Yes" sourceRef="GW1" targetRef="T1"/>' +
+'<task id="T_rev" name="Budget&#10;Revision"><incoming>f_no1</incoming><outgoing>f_rev</outgoing></task>' +
+'<sequenceFlow id="f_no1" name="No" sourceRef="GW1" targetRef="T_rev"/>' +
+'<sequenceFlow id="f_rev" sourceRef="T_rev" targetRef="GW1"/>' +
+'<task id="T2" name="Evaluate&#10;Quotations"><incoming>f3</incoming><outgoing>f4</outgoing></task>' +
+'<sequenceFlow id="f3" sourceRef="T1" targetRef="T2"/>' +
+'<exclusiveGateway id="GW2" name="Vendor&#10;Selected?"><incoming>f4</incoming><outgoing>f5</outgoing><outgoing>f_retry</outgoing></exclusiveGateway>' +
+'<sequenceFlow id="f4" sourceRef="T2" targetRef="GW2"/>' +
+'<task id="T3" name="Issue PO"><incoming>f5</incoming><outgoing>f6</outgoing></task>' +
+'<sequenceFlow id="f5" name="Yes" sourceRef="GW2" targetRef="T3"/>' +
+'<sequenceFlow id="f_retry" name="No" sourceRef="GW2" targetRef="T1"/>' +
+'<task id="T4" name="Goods&#10;Receipt"><incoming>f6</incoming><outgoing>f7</outgoing></task>' +
+'<sequenceFlow id="f6" sourceRef="T3" targetRef="T4"/>' +
+'<exclusiveGateway id="GW3" name="Quality&#10;OK?"><incoming>f7</incoming><outgoing>f8</outgoing><outgoing>f_ret</outgoing></exclusiveGateway>' +
+'<sequenceFlow id="f7" sourceRef="T4" targetRef="GW3"/>' +
+'<task id="T5" name="3-Way Match&#10;&amp; Invoice"><incoming>f8</incoming><outgoing>f9</outgoing></task>' +
+'<sequenceFlow id="f8" name="Pass" sourceRef="GW3" targetRef="T5"/>' +
+'<task id="T_ret" name="Return to&#10;Vendor"><incoming>f_ret</incoming><outgoing>f_rback</outgoing></task>' +
+'<sequenceFlow id="f_ret" name="Fail" sourceRef="GW3" targetRef="T_ret"/>' +
+'<sequenceFlow id="f_rback" sourceRef="T_ret" targetRef="T4"/>' +
+'<endEvent id="End" name="Payment&#10;Released"><incoming>f9</incoming></endEvent>' +
+'<sequenceFlow id="f9" sourceRef="T5" targetRef="End"/>' +
+'</process>' +
+'<bpmndi:BPMNDiagram id="BPMNDiagram_1"><bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="ProcureToPay">' +
+'<bpmndi:BPMNShape id="Start_di" bpmnElement="Start"><dc:Bounds x="82" y="172" width="36" height="36"/><bpmndi:BPMNLabel><dc:Bounds x="58" y="215" width="84" height="27"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>' +
+'<bpmndi:BPMNShape id="GW1_di" bpmnElement="GW1" isMarkerVisible="true"><dc:Bounds x="175" y="165" width="50" height="50"/><bpmndi:BPMNLabel><dc:Bounds x="163" y="222" width="76" height="27"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>' +
+'<bpmndi:BPMNShape id="T1_di" bpmnElement="T1"><dc:Bounds x="285" y="150" width="100" height="80"/></bpmndi:BPMNShape>' +
+'<bpmndi:BPMNShape id="T_rev_di" bpmnElement="T_rev"><dc:Bounds x="152" y="310" width="100" height="80"/></bpmndi:BPMNShape>' +
+'<bpmndi:BPMNShape id="T2_di" bpmnElement="T2"><dc:Bounds x="445" y="150" width="100" height="80"/></bpmndi:BPMNShape>' +
+'<bpmndi:BPMNShape id="GW2_di" bpmnElement="GW2" isMarkerVisible="true"><dc:Bounds x="605" y="165" width="50" height="50"/><bpmndi:BPMNLabel><dc:Bounds x="590" y="222" width="80" height="27"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>' +
+'<bpmndi:BPMNShape id="T3_di" bpmnElement="T3"><dc:Bounds x="715" y="150" width="100" height="80"/></bpmndi:BPMNShape>' +
+'<bpmndi:BPMNShape id="T4_di" bpmnElement="T4"><dc:Bounds x="875" y="150" width="100" height="80"/></bpmndi:BPMNShape>' +
+'<bpmndi:BPMNShape id="GW3_di" bpmnElement="GW3" isMarkerVisible="true"><dc:Bounds x="1035" y="165" width="50" height="50"/><bpmndi:BPMNLabel><dc:Bounds x="1022" y="222" width="76" height="27"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>' +
+'<bpmndi:BPMNShape id="T5_di" bpmnElement="T5"><dc:Bounds x="1145" y="150" width="100" height="80"/></bpmndi:BPMNShape>' +
+'<bpmndi:BPMNShape id="T_ret_di" bpmnElement="T_ret"><dc:Bounds x="1012" y="310" width="100" height="80"/></bpmndi:BPMNShape>' +
+'<bpmndi:BPMNShape id="End_di" bpmnElement="End"><dc:Bounds x="1307" y="172" width="36" height="36"/><bpmndi:BPMNLabel><dc:Bounds x="1282" y="215" width="86" height="27"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>' +
+'<bpmndi:BPMNEdge id="f1_di" bpmnElement="f1"><di:waypoint x="118" y="190"/><di:waypoint x="175" y="190"/></bpmndi:BPMNEdge>' +
+'<bpmndi:BPMNEdge id="f2_di" bpmnElement="f2"><di:waypoint x="225" y="190"/><di:waypoint x="285" y="190"/><bpmndi:BPMNLabel><dc:Bounds x="246" y="172" width="22" height="14"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge>' +
+'<bpmndi:BPMNEdge id="f_no1_di" bpmnElement="f_no1"><di:waypoint x="200" y="215"/><di:waypoint x="200" y="310"/><bpmndi:BPMNLabel><dc:Bounds x="205" y="258" width="15" height="14"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge>' +
+'<bpmndi:BPMNEdge id="f_rev_di" bpmnElement="f_rev"><di:waypoint x="152" y="350"/><di:waypoint x="130" y="350"/><di:waypoint x="130" y="190"/><di:waypoint x="175" y="190"/></bpmndi:BPMNEdge>' +
+'<bpmndi:BPMNEdge id="f3_di" bpmnElement="f3"><di:waypoint x="385" y="190"/><di:waypoint x="445" y="190"/></bpmndi:BPMNEdge>' +
+'<bpmndi:BPMNEdge id="f4_di" bpmnElement="f4"><di:waypoint x="545" y="190"/><di:waypoint x="605" y="190"/></bpmndi:BPMNEdge>' +
+'<bpmndi:BPMNEdge id="f5_di" bpmnElement="f5"><di:waypoint x="655" y="190"/><di:waypoint x="715" y="190"/><bpmndi:BPMNLabel><dc:Bounds x="675" y="172" width="22" height="14"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge>' +
+'<bpmndi:BPMNEdge id="f_retry_di" bpmnElement="f_retry"><di:waypoint x="630" y="215"/><di:waypoint x="630" y="290"/><di:waypoint x="335" y="290"/><di:waypoint x="335" y="230"/><bpmndi:BPMNLabel><dc:Bounds x="473" y="272" width="15" height="14"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge>' +
+'<bpmndi:BPMNEdge id="f6_di" bpmnElement="f6"><di:waypoint x="815" y="190"/><di:waypoint x="875" y="190"/></bpmndi:BPMNEdge>' +
+'<bpmndi:BPMNEdge id="f7_di" bpmnElement="f7"><di:waypoint x="975" y="190"/><di:waypoint x="1035" y="190"/></bpmndi:BPMNEdge>' +
+'<bpmndi:BPMNEdge id="f8_di" bpmnElement="f8"><di:waypoint x="1085" y="190"/><di:waypoint x="1145" y="190"/><bpmndi:BPMNLabel><dc:Bounds x="1102" y="172" width="28" height="14"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge>' +
+'<bpmndi:BPMNEdge id="f_ret_di" bpmnElement="f_ret"><di:waypoint x="1060" y="215"/><di:waypoint x="1062" y="310"/><bpmndi:BPMNLabel><dc:Bounds x="1066" y="258" width="20" height="14"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge>' +
+'<bpmndi:BPMNEdge id="f_rback_di" bpmnElement="f_rback"><di:waypoint x="1012" y="350"/><di:waypoint x="925" y="350"/><di:waypoint x="925" y="230"/></bpmndi:BPMNEdge>' +
+'<bpmndi:BPMNEdge id="f9_di" bpmnElement="f9"><di:waypoint x="1245" y="190"/><di:waypoint x="1307" y="190"/></bpmndi:BPMNEdge>' +
+'</bpmndi:BPMNPlane></bpmndi:BPMNDiagram></definitions>';
+
+var _kmBpmnDone = false;
+function initBpmnViewer() {
+  if (_kmBpmnDone || typeof BpmnJS === 'undefined') return;
+  _kmBpmnDone = true;
+  var viewer = new BpmnJS({ container: '#bpmn-canvas' });
+  viewer.importXML(_bpmnXML).then(function() {
+    viewer.get('canvas').zoom('fit-viewport', 'auto');
+  }).catch(function(err) { console.warn('BPMN:', err); });
+}
+function loadBpmnJs() {
+  if (window.BpmnJS) { initBpmnViewer(); return; }
+  var s = document.createElement('script');
+  s.src = 'https://unpkg.com/bpmn-js@17/dist/bpmn-navigated-viewer.production.min.js';
+  s.onload = function() { initBpmnViewer(); };
+  document.head.appendChild(s);
+}
+/* Pre-load bpmn-js in background so it's ready when user clicks */
+window.addEventListener('load', function() { loadBpmnJs(); });
+</script>
 </div>
 </section>
 
