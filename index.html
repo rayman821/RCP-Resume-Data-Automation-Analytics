@@ -600,6 +600,69 @@ document.addEventListener('DOMContentLoaded',function(){
     </div>
   </div>
 
+  <!-- Firecrawl widget — positioned same as n8n -->
+  <div style="margin-top:32px;display:block;width:100%;">
+    <div style="text-align:center;font-family:'JetBrains Mono',monospace;font-size:8.5px;color:#999590;letter-spacing:.12em;text-transform:uppercase;margin-bottom:12px;">
+      ⬇ webscraping pipeline · powered by Firecrawl + n8n
+    </div>
+    <div id="scrape-widget" style="margin-top:12px;background:#fff;border-radius:16px;overflow:hidden;border:1px solid #e2ddd5;box-shadow:0 12px 40px -8px rgba(0,0,0,.08);">
+      <div style="background:#f8f7f4;padding:8px 12px;display:flex;align-items:center;gap:8px;border-bottom:1px solid #e2ddd5;">
+        <div style="display:flex;gap:5px;">
+          <div style="width:8px;height:8px;border-radius:50%;background:#ff5f57;"></div>
+          <div style="width:8px;height:8px;border-radius:50%;background:#febc2e;"></div>
+          <div style="width:8px;height:8px;border-radius:50%;background:#28c840;"></div>
+        </div>
+        <div style="flex:1;background:#f0eee9;border:1px solid #d5cfc5;border-radius:6px;padding:3px 10px;display:flex;align-items:center;gap:6px;">
+          <svg width="9" height="9" viewBox="0 0 16 16" fill="none"><path d="M8 1a7 7 0 100 14A7 7 0 008 1zm0 1.5a5.5 5.5 0 110 11A5.5 5.5 0 018 2.5zm-1 2v4l3.5 2-.7 1.2L6 9.5V4.5h1z" fill="#999590"/></svg>
+          <span id="scrape-url" style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#6b6660;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">firecrawl · scraping target</span>
+        </div>
+        <div style="background:#c47a1e;border-radius:5px;padding:2px 7px;font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:700;color:#fff;white-space:nowrap;display:flex;align-items:center;gap:4px;">
+          <span id="scrape-status-dot" style="width:5px;height:5px;border-radius:50%;background:#fff;display:inline-block;animation:scrapePulse 1.2s ease-in-out infinite;"></span>
+          <span id="scrape-badge-text">SCANNING</span>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;min-height:160px;">
+      <div style="padding:12px;border-right:1px solid #e2ddd5;position:relative;overflow:hidden;" id="scrape-page-pane">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:7px;color:#999590;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase;">target page</div>
+        <div class="scrape-row" id="srow-title" style="background:#f0eee9;border-radius:4px;padding:4px 7px;margin-bottom:5px;display:flex;align-items:center;gap:6px;transition:background .3s,border .3s;border:1px solid transparent;">
+          <span style="font-size:8px;color:#6b6660;font-family:'Outfit',sans-serif;font-weight:600;">Company Name</span>
+          <span class="scrape-extract-tag" style="display:none;font-family:'JetBrains Mono',monospace;font-size:7px;background:#c47a1e;color:#fff;border-radius:3px;padding:1px 5px;margin-left:auto;">extracted</span>
+        </div>
+        <div class="scrape-row" id="srow-contact" style="background:#f0eee9;border-radius:4px;padding:4px 7px;margin-bottom:5px;display:flex;align-items:center;gap:6px;transition:background .3s,border .3s;border:1px solid transparent;">
+          <span style="font-size:8px;color:#6b6660;font-family:'Outfit',sans-serif;">&#x1F4E7; <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e4878b8a90858790a4878b8994858a9dca948c">[email&#160;protected]</a></span>
+          <span class="scrape-extract-tag" style="display:none;font-family:'JetBrains Mono',monospace;font-size:7px;background:#c47a1e;color:#fff;border-radius:3px;padding:1px 5px;margin-left:auto;">extracted</span>
+        </div>
+        <div class="scrape-row" id="srow-price" style="background:#f0eee9;border-radius:4px;padding:4px 7px;margin-bottom:5px;display:flex;align-items:center;gap:6px;transition:background .3s,border .3s;border:1px solid transparent;">
+          <span style="font-size:8px;color:#6b6660;font-family:'Outfit',sans-serif;">&#x20B1; 4,200 / unit</span>
+          <span class="scrape-extract-tag" style="display:none;font-family:'JetBrains Mono',monospace;font-size:7px;background:#c47a1e;color:#fff;border-radius:3px;padding:1px 5px;margin-left:auto;">extracted</span>
+        </div>
+        <div class="scrape-row" id="srow-desc" style="background:#f0eee9;border-radius:4px;padding:4px 7px;margin-bottom:5px;transition:background .3s,border .3s;border:1px solid transparent;">
+          <div style="font-size:7.5px;color:#6b6660;font-family:'Outfit',sans-serif;line-height:1.5;">High-grade construction aggregate for<br/>commercial and residential projects&#8230;</div>
+          <span class="scrape-extract-tag" style="display:none;font-family:'JetBrains Mono',monospace;font-size:7px;background:#c47a1e;color:#fff;border-radius:3px;padding:1px 5px;">extracted</span>
+        </div>
+        <div id="scrape-scanline" style="position:absolute;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(196,122,30,.7),transparent);top:40px;transition:top .0s;pointer-events:none;opacity:0;"></div>
+      </div>
+      <div style="padding:12px;background:#f8f7f4;border-left:1px solid #e2ddd5;">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:7px;color:#999590;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase;display:flex;align-items:center;gap:5px;">
+          extracted data
+          <span id="scrape-count" style="background:rgba(196,122,30,.15);color:#c47a1e;border-radius:999px;padding:1px 6px;font-size:7px;">0 fields</span>
+        </div>
+        <div id="scrape-results" style="display:flex;flex-direction:column;gap:4px;font-family:'JetBrains Mono',monospace;color:#6b6660;"></div>
+        <div id="scrape-json-preview" style="margin-top:8px;background:#f0eee9;border:1px solid #d5cfc5;border-radius:6px;padding:6px 8px;font-family:'JetBrains Mono',monospace;font-size:7.5px;color:#6b6660;line-height:1.6;display:none;">
+          <span style="color:#c47a1e;">{</span><br/>
+          &nbsp;&nbsp;<span id="json-line-1" style="opacity:0;transition:opacity .4s;"></span><br/>
+          &nbsp;&nbsp;<span id="json-line-2" style="opacity:0;transition:opacity .4s;"></span><br/>
+          &nbsp;&nbsp;<span id="json-line-3" style="opacity:0;transition:opacity .4s;"></span><br/>
+          <span style="color:#c47a1e;">}</span>
+        </div>
+      </div>
+    </div>
+    <div style="background:#f0eee9;border-top:1px solid #e2ddd5;padding:5px 12px;display:flex;align-items:center;justify-content:space-between;">
+      <span id="scrape-log" style="font-family:'JetBrains Mono',monospace;font-size:7.5px;color:#999590;">Initializing Firecrawl&#8230;</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:7.5px;color:#999590;">powered by <span style="color:#c47a1e;">Firecrawl</span> + n8n</span>
+    </div>
+  </div>
+
   <!-- App notification cards -->
   <div class="app-notif-strip" style="margin-top:26px;">
 
@@ -692,69 +755,6 @@ document.addEventListener('DOMContentLoaded',function(){
         </div>
       </div>
     </div>
-
-  <!-- Firecrawl widget — positioned same as n8n -->
-  <div style="margin-top:32px;display:block;width:100%;">
-    <div style="text-align:center;font-family:'JetBrains Mono',monospace;font-size:8.5px;color:#999590;letter-spacing:.12em;text-transform:uppercase;margin-bottom:12px;">
-      ⬇ webscraping pipeline · powered by Firecrawl + n8n
-    </div>
-    <div id="scrape-widget" style="margin-top:12px;background:#fff;border-radius:16px;overflow:hidden;border:1px solid #e2ddd5;box-shadow:0 12px 40px -8px rgba(0,0,0,.08);">
-      <div style="background:#f8f7f4;padding:8px 12px;display:flex;align-items:center;gap:8px;border-bottom:1px solid #e2ddd5;">
-        <div style="display:flex;gap:5px;">
-          <div style="width:8px;height:8px;border-radius:50%;background:#ff5f57;"></div>
-          <div style="width:8px;height:8px;border-radius:50%;background:#febc2e;"></div>
-          <div style="width:8px;height:8px;border-radius:50%;background:#28c840;"></div>
-        </div>
-        <div style="flex:1;background:#f0eee9;border:1px solid #d5cfc5;border-radius:6px;padding:3px 10px;display:flex;align-items:center;gap:6px;">
-          <svg width="9" height="9" viewBox="0 0 16 16" fill="none"><path d="M8 1a7 7 0 100 14A7 7 0 008 1zm0 1.5a5.5 5.5 0 110 11A5.5 5.5 0 018 2.5zm-1 2v4l3.5 2-.7 1.2L6 9.5V4.5h1z" fill="#999590"/></svg>
-          <span id="scrape-url" style="font-family:'JetBrains Mono',monospace;font-size:9px;color:#6b6660;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">firecrawl · scraping target</span>
-        </div>
-        <div style="background:#c47a1e;border-radius:5px;padding:2px 7px;font-family:'JetBrains Mono',monospace;font-size:8px;font-weight:700;color:#fff;white-space:nowrap;display:flex;align-items:center;gap:4px;">
-          <span id="scrape-status-dot" style="width:5px;height:5px;border-radius:50%;background:#fff;display:inline-block;animation:scrapePulse 1.2s ease-in-out infinite;"></span>
-          <span id="scrape-badge-text">SCANNING</span>
-        </div>
-      </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;min-height:160px;">
-      <div style="padding:12px;border-right:1px solid #e2ddd5;position:relative;overflow:hidden;" id="scrape-page-pane">
-        <div style="font-family:'JetBrains Mono',monospace;font-size:7px;color:#999590;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase;">target page</div>
-        <div class="scrape-row" id="srow-title" style="background:#f0eee9;border-radius:4px;padding:4px 7px;margin-bottom:5px;display:flex;align-items:center;gap:6px;transition:background .3s,border .3s;border:1px solid transparent;">
-          <span style="font-size:8px;color:#6b6660;font-family:'Outfit',sans-serif;font-weight:600;">Company Name</span>
-          <span class="scrape-extract-tag" style="display:none;font-family:'JetBrains Mono',monospace;font-size:7px;background:#c47a1e;color:#fff;border-radius:3px;padding:1px 5px;margin-left:auto;">extracted</span>
-        </div>
-        <div class="scrape-row" id="srow-contact" style="background:#f0eee9;border-radius:4px;padding:4px 7px;margin-bottom:5px;display:flex;align-items:center;gap:6px;transition:background .3s,border .3s;border:1px solid transparent;">
-          <span style="font-size:8px;color:#6b6660;font-family:'Outfit',sans-serif;">&#x1F4E7; <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e4878b8a90858790a4878b8994858a9dca948c">[email&#160;protected]</a></span>
-          <span class="scrape-extract-tag" style="display:none;font-family:'JetBrains Mono',monospace;font-size:7px;background:#c47a1e;color:#fff;border-radius:3px;padding:1px 5px;margin-left:auto;">extracted</span>
-        </div>
-        <div class="scrape-row" id="srow-price" style="background:#f0eee9;border-radius:4px;padding:4px 7px;margin-bottom:5px;display:flex;align-items:center;gap:6px;transition:background .3s,border .3s;border:1px solid transparent;">
-          <span style="font-size:8px;color:#6b6660;font-family:'Outfit',sans-serif;">&#x20B1; 4,200 / unit</span>
-          <span class="scrape-extract-tag" style="display:none;font-family:'JetBrains Mono',monospace;font-size:7px;background:#c47a1e;color:#fff;border-radius:3px;padding:1px 5px;margin-left:auto;">extracted</span>
-        </div>
-        <div class="scrape-row" id="srow-desc" style="background:#f0eee9;border-radius:4px;padding:4px 7px;margin-bottom:5px;transition:background .3s,border .3s;border:1px solid transparent;">
-          <div style="font-size:7.5px;color:#6b6660;font-family:'Outfit',sans-serif;line-height:1.5;">High-grade construction aggregate for<br/>commercial and residential projects&#8230;</div>
-          <span class="scrape-extract-tag" style="display:none;font-family:'JetBrains Mono',monospace;font-size:7px;background:#c47a1e;color:#fff;border-radius:3px;padding:1px 5px;">extracted</span>
-        </div>
-        <div id="scrape-scanline" style="position:absolute;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(196,122,30,.7),transparent);top:40px;transition:top .0s;pointer-events:none;opacity:0;"></div>
-      </div>
-      <div style="padding:12px;background:#f8f7f4;border-left:1px solid #e2ddd5;">
-        <div style="font-family:'JetBrains Mono',monospace;font-size:7px;color:#999590;margin-bottom:8px;letter-spacing:.1em;text-transform:uppercase;display:flex;align-items:center;gap:5px;">
-          extracted data
-          <span id="scrape-count" style="background:rgba(196,122,30,.15);color:#c47a1e;border-radius:999px;padding:1px 6px;font-size:7px;">0 fields</span>
-        </div>
-        <div id="scrape-results" style="display:flex;flex-direction:column;gap:4px;font-family:'JetBrains Mono',monospace;color:#6b6660;"></div>
-        <div id="scrape-json-preview" style="margin-top:8px;background:#f0eee9;border:1px solid #d5cfc5;border-radius:6px;padding:6px 8px;font-family:'JetBrains Mono',monospace;font-size:7.5px;color:#6b6660;line-height:1.6;display:none;">
-          <span style="color:#c47a1e;">{</span><br/>
-          &nbsp;&nbsp;<span id="json-line-1" style="opacity:0;transition:opacity .4s;"></span><br/>
-          &nbsp;&nbsp;<span id="json-line-2" style="opacity:0;transition:opacity .4s;"></span><br/>
-          &nbsp;&nbsp;<span id="json-line-3" style="opacity:0;transition:opacity .4s;"></span><br/>
-          <span style="color:#c47a1e;">}</span>
-        </div>
-      </div>
-    </div>
-    <div style="background:#f0eee9;border-top:1px solid #e2ddd5;padding:5px 12px;display:flex;align-items:center;justify-content:space-between;">
-      <span id="scrape-log" style="font-family:'JetBrains Mono',monospace;font-size:7.5px;color:#999590;">Initializing Firecrawl&#8230;</span>
-      <span style="font-family:'JetBrains Mono',monospace;font-size:7.5px;color:#999590;">powered by <span style="color:#c47a1e;">Firecrawl</span> + n8n</span>
-    </div>
-  </div>
 
 </div>
 
@@ -890,7 +890,7 @@ document.addEventListener('DOMContentLoaded',function(){
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center sr">
 <div class="space-y-6">
 <h2 class="font-display font-800 text-3xl md:text-4xl tracking-tight text-cream leading-[1.1]">Knowledge systems that make institutional know-how searchable and actionable</h2>
-<p class="text-subtle leading-relaxed">Knowledge systems are what give automation context and dashboards direction. A netter way to understand knowledge is to structure in around your organization. Using Obsidian vaults with BPMN process maps, Mermaid diagrams, and AI-powered retrieval layers — so the processes your workflows automate and your reports measure are documented, findable, and understood by the whole team. The Second Brain in your process</p>
+<p class="text-subtle leading-relaxed">Knowledge systems are what give automation context and dashboards direction. A better way to understand knowledge is to structure it in the best way your org can leverage it. Using Obsidian vaults with BPMN process maps, Mermaid diagrams, and AI-powered retrieval layers — so the processes your workflows automate and your reports measure are documented, findable, and understood by the whole team. The Second Brain in your process</p>
 <ul class="space-y-3">
 <li class="flex items-start gap-3"><span class="material-symbols-outlined text-accent text-lg mt-0.5">check_circle</span><span class="text-warm text-[15px]"><b>Obsidian vault architecture:</b> Adapting your own Maps of Content to manage context and organization of each department and ensure standardization of documentation and find insights</span></li>
 <li class="flex items-start gap-3"><span class="material-symbols-outlined text-accent text-lg mt-0.5">check_circle</span><span class="text-warm text-[15px]"><b>Process documentation:</b> BPMN 2.0 or Mermaid to visualize workflow diagrams, Excalidraw to share a whiteboard to edit with the team</span></li>
@@ -899,7 +899,7 @@ document.addEventListener('DOMContentLoaded',function(){
 <div class="stat-pill"><div class="stat-val">12</div><span class="text-sm text-subtle">Proactive knowledge management and documentation to maintain Standardized Practices in any business workflow</span></div>
 </div>
 <!-- Knowledge Tools Tabbed Viewer — D3 graph + BPMN + Mermaid + Excalidraw -->
-<div id="ks-graph-shell" style="border-radius:20px;overflow:hidden;min-height:420px;display:flex;flex-direction:column;border:1px solid #e2ddd5;box-shadow:0 20px 60px -12px rgba(0,0,0,.1);background:#fff;">
+<div id="ks-graph-shell" style="border-radius:20px;overflow:hidden;height:500px;display:flex;flex-direction:column;border:1px solid #e2ddd5;box-shadow:0 20px 60px -12px rgba(0,0,0,.1);background:#fff;">
 
   <!-- Tab bar -->
   <div style="display:flex;align-items:flex-end;gap:2px;padding:8px 10px 0;background:#f8f7f4;border-bottom:1px solid #e2ddd5;overflow-x:auto;scrollbar-width:none;flex-shrink:0;">
@@ -965,8 +965,8 @@ document.addEventListener('DOMContentLoaded',function(){
   </div>
 
   <!-- ── TAB 2: BPMN 2.0 — live bpmn-js render ── -->
-  <div id="kmtool-bpmn" class="km-panel" style="display:none;flex:1;flex-direction:column;background:#fafaf9;min-height:420px;">
-    <div id="bpmn-canvas" style="width:100%;height:420px;"></div>
+  <div id="kmtool-bpmn" class="km-panel" style="display:none;flex:1;flex-direction:column;background:#fafaf9;">
+    <div id="bpmn-canvas" style="width:100%;flex:1;"></div>
     <div style="padding:6px 14px;background:#f0eee9;border-top:1px solid #e2ddd5;font-family:'JetBrains Mono',monospace;font-size:8.5px;color:#999590;display:flex;justify-content:space-between;flex-shrink:0;">
       <span>Procure-to-Pay · BPMN 2.0 · bpmn-js</span>
       <span>Scroll to zoom · Drag to pan</span>
@@ -974,7 +974,7 @@ document.addEventListener('DOMContentLoaded',function(){
   </div>
 
   <!-- ── TAB 3: Mermaid — live mermaid.js render ── -->
-  <div id="kmtool-mermaid" class="km-panel" style="display:none;flex:1;flex-direction:column;background:#0d1117;min-height:420px;overflow:auto;">
+  <div id="kmtool-mermaid" class="km-panel" style="display:none;flex:1;flex-direction:column;background:#0f1113;overflow:hidden;">
     <div style="padding:14px 20px 6px;font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:.14em;flex-shrink:0;">Procurement Flow · Mermaid Flowchart</div>
     <div style="flex:1;display:flex;align-items:center;justify-content:center;padding:12px 16px;overflow:auto;">
       <div class="mermaid" id="km-mermaid-diagram">
@@ -1007,10 +1007,10 @@ flowchart TD
   </div>
 
   <!-- ── TAB 4: Excalidraw — iframe embed ── -->
-  <div id="kmtool-excalidraw" class="km-panel" style="display:none;flex:1;min-height:420px;">
+  <div id="kmtool-excalidraw" class="km-panel" style="display:none;flex:1;flex-direction:column;">
     <iframe
       src="https://excalidraw.com/embed/readonly#json=5695519967936512,sLhjTgn1_wB1iVLLquX6Fg"
-      style="width:100%;height:420px;border:none;display:block;"
+      style="width:100%;height:100%;border:none;display:block;"
       allowfullscreen
       sandbox="allow-scripts allow-same-origin allow-popups"
     ></iframe>
