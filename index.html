@@ -437,6 +437,10 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='htt
 <script>
 var dashTabColors={powerbi:'#c47a1e',excel:'#217346',sheets:'#0F9D58',looker:'#1A73E8'};
 var dashTabBadges={powerbi:'POWER BI · LIVE EMBED',excel:'EXCEL · LIVE EMBED',sheets:'GOOGLE SHEETS · LIVE EMBED',looker:'LOOKER STUDIO · LIVE EMBED'};
+let dashToolAutoInterval = null;
+let dashToolIndex = 0;
+const dashToolOrder = ['powerbi','excel','sheets','looker'];
+
 function switchDashTool(tool,btn){
   document.querySelectorAll('.dash-tool-tab').forEach(function(t){t.classList.remove('active');t.style.color='';});
   btn.classList.add('active');btn.style.color=dashTabColors[tool]||'#c47a1e';
@@ -445,10 +449,29 @@ function switchDashTool(tool,btn){
   if(panel)panel.style.display='block';
   var badge=document.getElementById('dashToolBadge');
   if(badge)badge.textContent=dashTabBadges[tool]||'';
+  
+  // Reset auto-switch timer
+  dashToolIndex = dashToolOrder.indexOf(tool);
+  if(dashToolAutoInterval) clearInterval(dashToolAutoInterval);
+  startDashToolAutoSwitch();
 }
+
+function startDashToolAutoSwitch(){
+  if(dashToolAutoInterval) clearInterval(dashToolAutoInterval);
+  if(isTabsPaused) return; // Don't start if paused
+  dashToolAutoInterval = setInterval(function(){
+    if(isTabsPaused) return;
+    dashToolIndex = (dashToolIndex + 1) % dashToolOrder.length;
+    const nextTool = dashToolOrder[dashToolIndex];
+    const btn = document.querySelector(`.dash-tool-tab[data-tool="${nextTool}"]`);
+    if(btn) switchDashTool(nextTool, btn);
+  }, 3000);
+}
+
 document.addEventListener('DOMContentLoaded',function(){
   var a=document.querySelector('.dash-tool-tab.active');
   if(a)a.style.color='#c47a1e';
+  startDashToolAutoSwitch();
 });
 </script>
 </div>
@@ -495,14 +518,12 @@ document.addEventListener('DOMContentLoaded',function(){
 }
 
 .app-notif-strip {
-  display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px;align-items:stretch;
 }
 .app-notif-card {
   background:#fff;border:1px solid #e2ddd5;border-radius:14px;padding:12px 14px;
-  position:relative;overflow:hidden;transition:border-color .3s,box-shadow .3s;
-  min-height:90px;
-}
-.app-notif-card.firing { border-color:#c47a1e; box-shadow:0 6px 24px -6px rgba(196,122,30,.15); }
+  position:relative;overflow:hidden;transition:border-color .3s,box-shadow .3s;min-width:0;
+}.app-notif-card.firing { border-color:#c47a1e; box-shadow:0 6px 24px -6px rgba(196,122,30,.15); }
 .app-notif-beam {
   position:absolute;bottom:0;left:0;height:2px;background:linear-gradient(90deg,#c47a1e,#e8973e);
   width:0;border-radius:999px;
@@ -524,13 +545,14 @@ document.addEventListener('DOMContentLoaded',function(){
 .notif-badge.show { animation:badgePop .35s cubic-bezier(.16,1,.3,1) forwards; }
 
 /* Trello board mini */
-.trello-col { background:#f0eee9;border-radius:6px;padding:5px 6px;flex:1; }
-.trello-col-title { font-family:'JetBrains Mono',monospace;font-size:7.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#999590;margin-bottom:4px; }
-.trello-card-item { background:#fff;border:1px solid #e2ddd5;border-radius:4px;padding:4px 6px;font-size:9px;color:#3d3530;margin-bottom:3px;transition:background .4s; }
+.trello-col { background:#f0eee9;border-radius:6px;padding:4px 5px;flex:1;min-width:0; }
+.trello-col-title { font-family:'JetBrains Mono',monospace;font-size:7px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#999590;margin-bottom:3px; }
+.trello-card-item { background:#fff;border:1px solid #e2ddd5;border-radius:4px;padding:3px 6px;font-size:8.5px;color:#3d3530;margin-bottom:2px;transition:background .4s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis; }
 .trello-card-item.new-card { animation:rowHighlight 1.8s ease forwards; border-color:#c47a1e;}
 
 /* Asana task row */
-.asana-task { display:flex;align-items:center;gap:6px;padding:4px 0;border-bottom:1px solid #f0eee9;font-size:9.5px;color:#3d3530; }
+.asana-task { display:flex;align-items:center;gap:6px;padding:4px 0;border-bottom:1px solid #f0eee9;font-size:9.5px;color:#3d3530;min-width:0; }
+.asana-task span { overflow:hidden;text-overflow:ellipsis;white-space:nowrap; }
 .asana-task:last-child{border-bottom:none}
 .asana-check { width:13px;height:13px;border-radius:50%;border:1.5px solid #d5cfc5;flex-shrink:0;display:flex;align-items:center;justify-content:center; }
 .asana-check.done { border-color:#c47a1e;background:#c47a1e; }
@@ -613,7 +635,7 @@ document.addEventListener('DOMContentLoaded',function(){
     </div>
 
     <!-- Asana card -->
-    <div class="app-notif-card" id="notif-asana">
+    <div class="app-notif-card" id="notif-asana" style="display:flex;flex-direction:column;">
       <div class="app-notif-beam" id="beam-asana"></div>
       <div class="flex items-center gap-2 mb-2">
         <div class="app-icon" style="background:#F06A6A;">
@@ -625,9 +647,9 @@ document.addEventListener('DOMContentLoaded',function(){
         </div>
         <div class="notif-badge" id="badge-asana">+1</div>
       </div>
-      <div id="asana-tasks">
+      <div id="asana-tasks" style="flex:1;">
         <div class="asana-task">
-          <div class="asana-check done"><svg width="8" height="8" viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5" stroke="#fff" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="24" stroke-dashoffset="0"/></div>
+          <div class="asana-check done"><svg width="8" height="8" viewBox="0 0 10 10"><polyline points="1.5,5 4,7.5 8.5,2.5" stroke="#fff" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="24" stroke-dashoffset="0"/></svg></div>
           <span>Review Q2 report</span>
         </div>
         <div class="asana-task">
@@ -642,7 +664,7 @@ document.addEventListener('DOMContentLoaded',function(){
     </div>
 
     <!-- Trello card -->
-    <div class="app-notif-card" id="notif-trello">
+    <div class="app-notif-card" id="notif-trello" style="display:flex;flex-direction:column;">
       <div class="app-notif-beam" id="beam-trello"></div>
       <div class="flex items-center gap-2 mb-2">
         <div class="app-icon" style="background:#0052CC;">
@@ -654,16 +676,16 @@ document.addEventListener('DOMContentLoaded',function(){
         </div>
         <div class="notif-badge" id="badge-trello">+1</div>
       </div>
-      <div style="display:flex;gap:4px;">
-        <div class="trello-col">
+      <div style="display:flex;gap:4px;flex:1;overflow:hidden;">
+        <div class="trello-col" style="overflow:hidden;">
           <div class="trello-col-title">To Do</div>
           <div class="trello-card-item" id="trello-new-card" style="display:none;border-color:#c47a1e;color:#c47a1e;font-weight:600;">n8n: Data sync</div>
         </div>
-        <div class="trello-col">
+        <div class="trello-col" style="overflow:hidden;">
           <div class="trello-col-title">In Progress</div>
           <div class="trello-card-item">PO Approval</div>
         </div>
-        <div class="trello-col">
+        <div class="trello-col" style="overflow:hidden;">
           <div class="trello-col-title">Done</div>
           <div class="trello-card-item">GR Upload</div>
           <div class="trello-card-item">Vendor Sync</div>
@@ -672,7 +694,7 @@ document.addEventListener('DOMContentLoaded',function(){
     </div>
 
   <!-- Firecrawl widget — positioned same as n8n -->
-  <div style="margin-top:32px;">
+  <div style="margin-top:32px;display:block;width:100%;">
     <div style="text-align:center;font-family:'JetBrains Mono',monospace;font-size:8.5px;color:#999590;letter-spacing:.12em;text-transform:uppercase;margin-bottom:12px;">
       ⬇ webscraping pipeline · powered by Firecrawl + n8n
     </div>
@@ -1005,14 +1027,18 @@ flowchart TD
 var kmColors = { graph:'#c47a1e', bpmn:'#e8973e', mermaid:'#4a9eff', excalidraw:'#b48eff' };
 var kmBadges = { graph:'D3 · INTERACTIVE', bpmn:'BPMN 2.0 · LIVE RENDER', mermaid:'MERMAID.JS · LIVE RENDER', excalidraw:'EXCALIDRAW · LIVE EMBED' };
 
+let kmAutoInterval = null;
+let kmTabIndex = 0;
+const kmTabOrder = ['graph','bpmn','mermaid','excalidraw'];
+
 function switchKmTab(tool, btn) {
   document.querySelectorAll('.km-tab').forEach(function(t) {
     t.style.background = 'transparent';
     t.style.borderColor = 'transparent';
-    t.style.color = 'rgba(255,255,255,.35)';
+    t.style.color = '#999590';
   });
-  btn.style.background = '#0d0c0b';
-  btn.style.borderColor = 'rgba(255,255,255,.12)';
+  btn.style.background = '#fff';
+  btn.style.borderColor = '#e2ddd5';
   btn.style.color = kmColors[tool] || '#c47a1e';
 
   document.querySelectorAll('.km-panel').forEach(function(p) { p.style.display = 'none'; });
@@ -1027,6 +1053,23 @@ function switchKmTab(tool, btn) {
     mermaid.run({ nodes: [document.getElementById('km-mermaid-diagram')] });
   }
   if (tool === 'bpmn' && !window._kmBpmnDone) { initBpmnViewer(); }
+  
+  // Reset auto-switch timer
+  kmTabIndex = kmTabOrder.indexOf(tool);
+  if(kmAutoInterval) clearInterval(kmAutoInterval);
+  startKmAutoSwitch();
+}
+
+function startKmAutoSwitch(){
+  if(kmAutoInterval) clearInterval(kmAutoInterval);
+  if(isTabsPaused) return; // Don't start if paused
+  kmAutoInterval = setInterval(function(){
+    if(isTabsPaused) return;
+    kmTabIndex = (kmTabIndex + 1) % kmTabOrder.length;
+    const nextTool = kmTabOrder[kmTabIndex];
+    const btn = document.querySelector(`.km-tab[data-km="${nextTool}"]`);
+    if(btn) switchKmTab(nextTool, btn);
+  }, 3000);
 }
 
 /* ── Mermaid.js (ESM) ── */
@@ -1118,7 +1161,13 @@ function loadBpmnJs() {
   document.head.appendChild(s);
 }
 /* Pre-load bpmn-js in background so it's ready when user clicks */
-window.addEventListener('load', function() { loadBpmnJs(); });
+window.addEventListener('load', function() { 
+  loadBpmnJs();
+  // Start KM tabs auto-switch
+  if(document.querySelector('.km-tab')) {
+    startKmAutoSwitch();
+  }
+});
 </script>
 </div>
 </section>
@@ -1340,11 +1389,14 @@ window.addEventListener('load', function() { loadBpmnJs(); });
 }
 .demo-chrome{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:#f5f3ef;border-bottom:1px solid #e2ddd5;gap:8px}
 .demo-dot{display:inline-block;width:11px;height:11px;border-radius:50%}
-.demo-tab{display:flex;align-items:center;gap:5px;padding:5px 11px;border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;color:#6b6660;background:transparent;border:none;cursor:pointer;transition:all .22s;white-space:nowrap}
+.demo-tab{display:flex;align-items:center;gap:5px;padding:5px 11px;border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;color:#6b6660;background:transparent;border:none;cursor:pointer;transition:all .22s;white-space:nowrap;position:relative}
 .demo-tab:hover{background:#ece9e3;color:#1a1816}
 .demo-tab.active{background:#fff;color:#c47a1e;box-shadow:0 1px 6px rgba(0,0,0,.07);border:1px solid #e2ddd5}
 .demo-tab svg{opacity:.7}
 .demo-tab.active svg{opacity:1}
+.demo-tab.active::after{content:'';position:absolute;bottom:-3px;left:50%;transform:translateX(-50%);width:40%;height:2px;background:#c47a1e;border-radius:1px;animation:autoSwitchPulse 3s infinite linear}
+
+.demo-shell:hover .demo-tab.active::after{animation-play-state:paused}
 
 /* Panels */
 .demo-panel{display:none; padding:24px; animation:fadeSlideIn .3s ease;}
@@ -1355,6 +1407,7 @@ window.addEventListener('load', function() { loadBpmnJs(); });
 #obs-graph-wrap { flex: 1; min-height: 340px; }
 
 @keyframes fadeSlideIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+@keyframes autoSwitchPulse{0%{width:0}100%{width:100%}}
 
 /* Power BI styles */
 .pbi-kpi{background:#f8f7f4;border:1px solid #e8e4de;border-radius:14px;padding:16px 18px;text-align:center}
@@ -1474,6 +1527,10 @@ const wfAgent = {
 };
 
 /* ── Tab & Workflow switch logic ── */
+let n8nWfAutoInterval = null;
+let n8nWfIndex = 0;
+const n8nWfOrder = ['ocr','rag','agent'];
+
 window.loadN8nWF = function(type) {
   document.querySelectorAll('.n8n-wf-tab').forEach(b => b.classList.remove('active'));
   document.querySelector(`[data-wf="${type}"]`).classList.add('active');
@@ -1495,6 +1552,83 @@ window.loadN8nWF = function(type) {
     desc.textContent = "AI Agent Messaging — Autonomous Tool Calling";
     badge.innerHTML = '<span class="material-symbols-outlined" style="font-size:11px">play_arrow</span> Chat Trigger → AI Agent → Tools (DB, API) + Memory';
   }
+  
+  // Reset auto-switch timer
+  n8nWfIndex = n8nWfOrder.indexOf(type);
+  if(n8nWfAutoInterval) clearInterval(n8nWfAutoInterval);
+  startN8nWfAutoSwitch();
+}
+
+function startN8nWfAutoSwitch(){
+  if(n8nWfAutoInterval) clearInterval(n8nWfAutoInterval);
+  if(isTabsPaused) return; // Don't start if paused
+  n8nWfAutoInterval = setInterval(function(){
+    if(isTabsPaused) return;
+    n8nWfIndex = (n8nWfIndex + 1) % n8nWfOrder.length;
+    const nextWf = n8nWfOrder[n8nWfIndex];
+    window.loadN8nWF(nextWf);
+  }, 3000);
+}
+
+let tabAutoSwitchInterval = null;
+let currentTabIndex = 0;
+const tabOrder = ['powerbi','n8n','obsidian'];
+
+/* ── Global Auto-Pause System ── */
+let isTabsPaused = false;
+let inactivityTimeout = null;
+const INACTIVITY_DURATION = 60000; // 1 minute
+
+function pauseAllAutoSwitches(){
+  isTabsPaused = true;
+  clearInterval(tabAutoSwitchInterval);
+  clearInterval(dashToolAutoInterval);
+  clearInterval(kmAutoInterval);
+  clearInterval(n8nWfAutoInterval);
+  clearTimeout(inactivityTimeout);
+}
+
+function resumeAutoSwitches(){
+  if(isTabsPaused){
+    isTabsPaused = false;
+    if(tabAutoSwitchInterval === null) startTabAutoSwitch();
+    if(dashToolAutoInterval === null) startDashToolAutoSwitch();
+    if(kmAutoInterval === null) startKmAutoSwitch();
+    if(n8nWfAutoInterval === null) startN8nWfAutoSwitch();
+  }
+}
+
+function resetInactivityTimer(){
+  clearTimeout(inactivityTimeout);
+  pauseAllAutoSwitches();
+  inactivityTimeout = setTimeout(function(){
+    resumeAutoSwitches();
+  }, INACTIVITY_DURATION);
+}
+
+// Track all click interactions on tabs
+document.addEventListener('click', function(e){
+  if(e.target.closest('.demo-tab, .dash-tool-tab, .km-tab, .n8n-wf-tab')){
+    resetInactivityTimer();
+  }
+}, true);
+
+function resetTabAutoSwitch(){
+  if(tabAutoSwitchInterval) clearInterval(tabAutoSwitchInterval);
+  currentTabIndex = tabOrder.indexOf(document.querySelector('.demo-tab.active')?.getAttribute('data-tab') || 'powerbi');
+  startTabAutoSwitch();
+}
+
+function startTabAutoSwitch(){
+  if(tabAutoSwitchInterval) clearInterval(tabAutoSwitchInterval);
+  if(isTabsPaused) return; // Don't start if paused
+  tabAutoSwitchInterval = setInterval(function(){
+    if(isTabsPaused) return;
+    currentTabIndex = (currentTabIndex + 1) % tabOrder.length;
+    const nextTab = tabOrder[currentTabIndex];
+    const btn = document.querySelector(`.demo-tab[data-tab="${nextTab}"]`);
+    if(btn) switchTab(nextTab, btn);
+  }, 3000);
 }
 
 function switchTab(name,btn){
@@ -1502,6 +1636,23 @@ function switchTab(name,btn){
   document.querySelectorAll('.demo-tab').forEach(b=>b.classList.remove('active'));
   document.getElementById('tab-'+name).classList.add('active');
   btn.classList.add('active');
+  // Update current index and reset auto-switch timer
+  currentTabIndex = tabOrder.indexOf(name);
+  if(tabAutoSwitchInterval) clearInterval(tabAutoSwitchInterval);
+  startTabAutoSwitch();
+  
+  // Add hover pause listeners (one-time setup)
+  const shell = document.querySelector('.demo-shell');
+  if(shell && !shell.dataset.hoverListenerAdded){
+    shell.dataset.hoverListenerAdded = 'true';
+    shell.addEventListener('mouseenter', () => {
+      if(tabAutoSwitchInterval) clearInterval(tabAutoSwitchInterval);
+    });
+    shell.addEventListener('mouseleave', () => {
+      startTabAutoSwitch();
+    });
+  }
+  
   if(name==='obsidian'){
     // Give the panel time to layout before measuring dimensions
     setTimeout(() => {
@@ -1521,6 +1672,22 @@ function switchTab(name,btn){
     }
   }
 }
+
+// Initialize auto-switching tabs when page loads (Skills & Tech Stack section)
+document.addEventListener('DOMContentLoaded', function(){
+  if(document.querySelector('.demo-tab')){
+    startTabAutoSwitch();
+  }
+  if(document.querySelector('.n8n-wf-tab')){
+    startN8nWfAutoSwitch();
+  }
+  if(document.querySelector('.dash-tool-tab')){
+    startDashToolAutoSwitch();
+  }
+  if(document.querySelector('.km-tab')){
+    startKmAutoSwitch();
+  }
+});
 
 function animateBars(){
   document.querySelectorAll('.pbi-bar-fill').forEach(f=>{
@@ -3427,4 +3594,17 @@ window.addEventListener('resize', function(){
     var obsS = new IntersectionObserver(function(entries){
       if(entries[0].isIntersecting){
         obsS.disconnect();
-        runCycle();
+        runCycle();        setInterval(runCycle, CYCLE_MS);
+      }
+    }, { threshold: 0.2 });
+    obsS.observe(widget);
+  } else {
+    // Fallback: start immediately if IntersectionObserver not available
+    runCycle();
+    setInterval(runCycle, CYCLE_MS);
+  }
+})();
+</script>
+
+</body>
+</html>
