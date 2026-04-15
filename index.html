@@ -567,11 +567,12 @@ document.addEventListener('DOMContentLoaded',function(){
 <div class="space-y-6">
 <span class="font-mono text-[11px] tracking-[.15em] uppercase text-accent border border-accent/30 rounded-full px-4 py-1.5">Automation Engine</span>
 <h2 class="font-display font-800 text-3xl md:text-4xl tracking-tight text-cream leading-[1.1]">Automation that's actually smart.</h2>
-<p class="text-subtle leading-relaxed">Automation is the connective tissue between raw data and meaningful insight. I design n8n workflows that extract bank statements, trigger Gmail actions, and sync spreadsheets — feeding clean, structured data directly into your dashboards and knowledge systems, all containerized with Docker and secured via Tailscale.</p>
+<p class="text-subtle leading-relaxed">This is the bridge between raw data and meaningful insight. Designing automation workflows that extract document information, trigger notifications for any updates you need, researching the web for any leads or products and update databases and spreadsheets — feeding clean, structured data directly into your dashboards and knowledge systems.</p>
 <ul class="space-y-3">
 <li class="flex items-start gap-3"><span class="material-symbols-outlined text-accent text-lg mt-0.5">check_circle</span><span class="text-warm text-[15px]"><b>Parsing Document Data to Structured Format:</b> PDF/OCR extraction Financial Statements, Invoices, Receipts, and more</span></li>
 <li class="flex items-start gap-3"><span class="material-symbols-outlined text-accent text-lg mt-0.5">check_circle</span><span class="text-warm text-[15px]"><b>Google Apps Script integrations:</b> Gmail analysis, Calendar export, Tasks auto-sync to Sheets</span></li>
-<li class="flex items-start gap-3"><span class="material-symbols-outlined text-accent text-lg mt-0.5">check_circle</span><span class="text-warm text-[15px]"><b>Webscrape anything you need</b> Using Firecrawl to scrape any information needed to get those leads or product research</span></li>
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-accent text-lg mt-0.5">check_circle</span><span class="text-warm text-[15px]"><b>Your Database updated immediately:</b> Add any information needed to keep your data current and the automation will do the rest</span></li>
+<li class="flex items-start gap-3"><span class="material-symbols-outlined text-accent text-lg mt-0.5">check_circle</span><span class="text-warm text-[15px]"><b>Webscrape anything you need: </b> Using Firecrawl to scrape any information needed to get those leads or product research</span></li>
 </ul>
 <div class="stat-pill"><div class="stat-val">50+</div><span class="text-sm text-subtle">Workflows automated across operations to all department data to keep everything up-to-date</span></div>
 </div>
@@ -1168,7 +1169,7 @@ window.addEventListener('load', function() {
 <section id="skills" class="relative z-10 max-w-7xl mx-auto px-8 py-28">
   <div class="text-center mb-16 sr">
     <span class="font-mono text-[11px] tracking-[.15em] uppercase text-accent border border-accent/30 rounded-full px-4 py-1.5">Skills & Tech Stack</span>
-    <h2 class="font-display font-800 text-3xl md:text-[2.6rem] tracking-tight text-cream mt-5 leading-[1.1]">Every data point, workflow, and knowledge node — in one stack</h2>
+    <h2 class="font-display font-800 text-3xl md:text-[2.6rem] tracking-tight text-cream mt-5 leading-[1.1]">Dashboard + Automation Orchestration + Knowledge Management equals your Live Narrative</h2>
     <p class="text-subtle text-lg mt-4 max-w-2xl mx-auto font-light">Understand your operations, your pipelines, and the gaps between them. Then automate.</p>
   </div>
 
@@ -1230,30 +1231,8 @@ window.addEventListener('load', function() {
         <div class="w-20"></div>
       </div>
 
-      <div id="tab-powerbi" class="demo-panel active">
-        <div class="grid grid-cols-3 gap-2 mb-4">
-          <div class="pbi-kpi"><div class="pbi-kpi-val">₱4.2M</div><div class="pbi-kpi-label">Total PO Value</div><div class="pbi-kpi-change up">+12.4%</div></div>
-          <div class="pbi-kpi"><div class="pbi-kpi-val">93%</div><div class="pbi-kpi-label">On-Time Delivery</div><div class="pbi-kpi-change up">+3.1%</div></div>
-          <div class="pbi-kpi"><div class="pbi-kpi-val">18d</div><div class="pbi-kpi-label">Avg Lead Time</div><div class="pbi-kpi-change down">-2.3d</div></div>
-        </div>
-        <div class="pbi-chart-wrap">
-          <div class="pbi-chart-title"><span class="material-symbols-outlined" style="font-size:13px">bar_chart</span> PO Value by Supplier — Q1 2026</div>
-          <div class="pbi-bars">
-            <div class="pbi-bar-row"><span class="pbi-bar-label">Jollibee Supplies</span><div class="pbi-bar-track"><div class="pbi-bar-fill" style="width:85%">₱1.2M</div></div></div>
-            <div class="pbi-bar-row"><span class="pbi-bar-label">SM Trading</span><div class="pbi-bar-track"><div class="pbi-bar-fill" style="width:68%">₱960K</div></div></div>
-            <div class="pbi-bar-row"><span class="pbi-bar-label">Meralco Parts</span><div class="pbi-bar-track"><div class="pbi-bar-fill" style="width:54%">₱760K</div></div></div>
-            <div class="pbi-bar-row"><span class="pbi-bar-label">PLDT Corp</span><div class="pbi-bar-track"><div class="pbi-bar-fill" style="width:42%">₱590K</div></div></div>
-            <div class="pbi-bar-row"><span class="pbi-bar-label">Others</span><div class="pbi-bar-track"><div class="pbi-bar-fill" style="width:30%">₱420K</div></div></div>
-          </div>
-        </div>
-        <div class="pbi-table-wrap">
-          <div class="pbi-table-header"><span>PO #</span><span>Supplier</span><span>Status</span><span class="text-right">Amount</span></div>
-          <div class="pbi-table-row"><span class="pbi-mono">PO-2026-0041</span><span>Jollibee Supplies</span><span><span class="badge green">Delivered</span></span><span class="text-right pbi-mono">₱248,000</span></div>
-          <div class="pbi-table-row"><span class="pbi-mono">PO-2026-0042</span><span>SM Trading Co.</span><span><span class="badge amber">In Transit</span></span><span class="text-right pbi-mono">₱115,500</span></div>
-          <div class="pbi-table-row"><span class="pbi-mono">PO-2026-0043</span><span>Meralco Parts</span><span><span class="badge blue">Approved</span></span><span class="text-right pbi-mono">₱320,750</span></div>
-          <div class="pbi-table-row"><span class="pbi-mono">PO-2026-0044</span><span>PLDT Corp.</span><span><span class="badge gray">Pending</span></span><span class="text-right pbi-mono">₱89,200</span></div>
-        </div>
-        <div class="demo-dax-badge"><span class="material-symbols-outlined" style="font-size:11px">code</span> DAX · TMDL · Drill-Through</div>
+      <div id="tab-powerbi" class="demo-panel active" style="padding:0;overflow:hidden;">
+        <iframe title="Procurement Project Dashboard v2" width="100%" height="450" src="https://app.powerbi.com/view?r=eyJrIjoiMzYxNTc2NjAtMGQxMy00ZmQ5LWE0OGUtYmYwMzY1Y2JkMWE0IiwidCI6ImJkMmIyOGI4LTc2OWMtNGFjZC04YzdlLTE1MDc1ZmE2NWVmOCIsImMiOjEwfQ%3D%3D" frameborder="0" allowFullScreen="true" style="display:block;border:none;"></iframe>
       </div>
 
       <div id="tab-n8n" class="demo-panel flex-col h-full" style="padding:0; overflow:hidden;">
@@ -2365,16 +2344,16 @@ document.addEventListener('DOMContentLoaded', () => {
 <div class="portfolio-grid">
 
   <!-- 1 · Featured: Procurement Dashboard (spans 2 cols) -->
-  <div class="portfolio-card featured sr" data-url="https://app.powerbi.com/view?r=eyJrIjoiMzYxNTc2NjAtMGQxMy00ZmQ5LWE0OGUtYmYwMzY1Y2JkMWE0IiwidCI6ImJkMmIyOGI4LTc2OWMtNGFjZC04YzdlLTE1MDc1ZmE2NWVmOCIsImMiOjEwfQ%3D%3D" data-title="Procurement Dashboard v2">
+  <div class="portfolio-card featured sr" data-url="https://app.powerbi.com/view?r=eyJrIjoiMzYxNTc2NjAtMGQxMy00ZmQ5LWE0OGUtYmYwMzY1Y2JkMWE0IiwidCI6ImJkMmIyOGI4LTc2OWMtNGFjZC04YzdlLTE1MDc1ZmE2NWVmOCIsImMiOjEwfQ%3D%3D" data-title="Procurement Dashboard">
     <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBL4E07TjeuYx74uyz7aKn8owtchPJ6Ox94Q0lAskNJGDMAMt2g5Bj_cqozXI_5GyPNnjzfOIv_bH7rZqQNLuL9J2dbqQTyamwJHO8Nv_RI_3-zO3AtRNdPmfxbfCm1mjqRMSVRGETRiQl_glP-PCSUsA1GuIoHnLhBUZlkHxzJa_U09Fl9besO6TyOY5_SP1wrsRuFsIby8EYhvfY1JAStzZkINO9h_eLNH7UUBE3u2eoMj2zVMJ3XdTI4gBYTnT9t8IyitGPwsizl" alt="Procurement Dashboard v2" class="pc-img"/>
     <div class="pc-rest">
-      <div class="pc-rest-title">Procurement Dashboard v2</div>
+      <div class="pc-rest-title">Procurement Dashboard</div>
       <div class="pc-rest-sub">Power BI · DAX · TMDL</div>
     </div>
     <div class="pc-overlay">
       <div class="pc-category"><span class="pc-category-dot"></span>IPM Construction</div>
       <div class="pc-featured"><span class="material-symbols-outlined" style="font-size:11px">star</span> Featured</div>
-      <div class="pc-title">Procurement Dashboard v2</div>
+      <div class="pc-title">Procurement Dashboard</div>
       <div class="pc-desc">Enterprise Power BI dashboard with DAX-optimized measures, TMDL version control, drill-through pages, and real-time procurement KPIs tracking ₱4.2M+ in PO value.</div>
       <div class="pc-tags">
         <span class="pc-tag">Power BI</span>
@@ -2386,15 +2365,15 @@ document.addEventListener('DOMContentLoaded', () => {
   </div>
 
   <!-- 2 · Bank Statement Extraction -->
-  <div class="portfolio-card sr d1" data-url="https://n8n-rcp.taild30d6e.ts.net" data-title="Bank Statement Extraction Pipeline">
+  <div class="portfolio-card sr d1" data-url="https://n8n-rcp.taild30d6e.ts.net" data-title="Document to Database Pipeline">
     <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAX8mR1bzMO-UZ0PVtjcjy_5vlr2td9tES5dnLnfR40mt2frsKcCKTHfesmHf1AgBm5AE0FwtfVixLOqcij8EOIVkIv7SOI6rz1qp5ZxvsJvaPJeol7VJrE5MCULHKmvQuYFxPxeue4QQFM8XNQaWXWLdqnVBy8m63yB_fSls_wOVgRHn4sUxdBtbPAomIGvtjs3V7ORVV9rG2jzzh9qelGzafv9qF8xwADBe9ktnsp9WCX90gUy5i4hyMQ_U1mk82PodfwzA_ZLGiN" alt="Bank Statement Pipeline" class="pc-img"/>
     <div class="pc-rest">
-      <div class="pc-rest-title">Bank Statement Extraction</div>
+      <div class="pc-rest-title">Document to Database Pipeline</div>
       <div class="pc-rest-sub">n8n · Regex · Google Sheets</div>
     </div>
     <div class="pc-overlay">
       <div class="pc-category"><span class="pc-category-dot"></span>Workflow Automation</div>
-      <div class="pc-title">Bank Statement Extraction</div>
+      <div class="pc-title">Document to Database Pipeline</div>
       <div class="pc-desc">n8n pipeline parsing PH bank PDFs (BPI, BDO, UnionBank) via OCR into structured JSON, auto-categorised and synced to Google Sheets.</div>
       <div class="pc-tags">
         <span class="pc-tag">n8n</span>
@@ -2408,12 +2387,12 @@ document.addEventListener('DOMContentLoaded', () => {
   <div class="portfolio-card sr d2">
     <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJj7biKMXXhkl2nND-9wYCtpN0szpXWYX4tba6qIcqnkg0Ky3GYfRUDalrg5idLAmXBoPdjv1CsB2o2xjgQe7cSaUXeA49bkr0Hmest_BjUvvwGeevzvQitgojW5bTe-VM2qZ1gsxFZhTMXgex1yVIDy7tMNqtB_zI9Tu1Yh-7H2UK4ZuSi-I_XGmEsYJ7uXswRbS3T8nMls1I1xINSKK2pTCkeN41InjmsQa5EWeqDSlL0Rh0oOBH6ag72NhiMwRgCs4WCxsNXXEV" alt="Knowledge Management" class="pc-img"/>
     <div class="pc-rest">
-      <div class="pc-rest-title">Knowledge Management</div>
+      <div class="pc-rest-title">Microsoft Power Platform Workflow</div>
       <div class="pc-rest-sub">Obsidian · BPMN · Mermaid</div>
     </div>
     <div class="pc-overlay">
       <div class="pc-category"><span class="pc-category-dot"></span>Knowledge Systems</div>
-      <div class="pc-title">Knowledge Management</div>
+      <div class="pc-title">Microsoft Power Platform Workflow</div>
       <div class="pc-desc">Obsidian vault with 200+ MOC notes, BPMN 2.0 procurement process maps, and Mermaid documentation diagrams.</div>
       <div class="pc-tags">
         <span class="pc-tag">Obsidian</span>
@@ -2427,12 +2406,12 @@ document.addEventListener('DOMContentLoaded', () => {
   <div class="portfolio-card sr">
     <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdFj4UBe0mQ-_YLIrBsua9SIIaWLkmFR5aUDqGPGlUMBuj7oX3L0rF6ZYL5OeXxRxEtoqS80IRm2X_ilYJlVlUKIbXOy62vE8P0RKfesd9NHnZ-33PEZWtx_sdI19XogJKaU3vlePB14RZ4eWH8xzMnmJR-qYBxhOomoFZ1go_1U-LaklC01F-gHx6F4Riea2KvcbyzvCdbkg0jLBwov7wD9PL56O0vU-eRGvFtTw5JiRhlt-6jh5_RPo-ZdVZ0nHkADN5I-mQWd3_" alt="Gmail & Calendar Sync" class="pc-img"/>
     <div class="pc-rest">
-      <div class="pc-rest-title">Gmail & Calendar Sync</div>
+      <div class="pc-rest-title">Google Workspace App Orchestration</div>
       <div class="pc-rest-sub">Google Apps Script</div>
     </div>
     <div class="pc-overlay">
       <div class="pc-category"><span class="pc-category-dot"></span>Automation</div>
-      <div class="pc-title">Gmail & Calendar Sync</div>
+      <div class="pc-title">Google Workspace App Orchestration</div>
       <div class="pc-desc">Google Apps Script suite for Gmail sender analysis, Calendar export to per-calendar sheets, and Google Tasks auto-sync.</div>
       <div class="pc-tags">
         <span class="pc-tag">GAS</span>
@@ -2446,12 +2425,12 @@ document.addEventListener('DOMContentLoaded', () => {
   <div class="portfolio-card sr d1">
     <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOemS_P3kCbf2_G-ruOSQTqtO092vQOp8-7Jb6MCyjIYPVOyhUxK3tHuG04-nP3Fj4WTGAyMue3PZKe2VwHxb1DlUY-yAX-GcB53064TTg8O-x-KBfSRIqqWUWrnXJY5j8es2dgH870XfQ7rvGufgKJEYaGfyUtIsv2mrbEOuV4vOOWVFyhOhGIA1c5zvegW2stvOlsZQ0_KYbqHGmAnbNlAApMYP0oys24V1afj0jGrGOhqsyYnaes_unxxn0SwuUvCTthF9bqGD-" alt="Personal Finance Dashboard" class="pc-img"/>
     <div class="pc-rest">
-      <div class="pc-rest-title">Personal Finance Dashboard</div>
+      <div class="pc-rest-title">Finance And Accounting Dashboard</div>
       <div class="pc-rest-sub">Excel · Power Query</div>
     </div>
     <div class="pc-overlay">
       <div class="pc-category"><span class="pc-category-dot"></span>Personal Project</div>
-      <div class="pc-title">Personal Finance Dashboard</div>
+      <div class="pc-title">Finance And Accounting Dashboard</div>
       <div class="pc-desc">Excel dashboard with PH bank data (BPI, BDO, Metrobank), Power Query transformations, and automated categorisation.</div>
       <div class="pc-tags">
         <span class="pc-tag">Excel</span>
@@ -2464,7 +2443,7 @@ document.addEventListener('DOMContentLoaded', () => {
   <div class="portfolio-card sr d2">
     <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAICVGsXJ68OmDZqKUtZpU0BnmTYGVntALI7m_QIVQX-SrbCSxSf2RMxffF4T1Ev7q-MQtfbubVC4MRtQRPtrYwZQLjbK-D6pG40IPhlchOzrtWxUZQQsc_eONk7vtzbN71uBzlxFeFOl3pfVYN4LK_RGamf7K3PbN4SSF9qmLvk56l77oUNTadnXtT2Rc0aHdyuu4FmRJVLaTC250ScLNqe1-8x6l_ORtjdR94N0e2EsNv_ItGeHYxqFi0TS0NgLFHGSb74L2m3S50" alt="Self-Hosted Stack" class="pc-img"/>
     <div class="pc-rest">
-      <div class="pc-rest-title">Self-Hosted Stack</div>
+      <div class="pc-rest-title">Self-Hosted Application Management</div>
       <div class="pc-rest-sub">Docker · Tailscale · Nginx</div>
     </div>
     <div class="pc-overlay">
