@@ -69,11 +69,12 @@ body::after{
 
 /* ── Filter Tabs ── */
 .filter-strip{
-  display:flex;flex-wrap:wrap;gap:8px;justify-content:center;
-  margin-bottom:48px;
+  display:flex;flex-wrap:wrap;gap:6px;justify-content:center;
+  margin-bottom:32px;
+  padding:0 4px;
 }
 .filter-btn{
-  padding:7px 18px;
+  padding:6px 14px;
   border:1.5px solid #e2ddd5;
   border-radius:999px;
   font-family:'JetBrains Mono',monospace;
@@ -136,6 +137,7 @@ body::after{
   color:#999590;text-transform:uppercase;letter-spacing:.07em;
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:140px;
 }
+@media(max-width:600px){.pcard-title-label{display:none;}}
 .pcard-open-btn{
   display:flex;align-items:center;gap:4px;
   background:#c47a1e;color:#fff;border:none;
@@ -153,7 +155,8 @@ body::after{
   border:none;display:block;
   background:#f8f7f4;
 }
-@media(max-width:768px){.pcard-embed{height:400px}}
+@media(max-width:768px){.pcard-embed{height:360px}}
+@media(max-width:480px){.pcard-embed{height:280px}}
 
 /* Embed overlay shown when no url */
 .pcard-no-embed{
@@ -163,11 +166,36 @@ body::after{
   font-family:'JetBrains Mono',monospace;font-size:11px;
   letter-spacing:.06em;text-transform:uppercase;
 }
-@media(max-width:768px){.pcard-no-embed{height:400px}}
+@media(max-width:768px){.pcard-no-embed{height:360px}}
+@media(max-width:480px){.pcard-no-embed{height:280px}}
 .pcard-no-icon{font-size:28px;color:#d5cfc5}
 
 /* Hidden cards for filter */
 .pcard.hidden{display:none}
+
+/* ── Mobile Nav ── */
+#mob-menu{display:none;position:fixed;top:68px;left:0;right:0;z-index:49;
+  background:rgba(248,247,244,.97);backdrop-filter:blur(20px);
+  border-bottom:1px solid #e2ddd5;padding:16px 24px 20px;
+  flex-direction:column;gap:4px;}
+#mob-menu.open{display:flex;}
+#mob-menu a{font-family:'Outfit',sans-serif;font-size:15px;font-weight:500;
+  color:#6b6660;padding:10px 0;border-bottom:1px solid #f0eee9;
+  text-decoration:none;transition:color .2s;}
+#mob-menu a:last-child{border-bottom:none;}
+#mob-menu a:hover{color:#c47a1e;}
+.ham-btn{display:none;flex-direction:column;gap:5px;cursor:pointer;
+  padding:6px;border:none;background:transparent;}
+.ham-btn span{display:block;width:22px;height:2px;background:#1a1816;
+  border-radius:2px;transition:all .3s cubic-bezier(.16,1,.3,1);}
+.ham-btn.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.ham-btn.open span:nth-child(2){opacity:0;transform:scaleX(0);}
+.ham-btn.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+@media(max-width:767px){
+  .ham-btn{display:flex;}
+  .cta-nav-desktop{display:none!important;}
+}
+
 
 /* ── Stat strip ── */
 .stat-strip{
@@ -226,6 +254,30 @@ body::after{
 /* ── Hidden cards for filter ── */
 .pcard.hidden{display:none}
 
+/* ── Mobile Nav ── */
+#mob-menu{display:none;position:fixed;top:68px;left:0;right:0;z-index:49;
+  background:rgba(248,247,244,.97);backdrop-filter:blur(20px);
+  border-bottom:1px solid #e2ddd5;padding:16px 24px 20px;
+  flex-direction:column;gap:4px;}
+#mob-menu.open{display:flex;}
+#mob-menu a{font-family:'Outfit',sans-serif;font-size:15px;font-weight:500;
+  color:#6b6660;padding:10px 0;border-bottom:1px solid #f0eee9;
+  text-decoration:none;transition:color .2s;}
+#mob-menu a:last-child{border-bottom:none;}
+#mob-menu a:hover{color:#c47a1e;}
+.ham-btn{display:none;flex-direction:column;gap:5px;cursor:pointer;
+  padding:6px;border:none;background:transparent;}
+.ham-btn span{display:block;width:22px;height:2px;background:#1a1816;
+  border-radius:2px;transition:all .3s cubic-bezier(.16,1,.3,1);}
+.ham-btn.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.ham-btn.open span:nth-child(2){opacity:0;transform:scaleX(0);}
+.ham-btn.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+@media(max-width:767px){
+  .ham-btn{display:flex;}
+  .cta-nav-desktop{display:none!important;}
+}
+
+
 /* ── Hero number ticker ── */
 @keyframes countUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 
@@ -261,21 +313,31 @@ body::after{
 <a href="resume.html" class="nl text-[13px] font-medium text-subtle hover:text-cream transition-colors">Resume</a>
 </div>
 <div class="flex items-center gap-3">
-<a href="index.html#contact" class="cta-nav">
+<a href="index.html#contact" class="cta-nav cta-nav-desktop">
   <span class="cta-dot"></span>Let's Work Together
 </a>
+<button class="ham-btn" id="ham-btn" onclick="toggleMobMenu()" aria-label="Menu">
+  <span></span><span></span><span></span>
+</button>
 </div>
 </div>
 </nav>
+<div id="mob-menu">
+  <a href="index.html#about">About</a>
+  <a href="index.html#dashboard">Services</a>
+  <a href="projects.html" style="color:#c47a1e;font-weight:600;">Projects</a>
+  <a href="resume.html">Resume</a>
+  <a href="index.html#contact" class="cta-nav" style="margin-top:8px;justify-content:center;"><span class="cta-dot"></span>Let's Work Together</a>
+</div>
 
 <!-- Hero -->
-<section class="relative z-10 pt-32 pb-10 px-8 text-center">
+<section class="relative z-10 pt-32 pb-8 px-4 md:px-8 text-center">
   <p class="sr font-mono text-[11px] tracking-[.15em] uppercase text-accent mb-4">— Portfolio —</p>
   <h1 class="sr d1 font-display font-800 text-[clamp(2.5rem,7vw,5.5rem)] leading-[.95] tracking-tighter text-cream">Project Showcase</h1>
 </section>
 
 <!-- Filter + Grid -->
-<section class="relative z-10 max-w-7xl mx-auto px-8 pb-28">
+<section class="relative z-10 max-w-7xl mx-auto px-4 md:px-8 pb-20 md:pb-28">
 
   <!-- Filter tabs -->
   <div class="filter-strip sr">
@@ -414,8 +476,8 @@ body::after{
 </section>
 
 <!-- CTA Strip -->
-<section class="relative z-10 max-w-4xl mx-auto px-8 pb-28 text-center">
-  <div class="sr bg-white border border-border rounded-[28px] p-12 shadow-sm">
+<section class="relative z-10 max-w-4xl mx-auto px-4 md:px-8 pb-16 md:pb-28 text-center">
+  <div class="sr bg-white border border-border rounded-[28px] p-6 md:p-12 shadow-sm">
     <div class="mb-4">
       <span class="section-chip">
         <span class="material-symbols-outlined" style="font-size:13px">handshake</span>
@@ -482,5 +544,20 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
 });
 </script>
 
+
+<script>
+function toggleMobMenu(){
+  const m=document.getElementById('mob-menu');
+  const b=document.getElementById('ham-btn');
+  m.classList.toggle('open');
+  b.classList.toggle('open');
+}
+document.querySelectorAll('#mob-menu a').forEach(a=>{
+  a.addEventListener('click',()=>{
+    document.getElementById('mob-menu').classList.remove('open');
+    document.getElementById('ham-btn').classList.remove('open');
+  });
+});
+</script>
 </body>
 </html>

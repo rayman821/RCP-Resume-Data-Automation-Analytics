@@ -110,6 +110,44 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='htt
 .tl-item:hover .tl-dot{background:#c47a1e;box-shadow:0 0 0 5px rgba(196,122,30,.12)}
 @media(max-width:768px){.tl-line{left:15px}.tl-dot{left:10px}}
 #scroll-bar{position:fixed;top:0;left:0;height:2px;z-index:9999;background:linear-gradient(90deg,#c47a1e,#e8973e)}
+
+/* ── Mobile Nav ── */
+#mob-menu{display:none;position:fixed;top:68px;left:0;right:0;z-index:49;
+  background:rgba(248,247,244,.97);backdrop-filter:blur(20px);
+  border-bottom:1px solid #e2ddd5;padding:16px 24px 20px;
+  flex-direction:column;gap:4px;}
+#mob-menu.open{display:flex;}
+#mob-menu a{font-family:'Outfit',sans-serif;font-size:15px;font-weight:500;
+  color:#6b6660;padding:10px 0;border-bottom:1px solid #f0eee9;
+  text-decoration:none;transition:color .2s;}
+#mob-menu a:last-child{border-bottom:none;}
+#mob-menu a:hover{color:#c47a1e;}
+.ham-btn{display:none;flex-direction:column;gap:5px;cursor:pointer;
+  padding:6px;border:none;background:transparent;}
+.ham-btn span{display:block;width:22px;height:2px;background:#1a1816;
+  border-radius:2px;transition:all .3s cubic-bezier(.16,1,.3,1);}
+.ham-btn.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.ham-btn.open span:nth-child(2){opacity:0;transform:scaleX(0);}
+.ham-btn.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+@media(max-width:767px){
+  .ham-btn{display:flex;}
+  .cta-nav-desktop{display:none!important;}
+}
+/* Mobile stat pills wrap fix */
+@media(max-width:480px){
+  .stat-pill{padding:10px 14px;}
+  .stat-pill .stat-val{font-size:1.2rem;}
+}
+/* Mobile hero image size */
+@media(max-width:1023px){
+  .resume-photo-wrap{max-width:180px;margin:0 auto;}
+}
+/* Mobile timeline tighter */
+@media(max-width:480px){
+  .tl-item .feat-card{padding:20px 16px;}
+  .tl-item{padding-left:10px;}
+}
+
 </style>
 </head>
 <body>
@@ -126,25 +164,35 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='htt
 <a href="#" class="text-[13px] font-semibold text-accent">Resume</a>
 </div>
 <div class="flex items-center gap-3">
-<a href="index.html#contact" class="cta-nav">
+<a href="index.html#contact" class="cta-nav cta-nav-desktop">
   <span class="cta-dot"></span>Let's Work Together
 </a>
+<button class="ham-btn" id="ham-btn" onclick="toggleMobMenu()" aria-label="Menu">
+  <span></span><span></span><span></span>
+</button>
 </div>
 </div>
 </nav>
+<div id="mob-menu">
+  <a href="index.html">Home</a>
+  <a href="index.html#services">Services</a>
+  <a href="index.html#projects">Projects</a>
+  <a href="#" style="color:#c47a1e;font-weight:600;">Resume</a>
+  <a href="index.html#contact" class="cta-nav" style="margin-top:8px;justify-content:center;"><span class="cta-dot"></span>Let's Work Together</a>
+</div>
 
 <!-- HERO -->
-<section class="relative z-10 pt-32 pb-16 px-8">
+<section class="relative z-10 pt-32 pb-10 px-4 md:px-8">
 <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-14 items-center sr">
 <div class="lg:col-span-3">
-<div class="relative group"><div class="absolute -inset-2 rounded-[24px] bg-gradient-to-br from-accent/10 to-transparent opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500"></div>
+<div class="relative group resume-photo-wrap"><div class="absolute -inset-2 rounded-[24px] bg-gradient-to-br from-accent/10 to-transparent opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500"></div>
 <div class="relative rounded-2xl overflow-hidden border border-border shadow-lg"><img alt="Raymond Paredes" class="w-full aspect-square object-cover" src="https://drive.google.com/thumbnail?id=1MR9K7vosU9jJSjb_uJ-ZgEh_zO18_t_A&view?sz=1000"/></div></div>
 </div>
 <div class="lg:col-span-9 space-y-5">
 <div><h1 class="font-display font-800 text-[clamp(2rem,5vw,3.5rem)] leading-[1.1] tracking-tight text-cream">Raymond Paredes</h1>
 <p class="font-mono text-[12px] text-accent tracking-wider uppercase mt-2">Data Analyst · Operations Architect · Procurement Lead</p></div>
 <p class="text-subtle text-lg leading-relaxed max-w-2xl">Data analytics specialist who transforms raw operational data into decision-ready dashboards and automates the manual processes that slow teams down. Based in Metro Manila, Philippines.</p>
-<div class="flex flex-wrap gap-6 pt-1">
+<div class="flex flex-wrap gap-3 md:gap-6 pt-1">
 <div class="flex items-center gap-2"><span class="material-symbols-outlined text-accent text-lg">mail</span><span class="text-sm text-warm">reiman.par@gmail.com</span></div>
 <div class="flex items-center gap-2"><span class="material-symbols-outlined text-accent text-lg">location_on</span><span class="text-sm text-warm">Manila, PH · Remote</span></div>
 <div class="flex items-center gap-2"><span class="material-symbols-outlined text-accent text-lg">link</span><a href="https://www.linkedin.com/in/raymond-paredes-805b5415a/" class="text-sm text-warm hover:text-accent transition-colors">LinkedIn</a></div>
@@ -160,7 +208,7 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='htt
 </section>
 
 <!-- EXPERIENCE -->
-<section class="relative z-10 max-w-7xl mx-auto px-8 py-20">
+<section class="relative z-10 max-w-7xl mx-auto px-4 md:px-8 py-14 md:py-20">
 <div class="text-center mb-14 sr"><h2 class="font-display font-800 text-3xl md:text-4xl tracking-tight text-cream">Professional experience</h2><p class="text-subtle mt-3 max-w-xl mx-auto">A progression from procurement operations to data analytics and workflow automation leadership.</p></div>
 <div class="relative max-w-3xl mx-auto pl-14 md:pl-16">
 <div class="tl-line"></div>
@@ -207,7 +255,7 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='htt
 </section>
 
 <!-- SKILLS -->
-<section class="relative z-10 max-w-7xl mx-auto px-8 py-20">
+<section class="relative z-10 max-w-7xl mx-auto px-4 md:px-8 py-14 md:py-20">
 <div class="text-center mb-14 sr"><h2 class="font-display font-800 text-3xl md:text-4xl tracking-tight text-cream">Technical skills</h2><p class="text-subtle mt-3 max-w-xl mx-auto">Three core competency areas — analytics, automation, and data infrastructure.</p></div>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 <div class="feat-card sr"><div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-5"><span class="material-symbols-outlined text-accent text-xl">analytics</span></div><h3 class="font-display font-700 text-lg text-cream mb-4">Analytics &amp; BI</h3><div class="space-y-2.5 mb-5"><div class="bdot"><span class="text-sm text-warm">Advanced Power BI (DAX, M, TMDL)</span></div><div class="bdot"><span class="text-sm text-warm">SQL (PostgreSQL, Supabase)</span></div><div class="bdot"><span class="text-sm text-warm">Statistical trend analysis</span></div><div class="bdot"><span class="text-sm text-warm">KPI engineering</span></div><div class="bdot"><span class="text-sm text-warm">Excel &amp; Google Sheets (advanced)</span></div></div><div class="flex flex-wrap gap-2"><span class="mt">Power BI</span><span class="mt">DAX</span><span class="mt">SQL</span><span class="mt">Excel</span></div></div>
@@ -554,5 +602,20 @@ window.rcbQuick = function(btn){ inputEl.value=btn.textContent; rcbSend(); };
 })();
 </script>
 
+
+<script>
+function toggleMobMenu(){
+  const m=document.getElementById('mob-menu');
+  const b=document.getElementById('ham-btn');
+  m.classList.toggle('open');
+  b.classList.toggle('open');
+}
+document.querySelectorAll('#mob-menu a').forEach(a=>{
+  a.addEventListener('click',()=>{
+    document.getElementById('mob-menu').classList.remove('open');
+    document.getElementById('ham-btn').classList.remove('open');
+  });
+});
+</script>
 </body>
 </html>
