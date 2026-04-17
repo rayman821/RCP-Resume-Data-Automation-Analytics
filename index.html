@@ -334,20 +334,20 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='htt
       <div class="kn-label">Manual Work Hours Saved</div>
     </div>
     <div class="kn-card sr d2">
-      <div class="kn-num" data-target="20" data-suffix="+">0</div>
-      <div class="kn-label">Dashboards Built</div>
+      <div class="kn-num" data-target="50" data-suffix="%+" data-decimal="true">0</div>
+      <div class="kn-label">Error Reduction</div>
     </div>
     <div class="kn-card sr">
       <div class="kn-num" data-target="99.8" data-suffix="%" data-decimal="true">0</div>
       <div class="kn-label">Automation Uptime</div>
     </div>
     <div class="kn-card sr d1">
-      <div class="kn-num" data-target="12" data-suffix="%+" data-decimal="true">0</div>
+      <div class="kn-num" data-target="32.0" data-suffix="%+" data-decimal="true">0</div>
       <div class="kn-label">Productivity Efficiency</div>
     </div>
     <div class="kn-card sr d2">
-      <div class="kn-num" data-target="200" data-suffix="+">0</div>
-      <div class="kn-label">Linked Obsidian Notes</div>
+      <div class="kn-num" data-target="22.0" data-suffix="%+" data-decimal="true">0</div>
+      <div class="kn-label">RRevenue Growth</div>
     </div>
   </div>
   <div class="kn-ornaments" aria-hidden="true"><span>∗</span><span>❋</span><span>∗</span><span>❋</span></div>
@@ -887,6 +887,7 @@ document.addEventListener('DOMContentLoaded',function(){
 <ul class="space-y-3">
 <li class="flex items-start gap-3"><span class="material-symbols-outlined text-accent text-lg mt-0.5">check_circle</span><span class="text-warm text-[15px]"><b>Obsidian vault architecture:</b> Adapting your own Maps of Content to manage context and organization of each department and ensure standardization of documentation and find insights</span></li>
 <li class="flex items-start gap-3"><span class="material-symbols-outlined text-accent text-lg mt-0.5">check_circle</span><span class="text-warm text-[15px]"><b>Process documentation:</b> BPMN 2.0 or Mermaid to visualize workflow diagrams, Excalidraw to share a whiteboard to edit with the team</span></li>
+
 <li class="flex items-start gap-3"><span class="material-symbols-outlined text-accent text-lg mt-0.5">check_circle</span><span class="text-warm text-[15px]"><b>RAG prototyping:</b> LLM-powered retrieval with vector search over documentation</span></li>
 </ul>
 <div class="stat-pill"><div class="stat-val">12</div><span class="text-sm text-subtle">Proactive knowledge management and documentation to maintain Standardized Practices in any business workflow</span></div>
@@ -2443,16 +2444,16 @@ document.addEventListener('DOMContentLoaded', () => {
   <div class="portfolio-card sr d2">
     <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAICVGsXJ68OmDZqKUtZpU0BnmTYGVntALI7m_QIVQX-SrbCSxSf2RMxffF4T1Ev7q-MQtfbubVC4MRtQRPtrYwZQLjbK-D6pG40IPhlchOzrtWxUZQQsc_eONk7vtzbN71uBzlxFeFOl3pfVYN4LK_RGamf7K3PbN4SSF9qmLvk56l77oUNTadnXtT2Rc0aHdyuu4FmRJVLaTC250ScLNqe1-8x6l_ORtjdR94N0e2EsNv_ItGeHYxqFi0TS0NgLFHGSb74L2m3S50" alt="Self-Hosted Stack" class="pc-img"/>
     <div class="pc-rest">
-      <div class="pc-rest-title">Self-Hosted Application Management</div>
-      <div class="pc-rest-sub">Docker · Tailscale · Nginx</div>
+      <div class="pc-rest-title">Automated Knowledge Base</div>
+      <div class="pc-rest-sub">Obsidian · Notion · Nginx</div>
     </div>
     <div class="pc-overlay">
       <div class="pc-category"><span class="pc-category-dot"></span>Infrastructure</div>
-      <div class="pc-title">Self-Hosted Stack</div>
+      <div class="pc-title">Automated Knowledge Base</div>
       <div class="pc-desc">Docker-composed n8n, MongoDB, Supabase, and Nginx reverse proxy on a Tailscale mesh network with 99.8% uptime.</div>
       <div class="pc-tags">
-        <span class="pc-tag">Docker</span>
-        <span class="pc-tag">Tailscale</span>
+        <span class="pc-tag">Obsidian</span>
+        <span class="pc-tag">Notion</span>
         <span class="pc-tag">Nginx</span>
       </div>
     </div>
@@ -2961,7 +2962,7 @@ customElements.whenDefined('n8n-demo').then(()=>{
 document.getElementById('contact-form').addEventListener('submit',async function(e){
 e.preventDefault();const f=e.target,b=document.getElementById('submit-btn'),orig=b.innerHTML;
 b.innerHTML='<span>Sending...</span><span class="material-symbols-outlined animate-spin text-lg">sync</span>';b.disabled=true;
-const url="https://script.google.com/macros/s/AKfycby_uNku4B679qg8qSaahUbJUw1d7Po015l2U9j_bOINDK9F9uS3hkE7nkWpMNbwE-S1/exec";
+const url="https://script.google.com/macros/s/AKfycbxN94g_EB3jkSIyitS25cDwNzYrSgCSbCvzfCMDPVLreH3dPwcaWufFFmCFry-ZB5eh/exec";
 const d={name:document.getElementById("name").value,email:document.getElementById("email").value,message:document.getElementById("message").value};
 try{const r=await fetch(url,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(d)});const res=await r.json();
 if(res.status==="success"){b.innerHTML='<span>Sent!</span><span class="material-symbols-outlined text-lg">check_circle</span>';b.classList.remove('bg-accent');b.classList.add('bg-green-600');f.reset();setTimeout(()=>{b.innerHTML=orig;b.classList.remove('bg-green-600');b.classList.add('bg-accent');b.disabled=false},3500)}
