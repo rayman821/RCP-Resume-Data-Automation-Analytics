@@ -34,6 +34,71 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='htt
 .stat-pill{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid #e2ddd5;border-radius:16px;padding:12px 20px;transition:all .3s}
 .stat-pill:hover{border-color:#c47a1e;box-shadow:0 8px 30px -8px rgba(196,122,30,.12)}
 .stat-pill .stat-val{font-family:'Syne',sans-serif;font-weight:800;font-size:1.5rem;color:#c47a1e;line-height:1}
+
+/* ── Enticing CTA Buttons ── */
+@keyframes ctaShimmer{0%{transform:translateX(-120%) skewX(-15deg)}100%{transform:translateX(220%) skewX(-15deg)}}
+@keyframes ctaPulseRing{0%{box-shadow:0 0 0 0 rgba(196,122,30,.45),0 4px 20px -4px rgba(196,122,30,.35)}70%{box-shadow:0 0 0 8px rgba(196,122,30,0),0 4px 20px -4px rgba(196,122,30,.35)}100%{box-shadow:0 0 0 0 rgba(196,122,30,0),0 4px 20px -4px rgba(196,122,30,.35)}}
+
+.cta-primary{
+  position:relative;overflow:hidden;
+  display:inline-flex;align-items:center;gap:8px;
+  background:linear-gradient(135deg,#c47a1e 0%,#d4891f 50%,#c47a1e 100%);
+  background-size:200% 100%;
+  color:#fff;font-family:'Syne',sans-serif;font-weight:700;letter-spacing:.01em;
+  border:none;border-radius:14px;cursor:pointer;text-decoration:none;
+  transition:background-position .4s ease,transform .25s cubic-bezier(.16,1,.3,1),box-shadow .25s ease;
+  animation:ctaPulseRing 2.8s ease-out infinite;
+}
+.cta-primary::before{
+  content:'';position:absolute;top:0;left:0;width:40%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.22),transparent);
+  transform:translateX(-120%) skewX(-15deg);
+  animation:ctaShimmer 3s ease-in-out infinite;
+  animation-delay:.6s;
+}
+.cta-primary:hover{
+  background-position:100% 0;
+  transform:translateY(-2px) scale(1.02);
+  box-shadow:0 12px 32px -6px rgba(196,122,30,.45);
+  animation:none;
+}
+.cta-primary .cta-arrow{transition:transform .25s cubic-bezier(.16,1,.3,1)}
+.cta-primary:hover .cta-arrow{transform:translateX(4px)}
+
+.cta-nav{
+  position:relative;overflow:hidden;
+  display:inline-flex;align-items:center;gap:6px;
+  background:#c47a1e;color:#fff;
+  font-family:'Outfit',sans-serif;font-weight:600;font-size:13px;
+  padding:8px 18px;border-radius:12px;cursor:pointer;text-decoration:none;
+  box-shadow:0 2px 12px -2px rgba(196,122,30,.30);
+  transition:all .25s cubic-bezier(.16,1,.3,1);
+}
+.cta-nav::before{
+  content:'';position:absolute;top:0;left:0;width:40%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);
+  transform:translateX(-120%) skewX(-15deg);
+  animation:ctaShimmer 3.5s ease-in-out infinite;
+  animation-delay:1s;
+}
+.cta-nav:hover{background:#e8973e;transform:translateY(-1px);box-shadow:0 6px 20px -4px rgba(196,122,30,.40)}
+.cta-nav .cta-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.7);animation:ctaPulseRing 2s ease-out infinite;flex-shrink:0}
+
+.cta-secondary{
+  display:inline-flex;align-items:center;gap:8px;
+  background:transparent;color:#3d3530;
+  font-family:'Syne',sans-serif;font-weight:600;
+  border:1.5px solid rgba(255,255,255,.18);border-radius:14px;cursor:pointer;text-decoration:none;
+  transition:all .25s cubic-bezier(.16,1,.3,1);
+}
+.cta-secondary:hover{
+  border-color:#c47a1e;color:#c47a1e;
+  background:rgba(196,122,30,.04);
+  transform:translateY(-2px);
+  box-shadow:0 8px 24px -6px rgba(196,122,30,.12);
+}
+.cta-secondary .cta-arrow{transition:transform .25s cubic-bezier(.16,1,.3,1)}
+.cta-secondary:hover .cta-arrow{transform:translateX(4px)}
 .feat-card{background:#fff;border:1px solid #e2ddd5;border-radius:20px;padding:32px;transition:all .4s cubic-bezier(.16,1,.3,1)}
 .feat-card:hover{border-color:#c47a1e;transform:translateY(-3px);box-shadow:0 16px 50px -10px rgba(196,122,30,.08)}
 .mt{display:inline-flex;padding:4px 12px;border:1px solid #d5cfc5;border-radius:999px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:#6b6660;transition:all .3s;white-space:nowrap}
@@ -61,7 +126,9 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='htt
 <a href="#" class="text-[13px] font-semibold text-accent">Resume</a>
 </div>
 <div class="flex items-center gap-3">
-<a href="index.html#contact" class="bg-accent text-white px-5 py-2 rounded-xl text-[13px] font-semibold hover:bg-glow transition-all">Get in Touch</a>
+<a href="index.html#contact" class="cta-nav">
+  <span class="cta-dot"></span>Let's Work Together
+</a>
 </div>
 </div>
 </nav>
@@ -165,8 +232,15 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='htt
 <h3 class="font-display font-800 text-2xl md:text-3xl tracking-tight text-cream mb-4">Ready to work together?</h3>
 <p class="text-warm max-w-xl mx-auto mb-6">I'm open to project collaborations, full-time roles, and freelance opportunities in data analytics and workflow automation.</p>
 <div class="flex flex-wrap justify-center gap-3">
-<a href="index.html#contact" class="bg-accent text-white px-7 py-3 rounded-xl text-[14px] font-semibold hover:bg-glow transition-colors">Get in touch</a>
-<a href="index.html#projects" class="border border-cream/15 text-warm px-7 py-3 rounded-xl text-[14px] font-medium hover:border-accent hover:text-accent transition-all">View portfolio</a>
+<a href="index.html#contact" class="cta-primary px-7 py-3 text-[14px]">
+  <span class="material-symbols-outlined text-base" style="opacity:.85">bolt</span>
+  Start a Conversation
+  <span class="material-symbols-outlined text-base cta-arrow">arrow_forward</span>
+</a>
+<a href="index.html#projects" class="cta-secondary px-7 py-3 text-[14px]" style="border-color:#d5cfc5;">
+  View Portfolio
+  <span class="material-symbols-outlined text-base cta-arrow">open_in_new</span>
+</a>
 </div>
 </div>
 </section>

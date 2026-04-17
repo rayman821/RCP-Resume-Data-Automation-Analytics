@@ -62,6 +62,79 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='htt
 .ff{width:100%;background:transparent;border:none;border-bottom:1px solid #d5cfc5;padding:16px 0;font-family:'Outfit',sans-serif;font-size:16px;color:#1a1816;outline:none;transition:border-color .3s}
 .ff:focus{border-bottom-color:#c47a1e}.ff::placeholder{color:#999590}
 
+/* ── Enticing CTA Buttons ── */
+@keyframes ctaShimmer{0%{transform:translateX(-120%) skewX(-15deg)}100%{transform:translateX(220%) skewX(-15deg)}}
+@keyframes ctaPulseRing{0%{box-shadow:0 0 0 0 rgba(196,122,30,.45),0 4px 20px -4px rgba(196,122,30,.35)}70%{box-shadow:0 0 0 8px rgba(196,122,30,0),0 4px 20px -4px rgba(196,122,30,.35)}100%{box-shadow:0 0 0 0 rgba(196,122,30,0),0 4px 20px -4px rgba(196,122,30,.35)}}
+@keyframes ctaArrowBounce{0%,100%{transform:translateX(0)}50%{transform:translateX(4px)}}
+
+/* Primary accent CTA — shimmer sweep + pulse ring */
+.cta-primary{
+  position:relative;overflow:hidden;
+  display:inline-flex;align-items:center;gap:8px;
+  background:linear-gradient(135deg,#c47a1e 0%,#d4891f 50%,#c47a1e 100%);
+  background-size:200% 100%;
+  color:#fff;font-family:'Syne',sans-serif;font-weight:700;letter-spacing:.01em;
+  border:none;border-radius:14px;cursor:pointer;text-decoration:none;
+  transition:background-position .4s ease,transform .25s cubic-bezier(.16,1,.3,1),box-shadow .25s ease;
+  animation:ctaPulseRing 2.8s ease-out infinite;
+}
+.cta-primary::before{
+  content:'';position:absolute;top:0;left:0;width:40%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.22),transparent);
+  transform:translateX(-120%) skewX(-15deg);
+  animation:ctaShimmer 3s ease-in-out infinite;
+  animation-delay:.6s;
+}
+.cta-primary:hover{
+  background-position:100% 0;
+  transform:translateY(-2px) scale(1.02);
+  box-shadow:0 12px 32px -6px rgba(196,122,30,.45);
+  animation:none;
+}
+.cta-primary .cta-arrow{transition:transform .25s cubic-bezier(.16,1,.3,1)}
+.cta-primary:hover .cta-arrow{transform:translateX(4px)}
+
+/* Nav variant — compact, no pulse (too distracting in nav) */
+.cta-nav{
+  position:relative;overflow:hidden;
+  display:inline-flex;align-items:center;gap:6px;
+  background:#c47a1e;color:#fff;
+  font-family:'Outfit',sans-serif;font-weight:600;font-size:13px;
+  padding:8px 18px;border-radius:12px;cursor:pointer;text-decoration:none;
+  box-shadow:0 2px 12px -2px rgba(196,122,30,.30);
+  transition:all .25s cubic-bezier(.16,1,.3,1);
+}
+.cta-nav::before{
+  content:'';position:absolute;top:0;left:0;width:40%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);
+  transform:translateX(-120%) skewX(-15deg);
+  animation:ctaShimmer 3.5s ease-in-out infinite;
+  animation-delay:1s;
+}
+.cta-nav:hover{
+  background:#e8973e;
+  transform:translateY(-1px);
+  box-shadow:0 6px 20px -4px rgba(196,122,30,.40);
+}
+.cta-nav .cta-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.7);animation:ctaPulseRing 2s ease-out infinite;flex-shrink:0}
+
+/* Secondary outlined CTA */
+.cta-secondary{
+  display:inline-flex;align-items:center;gap:8px;
+  background:transparent;color:#3d3530;
+  font-family:'Syne',sans-serif;font-weight:600;
+  border:1.5px solid #d5cfc5;border-radius:14px;cursor:pointer;text-decoration:none;
+  transition:all .25s cubic-bezier(.16,1,.3,1);
+}
+.cta-secondary:hover{
+  border-color:#c47a1e;color:#c47a1e;
+  background:rgba(196,122,30,.04);
+  transform:translateY(-2px);
+  box-shadow:0 8px 24px -6px rgba(196,122,30,.12);
+}
+.cta-secondary .cta-arrow{transition:transform .25s cubic-bezier(.16,1,.3,1)}
+.cta-secondary:hover .cta-arrow{transform:translateX(4px)}
+
 /* n8n.io-style base frame */
 .n8n-base-frame{position:relative;border-radius:16px;padding:8px;order:3}
 .n8n-base-frame-inner{overflow:hidden;border-radius:12px;height:500px;border:1px solid #e2ddd5}
@@ -107,7 +180,9 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='htt
 <a href="resume.html" class="nl text-[13px] font-medium text-subtle hover:text-cream transition-colors">Resume</a>
 </div>
 <div class="flex items-center gap-3">
-<a href="#contact" class="bg-accent text-white px-5 py-2 rounded-xl text-[13px] font-semibold hover:bg-glow transition-all">Get in Touch</a>
+<a href="#contact" class="cta-nav">
+  <span class="cta-dot"></span>Let's Work Together
+</a>
 </div>
 </div>
 </nav>
@@ -124,8 +199,14 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='htt
        Now that <span class="text-accent">AI</span> is here, it's urgent to <span class="text-accent">prioritize quality and accuracy of your data.</span>
     </p>
     <div class="sr d2 flex flex-wrap justify-center gap-4 mt-8">
-        <a href="#projects" class="bg-accent text-white px-7 py-3.5 rounded-xl font-semibold text-[15px] hover:bg-glow transition-all">View Projects</a>
-        <a href="resume.html" class="border border-border text-warm px-7 py-3.5 rounded-xl font-semibold text-[15px] hover:border-accent hover:text-accent transition-all">View Resume</a>
+        <a href="#projects" class="cta-primary px-7 py-3.5 text-[15px]">
+          See My Work
+          <span class="material-symbols-outlined text-lg cta-arrow">arrow_forward</span>
+        </a>
+        <a href="resume.html" class="cta-secondary px-7 py-3.5 text-[15px]">
+          View Resume
+          <span class="material-symbols-outlined text-base cta-arrow">open_in_new</span>
+        </a>
     </div>
     <p class="sr d3 font-mono text-[11px] text-muted tracking-wider uppercase mt-6">The data analytics & automation portfolio</p>
 </div>
@@ -2516,8 +2597,10 @@ document.addEventListener('DOMContentLoaded', () => {
 <div><label class="font-mono text-[10px] uppercase tracking-[.12em] text-muted block mb-1" for="email">Email</label><input id="email" type="email" class="ff" placeholder="hello@example.com" required/></div>
 </div>
 <div><label class="font-mono text-[10px] uppercase tracking-[.12em] text-muted block mb-1" for="message">Message</label><textarea id="message" class="ff resize-none" rows="3" placeholder="Tell me about your project..." required></textarea></div>
-<button id="submit-btn" type="submit" class="w-full bg-accent text-white py-3.5 rounded-xl font-semibold text-[14px] hover:bg-glow transition-all flex items-center justify-center gap-2 group">
-<span>Send Message</span><span class="material-symbols-outlined text-lg group-hover:translate-x-1 transition-transform">arrow_forward</span>
+<button id="submit-btn" type="submit" class="cta-primary w-full py-4 text-[15px] rounded-xl justify-center">
+  <span class="material-symbols-outlined text-lg" style="opacity:.85">bolt</span>
+  Start a Conversation
+  <span class="material-symbols-outlined text-lg cta-arrow">arrow_forward</span>
 </button>
 </form>
 </div>
