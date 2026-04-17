@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Projects — RCP Data Ops</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Outfit:wght@200;300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+tailwind.config={theme:{extend:{colors:{
+  bg:'#f8f7f4',surface:'#f0eee9',card:'#ffffff',border:'#e2ddd5',
+  muted:'#999590',subtle:'#6b6660',cream:'#1a1816',warm:'#3d3530',
+  accent:'#c47a1e',glow:'#e8973e',dark:'#1a1816',darkcard:'#242120',
+},fontFamily:{
+  display:['Syne','sans-serif'],body:['Outfit','sans-serif'],mono:['"JetBrains Mono"','monospace'],
+}}}}}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+::selection{background:#c47a1e;color:#fff}
+html{background:#f8f7f4}
+body{
+  background:#f8f7f4;color:#1a1816;font-family:'Outfit',sans-serif;
+  overflow-x:hidden;
+  background-image:radial-gradient(circle,#c4b8a8 .7px,transparent .7px);
+  background-size:28px 28px;
+}
+body::after{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:9998;opacity:.02;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")
+}
+
+/* Scroll reveal */
+.sr{opacity:0;transform:translateY(32px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+.sr.v{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}.d5{transition-delay:.5s}
+
+/* Underline link */
+.nl{position:relative}
+.nl::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1.5px;background:#c47a1e;transition:width .35s ease}
+.nl:hover::after{width:100%}
+
+/* CTA Nav */
+@keyframes ctaShimmer{0%{transform:translateX(-120%) skewX(-15deg)}100%{transform:translateX(220%) skewX(-15deg)}}
+@keyframes ctaPulseRing{0%{box-shadow:0 0 0 0 rgba(196,122,30,.45),0 4px 20px -4px rgba(196,122,30,.35)}70%{box-shadow:0 0 0 8px rgba(196,122,30,0),0 4px 20px -4px rgba(196,122,30,.35)}100%{box-shadow:0 0 0 0 rgba(196,122,30,0),0 4px 20px -4px rgba(196,122,30,.35)}}
+
+.cta-nav{
+  position:relative;overflow:hidden;
+  display:inline-flex;align-items:center;gap:6px;
+  background:#c47a1e;color:#fff;
+  font-family:'Outfit',sans-serif;font-weight:600;font-size:13px;
+  padding:8px 18px;border-radius:12px;cursor:pointer;text-decoration:none;
+  box-shadow:0 2px 12px -2px rgba(196,122,30,.30);
+  transition:all .25s cubic-bezier(.16,1,.3,1);
+}
+.cta-nav::before{
+  content:'';position:absolute;top:0;left:0;width:40%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);
+  transform:translateX(-120%) skewX(-15deg);
+  animation:ctaShimmer 3.5s ease-in-out infinite;animation-delay:1s;
+}
+.cta-nav:hover{background:#e8973e;transform:translateY(-1px);box-shadow:0 6px 20px -4px rgba(196,122,30,.40)}
+.cta-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.7);animation:ctaPulseRing 2s ease-out infinite;flex-shrink:0}
+
+/* Scroll bar */
+#scroll-bar{position:fixed;top:0;left:0;height:2px;z-index:9999;background:linear-gradient(90deg,#c47a1e,#e8973e)}
+
+/* ── Filter Tabs ── */
+.filter-strip{
+  display:flex;flex-wrap:wrap;gap:8px;justify-content:center;
+  margin-bottom:48px;
+}
+.filter-btn{
+  padding:7px 18px;
+  border:1.5px solid #e2ddd5;
+  border-radius:999px;
+  font-family:'JetBrains Mono',monospace;
+  font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;
+  color:#6b6660;background:#fff;cursor:pointer;
+  transition:all .25s cubic-bezier(.16,1,.3,1);
+}
+.filter-btn:hover{border-color:#c47a1e;color:#c47a1e}
+.filter-btn.active{
+  background:#c47a1e;border-color:#c47a1e;color:#fff;
+  box-shadow:0 4px 18px -4px rgba(196,122,30,.35);
+}
+
+/* ── Project Grid ── */
+.projects-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:24px;
+  max-width:1280px;
+  margin:0 auto;
+}
+
+/* ── Project Embed Card ── */
+.pcard{
+  position:relative;
+  background:#fff;
+  border:1px solid #e2ddd5;
+  border-radius:20px;
+  overflow:hidden;
+  transition:border-color .4s,box-shadow .4s;
+  display:flex;flex-direction:column;
+}
+.pcard:hover{
+  border-color:#c47a1e;
+  box-shadow:0 20px 60px -12px rgba(196,122,30,.12);
+}
+
+/* Chrome bar above iframe */
+.pcard-chrome{
+  display:flex;align-items:center;gap:8px;
+  padding:10px 14px;
+  background:#f0eee9;border-bottom:1px solid #e2ddd5;
+  flex-shrink:0;
+}
+.pcard-dots{display:flex;gap:5px}
+.pcard-dot{width:10px;height:10px;border-radius:50%}
+.pcard-dot-r{background:#ff5f57}.pcard-dot-y{background:#febc2e}.pcard-dot-g{background:#28c840}
+.pcard-url-bar{
+  flex:1;display:flex;align-items:center;gap:6px;
+  background:#fff;border:1px solid #ddd8cf;border-radius:7px;
+  padding:4px 10px;min-width:0;
+}
+.pcard-lock{font-size:12px!important;color:#28c840;flex-shrink:0}
+.pcard-url-text{
+  font-family:'JetBrains Mono',monospace;font-size:10px;color:#6b6660;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.pcard-title-label{
+  font-family:'JetBrains Mono',monospace;font-size:9px;
+  color:#999590;text-transform:uppercase;letter-spacing:.07em;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:140px;
+}
+.pcard-open-btn{
+  display:flex;align-items:center;gap:4px;
+  background:#c47a1e;color:#fff;border:none;
+  font-family:'Syne',sans-serif;font-weight:700;font-size:10px;
+  padding:4px 10px;border-radius:7px;cursor:pointer;
+  white-space:nowrap;flex-shrink:0;
+  transition:background .2s;text-decoration:none;
+}
+.pcard-open-btn:hover{background:#e8973e}
+
+/* Iframe */
+.pcard-embed{
+  width:100%;
+  height:520px;
+  border:none;display:block;
+  background:#f8f7f4;
+}
+@media(max-width:768px){.pcard-embed{height:400px}}
+
+/* Embed overlay shown when no url */
+.pcard-no-embed{
+  height:520px;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:10px;
+  background:#f8f7f4;color:#999590;
+  font-family:'JetBrains Mono',monospace;font-size:11px;
+  letter-spacing:.06em;text-transform:uppercase;
+}
+@media(max-width:768px){.pcard-no-embed{height:400px}}
+.pcard-no-icon{font-size:28px;color:#d5cfc5}
+
+/* Hidden cards for filter */
+.pcard.hidden{display:none}
+
+/* ── Stat strip ── */
+.stat-strip{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:1px;background:#e2ddd5;
+  border:1px solid #e2ddd5;border-radius:20px;overflow:hidden;
+  margin:0 auto 80px;max-width:960px;
+}
+@media(max-width:768px){.stat-strip{grid-template-columns:repeat(2,1fr)}}
+.stat-cell{
+  background:#fff;padding:32px 24px;text-align:center;
+  transition:background .3s;
+}
+.stat-cell:hover{background:#faf9f7}
+.stat-val{
+  font-family:'Syne',sans-serif;font-weight:800;
+  font-size:clamp(1.8rem,4vw,3rem);color:#c47a1e;line-height:1;
+}
+.stat-lbl{
+  font-family:'JetBrains Mono',monospace;font-size:9px;
+  letter-spacing:.12em;text-transform:uppercase;color:#999590;margin-top:8px;
+}
+
+
+/* ── Back to top ── */
+#btt{
+  position:fixed;bottom:28px;right:28px;
+  width:44px;height:44px;border-radius:14px;
+  background:#1a1816;color:#fff;border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 8px 24px -6px rgba(26,24,22,.35);
+  opacity:0;pointer-events:none;
+  transition:all .3s cubic-bezier(.16,1,.3,1);
+  z-index:500;
+}
+#btt.visible{opacity:1;pointer-events:auto}
+#btt:hover{background:#c47a1e;transform:translateY(-3px)}
+
+/* ── Hero decorative lines ── */
+.hero-line{
+  position:absolute;height:1px;background:linear-gradient(90deg,transparent,rgba(196,122,30,.3),transparent);
+  pointer-events:none;
+}
+
+/* ── Section label chip ── */
+.section-chip{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:7px 16px;
+  border:1px solid rgba(196,122,30,.3);
+  border-radius:999px;
+  font-family:'JetBrains Mono',monospace;font-size:10px;
+  letter-spacing:.12em;text-transform:uppercase;color:#c47a1e;
+  background:rgba(196,122,30,.05);
+}
+
+/* ── Hidden cards for filter ── */
+.pcard.hidden{display:none}
+
+/* ── Hero number ticker ── */
+@keyframes countUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* Marquee tags */
+@keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(calc(-100% - 2rem))}}
+.marquee{display:flex;overflow:hidden;user-select:none;gap:2rem;margin-bottom:60px;
+  mask-image:linear-gradient(to right,transparent,#000 8%,#000 92%,transparent)}
+.marquee__group{flex-shrink:0;display:flex;align-items:center;gap:2rem;min-width:100%;animation:scroll 30s linear infinite}
+.marquee--reverse .marquee__group{animation-direction:reverse;animation-delay:-2s}
+.marquee:hover .marquee__group{animation-play-state:paused}
+.marq-tag{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:5px 14px;border:1px solid #d5cfc5;border-radius:999px;
+  font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.05em;
+  text-transform:uppercase;color:#6b6660;white-space:nowrap;
+  transition:border-color .3s,color .3s;
+}
+.marq-dot{width:4px;height:4px;border-radius:50%;background:#c47a1e;flex-shrink:0}
+</style>
+</head>
+<body>
+
+<div id="scroll-bar" style="width:0%"></div>
+
+<!-- Nav -->
+<nav class="fixed top-0 w-full z-50 backdrop-blur-2xl bg-bg/80 border-b border-border/40">
+<div class="max-w-7xl mx-auto flex justify-between items-center px-8 h-[68px]">
+<a href="index.html" class="font-display text-xl font-800 tracking-tight text-cream">RCP<span class="text-accent">.</span></a>
+<div class="hidden md:flex items-center gap-9">
+<a href="index.html#about" class="nl text-[13px] font-medium text-subtle hover:text-cream transition-colors">About</a>
+<a href="index.html#dashboard" class="nl text-[13px] font-medium text-subtle hover:text-cream transition-colors">Services</a>
+<a href="projects.html" class="nl text-[13px] font-medium text-subtle hover:text-cream transition-colors">Projects</a>
+<a href="resume.html" class="nl text-[13px] font-medium text-subtle hover:text-cream transition-colors">Resume</a>
+</div>
+<div class="flex items-center gap-3">
+<a href="index.html#contact" class="cta-nav">
+  <span class="cta-dot"></span>Let's Work Together
+</a>
+</div>
+</div>
+</nav>
+
+<!-- Hero -->
+<section class="relative z-10 pt-32 pb-10 px-8 text-center">
+  <p class="sr font-mono text-[11px] tracking-[.15em] uppercase text-accent mb-4">— Portfolio —</p>
+  <h1 class="sr d1 font-display font-800 text-[clamp(2.5rem,7vw,5.5rem)] leading-[.95] tracking-tighter text-cream">Project Showcase</h1>
+</section>
+
+<!-- Filter + Grid -->
+<section class="relative z-10 max-w-7xl mx-auto px-8 pb-28">
+
+  <!-- Filter tabs -->
+  <div class="filter-strip sr">
+    <button class="filter-btn active" data-filter="all">All Projects</button>
+    <button class="filter-btn" data-filter="analytics">Analytics</button>
+    <button class="filter-btn" data-filter="automation">Automation</button>
+    <button class="filter-btn" data-filter="knowledge">Knowledge</button>
+    <button class="filter-btn" data-filter="infrastructure">Infrastructure</button>
+  </div>
+
+  <!-- Grid -->
+  <div class="projects-grid" id="projects-grid">
+
+    <!-- 01 · Procurement Dashboard (Featured) -->
+    <div class="pcard sr" data-filter="analytics">
+      <div class="pcard-chrome">
+        <div class="pcard-dots">
+          <span class="pcard-dot pcard-dot-r"></span>
+          <span class="pcard-dot pcard-dot-y"></span>
+          <span class="pcard-dot pcard-dot-g"></span>
+        </div>
+        <div class="pcard-url-bar">
+          <span class="material-symbols-outlined pcard-lock">lock</span>
+          <span class="pcard-url-text">app.powerbi.com · Procurement Dashboard v2</span>
+        </div>
+        <span class="pcard-title-label">01 · Analytics</span>
+        <a href="https://app.powerbi.com/view?r=eyJrIjoiMzYxNTc2NjAtMGQxMy00ZmQ5LWE0OGUtYmYwMzY1Y2JkMWE0IiwidCI6ImJkMmIyOGI4LTc2OWMtNGFjZC04YzdlLTE1MDc1ZmE2NWVmOCIsImMiOjEwfQ%3D%3D" target="_blank" class="pcard-open-btn">
+          <span class="material-symbols-outlined" style="font-size:11px">open_in_new</span>Open
+        </a>
+      </div>
+      <iframe class="pcard-embed" src="https://app.powerbi.com/view?r=eyJrIjoiMzYxNTc2NjAtMGQxMy00ZmQ5LWE0OGUtYmYwMzY1Y2JkMWE0IiwidCI6ImJkMmIyOGI4LTc2OWMtNGFjZC04YzdlLTE1MDc1ZmE2NWVmOCIsImMiOjEwfQ%3D%3D" allowfullscreen loading="lazy"></iframe>
+    </div>
+
+    <!-- 02 · Bank Statement Pipeline -->
+    <div class="pcard sr d1" data-filter="automation">
+      <div class="pcard-chrome">
+        <div class="pcard-dots">
+          <span class="pcard-dot pcard-dot-r"></span>
+          <span class="pcard-dot pcard-dot-y"></span>
+          <span class="pcard-dot pcard-dot-g"></span>
+        </div>
+        <div class="pcard-url-bar">
+          <span class="material-symbols-outlined pcard-lock">lock</span>
+          <span class="pcard-url-text">n8n-rcp.taild30d6e.ts.net · Document Pipeline</span>
+        </div>
+        <span class="pcard-title-label">02 · Automation</span>
+        <a href="https://n8n-rcp.taild30d6e.ts.net" target="_blank" class="pcard-open-btn">
+          <span class="material-symbols-outlined" style="font-size:11px">open_in_new</span>Open
+        </a>
+      </div>
+      <iframe class="pcard-embed" src="https://n8n-rcp.taild30d6e.ts.net" allowfullscreen loading="lazy"></iframe>
+    </div>
+
+    <!-- 03 · Knowledge Management (no public embed URL) -->
+    <div class="pcard sr d2" data-filter="knowledge">
+      <div class="pcard-chrome">
+        <div class="pcard-dots">
+          <span class="pcard-dot pcard-dot-r"></span>
+          <span class="pcard-dot pcard-dot-y"></span>
+          <span class="pcard-dot pcard-dot-g"></span>
+        </div>
+        <div class="pcard-url-bar">
+          <span class="material-symbols-outlined pcard-lock">lock</span>
+          <span class="pcard-url-text">obsidian · Power Platform Workflow</span>
+        </div>
+        <span class="pcard-title-label">03 · Knowledge</span>
+      </div>
+      <div class="pcard-no-embed">
+        <span class="material-symbols-outlined pcard-no-icon">hub</span>
+        <span>Private vault — not publicly embeddable</span>
+      </div>
+    </div>
+
+    <!-- 04 · Google Workspace Orchestration (no public embed URL) -->
+    <div class="pcard sr d1" data-filter="automation">
+      <div class="pcard-chrome">
+        <div class="pcard-dots">
+          <span class="pcard-dot pcard-dot-r"></span>
+          <span class="pcard-dot pcard-dot-y"></span>
+          <span class="pcard-dot pcard-dot-g"></span>
+        </div>
+        <div class="pcard-url-bar">
+          <span class="material-symbols-outlined pcard-lock">lock</span>
+          <span class="pcard-url-text">script.google.com · Workspace Orchestration</span>
+        </div>
+        <span class="pcard-title-label">04 · Automation</span>
+      </div>
+      <div class="pcard-no-embed">
+        <span class="material-symbols-outlined pcard-no-icon">sync_alt</span>
+        <span>Private script — not publicly embeddable</span>
+      </div>
+    </div>
+
+    <!-- 05 · Personal Finance Dashboard (no public embed URL) -->
+    <div class="pcard sr d2" data-filter="analytics">
+      <div class="pcard-chrome">
+        <div class="pcard-dots">
+          <span class="pcard-dot pcard-dot-r"></span>
+          <span class="pcard-dot pcard-dot-y"></span>
+          <span class="pcard-dot pcard-dot-g"></span>
+        </div>
+        <div class="pcard-url-bar">
+          <span class="material-symbols-outlined pcard-lock">lock</span>
+          <span class="pcard-url-text">excel · Finance & Accounting Dashboard</span>
+        </div>
+        <span class="pcard-title-label">05 · Analytics</span>
+      </div>
+      <div class="pcard-no-embed">
+        <span class="material-symbols-outlined pcard-no-icon">bar_chart</span>
+        <span>Local file — not publicly embeddable</span>
+      </div>
+    </div>
+
+    <!-- 06 · Self-Hosted Infrastructure (no public embed URL) -->
+    <div class="pcard sr d3" data-filter="infrastructure">
+      <div class="pcard-chrome">
+        <div class="pcard-dots">
+          <span class="pcard-dot pcard-dot-r"></span>
+          <span class="pcard-dot pcard-dot-y"></span>
+          <span class="pcard-dot pcard-dot-g"></span>
+        </div>
+        <div class="pcard-url-bar">
+          <span class="material-symbols-outlined pcard-lock">lock</span>
+          <span class="pcard-url-text">self-hosted · Automated Knowledge Base</span>
+        </div>
+        <span class="pcard-title-label">06 · Infrastructure</span>
+      </div>
+      <div class="pcard-no-embed">
+        <span class="material-symbols-outlined pcard-no-icon">dns</span>
+        <span>Self-hosted internal stack — not publicly embeddable</span>
+      </div>
+    </div>
+
+  </div><!-- /projects-grid -->
+
+</section>
+
+<!-- CTA Strip -->
+<section class="relative z-10 max-w-4xl mx-auto px-8 pb-28 text-center">
+  <div class="sr bg-white border border-border rounded-[28px] p-12 shadow-sm">
+    <div class="mb-4">
+      <span class="section-chip">
+        <span class="material-symbols-outlined" style="font-size:13px">handshake</span>
+        Let's Collaborate
+      </span>
+    </div>
+    <h2 class="font-display font-800 text-3xl md:text-[2.4rem] tracking-tight text-cream mt-4 leading-[1.1]">Have a data challenge?<br/>Let's solve it together.</h2>
+    <p class="text-subtle text-lg mt-4 mb-8 font-light max-w-xl mx-auto">Whether it's dashboards, automation pipelines, or knowledge systems — the trifecta that turns raw operations into live narratives.</p>
+    <div class="flex flex-wrap justify-center gap-4">
+      <a href="index.html#contact"
+         style="position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#c47a1e,#d4891f);color:#fff;font-family:'Syne',sans-serif;font-weight:700;font-size:15px;padding:14px 28px;border-radius:14px;text-decoration:none;box-shadow:0 8px 28px -6px rgba(196,122,30,.4);transition:all .3s">
+        Start a Conversation
+        <span class="material-symbols-outlined text-lg">arrow_forward</span>
+      </a>
+      <a href="resume.html"
+         style="display:inline-flex;align-items:center;gap:8px;background:transparent;color:#3d3530;font-family:'Syne',sans-serif;font-weight:600;font-size:15px;padding:14px 28px;border-radius:14px;border:1.5px solid #d5cfc5;text-decoration:none;transition:all .3s">
+        View Resume
+        <span class="material-symbols-outlined text-base">open_in_new</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="border-t border-border/40 py-10 px-8">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+    <span class="font-display font-800 text-xl text-cream">RCP<span class="text-accent">.</span></span>
+    <span class="font-mono text-[11px] text-muted tracking-wider uppercase">Data Analytics · Automation · Knowledge Systems</span>
+    <span class="font-mono text-[11px] text-muted">Metro Manila, PH</span>
+  </div>
+</footer>
+
+<!-- Back to top -->
+<button id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">
+  <span class="material-symbols-outlined" style="font-size:20px">arrow_upward</span>
+</button>
+
+<script>
+/* ── Scroll reveal ── */
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('v'); obs.unobserve(e.target); }});
+}, { threshold: 0.06 });
+document.querySelectorAll('.sr').forEach(el => obs.observe(el));
+
+/* ── Scroll bar + back to top ── */
+window.addEventListener('scroll', () => {
+  const sb = document.getElementById('scroll-bar');
+  const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
+  if(sb) sb.style.width = pct + '%';
+  const btt = document.getElementById('btt');
+  if(btt) btt.classList.toggle('visible', window.scrollY > 400);
+});
+
+/* ── Filter ── */
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.dataset.filter;
+    document.querySelectorAll('.pcard').forEach(card => {
+      card.classList.toggle('hidden', filter !== 'all' && card.dataset.filter !== filter);
+    });
+  });
+});
+</script>
+
+</body>
+</html>
