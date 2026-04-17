@@ -1252,34 +1252,133 @@ window.addEventListener('load', function() {
           <n8n-demo id="n8n-tab-demo" tidyup="true" collapseformobile="false" clicktointeract="false" hidecanvaserrors="true" theme="light" style="display:block; width:100%; height:100%;"></n8n-demo>
         </div>
 
-        <div class="n8n-chat-wrapper">
-          <div id="n8n-chat-area">
-            <div id="n8n-empty" style="display:flex;align-items:center;gap:6px;justify-content:center;height:100%;">
-              <span class="material-symbols-outlined" style="font-size:13px;color:#c47a1e">bolt</span>
-              <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#999590;">Live · send a message to trigger the workflow</span>
-            </div>
+        <!-- Animated Chat Simulation -->
+        <div class="n8n-chat-wrapper" style="border-radius:0 0 0 0;">
+          <div id="n8n-sim-chat-area" style="height:160px;overflow-y:auto;display:flex;flex-direction:column;gap:7px;padding:12px 14px;background:#f8f7f4;scroll-behavior:smooth;">
+            <!-- messages injected by JS -->
           </div>
-          <div style="display:flex; border-top:1px solid #e2ddd5; align-items:stretch; background:#fff;">
-            <button id="n8n-reset-btn" onclick="n8nReset()" title="New session"
-              style="padding:0 10px;background:transparent;border:none;border-right:1px solid #e2ddd5;cursor:pointer;color:#999590;transition:color .2s;display:flex;align-items:center;"
-              onmouseover="this.style.color='#c47a1e'" onmouseout="this.style.color='#999590'">
-              <span class="material-symbols-outlined" style="font-size:14px">refresh</span>
-            </button>
-            <input id="n8n-chat-input" type="text" maxlength="300" placeholder="Interact with the selected pipeline..."
-              style="flex:1;background:transparent;border:none;outline:none;padding:9px 13px;font-family:'Outfit',sans-serif;font-size:12.5px;color:#1a1816;"
-              onkeydown="if(event.key==='Enter')n8nFire()"/>
-            <button id="n8n-fire-btn" onclick="n8nFire()"
-              style="padding:0 15px;background:#c47a1e;color:#fff;border:none;cursor:pointer;font-family:'Syne',sans-serif;font-weight:700;font-size:11px;transition:background .2s;display:flex;align-items:center;gap:4px;"
-              onmouseover="this.style.background='#e8973e'" onmouseout="this.style.background='#c47a1e'">
-              <span class="material-symbols-outlined" style="font-size:13px">send</span>Send
-            </button>
+          <div style="display:flex;align-items:center;gap:8px;padding:8px 14px;border-top:1px solid #e2ddd5;background:#fff;">
+            <span id="n8n-sim-typing" style="display:none;align-items:center;gap:5px;font-family:'JetBrains Mono',monospace;font-size:9.5px;color:#999590;">
+              <span class="material-symbols-outlined" style="font-size:11px;color:#c47a1e;animation:spin 1.2s linear infinite">autorenew</span>
+              n8n agent is typing…
+            </span>
+            <div style="flex:1;background:#f0eee9;border:1px solid #e2ddd5;border-radius:8px;padding:6px 12px;font-family:'Outfit',sans-serif;font-size:11.5px;color:#c4b8a8;pointer-events:none;user-select:none;" id="n8n-sim-input-ghost">Ask me about Raymond's services…</div>
+            <div style="background:#c47a1e;color:#fff;border-radius:8px;padding:6px 10px;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;opacity:.5;cursor:default;display:flex;align-items:center;gap:3px;">
+              <span class="material-symbols-outlined" style="font-size:12px">send</span>
+            </div>
           </div>
         </div>
 
         <div class="demo-dax-badge" id="n8n-dax-badge-text" style="margin-top:8px; margin-bottom:16px;">
-          <span class="material-symbols-outlined" style="font-size:11px">play_arrow</span>
-          Webhook → Read PDF → AI Extraction → Format → Sheets
+          <span class="material-symbols-outlined" style="font-size:11px">smart_toy</span>
+          AI Agent · Portfolio Knowledge Base · Powered by n8n
         </div>
+
+<style>
+@keyframes spin{to{transform:rotate(360deg)}}
+#n8n-sim-chat-area::-webkit-scrollbar{width:3px}
+#n8n-sim-chat-area::-webkit-scrollbar-thumb{background:#e2ddd5;border-radius:99px}
+.sim-msg-user{align-self:flex-end;background:#c47a1e;color:#fff;border-radius:14px 14px 3px 14px;padding:7px 11px;max-width:78%;font-family:'Outfit',sans-serif;font-size:11.5px;line-height:1.45;animation:simMsgIn .3s cubic-bezier(.16,1,.3,1) both}
+.sim-msg-bot{align-self:flex-start;background:#fff;color:#3d3530;border:1px solid #e2ddd5;border-radius:3px 14px 14px 14px;padding:7px 11px;max-width:84%;font-family:'Outfit',sans-serif;font-size:11.5px;line-height:1.45;animation:simMsgIn .3s cubic-bezier(.16,1,.3,1) both}
+.sim-msg-bot b{color:#c47a1e;font-weight:600}
+@keyframes simMsgIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+</style>
+
+<script>
+(function(){
+  var QA = [
+    {
+      q: "What does Raymond do?",
+      a: "Raymond is a <b>Data Analyst & Ops Architect</b> at IPM Construction. He builds Power BI dashboards, n8n automation pipelines, and Obsidian knowledge systems under the brand <b>RCP Data Ops</b>."
+    },
+    {
+      q: "What's the Procurement Dashboard?",
+      a: "It's a <b>Power BI report</b> with 150+ DAX measures covering spend analysis, vendor performance, lead times, and budget variance — optimized for sub-second load on large datasets."
+    },
+    {
+      q: "Tell me about the n8n workflows.",
+      a: "Raymond has built <b>50+ workflows</b> including bank statement parsers (BPI, BDO, UnionBank), Gmail-to-Sheets automation, OCR document extractors, and RAG pipelines on self-hosted Docker + Tailscale infra."
+    },
+    {
+      q: "How does the Obsidian vault work?",
+      a: "His Obsidian vault uses <b>Maps of Content</b> to organize processes across departments. It integrates BPMN diagrams, Mermaid flowcharts, and a RAG layer with Qdrant + OpenAI embeddings for AI-powered retrieval."
+    },
+    {
+      q: "What's his tech stack?",
+      a: "<b>Power BI · n8n · Obsidian · Docker · Supabase · MongoDB · Tailscale · Nginx</b> — all self-hosted. He also uses Google Apps Script, Airtable, and runs this site with an embedded Claude-powered chatbot."
+    },
+  ];
+
+  var idx = 0;
+  var simRunning = false;
+
+  function getArea(){ return document.getElementById('n8n-sim-chat-area'); }
+  function getTyping(){ return document.getElementById('n8n-sim-typing'); }
+  function getGhost(){ return document.getElementById('n8n-sim-input-ghost'); }
+
+  function typeGhost(text, cb){
+    var ghost = getGhost();
+    if(!ghost){ cb(); return; }
+    var i = 0;
+    ghost.textContent = '';
+    var t = setInterval(function(){
+      if(i < text.length){
+        ghost.textContent += text[i++];
+      } else {
+        clearInterval(t);
+        setTimeout(cb, 350);
+      }
+    }, 42);
+  }
+
+  function addMsg(cls, html){
+    var area = getArea();
+    if(!area) return;
+    var el = document.createElement('div');
+    el.className = cls;
+    el.innerHTML = html;
+    area.appendChild(el);
+    area.scrollTop = area.scrollHeight;
+    // keep max 6 messages
+    var msgs = area.querySelectorAll('.sim-msg-user, .sim-msg-bot');
+    while(msgs.length > 6){ msgs[0].remove(); msgs = area.querySelectorAll('.sim-msg-user, .sim-msg-bot'); }
+  }
+
+  function runPair(){
+    if(!simRunning) return;
+    var pair = QA[idx % QA.length];
+    idx++;
+    var ghost = getGhost();
+    if(ghost) ghost.textContent = '';
+    typeGhost(pair.q, function(){
+      var ghost2 = getGhost();
+      if(ghost2) ghost2.textContent = 'Ask me about Raymond\'s services\u2026';
+      addMsg('sim-msg-user', pair.q);
+      var typingEl = getTyping();
+      if(typingEl) typingEl.style.display = 'flex';
+      setTimeout(function(){
+        var typingEl2 = getTyping();
+        if(typingEl2) typingEl2.style.display = 'none';
+        addMsg('sim-msg-bot', pair.a);
+        setTimeout(runPair, 3200);
+      }, 1100);
+    });
+  }
+
+  // Exposed start function — called by switchTab and DOMContentLoaded
+  window._startN8nSimChat = function(){
+    if(!simRunning){
+      simRunning = true;
+      setTimeout(runPair, 800);
+    }
+  };
+
+  // Always start on DOMContentLoaded — the chat area exists in the DOM even when tab is hidden
+  document.addEventListener('DOMContentLoaded', function(){
+    setTimeout(window._startN8nSimChat, 1200);
+  });
+})();
+</script>
       </div>
 
       <div id="tab-obsidian" class="demo-panel" style="padding:0;overflow:hidden;background:#12110f;border-radius:0 0 20px 20px;flex-direction:column;position:relative;">
@@ -1652,6 +1751,8 @@ function switchTab(name,btn){
     if(!document.getElementById('n8n-tab-demo').workflow) {
       loadN8nWF('ocr');
     }
+    // Start animated chat simulation if not already running
+    if(window._startN8nSimChat) window._startN8nSimChat();
   }
 }
 
@@ -1679,67 +1780,9 @@ function animateBars(){
 }
 setTimeout(animateBars, 400);
 
-/* ── Chat Functionality for n8n Demo ── */
-(function(){
-  var _W = 'https://n8n-rcp.taild30d6e.ts.net/webhook/n8n-chat-demo';
-  var _SESSION_KEY = 'sessionId';
-  var _INPUT_KEY   = 'chatInput';
-  var _sessionId   = 'sess_' + Math.random().toString(36).slice(2, 10) + '_' + Date.now();
-  var _busy = false;
-  function _time(){return new Date().toLocaleTimeString('en-PH',{hour:'2-digit',minute:'2-digit',hour12:true});}
-  function _row(role,content){
-    var ca=document.getElementById('n8n-chat-area'),em=document.getElementById('n8n-empty');if(em)em.remove();
-    var row=document.createElement('div');row.className='n8nc-row '+role;
-    var av=document.createElement('div');av.className='n8nc-av';
-    av.style.cssText=role==='user'?'background:#1a1816;color:#fff;':'background:linear-gradient(135deg,#fdf6ec,#fce8c8);color:#c47a1e;';
-    av.textContent=role==='user'?'RC':'n8';
-    var col=document.createElement('div');col.style.cssText='display:flex;flex-direction:column;gap:2px;';
-    var bub=document.createElement('div');bub.className='n8nc-bub '+role;
-    if(typeof content==='string'){bub.textContent=content;}else{bub.appendChild(content);}
-    var t=document.createElement('div');
-    t.style.cssText='font-family:"JetBrains Mono",monospace;font-size:8px;color:#999590;padding:0 2px;'+(role==='user'?'text-align:right;':'');
-    t.textContent=_time();col.appendChild(bub);col.appendChild(t);row.appendChild(av);row.appendChild(col);
-    ca.appendChild(row);ca.scrollTop=ca.scrollHeight;return bub;
-  }
-  function _typing(){
-    var ca=document.getElementById('n8n-chat-area'),row=document.createElement('div');row.className='n8nc-row';row.id='n8nc-ty';
-    var av=document.createElement('div');av.className='n8nc-av';av.style.cssText='background:linear-gradient(135deg,#fdf6ec,#fce8c8);color:#c47a1e;';av.textContent='n8';
-    var bub=document.createElement('div');bub.className='n8nc-bub bot';bub.style.cssText='display:flex;gap:3px;align-items:center;padding:8px 10px;';
-    bub.innerHTML='<div class="n8nc-tdot"></div><div class="n8nc-tdot"></div><div class="n8nc-tdot"></div>';
-    row.appendChild(av);row.appendChild(bub);ca.appendChild(row);ca.scrollTop=ca.scrollHeight;
-  }
-  window.n8nFire=async function(){
-    var inp=document.getElementById('n8n-chat-input'),msg=inp.value.trim();if(!msg||_busy)return;
-    _busy=true;var btn=document.getElementById('n8n-fire-btn');btn.disabled=true;
-    btn.innerHTML='<span class="material-symbols-outlined" style="font-size:13px;animation:n8ncSpin .8s linear infinite">progress_activity</span>';
-    _row('user',msg);inp.value='';_typing();
-    var t0=Date.now(),ok=false,status=null,body='';
-    var payload = {}; payload[_INPUT_KEY] = msg; payload[_SESSION_KEY] = _sessionId;
-    try{var r=await fetch(_W,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});status=r.status;body=await r.text();ok=r.ok;}
-    catch(e){body=e.message;}
-    var el=document.getElementById('n8nc-ty');if(el)el.remove();
-    var elapsed=((Date.now()-t0)/1000).toFixed(2),wrap=document.createElement('div'),disp=body,isJson=false,parsed=null;
-    try{parsed=JSON.parse(body);isJson=true;disp=parsed.output||parsed.text||parsed.message||JSON.stringify(parsed,null,2);}catch{}
-    if(!isJson&&disp.length<140||isJson&&typeof(parsed.output||parsed.text||parsed.message)==='string'){wrap.textContent=disp||(ok?'\u2713 Done':'No response');}
-    else{var lbl=document.createElement('div');lbl.style.cssText='font-family:"JetBrains Mono",monospace;font-size:8.5px;text-transform:uppercase;letter-spacing:.05em;color:#999590;margin-bottom:3px;';lbl.textContent=isJson?'JSON Response':'Response';var pre=document.createElement('pre');pre.className='n8nc-pre';pre.textContent=disp;wrap.appendChild(lbl);wrap.appendChild(pre);}
-    var chip=document.createElement('div');chip.className='n8nc-chip '+(ok?'ok':'err');
-    chip.innerHTML='<span class="material-symbols-outlined" style="font-size:10px">'+(ok?'check_circle':'error')+'</span>'+(status?status+' \u00b7 ':'')+elapsed+'s';
-    wrap.appendChild(chip);_row('bot',wrap);_busy=false;btn.disabled=false;
-    btn.innerHTML='<span class="material-symbols-outlined" style="font-size:13px">send</span>Send';
-  };
-  window.n8nReset = function(){
-    _sessionId = 'sess_' + Math.random().toString(36).slice(2,10) + '_' + Date.now();
-    var ca = document.getElementById('n8n-chat-area');
-    ca.innerHTML = '';
-    var em = document.createElement('div');
-    em.id = 'n8n-empty';
-    em.style.cssText = 'display:flex;align-items:center;gap:6px;justify-content:center;height:100%;';
-    em.innerHTML = '<span class="material-symbols-outlined" style="font-size:13px;color:#c47a1e">bolt</span><span style="font-family:\'JetBrains Mono\',monospace;font-size:10px;color:#999590;">New session — live · send a message to trigger your n8n workflow</span>';
-    ca.appendChild(em);
-    document.getElementById('n8n-chat-input').focus();
-  };
-  var s=document.createElement('style');s.textContent='@keyframes n8ncSpin{to{transform:rotate(360deg)}}';document.head.appendChild(s);
-})();
+/* ── n8nFire / n8nReset stubs (chat replaced by animated simulation) ── */
+window.n8nFire = function(){};
+window.n8nReset = function(){};
 </script>
 
 <!-- D3 for Quartz-style graph view -->
@@ -2346,7 +2389,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   <!-- 1 · Featured: Procurement Dashboard (spans 2 cols) -->
   <div class="portfolio-card featured sr" data-url="https://app.powerbi.com/view?r=eyJrIjoiMzYxNTc2NjAtMGQxMy00ZmQ5LWE0OGUtYmYwMzY1Y2JkMWE0IiwidCI6ImJkMmIyOGI4LTc2OWMtNGFjZC04YzdlLTE1MDc1ZmE2NWVmOCIsImMiOjEwfQ%3D%3D" data-title="Procurement Dashboard">
-    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBL4E07TjeuYx74uyz7aKn8owtchPJ6Ox94Q0lAskNJGDMAMt2g5Bj_cqozXI_5GyPNnjzfOIv_bH7rZqQNLuL9J2dbqQTyamwJHO8Nv_RI_3-zO3AtRNdPmfxbfCm1mjqRMSVRGETRiQl_glP-PCSUsA1GuIoHnLhBUZlkHxzJa_U09Fl9besO6TyOY5_SP1wrsRuFsIby8EYhvfY1JAStzZkINO9h_eLNH7UUBE3u2eoMj2zVMJ3XdTI4gBYTnT9t8IyitGPwsizl" alt="Procurement Dashboard v2" class="pc-img"/>
+    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&q=80&fit=crop" alt="Procurement Dashboard v2" class="pc-img"/>
     <div class="pc-rest">
       <div class="pc-rest-title">Procurement Dashboard</div>
       <div class="pc-rest-sub">Power BI · DAX · TMDL</div>
@@ -2367,7 +2410,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   <!-- 2 · Bank Statement Extraction -->
   <div class="portfolio-card sr d1" data-url="https://n8n-rcp.taild30d6e.ts.net" data-title="Document to Database Pipeline">
-    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAX8mR1bzMO-UZ0PVtjcjy_5vlr2td9tES5dnLnfR40mt2frsKcCKTHfesmHf1AgBm5AE0FwtfVixLOqcij8EOIVkIv7SOI6rz1qp5ZxvsJvaPJeol7VJrE5MCULHKmvQuYFxPxeue4QQFM8XNQaWXWLdqnVBy8m63yB_fSls_wOVgRHn4sUxdBtbPAomIGvtjs3V7ORVV9rG2jzzh9qelGzafv9qF8xwADBe9ktnsp9WCX90gUy5i4hyMQ_U1mk82PodfwzA_ZLGiN" alt="Bank Statement Pipeline" class="pc-img"/>
+    <img src="https://images.unsplash.com/photo-1568952433726-3896e3881c65?w=700&q=80&fit=crop" alt="Bank Statement Pipeline" class="pc-img"/>
     <div class="pc-rest">
       <div class="pc-rest-title">Document to Database Pipeline</div>
       <div class="pc-rest-sub">n8n · Regex · Google Sheets</div>
@@ -2386,7 +2429,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   <!-- 3 · Knowledge Management -->
   <div class="portfolio-card sr d2">
-    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJj7biKMXXhkl2nND-9wYCtpN0szpXWYX4tba6qIcqnkg0Ky3GYfRUDalrg5idLAmXBoPdjv1CsB2o2xjgQe7cSaUXeA49bkr0Hmest_BjUvvwGeevzvQitgojW5bTe-VM2qZ1gsxFZhTMXgex1yVIDy7tMNqtB_zI9Tu1Yh-7H2UK4ZuSi-I_XGmEsYJ7uXswRbS3T8nMls1I1xINSKK2pTCkeN41InjmsQa5EWeqDSlL0Rh0oOBH6ag72NhiMwRgCs4WCxsNXXEV" alt="Knowledge Management" class="pc-img"/>
+    <img src="https://images.unsplash.com/photo-1512314889357-e157d5184dde?w=700&q=80&fit=crop" alt="Knowledge Management" class="pc-img"/>
     <div class="pc-rest">
       <div class="pc-rest-title">Microsoft Power Platform Workflow</div>
       <div class="pc-rest-sub">Obsidian · BPMN · Mermaid</div>
@@ -2405,7 +2448,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   <!-- 4 · Gmail & Calendar Sync -->
   <div class="portfolio-card sr">
-    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdFj4UBe0mQ-_YLIrBsua9SIIaWLkmFR5aUDqGPGlUMBuj7oX3L0rF6ZYL5OeXxRxEtoqS80IRm2X_ilYJlVlUKIbXOy62vE8P0RKfesd9NHnZ-33PEZWtx_sdI19XogJKaU3vlePB14RZ4eWH8xzMnmJR-qYBxhOomoFZ1go_1U-LaklC01F-gHx6F4Riea2KvcbyzvCdbkg0jLBwov7wD9PL56O0vU-eRGvFtTw5JiRhlt-6jh5_RPo-ZdVZ0nHkADN5I-mQWd3_" alt="Gmail & Calendar Sync" class="pc-img"/>
+    <img src="https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=700&q=80&fit=crop" alt="Gmail & Calendar Sync" class="pc-img"/>
     <div class="pc-rest">
       <div class="pc-rest-title">Google Workspace App Orchestration</div>
       <div class="pc-rest-sub">Google Apps Script</div>
@@ -2424,7 +2467,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   <!-- 5 · Personal Finance Dashboard -->
   <div class="portfolio-card sr d1">
-    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOemS_P3kCbf2_G-ruOSQTqtO092vQOp8-7Jb6MCyjIYPVOyhUxK3tHuG04-nP3Fj4WTGAyMue3PZKe2VwHxb1DlUY-yAX-GcB53064TTg8O-x-KBfSRIqqWUWrnXJY5j8es2dgH870XfQ7rvGufgKJEYaGfyUtIsv2mrbEOuV4vOOWVFyhOhGIA1c5zvegW2stvOlsZQ0_KYbqHGmAnbNlAApMYP0oys24V1afj0jGrGOhqsyYnaes_unxxn0SwuUvCTthF9bqGD-" alt="Personal Finance Dashboard" class="pc-img"/>
+    <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=700&q=80&fit=crop" alt="Personal Finance Dashboard" class="pc-img"/>
     <div class="pc-rest">
       <div class="pc-rest-title">Finance And Accounting Dashboard</div>
       <div class="pc-rest-sub">Excel · Power Query</div>
@@ -2442,7 +2485,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   <!-- 6 · Self-Hosted Stack -->
   <div class="portfolio-card sr d2">
-    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAICVGsXJ68OmDZqKUtZpU0BnmTYGVntALI7m_QIVQX-SrbCSxSf2RMxffF4T1Ev7q-MQtfbubVC4MRtQRPtrYwZQLjbK-D6pG40IPhlchOzrtWxUZQQsc_eONk7vtzbN71uBzlxFeFOl3pfVYN4LK_RGamf7K3PbN4SSF9qmLvk56l77oUNTadnXtT2Rc0aHdyuu4FmRJVLaTC250ScLNqe1-8x6l_ORtjdR94N0e2EsNv_ItGeHYxqFi0TS0NgLFHGSb74L2m3S50" alt="Self-Hosted Stack" class="pc-img"/>
+    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=700&q=80&fit=crop" alt="Self-Hosted Stack" class="pc-img"/>
     <div class="pc-rest">
       <div class="pc-rest-title">Automated Knowledge Base</div>
       <div class="pc-rest-sub">Obsidian · Notion · Nginx</div>
@@ -3074,47 +3117,157 @@ else{alert("Failed: "+res.message);b.innerHTML=orig;b.disabled=false}}catch(err)
     <input type="text" id="cb-input" placeholder="Ask about the portfolio…" maxlength="500" onkeydown="if(event.key==='Enter')cbSend()"/>
     <button class="cb-send" id="cb-send-btn" onclick="cbSend()"><span class="material-symbols-outlined">arrow_upward</span></button>
   </div>
-  <div class="cb-footer">Powered by Gemini · rcp portfolio assistant</div>
+  <div class="cb-footer">RCP Portfolio Assistant · predefined Q&amp;A</div>
 </div>
 
 <script>
 (function(){
-/* ═══ KNOWLEDGE BASE ═══ */
-const SYSTEM = `You are a friendly, concise Q&A assistant embedded on Raymond Paredes' portfolio site "DATA in NARRATIVES." Answer ONLY from the facts below. Use **bold** sparingly. Keep answers short (2-4 sentences) unless more detail is requested.
 
-OWNER: Raymond Paredes (RCP), Metro Manila, Philippines. Data analyst & operations architect. Tagline: "I turn operational data into dashboards your team actually uses — and automate the workflows you shouldn't be doing manually."
+/* ═══════════════════════════════════════════════
+   PREDEFINED Q&A  — keyword array → answer HTML
+   Each entry: { keys: [...lowercase strings], answer: 'HTML string' }
+   First entry whose ALL keys appear in the lowercased query wins.
+   ═══════════════════════════════════════════════ */
+const FAQ = [
 
-SERVICES:
-1) Analytics Dashboards — Interactive Power BI reports for procurement, vendor performance, budget variance. DAX optimization (sub-second on 100K+ rows), TMDL exports (version-controlled), drill-through pages with bookmarks. 20+ dashboards built, 150+ DAX measures.
-2) Workflow Automation — n8n pipelines parsing PH bank statements (BPI, BDO, UnionBank, Robinsons Bank) from PDF/OCR to JSON → Google Sheets. Gmail automation, Calendar export, Tasks auto-sync via Google Apps Script. Self-hosted Docker + Tailscale. 50+ workflows, 99.8% uptime.
-3) Knowledge Systems — Obsidian vaults (200+ MOC notes), BPMN 2.0 procurement diagrams, Mermaid docs, LLM/RAG retrieval over documentation. 12 active data models.
+  /* ── WHO / ABOUT ── */
+  { keys: ['who','raymond'],
+    answer: `<strong>Raymond Paredes (RCP)</strong> is a Data Analyst &amp; Operations Architect based in Metro Manila, Philippines. He works at IPM Construction &amp; Development Corp and operates under the brand <strong>RCP Data Ops</strong> — turning operational data into dashboards teams actually use, and automating workflows they shouldn't be doing manually.` },
 
-PROJECTS:
-• Procurement Dashboard v2 (Featured) — Power BI, DAX, TMDL, drill-through KPIs. Shows ₱4.2M total PO value (+12.4%), 93% on-time delivery, 18d avg lead time. Suppliers: Jollibee Supplies, SM Trading, Meralco Parts, PLDT Corp.
-• Bank Statement Extraction — n8n webhook pipeline: PDF Upload → Bank Router → BPI/BDO/UnionBank Parsers → Merge → Categorise → Google Sheets + Gmail Notify. Categories: Utilities, Transport, Shopping, Grocery, Food. Live demo on site.
-• Knowledge Management — Obsidian vault with BPMN and Mermaid diagrams.
-• Gmail & Calendar Sync — GAS suite for Gmail analysis, Calendar export, Tasks sync.
-• Personal Finance Dashboard — Excel with PH bank data (BPI, BDO, Metrobank), Power Query.
-• Self-Hosted Stack — Docker-composed n8n, MongoDB, Supabase, Nginx + Tailscale mesh.
+  { keys: ['about','raymond'],
+    answer: `Raymond specialises in three pillars: <strong>Power BI analytics dashboards</strong>, <strong>n8n workflow automation</strong>, and <strong>Obsidian knowledge management systems</strong>. He maintains a self-hosted infrastructure stack (Docker, Tailscale, Supabase, MongoDB, Nginx) and has built 50+ automated workflows and 20+ dashboards.` },
 
-TECH STACK: Power BI, DAX, TMDL, n8n, Docker, Tailscale, Google Apps Script, Obsidian, BPMN 2.0, Mermaid, Supabase, MongoDB, Python, Regex, Excel, Power Query, Nginx.
+  /* ── SERVICES ── */
+  { keys: ['service'],
+    answer: `Raymond offers three core services:<br><br>
+1️⃣ <strong>Analytics Dashboards</strong> — Power BI reports with DAX optimization, TMDL exports, and drill-through KPIs (20+ dashboards, 150+ measures).<br>
+2️⃣ <strong>Workflow Automation</strong> — n8n pipelines for bank statement parsing, Gmail sync, OCR extraction, and RAG workflows. 50+ automated workflows at 99.8% uptime.<br>
+3️⃣ <strong>Knowledge Systems</strong> — Obsidian vaults with BPMN 2.0 diagrams, Mermaid docs, and LLM/RAG retrieval layers.` },
 
-FEATURES: DAX Optimization, Regex-Based Parsing (OCR/bank formats), Google Sheets API sync, Docker Containers, BPMN 2.0 Process Maps, LLM/RAG Retrieval.
+  /* ── POWER BI / DASHBOARDS ── */
+  { keys: ['power bi'],
+    answer: `Raymond builds enterprise-grade <strong>Power BI dashboards</strong> with DAX optimization for sub-second loads on 100K+ row datasets. Key capabilities include TMDL version-controlled exports, drill-through pages with bookmark navigation, and 150+ custom DAX measures authored across projects.` },
 
-INTERACTIVE DEMOS: The site has tabs for Power BI (KPIs + bar chart + data table), n8n (live workflow canvas + webhook chat), Obsidian (force-directed graph).
+  { keys: ['dax'],
+    answer: `Raymond has authored <strong>150+ DAX measures</strong> across projects — covering rolling averages, Top N analysis, price variance, lead time calculations, and time intelligence. He uses CALCULATE filter predicates for performance and organises measures into operational, analytical, strategic, and tactical folders.` },
 
-CONTACT: Form on site (Name, Email, Message) via Google Apps Script backend. Located in Metro Manila. LinkedIn, GitHub, Resume page available.
+  { keys: ['procurement','dashboard'],
+    answer: `The <strong>Procurement Dashboard v2</strong> is Raymond's featured Power BI project. It tracks ₱4.2M total PO value (+12.4%), 93% on-time delivery, 18-day average lead time, and vendor performance across suppliers like Manila Concrete Co. Built with advanced DAX, TMDL exports, and drill-through KPI pages.` },
 
-DESIGN: Clay.com-inspired. Fonts: Syne, Outfit, JetBrains Mono. Accent: #c47a1e amber. Background: #f8f7f4 cream with dot grid.
+  { keys: ['dashboard'],
+    answer: `Raymond has built <strong>20+ dashboards</strong> covering procurement spend, vendor performance, budget variance, and personal finance. All are built in Power BI with DAX-optimised measures and designed for operational teams to act on daily.` },
 
-If the answer isn't in the above, politely say you only know about what's on the portfolio site and suggest they use the contact form.`;
+  /* ── N8N / AUTOMATION ── */
+  { keys: ['n8n'],
+    answer: `Raymond uses <strong>n8n</strong> as his primary automation platform — self-hosted on Docker with Tailscale for secure remote access. He has built 50+ workflows including bank statement parsers, Gmail automation, OCR document extractors, web scraping pipelines, and RAG-powered AI agents. Uptime: 99.8%.` },
 
+  { keys: ['workflow','automation'],
+    answer: `Raymond designs <strong>n8n automation pipelines</strong> for a wide range of tasks: PDF/OCR document parsing, bank statement extraction (BPI, BDO, UnionBank, Robinsons Bank), Google Sheets sync, Gmail categorisation, and AI agent messaging — all containerised with Docker and secured via Tailscale.` },
+
+  { keys: ['bank','statement'],
+    answer: `Raymond built a <strong>Bank Statement Extraction pipeline</strong> in n8n that handles PDF uploads from Philippine banks (BPI, BDO, UnionBank, Robinsons Bank). The workflow routes each file to the correct parser, extracts transactions via OCR/regex, categorises them (Utilities, Transport, Grocery, Food), and outputs clean data to Google Sheets with Gmail notifications.` },
+
+  { keys: ['ocr'],
+    answer: `Raymond's <strong>OCR parsing workflows</strong> in n8n extract structured data from bank statement PDFs and procurement documents. Using regex-based normalisation and JavaScript extraction nodes, raw OCR text is transformed into clean JSON and pushed to Google Sheets or databases.` },
+
+  { keys: ['gmail'],
+    answer: `Raymond built <strong>Gmail automation</strong> using Google Apps Script and n8n — including sender analysis, auto-categorisation into Sheets, a BPI transaction filter from email notifications, and a webhook-connected chat interface backed by Claude Sonnet.` },
+
+  { keys: ['rag','pipeline'],
+    answer: `Raymond has prototyped <strong>RAG (Retrieval-Augmented Generation) pipelines</strong> using Qdrant as the vector store and OpenAI embeddings. The pipeline indexes Obsidian vault content so the team can ask natural language questions and retrieve relevant process documentation instantly.` },
+
+  /* ── OBSIDIAN / KNOWLEDGE ── */
+  { keys: ['obsidian'],
+    answer: `Raymond architects <strong>Obsidian knowledge vaults</strong> using Maps of Content (MOC) to organise 200+ notes across departments. Each vault integrates BPMN process diagrams, Mermaid flowcharts, and connects to a RAG retrieval layer — so processes are documented, findable, and understandable by the whole team.` },
+
+  { keys: ['knowledge','management'],
+    answer: `Raymond's <strong>Knowledge Management Systems</strong> use Obsidian as the core vault, with BPMN 2.0 for process documentation, Mermaid for flowcharts, and Excalidraw for collaborative whiteboards. 12 active data models are maintained across client and personal projects.` },
+
+  { keys: ['bpmn'],
+    answer: `Raymond documents complex business processes using <strong>BPMN 2.0</strong> — including a full Procure-to-Pay swimlane diagram rendered with bpmn-js. These are stored in Obsidian and shared with teams as interactive or exported diagrams.` },
+
+  /* ── TECH STACK ── */
+  { keys: ['tech','stack'],
+    answer: `Raymond's full tech stack:<br><br>
+<strong>Analytics:</strong> Power BI, DAX, TMDL, Excel, Power Query<br>
+<strong>Automation:</strong> n8n, Google Apps Script, Python, Regex<br>
+<strong>Knowledge:</strong> Obsidian, BPMN 2.0, Mermaid, Excalidraw<br>
+<strong>Infrastructure:</strong> Docker, Tailscale, Supabase, MongoDB, Nginx<br>
+<strong>AI/ML:</strong> Claude Sonnet, OpenAI Embeddings, Qdrant, RAG pipelines` },
+
+  { keys: ['docker'],
+    answer: `Raymond self-hosts his entire stack using <strong>Docker Compose</strong> — including n8n, MongoDB, Supabase, and Nginx — secured via a <strong>Tailscale</strong> mesh VPN for remote access without exposing ports publicly.` },
+
+  { keys: ['infrastructure','stack'],
+    answer: `Raymond's self-hosted infrastructure runs on <strong>Docker Compose</strong> with Tailscale for VPN access. Services include n8n (automation), MongoDB (document store), Supabase (Postgres + auth), and Nginx (reverse proxy). 99.8% uptime across all pipelines.` },
+
+  /* ── PROJECTS ── */
+  { keys: ['project'],
+    answer: `Raymond's key projects include:<br><br>
+• <strong>Procurement Dashboard v2</strong> — Power BI with 150+ DAX measures<br>
+• <strong>Bank Statement Extraction</strong> — n8n OCR pipeline for PH banks<br>
+• <strong>Knowledge Management System</strong> — Obsidian + BPMN + RAG<br>
+• <strong>Gmail &amp; Calendar Sync</strong> — Google Apps Script automation suite<br>
+• <strong>Personal Finance Dashboard</strong> — Excel + Power Query + PH bank data<br>
+• <strong>Self-Hosted Infrastructure</strong> — Docker + Tailscale + Supabase stack` },
+
+  { keys: ['personal','finance'],
+    answer: `Raymond's <strong>Personal Finance Dashboard</strong> is built in Excel with Power Query, pulling transaction data from multiple Philippine banks (BPI, BDO, Metrobank). It categorises spending, tracks monthly trends, and feeds into a broader personal analytics system.` },
+
+  /* ── CONTACT ── */
+  { keys: ['contact','reach','hire','email','get in touch'],
+    answer: `You can reach Raymond via the <strong>contact form</strong> at the bottom of this page (Name · Email · Message). You can also find his <strong>LinkedIn</strong>, <strong>GitHub</strong>, and <strong>Resume</strong> linked in the navigation. He's based in Metro Manila, Philippines 🇵🇭` },
+
+  { keys: ['contact'],
+    answer: `Use the <strong>Get in Touch</strong> form at the bottom of this page to send Raymond a message directly. For more specific inquiries, please contact <strong>Mr. RCP himself</strong> via the contact form or LinkedIn.` },
+
+  /* ── LOCATION ── */
+  { keys: ['location','based','where','manila','philippines'],
+    answer: `Raymond is based in <strong>Metro Manila, Philippines 🇵🇭</strong>. He works remotely and on-site at IPM Construction &amp; Development Corp, and operates his freelance/consulting work under the <strong>RCP Data Ops</strong> brand.` },
+
+  /* ── DEMOS ── */
+  { keys: ['demo','interactive'],
+    answer: `The site has live interactive demos in the Skills &amp; Tech section:<br><br>
+• <strong>Power BI tab</strong> — KPI cards, bar chart, and data table<br>
+• <strong>n8n tab</strong> — Live workflow canvas (OCR, RAG, AI Agent flows)<br>
+• <strong>Obsidian tab</strong> — Force-directed knowledge graph (D3.js)<br><br>
+There's also a <strong>Dashboard Viewer</strong> section with embedded Power BI, Excel, Google Sheets, and Looker Studio reports.` },
+
+  /* ── GREETING ── */
+  { keys: ['hello'],
+    answer: `Hi there! 👋 I'm the RCP Assistant. I can answer questions about Raymond's services, projects, tech stack, and how to get in touch. What would you like to know?` },
+
+  { keys: ['hi'],
+    answer: `Hey! 👋 Ask me anything about Raymond's portfolio — dashboards, automation, knowledge systems, or how to reach him.` },
+
+  { keys: ['hey'],
+    answer: `Hey! 👋 Ask me anything about Raymond's portfolio — dashboards, automation, knowledge systems, or how to reach him.` },
+
+];
+
+/* ─── FALLBACK ─── */
+const FALLBACK = `I don't have specific information about that. For more details, please contact <strong>Mr. RCP himself</strong> directly — use the <a href="#contact" onclick="toggleChat()" style="color:#c47a1e;text-decoration:underline;">contact form</a> at the bottom of the page or reach out via LinkedIn. He'd be happy to help! 😊`;
+
+/* ─── MATCH ENGINE ─── */
+function findAnswer(raw) {
+  const q = raw.toLowerCase();
+  for (const entry of FAQ) {
+    if (entry.keys.every(k => q.includes(k))) return entry.answer;
+  }
+  // Single-keyword fallback pass (more generous)
+  for (const entry of FAQ) {
+    if (entry.keys.length === 1 && q.includes(entry.keys[0])) return entry.answer;
+    if (entry.keys.some(k => k.length > 4 && q.includes(k))) return entry.answer;
+  }
+  return null;
+}
+
+/* ─── DOM HELPERS ─── */
 let busy = false;
 const msgsEl = document.getElementById('cb-msgs');
 const inputEl = document.getElementById('cb-input');
 const sendBtn = document.getElementById('cb-send-btn');
 
-/* Toggle */
 window.toggleChat = function(){
   const panel = document.getElementById('chat-panel');
   const fab = document.getElementById('chat-fab');
@@ -3125,9 +3278,7 @@ window.toggleChat = function(){
   if(isOpen) inputEl.focus();
 };
 
-/* Helpers */
 function scroll(){ msgsEl.scrollTo({top:msgsEl.scrollHeight,behavior:'smooth'}); }
-
 function killWelcome(){ const w=document.getElementById('cb-welcome'); if(w) w.remove(); }
 
 function addRow(role, html){
@@ -3147,39 +3298,25 @@ function showTyping(){
 }
 function hideTyping(){ const t=document.getElementById('cb-typing'); if(t) t.remove(); }
 
-function md(t){
-  return t
-    .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')
-    .replace(/`(.+?)`/g,'<code>$1</code>')
-    .replace(/\n{2,}/g,'</p><p>')
-    .replace(/\n- /g,'<br>• ')
-    .replace(/\n(\d+)\. /g,'<br>$1. ')
-    .replace(/\n/g,'<br>');
-}
-
-/* API */
-async function callAPI(msg){
-  const r = await fetch('https://api.anthropic.com/v1/messages',{
-    method:'POST', headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({ model:'claude-sonnet-4-20250514', max_tokens:800, system:SYSTEM, messages:[{role:'user',content:msg}] })
-  });
-  const d = await r.json();
-  return (d.content||[]).filter(b=>b.type==='text').map(b=>b.text).join('\n') || 'Sorry, I couldn\'t respond. Please try again.';
-}
-
-/* Send */
-window.cbSend = async function(){
-  const val=inputEl.value.trim(); if(!val||busy) return;
-  busy=true; sendBtn.disabled=true; inputEl.value='';
+/* ─── SEND ─── */
+window.cbSend = function(){
+  const val = inputEl.value.trim();
+  if(!val || busy) return;
+  busy = true; sendBtn.disabled = true; inputEl.value = '';
   killWelcome();
-  addRow('user','<p>'+val.replace(/</g,'<')+'</p>');
+  addRow('user', '<p>' + val.replace(/</g,'&lt;') + '</p>');
   showTyping();
-  try{ const reply=await callAPI(val); hideTyping(); addRow('bot','<p>'+md(reply)+'</p>'); }
-  catch(e){ hideTyping(); addRow('bot','<p>Something went wrong — please try again.</p>'); console.error(e); }
-  busy=false; sendBtn.disabled=false; inputEl.focus();
+  // Simulate a short thinking delay (feels natural)
+  setTimeout(function(){
+    hideTyping();
+    const answer = findAnswer(val) || FALLBACK;
+    addRow('bot', '<p>' + answer + '</p>');
+    busy = false; sendBtn.disabled = false; inputEl.focus();
+  }, 480 + Math.random() * 320);
 };
 
-window.cbQuick = function(btn){ inputEl.value=btn.textContent; cbSend(); };
+window.cbQuick = function(btn){ inputEl.value = btn.textContent; cbSend(); };
+
 })();
 </script>
 
