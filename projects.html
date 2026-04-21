@@ -148,6 +148,21 @@ body::after{
 }
 .pcard-open-btn:hover{background:#e8973e}
 
+/* Autoplay toggle */
+.pcard-autoplay-btn{
+  display:flex;align-items:center;gap:4px;
+  background:transparent;color:#6b6660;border:1.5px solid #d5cfc5;
+  font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.06em;text-transform:uppercase;
+  padding:3px 8px;border-radius:6px;cursor:pointer;
+  white-space:nowrap;flex-shrink:0;
+  transition:all .2s;
+}
+.pcard-autoplay-btn:hover{border-color:#c47a1e;color:#c47a1e}
+.pcard-autoplay-btn.playing{
+  background:#c47a1e;border-color:#c47a1e;color:#fff;
+}
+.pcard-autoplay-btn .ap-icon{font-size:12px!important;}
+
 /* Iframe */
 .pcard-embed{
   width:100%;
@@ -404,11 +419,19 @@ body::after{
           <span class="pcard-url-text">drive.google.com · Automated Knowledge Management</span>
         </div>
         <span class="pcard-title-label">03 · Knowledge</span>
+        <button class="pcard-autoplay-btn" onclick="toggleAutoplay(this,'gdrive-03')" title="Toggle autoplay">
+          <span class="material-symbols-outlined ap-icon">play_arrow</span>
+          <span class="ap-label">Autoplay</span>
+        </button>
         <a href="https://drive.google.com/file/d/1HyXp7cCBOsVEy5hzuJlT-FiVUi9J2n1F/view?usp=sharing" target="_blank" class="pcard-open-btn">
           <span class="material-symbols-outlined" style="font-size:11px">open_in_new</span>Open
         </a>
       </div>
-      <iframe class="pcard-embed" src="https://drive.google.com/file/d/1HyXp7cCBOsVEy5hzuJlT-FiVUi9J2n1F/preview" allowfullscreen loading="lazy"></iframe>
+      <iframe id="gdrive-03" class="pcard-embed"
+        src="https://drive.google.com/file/d/1HyXp7cCBOsVEy5hzuJlT-FiVUi9J2n1F/preview"
+        data-base="https://drive.google.com/file/d/1HyXp7cCBOsVEy5hzuJlT-FiVUi9J2n1F/preview"
+        data-autoplay="https://drive.google.com/file/d/1HyXp7cCBOsVEy5hzuJlT-FiVUi9J2n1F/preview?rm=minimal"
+        allowfullscreen loading="lazy"></iframe>
     </div>
 
     <!-- 03b · Microsoft Power Platform Workflow -->
@@ -424,11 +447,19 @@ body::after{
           <span class="pcard-url-text">drive.google.com · Microsoft Power Platform</span>
         </div>
         <span class="pcard-title-label">03b · Knowledge</span>
+        <button class="pcard-autoplay-btn" onclick="toggleAutoplay(this,'gdrive-03b')" title="Toggle autoplay">
+          <span class="material-symbols-outlined ap-icon">play_arrow</span>
+          <span class="ap-label">Autoplay</span>
+        </button>
         <a href="https://drive.google.com/file/d/1wTWs-NrW7fAe6KvAqa2wznqMqLxD028n/view?usp=sharing" target="_blank" class="pcard-open-btn">
           <span class="material-symbols-outlined" style="font-size:11px">open_in_new</span>Open
         </a>
       </div>
-      <iframe class="pcard-embed" src="https://drive.google.com/file/d/1wTWs-NrW7fAe6KvAqa2wznqMqLxD028n/preview" allowfullscreen loading="lazy"></iframe>
+      <iframe id="gdrive-03b" class="pcard-embed"
+        src="https://drive.google.com/file/d/1wTWs-NrW7fAe6KvAqa2wznqMqLxD028n/preview"
+        data-base="https://drive.google.com/file/d/1wTWs-NrW7fAe6KvAqa2wznqMqLxD028n/preview"
+        data-autoplay="https://drive.google.com/file/d/1wTWs-NrW7fAe6KvAqa2wznqMqLxD028n/preview?rm=minimal"
+        allowfullscreen loading="lazy"></iframe>
     </div>
 
     <!-- 04 · Google Workspace Orchestration (no public embed URL) -->
@@ -469,6 +500,26 @@ body::after{
         </a>
       </div>
       <iframe class="pcard-embed" src="https://app.powerbi.com/view?r=eyJrIjoiNmZlMWE3Y2UtYjVjYS00YTFjLWE5NDItYTcyNjQ5OWQyNDA5IiwidCI6ImJkMmIyOGI4LTc2OWMtNGFjZC04YzdlLTE1MDc1ZmE2NWVmOCIsImMiOjEwfQ%3D%3D" frameborder="0" allowfullscreen loading="lazy"></iframe>
+    </div>
+
+    <!-- 05b · Planly v2 Dashboard -->
+    <div class="pcard sr d1" data-filter="analytics">
+      <div class="pcard-chrome">
+        <div class="pcard-dots">
+          <span class="pcard-dot pcard-dot-r"></span>
+          <span class="pcard-dot pcard-dot-y"></span>
+          <span class="pcard-dot pcard-dot-g"></span>
+        </div>
+        <div class="pcard-url-bar">
+          <span class="material-symbols-outlined pcard-lock">lock</span>
+          <span class="pcard-url-text">app.powerbi.com · Task Management</span>
+        </div>
+        <span class="pcard-title-label">05b · Analytics</span>
+        <a href="https://app.powerbi.com/view?r=eyJrIjoiZTA3NTNmMmYtMzU3My00ZWRkLWE4NDQtNzdlMjUwNzUxNTUyIiwidCI6ImJkMmIyOGI4LTc2OWMtNGFjZC04YzdlLTE1MDc1ZmE2NWVmOCIsImMiOjEwfQ%3D%3D&pageName=c7d06a8c800904027a57" target="_blank" class="pcard-open-btn">
+          <span class="material-symbols-outlined" style="font-size:11px">open_in_new</span>Open
+        </a>
+      </div>
+      <iframe class="pcard-embed" src="https://app.powerbi.com/view?r=eyJrIjoiZTA3NTNmMmYtMzU3My00ZWRkLWE4NDQtNzdlMjUwNzUxNTUyIiwidCI6ImJkMmIyOGI4LTc2OWMtNGFjZC04YzdlLTE1MDc1ZmE2NWVmOCIsImMiOjEwfQ%3D%3D&pageName=c7d06a8c800904027a57" frameborder="0" allowfullscreen loading="lazy"></iframe>
     </div>
 
     <!-- 06 · Self-Hosted Infrastructure (no public embed URL) -->
@@ -564,6 +615,25 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
 });
 </script>
 
+
+<script>
+function toggleAutoplay(btn, iframeId) {
+  const iframe = document.getElementById(iframeId);
+  if (!iframe) return;
+  const isPlaying = btn.classList.toggle('playing');
+  const icon = btn.querySelector('.ap-icon');
+  const label = btn.querySelector('.ap-label');
+  if (isPlaying) {
+    iframe.src = iframe.dataset.autoplay;
+    icon.textContent = 'stop';
+    label.textContent = 'Stop';
+  } else {
+    iframe.src = iframe.dataset.base;
+    icon.textContent = 'play_arrow';
+    label.textContent = 'Autoplay';
+  }
+}
+</script>
 
 <script>
 function toggleMobMenu(){
