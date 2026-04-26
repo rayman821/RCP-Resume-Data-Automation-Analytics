@@ -395,14 +395,22 @@ body::after{
         </div>
         <div class="pcard-url-bar">
           <span class="material-symbols-outlined pcard-lock">lock</span>
-          <span class="pcard-url-text">n8n-rcp.taild30d6e.ts.net · Document Pipeline</span>
+          <span class="pcard-url-text">drive.google.com · Document to Database Pipeline</span>
         </div>
         <span class="pcard-title-label">02 · Automation</span>
-        <a href="https://n8n-rcp.taild30d6e.ts.net" target="_blank" class="pcard-open-btn">
+        <button class="pcard-autoplay-btn" onclick="toggleAutoplay(this,'gdrive-02')" title="Toggle autoplay">
+          <span class="material-symbols-outlined ap-icon">play_arrow</span>
+          <span class="ap-label">Autoplay</span>
+        </button>
+        <a href="https://drive.google.com/file/d/18WwnTH0woyxE3ZDFhHtPUiV_KlahqFSY/view?usp=drive_link" target="_blank" class="pcard-open-btn">
           <span class="material-symbols-outlined" style="font-size:11px">open_in_new</span>Open
         </a>
       </div>
-      <iframe class="pcard-embed" src="https://n8n-rcp.taild30d6e.ts.net" allowfullscreen loading="lazy"></iframe>
+      <iframe id="gdrive-02" class="pcard-embed"
+        src="https://drive.google.com/file/d/18WwnTH0woyxE3ZDFhHtPUiV_KlahqFSY/preview"
+        data-base="https://drive.google.com/file/d/18WwnTH0woyxE3ZDFhHtPUiV_KlahqFSY/preview"
+        data-autoplay="https://drive.google.com/file/d/18WwnTH0woyxE3ZDFhHtPUiV_KlahqFSY/preview?rm=minimal"
+        allowfullscreen loading="lazy"></iframe>
     </div>
 
     <!-- 03 · Knowledge Management -->
