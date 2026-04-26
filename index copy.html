@@ -421,8 +421,51 @@ background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='htt
 <section id="about" class="relative z-10 max-w-6xl mx-auto px-4 md:px-8 py-16 md:py-28">
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-14 items-center">
 <div class="lg:col-span-4 sr">
-<div class="rounded-[24px] overflow-hidden border border-border shadow-lg">
-<img alt="Raymond Paredes" class="w-full aspect-[4/5] object-cover grayscale hover:grayscale-0 transition-all duration-700" src="https://drive.google.com/thumbnail?id=1MR9K7vosU9jJSjb_uJ-ZgEh_zO18_t_A&view?sz=1000"/>
+<style>
+.profile-glow-wrap {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid rgba(196,122,30,.35);
+  box-shadow:
+    0 0 0 1px rgba(196,122,30,.15),
+    0 0 30px -4px rgba(196,122,30,.45),
+    0 0 70px -10px rgba(196,122,30,.30),
+    0 24px 60px -12px rgba(196,122,30,.20);
+  transition: box-shadow .5s cubic-bezier(.16,1,.3,1), border-color .5s ease;
+}
+.profile-glow-wrap:hover {
+  border-color: rgba(196,122,30,.65);
+  box-shadow:
+    0 0 0 1px rgba(196,122,30,.3),
+    0 0 45px -4px rgba(196,122,30,.65),
+    0 0 100px -10px rgba(196,122,30,.45),
+    0 32px 80px -12px rgba(196,122,30,.30);
+}
+.profile-glow-wrap::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, rgba(196,122,30,.08) 0%, transparent 50%, rgba(196,122,30,.06) 100%);
+  z-index: 1;
+  pointer-events: none;
+  border-radius: 24px;
+}
+.profile-glow-img {
+  width: 100%;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  display: block;
+  transition: transform .7s cubic-bezier(.16,1,.3,1), filter .5s ease;
+  filter: brightness(1.02) contrast(1.04) saturate(1.08);
+}
+.profile-glow-wrap:hover .profile-glow-img {
+  transform: scale(1.03);
+  filter: brightness(1.05) contrast(1.06) saturate(1.12);
+}
+</style>
+<div class="profile-glow-wrap">
+  <img alt="Raymond Paredes" class="profile-glow-img" src="https://drive.google.com/thumbnail?id=1MR9K7vosU9jJSjb_uJ-ZgEh_zO18_t_A&view?sz=1000"/>
 </div>
 </div>
 <div class="lg:col-span-8 space-y-5 sr d1">
@@ -1405,7 +1448,7 @@ window.addEventListener('load', function() {
   var QA = [
     {
       q: "What does Raymond do?",
-      a: "Raymond is a <b>Data Analyst & Ops Architect</b> at IPM Construction. He builds Power BI dashboards, n8n automation pipelines, and Obsidian knowledge systems under the brand <b>RCP Data Ops</b>."
+      a: "Raymond is a <b>Data Analyst & Ops Architect</b> at RCP Data Ops. He builds Power BI dashboards, n8n automation pipelines, and Obsidian knowledge systems under the brand <b>RCP Data Ops</b>."
     },
     {
       q: "What's the Procurement Dashboard?",
@@ -1919,7 +1962,7 @@ window.n8nReset = function(){};
 const OBS_NODES = [
   // ── Procurement Process ──────────────────────────────────────
   { id:'procure-to-pay',   label:'Procure-to-Pay',    group:'moc',      info:'End-to-end P2P process · Master hub' },
-  { id:'purchase-request', label:'Purchase Request',  group:'procure',  info:'PR creation · Dept. initiator · IPM' },
+  { id:'purchase-request', label:'Purchase Request',  group:'procure',  info:'PR creation · Dept. initiator · Construction Company' },
   { id:'purchase-order',   label:'Purchase Order',    group:'procure',  info:'PO issuance · Vendor-linked · ERP' },
   { id:'vendor-mgmt',      label:'Vendor Management', group:'procure',  info:'142 active vendors · Accreditation' },
   { id:'rfq',              label:'RFQ / Canvassing',  group:'procure',  info:'Request for Quotation · 3-bid rule' },
@@ -2513,7 +2556,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="pc-rest-sub">Power BI · DAX · TMDL</div>
     </div>
     <div class="pc-overlay">
-      <div class="pc-category"><span class="pc-category-dot"></span>IPM Construction</div>
+      <div class="pc-category"><span class="pc-category-dot"></span>Construction Company</div>
       <div class="pc-featured"><span class="material-symbols-outlined" style="font-size:11px">star</span> Featured</div>
       <div class="pc-title">Procurement Dashboard</div>
       <div class="pc-desc">Replaced monthly PDF reports with real-time Power BI tracking ₱4.2M+ in PO value. Result: <b>32% faster procurement cycles</b>, <b>50% fewer approval bottlenecks</b>, and leadership visibility from days to seconds with 150+ DAX measures.</div>
@@ -3131,7 +3174,7 @@ const rcpWorkflow = {
       id:'gm1', name:'Gmail Notify',
       type:'n8n-nodes-base.gmail', typeVersion:2,
       position:[1060,340],
-      parameters:{operation:'send',toList:'raymond@ipmconstructionanddevelopment.com',subject:'✅ Bank extraction done — {{ $json["bank"] }}',message:'{{ $items().length }} transactions logged at {{ $json["extracted_at"] }}.'}
+      parameters:{operation:'send',toList:'reiman.par@gmail.com',subject:'✅ Bank extraction done — {{ $json["bank"] }}',message:'{{ $items().length }} transactions logged at {{ $json["extracted_at"] }}.'}
     }
   ],
   connections:{
@@ -3281,7 +3324,7 @@ const FAQ = [
 
   /* ── WHO / ABOUT ── */
   { keys: ['who','raymond'],
-    answer: `<strong>Raymond Paredes (RCP)</strong> is a Data Analyst &amp; Operations Architect based in Metro Manila, Philippines. He works at IPM Construction &amp; Development Corp and operates under the brand <strong>RCP Data Ops</strong> — turning operational data into dashboards teams actually use, and automating workflows they shouldn't be doing manually.` },
+    answer: `<strong>Raymond Paredes (RCP)</strong> is a Data Analyst &amp; Operations Architect based in Metro Manila, Philippines. He works and operates under the brand <strong>RCP Data Ops</strong> — turning operational data into dashboards teams actually use, and automating workflows they shouldn't be doing manually.` },
 
   { keys: ['about','raymond'],
     answer: `Raymond specialises in three pillars: <strong>Power BI analytics dashboards</strong>, <strong>n8n workflow automation</strong>, and <strong>Obsidian knowledge management systems</strong>. He maintains a self-hosted infrastructure stack (Docker, Tailscale, Supabase, MongoDB, Nginx) and has built 50+ automated workflows and 20+ dashboards.` },
@@ -3372,7 +3415,7 @@ const FAQ = [
 
   /* ── LOCATION ── */
   { keys: ['location','based','where','manila','philippines'],
-    answer: `Raymond is based in <strong>Metro Manila, Philippines 🇵🇭</strong>. He works remotely and on-site at IPM Construction &amp; Development Corp, and operates his freelance/consulting work under the <strong>RCP Data Ops</strong> brand.` },
+    answer: `Raymond is based in <strong>Metro Manila, Philippines 🇵🇭</strong>. He works remotely and operates his freelance/consulting work under the <strong>RCP Data Ops</strong> brand.` },
 
   /* ── DEMOS ── */
   { keys: ['demo','interactive'],
@@ -3479,7 +3522,7 @@ window.cbQuick = function(btn){ inputEl.value = btn.textContent; cbSend(); };
 (function(){
 
 const KS_NODES = [
-  { id:'procure-to-pay',   label:'Procure-to-Pay',    g:'moc',      info:'End-to-end P2P hub · IPM' },
+  { id:'procure-to-pay',   label:'Procure-to-Pay',    g:'moc',      info:'End-to-end P2P hub · DataHub' },
   { id:'accounts-payable', label:'Accounts Payable',  g:'moc',      info:'AP hub · 3-way match' },
   { id:'purchase-order',   label:'Purchase Order',    g:'procure',  info:'PO issuance · Vendor-linked' },
   { id:'rfq',              label:'RFQ / Canvassing',  g:'procure',  info:'3-bid rule · Cost compare' },
