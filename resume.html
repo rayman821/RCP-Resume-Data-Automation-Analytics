@@ -1,621 +1,1876 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Raymond Paredes — Resume</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Outfit:wght@200;300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script>
-tailwind.config={theme:{extend:{colors:{
-bg:'#f8f7f4',surface:'#f0eee9',card:'#ffffff',border:'#e2ddd5',
-muted:'#999590',subtle:'#6b6660',cream:'#1a1816',warm:'#3d3530',
-accent:'#c47a1e',glow:'#e8973e',dark:'#1a1816',darkcard:'#242120',
-},fontFamily:{
-display:['Syne','sans-serif'],body:['Outfit','sans-serif'],mono:['"JetBrains Mono"','monospace'],
-}}}}
-</script>
-<style>
-*,*::before,*::after{box-sizing:border-box}
-::selection{background:#c47a1e;color:#fff}
-html{background:#f8f7f4}
-body{background:#f8f7f4;color:#1a1816;font-family:'Outfit',sans-serif;overflow-x:hidden;
-background-image:radial-gradient(circle,#c4b8a8 .8px,transparent .8px);background-size:28px 28px}
-body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9998;opacity:.02;
-background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
-.sr{opacity:0;transform:translateY(36px);transition:opacity .85s cubic-bezier(.16,1,.3,1),transform .85s cubic-bezier(.16,1,.3,1)}
-.sr.v{opacity:1;transform:translateY(0)}
-.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
-.nl{position:relative}
-.nl::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1.5px;background:#c47a1e;transition:width .35s ease}
-.nl:hover::after{width:100%}
-.stat-pill{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid #e2ddd5;border-radius:16px;padding:12px 20px;transition:all .3s}
-.stat-pill:hover{border-color:#c47a1e;box-shadow:0 8px 30px -8px rgba(196,122,30,.12)}
-.stat-pill .stat-val{font-family:'Syne',sans-serif;font-weight:800;font-size:1.5rem;color:#c47a1e;line-height:1}
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Raymond Paredes — Resume</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Outfit:wght@200;300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bg: '#f8f7f4', surface: '#f0eee9', card: '#ffffff', border: '#e2ddd5',
+            muted: '#999590', subtle: '#6b6660', cream: '#1a1816', warm: '#3d3530',
+            accent: '#c47a1e', glow: '#e8973e', dark: '#1a1816', darkcard: '#242120',
+          }, fontFamily: {
+            display: ['Syne', 'sans-serif'], body: ['Outfit', 'sans-serif'], mono: ['"JetBrains Mono"', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box
+    }
 
-/* ── Enticing CTA Buttons ── */
-@keyframes ctaShimmer{0%{transform:translateX(-120%) skewX(-15deg)}100%{transform:translateX(220%) skewX(-15deg)}}
-@keyframes ctaPulseRing{0%{box-shadow:0 0 0 0 rgba(196,122,30,.45),0 4px 20px -4px rgba(196,122,30,.35)}70%{box-shadow:0 0 0 8px rgba(196,122,30,0),0 4px 20px -4px rgba(196,122,30,.35)}100%{box-shadow:0 0 0 0 rgba(196,122,30,0),0 4px 20px -4px rgba(196,122,30,.35)}}
+    ::selection {
+      background: #c47a1e;
+      color: #fff
+    }
 
-.cta-primary{
-  position:relative;overflow:hidden;
-  display:inline-flex;align-items:center;gap:8px;
-  background:linear-gradient(135deg,#c47a1e 0%,#d4891f 50%,#c47a1e 100%);
-  background-size:200% 100%;
-  color:#fff;font-family:'Syne',sans-serif;font-weight:700;letter-spacing:.01em;
-  border:none;border-radius:14px;cursor:pointer;text-decoration:none;
-  transition:background-position .4s ease,transform .25s cubic-bezier(.16,1,.3,1),box-shadow .25s ease;
-  animation:ctaPulseRing 2.8s ease-out infinite;
-}
-.cta-primary::before{
-  content:'';position:absolute;top:0;left:0;width:40%;height:100%;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,.22),transparent);
-  transform:translateX(-120%) skewX(-15deg);
-  animation:ctaShimmer 3s ease-in-out infinite;
-  animation-delay:.6s;
-}
-.cta-primary:hover{
-  background-position:100% 0;
-  transform:translateY(-2px) scale(1.02);
-  box-shadow:0 12px 32px -6px rgba(196,122,30,.45);
-  animation:none;
-}
-.cta-primary .cta-arrow{transition:transform .25s cubic-bezier(.16,1,.3,1)}
-.cta-primary:hover .cta-arrow{transform:translateX(4px)}
+    html {
+      background: #f8f7f4
+    }
 
-.cta-nav{
-  position:relative;overflow:hidden;
-  display:inline-flex;align-items:center;gap:6px;
-  background:#c47a1e;color:#fff;
-  font-family:'Outfit',sans-serif;font-weight:600;font-size:13px;
-  padding:8px 18px;border-radius:12px;cursor:pointer;text-decoration:none;
-  box-shadow:0 2px 12px -2px rgba(196,122,30,.30);
-  transition:all .25s cubic-bezier(.16,1,.3,1);
-}
-.cta-nav::before{
-  content:'';position:absolute;top:0;left:0;width:40%;height:100%;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);
-  transform:translateX(-120%) skewX(-15deg);
-  animation:ctaShimmer 3.5s ease-in-out infinite;
-  animation-delay:1s;
-}
-.cta-nav:hover{background:#e8973e;transform:translateY(-1px);box-shadow:0 6px 20px -4px rgba(196,122,30,.40)}
-.cta-nav .cta-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.7);animation:ctaPulseRing 2s ease-out infinite;flex-shrink:0}
+    body {
+      background: #f8f7f4;
+      color: #1a1816;
+      font-family: 'Outfit', sans-serif;
+      overflow-x: hidden;
+      background-image: radial-gradient(circle, #c4b8a8 .8px, transparent .8px);
+      background-size: 28px 28px
+    }
 
-.cta-secondary{
-  display:inline-flex;align-items:center;gap:8px;
-  background:transparent;color:#3d3530;
-  font-family:'Syne',sans-serif;font-weight:600;
-  border:1.5px solid rgba(255,255,255,.18);border-radius:14px;cursor:pointer;text-decoration:none;
-  transition:all .25s cubic-bezier(.16,1,.3,1);
-}
-.cta-secondary:hover{
-  border-color:#c47a1e;color:#c47a1e;
-  background:rgba(196,122,30,.04);
-  transform:translateY(-2px);
-  box-shadow:0 8px 24px -6px rgba(196,122,30,.12);
-}
-.cta-secondary .cta-arrow{transition:transform .25s cubic-bezier(.16,1,.3,1)}
-.cta-secondary:hover .cta-arrow{transform:translateX(4px)}
-.feat-card{background:#fff;border:1px solid #e2ddd5;border-radius:20px;padding:32px;transition:all .4s cubic-bezier(.16,1,.3,1)}
-.feat-card:hover{border-color:#c47a1e;transform:translateY(-3px);box-shadow:0 16px 50px -10px rgba(196,122,30,.08)}
-.mt{display:inline-flex;padding:4px 12px;border:1px solid #d5cfc5;border-radius:999px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:#6b6660;transition:all .3s;white-space:nowrap}
-.mt:hover{border-color:#c47a1e;color:#c47a1e}
-.bdot{display:flex;align-items:flex-start;gap:10px}
-.bdot::before{content:'';width:6px;height:6px;border-radius:50%;background:#c47a1e;flex-shrink:0;margin-top:7px}
-.tl-line{position:absolute;left:23px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,#c47a1e 0%,#e2ddd5 100%)}
-.tl-dot{width:12px;height:12px;border-radius:50%;border:3px solid #c47a1e;background:#fff;position:absolute;left:18px;top:8px;z-index:2;transition:all .3s}
-.tl-item:hover .tl-dot{background:#c47a1e;box-shadow:0 0 0 5px rgba(196,122,30,.12)}
-@media(max-width:768px){.tl-line{left:15px}.tl-dot{left:10px}}
-#scroll-bar{position:fixed;top:0;left:0;height:2px;z-index:9999;background:linear-gradient(90deg,#c47a1e,#e8973e)}
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9998;
+      opacity: .02;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")
+    }
 
-/* ── Mobile Nav ── */
-#mob-menu{display:none;position:fixed;top:68px;left:0;right:0;z-index:49;
-  background:rgba(248,247,244,.97);backdrop-filter:blur(20px);
-  border-bottom:1px solid #e2ddd5;padding:16px 24px 20px;
-  flex-direction:column;gap:4px;}
-#mob-menu.open{display:flex;}
-#mob-menu a{font-family:'Outfit',sans-serif;font-size:15px;font-weight:500;
-  color:#6b6660;padding:10px 0;border-bottom:1px solid #f0eee9;
-  text-decoration:none;transition:color .2s;}
-#mob-menu a:last-child{border-bottom:none;}
-#mob-menu a:hover{color:#c47a1e;}
-.ham-btn{display:none;flex-direction:column;gap:5px;cursor:pointer;
-  padding:6px;border:none;background:transparent;}
-.ham-btn span{display:block;width:22px;height:2px;background:#1a1816;
-  border-radius:2px;transition:all .3s cubic-bezier(.16,1,.3,1);}
-.ham-btn.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
-.ham-btn.open span:nth-child(2){opacity:0;transform:scaleX(0);}
-.ham-btn.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
-@media(max-width:767px){
-  .ham-btn{display:flex;}
-  .cta-nav-desktop{display:none!important;}
-}
-/* Mobile stat pills wrap fix */
-@media(max-width:480px){
-  .stat-pill{padding:10px 14px;}
-  .stat-pill .stat-val{font-size:1.2rem;}
-}
-/* Mobile hero image size */
-@media(max-width:1023px){
-  .resume-photo-wrap{max-width:180px;margin:0 auto;}
-}
-/* Mobile timeline tighter */
-@media(max-width:480px){
-  .tl-item .feat-card{padding:20px 16px;}
-  .tl-item{padding-left:10px;}
-}
+    .sr {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity .85s cubic-bezier(.16, 1, .3, 1), transform .85s cubic-bezier(.16, 1, .3, 1)
+    }
 
-</style>
+    .sr.v {
+      opacity: 1;
+      transform: translateY(0)
+    }
+
+    .d1 {
+      transition-delay: .1s
+    }
+
+    .d2 {
+      transition-delay: .2s
+    }
+
+    .d3 {
+      transition-delay: .3s
+    }
+
+    .nl {
+      position: relative
+    }
+
+    .nl::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 0;
+      height: 1.5px;
+      background: #c47a1e;
+      transition: width .35s ease
+    }
+
+    .nl:hover::after {
+      width: 100%
+    }
+
+    .stat-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #fff;
+      border: 1px solid #e2ddd5;
+      border-radius: 16px;
+      padding: 12px 20px;
+      transition: all .3s
+    }
+
+    .stat-pill:hover {
+      border-color: #c47a1e;
+      box-shadow: 0 8px 30px -8px rgba(196, 122, 30, .12)
+    }
+
+    .stat-pill .stat-val {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.5rem;
+      color: #c47a1e;
+      line-height: 1
+    }
+
+    /* ── Enticing CTA Buttons ── */
+    @keyframes ctaShimmer {
+      0% {
+        transform: translateX(-120%) skewX(-15deg)
+      }
+
+      100% {
+        transform: translateX(220%) skewX(-15deg)
+      }
+    }
+
+    @keyframes ctaPulseRing {
+      0% {
+        box-shadow: 0 0 0 0 rgba(196, 122, 30, .45), 0 4px 20px -4px rgba(196, 122, 30, .35)
+      }
+
+      70% {
+        box-shadow: 0 0 0 8px rgba(196, 122, 30, 0), 0 4px 20px -4px rgba(196, 122, 30, .35)
+      }
+
+      100% {
+        box-shadow: 0 0 0 0 rgba(196, 122, 30, 0), 0 4px 20px -4px rgba(196, 122, 30, .35)
+      }
+    }
+
+    .cta-primary {
+      position: relative;
+      overflow: hidden;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #c47a1e 0%, #d4891f 50%, #c47a1e 100%);
+      background-size: 200% 100%;
+      color: #fff;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      letter-spacing: .01em;
+      border: none;
+      border-radius: 14px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-position .4s ease, transform .25s cubic-bezier(.16, 1, .3, 1), box-shadow .25s ease;
+      animation: ctaPulseRing 2.8s ease-out infinite;
+    }
+
+    .cta-primary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 40%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .22), transparent);
+      transform: translateX(-120%) skewX(-15deg);
+      animation: ctaShimmer 3s ease-in-out infinite;
+      animation-delay: .6s;
+    }
+
+    .cta-primary:hover {
+      background-position: 100% 0;
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 12px 32px -6px rgba(196, 122, 30, .45);
+      animation: none;
+    }
+
+    .cta-primary .cta-arrow {
+      transition: transform .25s cubic-bezier(.16, 1, .3, 1)
+    }
+
+    .cta-primary:hover .cta-arrow {
+      transform: translateX(4px)
+    }
+
+    .cta-nav {
+      position: relative;
+      overflow: hidden;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #c47a1e;
+      color: #fff;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 600;
+      font-size: 13px;
+      padding: 8px 18px;
+      border-radius: 12px;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 2px 12px -2px rgba(196, 122, 30, .30);
+      transition: all .25s cubic-bezier(.16, 1, .3, 1);
+    }
+
+    .cta-nav::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 40%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .18), transparent);
+      transform: translateX(-120%) skewX(-15deg);
+      animation: ctaShimmer 3.5s ease-in-out infinite;
+      animation-delay: 1s;
+    }
+
+    .cta-nav:hover {
+      background: #e8973e;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px -4px rgba(196, 122, 30, .40)
+    }
+
+    .cta-nav .cta-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .7);
+      animation: ctaPulseRing 2s ease-out infinite;
+      flex-shrink: 0
+    }
+
+    .cta-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: #3d3530;
+      font-family: 'Syne', sans-serif;
+      font-weight: 600;
+      border: 1.5px solid rgba(255, 255, 255, .18);
+      border-radius: 14px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all .25s cubic-bezier(.16, 1, .3, 1);
+    }
+
+    .cta-secondary:hover {
+      border-color: #c47a1e;
+      color: #c47a1e;
+      background: rgba(196, 122, 30, .04);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px -6px rgba(196, 122, 30, .12);
+    }
+
+    .cta-secondary .cta-arrow {
+      transition: transform .25s cubic-bezier(.16, 1, .3, 1)
+    }
+
+    .cta-secondary:hover .cta-arrow {
+      transform: translateX(4px)
+    }
+
+    .feat-card {
+      background: #fff;
+      border: 1px solid #e2ddd5;
+      border-radius: 20px;
+      padding: 32px;
+      transition: all .4s cubic-bezier(.16, 1, .3, 1)
+    }
+
+    .feat-card:hover {
+      border-color: #c47a1e;
+      transform: translateY(-3px);
+      box-shadow: 0 16px 50px -10px rgba(196, 122, 30, .08)
+    }
+
+    .mt {
+      display: inline-flex;
+      padding: 4px 12px;
+      border: 1px solid #d5cfc5;
+      border-radius: 999px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      color: #6b6660;
+      transition: all .3s;
+      white-space: nowrap
+    }
+
+    .mt:hover {
+      border-color: #c47a1e;
+      color: #c47a1e
+    }
+
+    .bdot {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px
+    }
+
+    .bdot::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #c47a1e;
+      flex-shrink: 0;
+      margin-top: 7px
+    }
+
+    .tl-line {
+      position: absolute;
+      left: 23px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, #c47a1e 0%, #e2ddd5 100%)
+    }
+
+    .tl-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 3px solid #c47a1e;
+      background: #fff;
+      position: absolute;
+      left: 18px;
+      top: 8px;
+      z-index: 2;
+      transition: all .3s
+    }
+
+    .tl-item:hover .tl-dot {
+      background: #c47a1e;
+      box-shadow: 0 0 0 5px rgba(196, 122, 30, .12)
+    }
+
+    @media(max-width:768px) {
+      .tl-line {
+        left: 15px
+      }
+
+      .tl-dot {
+        left: 10px
+      }
+    }
+
+    #scroll-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 2px;
+      z-index: 9999;
+      background: linear-gradient(90deg, #c47a1e, #e8973e)
+    }
+
+    /* ── Mobile Nav ── */
+    #mob-menu {
+      display: none;
+      position: fixed;
+      top: 68px;
+      left: 0;
+      right: 0;
+      z-index: 49;
+      background: rgba(248, 247, 244, .97);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid #e2ddd5;
+      padding: 16px 24px 20px;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    #mob-menu.open {
+      display: flex;
+    }
+
+    #mob-menu a {
+      font-family: 'Outfit', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      color: #6b6660;
+      padding: 10px 0;
+      border-bottom: 1px solid #f0eee9;
+      text-decoration: none;
+      transition: color .2s;
+    }
+
+    #mob-menu a:last-child {
+      border-bottom: none;
+    }
+
+    #mob-menu a:hover {
+      color: #c47a1e;
+    }
+
+    .ham-btn {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 6px;
+      border: none;
+      background: transparent;
+    }
+
+    .ham-btn span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: #1a1816;
+      border-radius: 2px;
+      transition: all .3s cubic-bezier(.16, 1, .3, 1);
+    }
+
+    .ham-btn.open span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .ham-btn.open span:nth-child(2) {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+
+    .ham-btn.open span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    @media(max-width:767px) {
+      .ham-btn {
+        display: flex;
+      }
+
+      .cta-nav-desktop {
+        display: none !important;
+      }
+    }
+
+    /* Mobile stat pills wrap fix */
+    @media(max-width:480px) {
+      .stat-pill {
+        padding: 10px 14px;
+      }
+
+      .stat-pill .stat-val {
+        font-size: 1.2rem;
+      }
+    }
+
+    /* Mobile hero image size */
+    @media(max-width:1023px) {
+      .resume-photo-wrap {
+        max-width: 180px;
+        margin: 0 auto;
+      }
+    }
+
+    /* Mobile timeline tighter */
+    @media(max-width:480px) {
+      .tl-item .feat-card {
+        padding: 20px 16px;
+      }
+
+      .tl-item {
+        padding-left: 10px;
+      }
+    }
+
+    /* ── README-style role card components ── */
+    .role-divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, #c47a1e 0%, rgba(196, 122, 30, .15) 60%, transparent 100%);
+      margin: 16px 0 18px
+    }
+
+    .role-section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9.5px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: #c47a1e;
+      margin-bottom: 9px;
+      display: flex;
+      align-items: center;
+      gap: 8px
+    }
+
+    .role-section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(196, 122, 30, .15);
+      max-width: 80px
+    }
+
+    .role-problem {
+      font-family: 'Outfit', sans-serif;
+      font-size: 13.5px;
+      color: #6b6660;
+      line-height: 1.72;
+      border-left: 2px solid rgba(196, 122, 30, .35);
+      padding-left: 12px;
+      margin-bottom: 0
+    }
+
+    .role-how-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 6px
+    }
+
+    .role-how-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 13.5px;
+      color: #3d3530;
+      line-height: 1.55
+    }
+
+    .role-how-list li .rnum {
+      flex-shrink: 0;
+      width: 18px;
+      height: 18px;
+      border-radius: 5px;
+      background: rgba(196, 122, 30, .1);
+      border: 1px solid rgba(196, 122, 30, .22);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 8.5px;
+      font-weight: 700;
+      color: #c47a1e;
+      margin-top: 2px
+    }
+
+    .role-metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin: 0
+    }
+
+    @media(max-width:600px) {
+      .role-metrics-grid {
+        grid-template-columns: 1fr 1fr
+      }
+    }
+
+    .role-metric-card {
+      background: #f8f7f4;
+      border: 1px solid #e2ddd5;
+      border-radius: 12px;
+      padding: 11px 13px;
+      transition: all .3s
+    }
+
+    .role-metric-card:hover {
+      border-color: #c47a1e;
+      box-shadow: 0 4px 16px -4px rgba(196, 122, 30, .1)
+    }
+
+    .role-metric-val {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.35rem;
+      color: #c47a1e;
+      line-height: 1;
+      margin-bottom: 3px
+    }
+
+    .role-metric-lbl {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 8px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: #999590
+    }
+
+    .role-metric-ctx {
+      font-family: 'Outfit', sans-serif;
+      font-size: 11px;
+      color: #6b6660;
+      margin-top: 4px;
+      line-height: 1.4
+    }
+
+    .role-impact {
+      background: linear-gradient(135deg, rgba(196, 122, 30, .05) 0%, rgba(196, 122, 30, .01) 100%);
+      border: 1px solid rgba(196, 122, 30, .18);
+      border-radius: 12px;
+      padding: 13px 16px
+    }
+
+    .role-impact-lbl {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 8.5px;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: #c47a1e;
+      margin-bottom: 6px
+    }
+
+    .role-impact-txt {
+      font-family: 'Outfit', sans-serif;
+      font-size: 13px;
+      color: #3d3530;
+      line-height: 1.62
+    }
+
+    .role-impact-txt strong,
+    .role-impact-txt b {
+      color: #c47a1e;
+      font-weight: 600
+    }
+  </style>
 </head>
+
 <body>
-<div id="scroll-bar" style="width:0%"></div>
+  <div id="scroll-bar" style="width:0%"></div>
 
-<!-- NAV -->
-<nav class="fixed top-0 w-full z-50 backdrop-blur-2xl bg-bg/80 border-b border-border/40">
-<div class="max-w-7xl mx-auto flex justify-between items-center px-8 h-[68px]">
-<a href="index.html" class="font-display text-xl font-800 tracking-tight text-cream">RCP<span class="text-accent">.</span></a>
-<div class="hidden md:flex items-center gap-9">
-<a href="index.html" class="nl text-[13px] font-medium text-subtle hover:text-cream transition-colors">Home</a>
-<a href="index.html#services" class="nl text-[13px] font-medium text-subtle hover:text-cream transition-colors">Services</a>
-<a href="index.html#projects" class="nl text-[13px] font-medium text-subtle hover:text-cream transition-colors">Projects</a>
-<a href="#" class="text-[13px] font-semibold text-accent">Resume</a>
-</div>
-<div class="flex items-center gap-3">
-<a href="index.html#contact" class="cta-nav cta-nav-desktop">
-  <span class="cta-dot"></span>Let's Work Together
-</a>
-<button class="ham-btn" id="ham-btn" onclick="toggleMobMenu()" aria-label="Menu">
-  <span></span><span></span><span></span>
-</button>
-</div>
-</div>
-</nav>
-<div id="mob-menu">
-  <a href="index.html">Home</a>
-  <a href="index.html#services">Services</a>
-  <a href="index.html#projects">Projects</a>
-  <a href="#" style="color:#c47a1e;font-weight:600;">Resume</a>
-  <a href="index.html#contact" class="cta-nav" style="margin-top:8px;justify-content:center;"><span class="cta-dot"></span>Let's Work Together</a>
-</div>
-
-<!-- HERO -->
-<section class="relative z-10 pt-32 pb-10 px-4 md:px-8">
-<div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-14 items-center sr">
-<div class="lg:col-span-3">
-<div class="relative group resume-photo-wrap"><div class="absolute -inset-2 rounded-[24px] bg-gradient-to-br from-accent/10 to-transparent opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500"></div>
-<div class="relative rounded-2xl overflow-hidden border border-border shadow-lg"><img alt="Raymond Paredes" class="w-full aspect-square object-cover" src="https://drive.google.com/thumbnail?id=1MR9K7vosU9jJSjb_uJ-ZgEh_zO18_t_A&view?sz=1000"/></div></div>
-</div>
-<div class="lg:col-span-9 space-y-5">
-<div><h1 class="font-display font-800 text-[clamp(2rem,5vw,3.5rem)] leading-[1.1] tracking-tight text-cream">Raymond Paredes</h1>
-<p class="font-mono text-[12px] text-accent tracking-wider uppercase mt-2">Data Analyst · Operations Architect · Procurement Lead</p></div>
-<p class="text-subtle text-lg leading-relaxed max-w-2xl">Data analytics specialist who transforms raw operational data into decision-ready dashboards and automates the manual processes that slow teams down. Based in Metro Manila, Philippines.</p>
-<div class="flex flex-wrap gap-3 md:gap-6 pt-1">
-<div class="flex items-center gap-2"><span class="material-symbols-outlined text-accent text-lg">mail</span><span class="text-sm text-warm">reiman.par@gmail.com</span></div>
-<div class="flex items-center gap-2"><span class="material-symbols-outlined text-accent text-lg">location_on</span><span class="text-sm text-warm">Manila, PH · Remote</span></div>
-<div class="flex items-center gap-2"><span class="material-symbols-outlined text-accent text-lg">link</span><a href="https://www.linkedin.com/in/raymond-paredes-805b5415a/" class="text-sm text-warm hover:text-accent transition-colors">LinkedIn</a></div>
-</div>
-<div class="flex flex-wrap gap-3 pt-2">
-<div class="stat-pill"><span class="stat-val">5+</span><span class="text-xs text-warm">Years</span></div>
-<div class="stat-pill"><span class="stat-val">30+</span><span class="text-xs text-warm">Projects</span></div>
-<div class="stat-pill"><span class="stat-val">50+</span><span class="text-xs text-warm">Workflows</span></div>
-<div class="stat-pill"><span class="stat-val">20+</span><span class="text-xs text-warm">Dashboards</span></div>
-</div>
-</div>
-</div>
-</section>
-
-<!-- EXPERIENCE -->
-<section class="relative z-10 max-w-7xl mx-auto px-4 md:px-8 py-14 md:py-20">
-<div class="text-center mb-14 sr"><h2 class="font-display font-800 text-3xl md:text-4xl tracking-tight text-cream">Professional experience</h2><p class="text-subtle mt-3 max-w-xl mx-auto">A progression from procurement operations to data analytics and workflow automation leadership.</p></div>
-<div class="relative max-w-3xl mx-auto pl-14 md:pl-16">
-<div class="tl-line"></div>
-<!-- Role 1 -->
-<div class="tl-item relative pb-14 sr"><div class="tl-dot"></div><div class="feat-card ml-6">
-<!--span class="font-mono text-[10px] bg-accent/10 text-accent px-3 py-1 rounded-full font-medium tracking-wider uppercase border border-accent/20">Current</span--><div class="flex flex-wrap items-center gap-3 mb-4"><span class="font-mono text-[10px] bg-accent/10 text-accent px-3 py-1 rounded-full font-medium tracking-wider uppercase border border-accent/20">2024 — 2025</span></div>
-<h3 class="font-display font-700 text-xl text-cream mb-1">Data Analytics</h3>
-<p class="font-mono text-[11px] text-accent tracking-wider uppercase mb-4">IPM</p>
-<div class="space-y-2.5">
-<div class="bdot"><span class="text-[14px] text-warm">Developed and maintained BI dashboards, improving data accessibility by 40%.</span></div>
-<div class="bdot"><span class="text-[14px] text-warm">Automated data extraction and reporting processes, saving 15+ hours of manual work weekly.</span></div>
-<div class="bdot"><span class="text-[14px] text-warm">Performed statistical analysis to identify trends and inform project management strategy, leading to a 10% increase in work efficiency.</span></div>
-<div class="bdot"><span class="text-[14px] text-warm">Collaborated with cross-functional teams to define KPIs and deliver actionable insights that increased efficiency by 20%.</span></div>
-<div class="bdot"><span class="text-[14px] text-warm">Developed executive dashboard for operational metrics, enabling data-driven decisions that reduced overhead costs by 18%.</span></div>
-</div>
-<div class="flex flex-wrap gap-2 mt-5"><span class="mt">BI</span><span class="mt">Data Automation</span><span class="mt">KPI Reporting</span><span class="mt">Analytics</span><span class="mt">Dashboards</span></div>
-</div></div>
-<!-- Role 2 -->
-<div class="tl-item relative pb-14 sr"><div class="tl-dot"></div><div class="feat-card ml-6">
-<div class="flex flex-wrap items-center gap-3 mb-4"><span class="font-mono text-[11px] text-muted tracking-wider">2021 — 2023</span></div>
-<h3 class="font-display font-700 text-xl text-cream mb-1">Admin Operations</h3>
-<p class="font-mono text-[11px] text-accent tracking-wider uppercase mb-4">IPM</p>
-<div class="space-y-2.5">
-<div class="bdot"><span class="text-[14px] text-warm">Streamlined document management system, reducing retrieval time by 60% and improving team productivity across 3 departments.</span></div>
-<div class="bdot"><span class="text-[14px] text-warm">Consolidated procurement workflows across multiple offices, achieving 25% cost savings through bulk purchasing agreements.</span></div>
-<div class="bdot"><span class="text-[14px] text-warm">Redesigned vendor onboarding process, cutting approval time from 2 weeks to 3 days while maintaining compliance standards.</span></div>
-<div class="bdot"><span class="text-[14px] text-warm">Implemented automated expense reporting system, saving 15 hours of manual processing weekly and reducing error rates by 40%.</span></div>
-</div>
-<div class="flex flex-wrap gap-2 mt-5"><span class="mt">Operations</span><span class="mt">Procurement</span><span class="mt">Automation</span><span class="mt">Workflow</span></div>
-</div></div>
-<!-- Role 3 -->
-<div class="tl-item relative pb-4 sr"><div class="tl-dot"></div><div class="feat-card ml-6">
-<div class="flex flex-wrap items-center gap-3 mb-4"><span class="font-mono text-[11px] text-muted tracking-wider">2018 — 2020</span></div>
-<h3 class="font-display font-700 text-xl text-cream mb-1">Procurement</h3>
-<p class="font-mono text-[11px] text-accent tracking-wider uppercase mb-4">IPM</p>
-<div class="space-y-2.5">
-<div class="bdot"><span class="text-[14px] text-warm">Created a database for managing vendors and price monitoring, identifying trends to negotiate a 10% buying price reduction.</span></div>
-<div class="bdot"><span class="text-[14px] text-warm">Built strong vendor relationships to secure faster delivery and trusted supply partnerships.</span></div>
-<div class="bdot"><span class="text-[14px] text-warm">Created a large-scale web scraping automation to find new lead suppliers, enabling procurement options without delay.</span></div>
-</div>
-<div class="flex flex-wrap gap-2 mt-5"><span class="mt">Vendor Management</span><span class="mt">Procurement</span><span class="mt">Data Automation</span><span class="mt">Supplier Sourcing</span></div>
-</div></div>
-</div>
-</section>
-
-<!-- SKILLS -->
-<section class="relative z-10 max-w-7xl mx-auto px-4 md:px-8 py-14 md:py-20">
-<div class="text-center mb-14 sr"><h2 class="font-display font-800 text-3xl md:text-4xl tracking-tight text-cream">Technical skills</h2><p class="text-subtle mt-3 max-w-xl mx-auto">Three core competency areas — analytics, automation, and data infrastructure.</p></div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-<div class="feat-card sr"><div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-5"><span class="material-symbols-outlined text-accent text-xl">analytics</span></div><h3 class="font-display font-700 text-lg text-cream mb-4">Analytics &amp; BI</h3><div class="space-y-2.5 mb-5"><div class="bdot"><span class="text-sm text-warm">Advanced Power BI (DAX, M, TMDL)</span></div><div class="bdot"><span class="text-sm text-warm">SQL (PostgreSQL, Supabase)</span></div><div class="bdot"><span class="text-sm text-warm">Statistical trend analysis</span></div><div class="bdot"><span class="text-sm text-warm">KPI engineering</span></div><div class="bdot"><span class="text-sm text-warm">Excel &amp; Google Sheets (advanced)</span></div></div><div class="flex flex-wrap gap-2"><span class="mt">Power BI</span><span class="mt">DAX</span><span class="mt">SQL</span><span class="mt">Excel</span></div></div>
-<div class="feat-card sr d1"><div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-5"><span class="material-symbols-outlined text-accent text-xl">account_tree</span></div><h3 class="font-display font-700 text-lg text-cream mb-4">Automation &amp; ETL</h3><div class="space-y-2.5 mb-5"><div class="bdot"><span class="text-sm text-warm">n8n workflow orchestration</span></div><div class="bdot"><span class="text-sm text-warm">Google Apps Script (Gmail, Calendar, Sheets)</span></div><div class="bdot"><span class="text-sm text-warm">Python/Javascript/regex &amp; OCR Document Parsing</span></div><div class="bdot"><span class="text-sm text-warm">RESTful API integration</span></div><div class="bdot"><span class="text-sm text-warm">Web scraping (Firecrawl, BeautifulSoup)</span></div></div><div class="flex flex-wrap gap-2"><span class="mt">n8n</span><span class="mt">GAS</span><span class="mt">Python</span><span class="mt">Regex</span></div></div>
-<div class="feat-card sr d2"><div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-5"><span class="material-symbols-outlined text-accent text-xl">dns</span></div><h3 class="font-display font-700 text-lg text-cream mb-4">Infrastructure &amp; Knowledge</h3><div class="space-y-2.5 mb-5"><div class="bdot"><span class="text-sm text-warm">Docker containerization</span></div><div class="bdot"><span class="text-sm text-warm">Tailscale mesh networking</span></div><div class="bdot"><span class="text-sm text-warm">MongoDB, Supabase, Nginx</span></div><div class="bdot"><span class="text-sm text-warm">Obsidian vault architecture</span></div><div class="bdot"><span class="text-sm text-warm">BPMN 2.0 &amp; Mermaid diagrams</span></div></div><div class="flex flex-wrap gap-2"><span class="mt">Docker</span><span class="mt">Obsidian</span><span class="mt">BPMN</span><span class="mt">Mermaid</span></div></div>
-</div>
-</section>
-
-<!-- EDUCATION -->
-<section class="relative z-10 max-w-7xl mx-auto px-8 py-20">
-<div class="text-center mb-14 sr"><h2 class="font-display font-800 text-3xl md:text-4xl tracking-tight text-cream">Education</h2></div>
-<div class="max-w-3xl mx-auto sr"><div class="feat-card"><div class="flex flex-col md:flex-row items-center gap-8">
-<div class="w-20 h-20 rounded-2xl bg-surface border border-border flex items-center justify-center p-3 shrink-0"><img alt="De La Salle College of Saint Benilde" class="w-full h-full object-contain" src="https://upload.wikimedia.org/wikipedia/en/thumb/a/af/DLSCSB_seal.svg/1200px-DLSCSB_seal.svg.png"/></div>
-<div class="flex-grow text-center md:text-left"><h3 class="font-display font-700 text-xl text-cream mb-1">BS Business Administration &amp; Export Management</h3><p class="text-subtle text-sm mb-3">De La Salle College of Saint Benilde</p><p class="text-subtle text-sm mb-3">Major in Business Analytics and Enthusiast in Operation Analytics</p>
-<div class="flex flex-wrap justify-center md:justify-start gap-4"><div class="flex items-center gap-2"><span class="material-symbols-outlined text-accent text-sm">calendar_today</span><span class="text-xs text-muted font-medium">Class of 2017</span></div><div class="flex items-center gap-2"><span class="material-symbols-outlined text-accent text-sm">verified</span><span class="text-xs text-muted font-medium">Verified</span></div></div>
-</div></div></div></div>
-</section>
-
-<!-- CTA -->
-<section class="relative z-10 max-w-7xl mx-auto px-8 py-12 sr">
-<div class="bg-surface rounded-3xl p-10 md:p-14 text-center" style="background-image:radial-gradient(circle,#c4b8a8 .5px,transparent .5px);background-size:22px 22px">
-<h3 class="font-display font-800 text-2xl md:text-3xl tracking-tight text-cream mb-4">Ready to work together?</h3>
-<p class="text-warm max-w-xl mx-auto mb-6">I'm open to project collaborations, full-time roles, and freelance opportunities in data analytics and workflow automation.</p>
-<div class="flex flex-wrap justify-center gap-3">
-<a href="index.html#contact" class="cta-primary px-7 py-3 text-[14px]">
-  <span class="material-symbols-outlined text-base" style="opacity:.85">bolt</span>
-  Start a Conversation
-  <span class="material-symbols-outlined text-base cta-arrow">arrow_forward</span>
-</a>
-<a href="index.html#projects" class="cta-secondary px-7 py-3 text-[14px]" style="border-color:#d5cfc5;">
-  View Portfolio
-  <span class="material-symbols-outlined text-base cta-arrow">open_in_new</span>
-</a>
-</div>
-</div>
-</section>
-
-<!-- FOOTER -->
-<footer class="relative z-10 border-t border-border mt-12">
-<div class="max-w-7xl mx-auto px-8 py-14">
-<div class="grid grid-cols-2 md:grid-cols-4 gap-10 mb-12">
-<div><h5 class="font-display font-700 text-sm text-cream mb-4">Services</h5><div class="space-y-2.5"><a href="index-clay.html#services" class="block text-sm text-muted hover:text-accent transition-colors">Analytics Dashboards</a><a href="index-clay.html#services" class="block text-sm text-muted hover:text-accent transition-colors">Workflow Automation</a><a href="index-clay.html#services" class="block text-sm text-muted hover:text-accent transition-colors">Knowledge Systems</a></div></div>
-<div><h5 class="font-display font-700 text-sm text-cream mb-4">Tools</h5><div class="space-y-2.5"><span class="block text-sm text-muted">Power BI / DAX</span><span class="block text-sm text-muted">n8n / Docker</span><span class="block text-sm text-muted">Google Apps Script</span><span class="block text-sm text-muted">Obsidian / BPMN</span></div></div>
-<div><h5 class="font-display font-700 text-sm text-cream mb-4">Projects</h5><div class="space-y-2.5"><a href="index-clay.html#projects" class="block text-sm text-muted hover:text-accent transition-colors">Procurement Dashboard</a><a href="index-clay.html#projects" class="block text-sm text-muted hover:text-accent transition-colors">Bank Statement Pipeline</a><a href="index-clay.html#projects" class="block text-sm text-muted hover:text-accent transition-colors">Self-Hosted Stack</a></div></div>
-<div><h5 class="font-display font-700 text-sm text-cream mb-4">Connect</h5><div class="space-y-2.5"><a href="https://www.linkedin.com/in/raymond-paredes-805b5415a/" class="block text-sm text-muted hover:text-accent transition-colors">LinkedIn</a><a href="#" class="block text-sm text-muted hover:text-accent transition-colors">GitHub</a><a href="index-clay.html#contact" class="block text-sm text-muted hover:text-accent transition-colors">Contact</a></div></div>
-</div>
-<div class="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-border gap-4">
-<div class="font-display font-800 text-lg text-cream">RCP<span class="text-accent">.</span></div>
-<p class="font-mono text-[11px] text-muted/60 tracking-wider uppercase">&copy; 2026 Raymond Paredes — Metro Manila, Philippines</p>
-</div>
-</div>
-</footer>
-
-<script>addEventListener('scroll',()=>{document.getElementById('scroll-bar').style.width=(scrollY/(document.documentElement.scrollHeight-innerHeight))*100+'%'});</script>
-<script>document.addEventListener('DOMContentLoaded',()=>{const o=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('v');o.unobserve(x.target)}})},{threshold:.06});document.querySelectorAll('.sr').forEach(el=>o.observe(el))});</script>
-
-<!-- ═══════════════════════════════════════════
-     RESUME CHATBOT WIDGET
-     ═══════════════════════════════════════════ -->
-<style>
-/* FAB */
-#rcb-fab{position:fixed;bottom:28px;right:28px;z-index:9990;width:56px;height:56px;border-radius:18px;background:linear-gradient(135deg,#c47a1e,#e8973e);color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 32px -4px rgba(196,122,30,.40);transition:all .35s cubic-bezier(.16,1,.3,1)}
-#rcb-fab:hover{transform:translateY(-3px) scale(1.05);box-shadow:0 12px 40px -4px rgba(196,122,30,.50)}
-#rcb-fab .material-symbols-outlined{font-size:26px;transition:transform .3s}
-#rcb-fab.open .material-symbols-outlined{transform:rotate(90deg)}
-#rcb-fab-badge{position:absolute;top:-2px;right:-2px;width:14px;height:14px;background:#16a34a;border:2px solid #f8f7f4;border-radius:50%;animation:rcbFabPulse 2.5s ease-in-out infinite}
-@keyframes rcbFabPulse{0%,100%{box-shadow:0 0 0 0 rgba(22,163,74,.4)}50%{box-shadow:0 0 0 5px rgba(22,163,74,0)}}
-
-/* Panel */
-#rcb-panel{position:fixed;bottom:96px;right:28px;z-index:9989;width:390px;max-width:calc(100vw - 32px);height:520px;max-height:calc(100dvh - 130px);background:#f8f7f4;border:1px solid #e2ddd5;border-radius:24px;box-shadow:0 24px 80px -12px rgba(26,24,22,.18),0 0 0 1px rgba(226,221,213,.5);display:flex;flex-direction:column;overflow:hidden;opacity:0;transform:translateY(16px) scale(.96);pointer-events:none;transition:opacity .3s cubic-bezier(.16,1,.3,1),transform .3s cubic-bezier(.16,1,.3,1)}
-#rcb-panel.open{opacity:1;transform:translateY(0) scale(1);pointer-events:auto}
-@media(max-width:480px){#rcb-panel{right:8px;bottom:88px;width:calc(100vw - 16px);height:calc(100dvh - 110px);border-radius:20px}#rcb-fab{bottom:20px;right:16px;width:50px;height:50px;border-radius:16px}}
-
-/* Header */
-.rcb-header{display:flex;align-items:center;gap:12px;padding:16px 18px;background:#fff;border-bottom:1px solid #e2ddd5;flex-shrink:0}
-.rcb-header-av{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,#c47a1e,#e8973e);display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px;flex-shrink:0}
-.rcb-header-name{font-family:'Syne',sans-serif;font-weight:700;font-size:15px;color:#1a1816}
-.rcb-header-status{font-family:'JetBrains Mono',monospace;font-size:10px;color:#999590;display:flex;align-items:center;gap:5px;margin-top:1px}
-.rcb-header-status::before{content:'';width:6px;height:6px;border-radius:50%;background:#16a34a;flex-shrink:0}
-.rcb-close{margin-left:auto;background:transparent;border:none;cursor:pointer;color:#999590;display:flex;align-items:center;transition:color .2s;padding:4px;border-radius:8px}
-.rcb-close:hover{color:#1a1816;background:#f0eee9}
-
-/* Messages */
-.rcb-msgs{flex:1;overflow-y:auto;padding:14px 14px 8px;display:flex;flex-direction:column;gap:10px;scroll-behavior:smooth}
-.rcb-msgs::-webkit-scrollbar{width:3px}
-.rcb-msgs::-webkit-scrollbar-thumb{background:#e2ddd5;border-radius:99px}
-
-/* Welcome */
-.rcb-welcome{display:flex;flex-direction:column;align-items:center;text-align:center;padding:18px 8px 10px;gap:8px}
-.rcb-welcome-icon{width:52px;height:52px;border-radius:16px;background:linear-gradient(135deg,#fdf6ec,#fce8c8);display:flex;align-items:center;justify-content:center;color:#c47a1e;font-size:26px;margin-bottom:4px}
-.rcb-welcome h3{font-family:'Syne',sans-serif;font-weight:700;font-size:17px;color:#1a1816;margin:0}
-.rcb-welcome p{font-family:'Outfit',sans-serif;font-size:13px;color:#6b6660;margin:0;line-height:1.5;max-width:280px}
-.rcb-chips{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:8px}
-.rcb-chip{padding:6px 12px;background:#fff;border:1px solid #e2ddd5;border-radius:999px;font-family:'JetBrains Mono',monospace;font-size:10px;color:#6b6660;cursor:pointer;transition:all .2s;white-space:nowrap;text-align:left}
-.rcb-chip:hover{border-color:#c47a1e;color:#c47a1e;background:#fdf6ec}
-
-/* Rows */
-.rcb-row{display:flex;align-items:flex-start;gap:8px}
-.rcb-row.user{flex-direction:row-reverse}
-.rcb-av{width:28px;height:28px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:700;font-size:11px;flex-shrink:0}
-.rcb-av.user{background:#1a1816;color:#fff}
-.rcb-av.bot{background:linear-gradient(135deg,#fdf6ec,#fce8c8);color:#c47a1e}
-.rcb-bubble{padding:9px 13px;border-radius:16px;font-family:'Outfit',sans-serif;font-size:13px;line-height:1.55;max-width:82%}
-.rcb-bubble p{margin:0}
-.rcb-bubble.user{background:#1a1816;color:#fff;border-radius:16px 16px 4px 16px}
-.rcb-bubble.bot{background:#fff;color:#3d3530;border:1px solid #e2ddd5;border-radius:4px 16px 16px 16px}
-.rcb-bubble.bot strong,.rcb-bubble.bot b{color:#c47a1e;font-weight:600}
-.rcb-bubble.bot a{color:#c47a1e;text-decoration:underline}
-
-/* Typing dots */
-.rcb-typing{display:flex;gap:4px;align-items:center;padding:2px 0}
-.rcb-typing i{display:block;width:6px;height:6px;border-radius:50%;background:#c4b8a8;animation:rcbDot 1.2s ease-in-out infinite}
-.rcb-typing i:nth-child(2){animation-delay:.2s}
-.rcb-typing i:nth-child(3){animation-delay:.4s}
-@keyframes rcbDot{0%,80%,100%{transform:scale(.7);opacity:.4}40%{transform:scale(1);opacity:1}}
-
-/* Input bar */
-.rcb-input-bar{display:flex;align-items:center;gap:8px;padding:10px 12px;border-top:1px solid #e2ddd5;background:#fff;flex-shrink:0}
-.rcb-input-bar input{flex:1;background:#f8f7f4;border:1px solid #e2ddd5;border-radius:12px;padding:9px 13px;font-family:'Outfit',sans-serif;font-size:13px;color:#1a1816;outline:none;transition:border-color .2s}
-.rcb-input-bar input:focus{border-color:#c47a1e}
-.rcb-input-bar input::placeholder{color:#999590}
-.rcb-send{width:36px;height:36px;border-radius:10px;background:#c47a1e;color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .2s}
-.rcb-send:hover{background:#e8973e}
-.rcb-send .material-symbols-outlined{font-size:18px}
-.rcb-footer{text-align:center;font-family:'JetBrains Mono',monospace;font-size:9px;color:#c4b8a8;padding:6px 0 10px;letter-spacing:.04em;flex-shrink:0;background:#fff}
-</style>
-
-<!-- FAB -->
-<button id="rcb-fab" onclick="rcbToggle()" aria-label="Open resume assistant">
-  <span class="material-symbols-outlined">contact_page</span>
-  <div id="rcb-fab-badge"></div>
-</button>
-
-<!-- Panel -->
-<div id="rcb-panel">
-  <div class="rcb-header">
-    <div class="rcb-header-av"><span class="material-symbols-outlined" style="font-size:20px">person</span></div>
-    <div>
-      <div class="rcb-header-name">Resume Assistant</div>
-      <div class="rcb-header-status">Online · Ask about Raymond's CV</div>
-    </div>
-    <button class="rcb-close" onclick="rcbToggle()"><span class="material-symbols-outlined" style="font-size:20px">close</span></button>
-  </div>
-
-  <div class="rcb-msgs" id="rcb-msgs">
-    <div class="rcb-welcome" id="rcb-welcome">
-      <div class="rcb-welcome-icon"><span class="material-symbols-outlined">badge</span></div>
-      <h3>Hi! I'm Raymond's CV Bot</h3>
-      <p>Ask me about his experience, skills, education, or anything on this resume.</p>
-      <div class="rcb-chips" id="rcb-chips">
-        <button class="rcb-chip" onclick="rcbQuick(this)">What's his current role?</button>
-        <button class="rcb-chip" onclick="rcbQuick(this)">What are his skills?</button>
-        <button class="rcb-chip" onclick="rcbQuick(this)">Where did he study?</button>
-        <button class="rcb-chip" onclick="rcbQuick(this)">How many years of experience?</button>
-        <button class="rcb-chip" onclick="rcbQuick(this)">Is he open to work?</button>
-        <button class="rcb-chip" onclick="rcbQuick(this)">What tools does he use?</button>
+  <!-- NAV -->
+  <nav class="fixed top-0 w-full z-50 backdrop-blur-2xl bg-bg/80 border-b border-border/40">
+    <div class="max-w-7xl mx-auto flex justify-between items-center px-8 h-[68px]">
+      <a href="index.html" class="font-display text-xl font-800 tracking-tight text-cream">RCP<span
+          class="text-accent">.</span></a>
+      <div class="hidden md:flex items-center gap-9">
+        <a href="index.html" class="nl text-[13px] font-medium text-subtle hover:text-cream transition-colors">Home</a>
+        <a href="index.html#services"
+          class="nl text-[13px] font-medium text-subtle hover:text-cream transition-colors">Services</a>
+        <a href="index.html#projects"
+          class="nl text-[13px] font-medium text-subtle hover:text-cream transition-colors">Projects</a>
+        <a href="#" class="text-[13px] font-semibold text-accent">Resume</a>
+      </div>
+      <div class="flex items-center gap-3">
+        <a href="index.html#contact" class="cta-nav cta-nav-desktop">
+          <span class="cta-dot"></span>Let's Work Together
+        </a>
+        <button class="ham-btn" id="ham-btn" onclick="toggleMobMenu()" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </div>
+  </nav>
+  <div id="mob-menu">
+    <a href="index.html">Home</a>
+    <a href="index.html#services">Services</a>
+    <a href="index.html#projects">Projects</a>
+    <a href="#" style="color:#c47a1e;font-weight:600;">Resume</a>
+    <a href="index.html#contact" class="cta-nav" style="margin-top:8px;justify-content:center;"><span
+        class="cta-dot"></span>Let's Work Together</a>
   </div>
 
-  <div class="rcb-input-bar">
-    <input type="text" id="rcb-input" placeholder="Ask about the resume…" maxlength="400" onkeydown="if(event.key==='Enter')rcbSend()"/>
-    <button class="rcb-send" id="rcb-send-btn" onclick="rcbSend()"><span class="material-symbols-outlined">arrow_upward</span></button>
+  <!-- HERO -->
+  <section class="relative z-10 pt-32 pb-10 px-4 md:px-8">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-14 items-center sr">
+      <div class="lg:col-span-3">
+        <div class="relative group resume-photo-wrap">
+          <div
+            class="absolute -inset-2 rounded-[24px] bg-gradient-to-br from-accent/10 to-transparent opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500">
+          </div>
+          <div class="relative rounded-2xl overflow-hidden border border-border shadow-lg"><img alt="Raymond Paredes"
+              class="w-full aspect-square object-cover"
+              src="https://drive.google.com/thumbnail?id=1MR9K7vosU9jJSjb_uJ-ZgEh_zO18_t_A&view?sz=1000" /></div>
+        </div>
+      </div>
+      <div class="lg:col-span-9 space-y-5">
+        <div>
+          <h1 class="font-display font-800 text-[clamp(2rem,5vw,3.5rem)] leading-[1.1] tracking-tight text-cream">
+            Raymond Paredes</h1>
+          <p class="font-mono text-[12px] text-accent tracking-wider uppercase mt-2">Data Analyst · Operations Architect
+            · Procurement Lead</p>
+        </div>
+        <p class="text-subtle text-lg leading-relaxed max-w-2xl">Data analytics specialist who transforms raw
+          operational data into decision-ready dashboards and automates the manual processes that slow teams down. Based
+          in Metro Manila, Philippines.</p>
+        <div class="flex flex-wrap gap-3 md:gap-6 pt-1">
+          <div class="flex items-center gap-2"><span
+              class="material-symbols-outlined text-accent text-lg">mail</span><span
+              class="text-sm text-warm">reiman.par@gmail.com</span></div>
+          <div class="flex items-center gap-2"><span
+              class="material-symbols-outlined text-accent text-lg">location_on</span><span
+              class="text-sm text-warm">Manila, PH · Remote</span></div>
+          <div class="flex items-center gap-2"><span class="material-symbols-outlined text-accent text-lg">link</span><a
+              href="https://www.linkedin.com/in/raymond-paredes-805b5415a/"
+              class="text-sm text-warm hover:text-accent transition-colors">LinkedIn</a></div>
+        </div>
+        <div class="flex flex-wrap gap-3 pt-2">
+          <div class="stat-pill"><span class="stat-val">5+</span><span class="text-xs text-warm">Years</span></div>
+          <div class="stat-pill"><span class="stat-val">30+</span><span class="text-xs text-warm">Projects</span></div>
+          <div class="stat-pill"><span class="stat-val">50+</span><span class="text-xs text-warm">Workflows</span></div>
+          <div class="stat-pill"><span class="stat-val">20+</span><span class="text-xs text-warm">Dashboards</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="relative z-10 max-w-7xl mx-auto px-4 md:px-8 py-14 md:py-20">
+    <div class="text-center mb-14 sr">
+      <h2 class="font-display font-800 text-3xl md:text-4xl tracking-tight text-cream">Professional experience</h2>
+      <p class="text-subtle mt-3 max-w-xl mx-auto">A progression from procurement operations to data analytics and
+        workflow automation leadership.</p>
+    </div>
+    <div class="relative max-w-3xl mx-auto pl-14 md:pl-16">
+      <div class="tl-line"></div>
+      <!-- Role 1 -->
+      <div class="tl-item relative pb-14 sr">
+        <div class="tl-dot"></div>
+        <div class="feat-card ml-6">
+          <div class="flex flex-wrap items-center gap-3 mb-1">
+            <span
+              class="font-mono text-[10px] bg-accent/10 text-accent px-3 py-1 rounded-full font-medium tracking-wider uppercase border border-accent/20">2024
+              — 2025</span>
+          </div>
+          <h3 class="font-display font-700 text-xl text-cream mb-0.5">Data Analytics</h3>
+          <p class="font-mono text-[11px] text-accent tracking-wider uppercase mb-3">IPM Construction &amp; Development
+            Corp</p>
+
+          <div class="role-divider"></div>
+
+          <!-- Problem Statement -->
+          <div class="role-section-label">Problem Statement</div>
+          <p class="role-problem">Leadership was waiting days for reports that existed somewhere in spreadsheets. KPIs
+            were defined differently across departments, and no single source of truth existed for procurement spend,
+            vendor performance, or operational efficiency.</p>
+
+          <div class="role-divider" style="margin-top:16px;"></div>
+
+          <!-- How It Worked -->
+          <div class="role-section-label">Methodology</div>
+          <ul class="role-how-list" style="margin-bottom:0;">
+            <li><span class="rnum">1</span><span><b>BI Dashboard Development:</b> Built and maintained Power BI reports
+                with DAX-optimised measures — pulling from structured data pipelines for real-time operational
+                visibility.</span></li>
+            <li><span class="rnum">2</span><span><b>Automated Extraction &amp; Reporting:</b> Replaced manual data pulls
+                with n8n and Google Apps Script pipelines that ran on schedule and delivered clean outputs directly to
+                stakeholders.</span></li>
+            <li><span class="rnum">3</span><span><b>Statistical Trend Analysis:</b> Identified seasonal patterns and
+                procurement anomalies using descriptive statistics to feed into project management strategy
+                adjustments.</span></li>
+            <li><span class="rnum">4</span><span><b>Cross-Functional KPI Engineering:</b> Facilitated workshops to align
+                department heads on shared metric definitions, then codified those KPIs into the central data
+                model.</span></li>
+            <li><span class="rnum">5</span><span><b>Executive Dashboard:</b> Built a C-suite-facing operational overview
+                that surfaced overhead cost drivers and enabled same-day decision-making without analyst
+                dependency.</span></li>
+          </ul>
+
+          <div class="role-divider" style="margin-top:16px;"></div>
+
+          <!-- Metrics -->
+          <div class="role-section-label">Performance Metrics</div>
+          <div class="role-metrics-grid" style="margin-bottom:0;">
+            <div class="role-metric-card">
+              <div class="role-metric-val">40%</div>
+              <div class="role-metric-lbl">Data Accessibility</div>
+              <div class="role-metric-ctx">BI dashboards replaced scattered spreadsheets as the single source of truth
+              </div>
+            </div>
+            <div class="role-metric-card">
+              <div class="role-metric-val">15h+</div>
+              <div class="role-metric-lbl">Saved Weekly</div>
+              <div class="role-metric-ctx">Automated extraction and reporting workflows eliminated manual data pulls
+              </div>
+            </div>
+            <div class="role-metric-card">
+              <div class="role-metric-val">18%</div>
+              <div class="role-metric-lbl">Cost Reduction</div>
+              <div class="role-metric-ctx">Executive dashboard surfaced overhead inefficiencies for immediate action
+              </div>
+            </div>
+          </div>
+
+          <div class="role-divider" style="margin-top:14px;"></div>
+
+          <!-- Business Impact -->
+          <div class="role-impact">
+            <div class="role-impact-lbl">Business Impact</div>
+            <p class="role-impact-txt">Transformed reporting from a weekly email cycle into a live operational layer.
+              Leadership moved from <strong>requesting data to acting on it the same day</strong>. KPI alignment across
+              teams delivered a <strong>20% efficiency gain</strong>, and statistical trend analysis contributed a
+              <strong>10% improvement in project management accuracy</strong>.</p>
+          </div>
+
+          <div class="flex flex-wrap gap-2 mt-4"><span class="mt">Power BI</span><span class="mt">DAX</span><span
+              class="mt">n8n</span><span class="mt">KPI Engineering</span><span class="mt">Data Automation</span></div>
+        </div>
+      </div>
+      <!-- Role 2 -->
+      <div class="tl-item relative pb-14 sr">
+        <div class="tl-dot"></div>
+        <div class="feat-card ml-6">
+          <div class="flex flex-wrap items-center gap-3 mb-1">
+            <span class="font-mono text-[11px] text-muted tracking-wider">2021 — 2023</span>
+          </div>
+          <h3 class="font-display font-700 text-xl text-cream mb-0.5">Admin Operations</h3>
+          <p class="font-mono text-[11px] text-accent tracking-wider uppercase mb-3">IPM Construction &amp; Development
+            Corp</p>
+
+          <div class="role-divider"></div>
+
+          <!-- Problem Statement -->
+          <div class="role-section-label">Problem Statement</div>
+          <p class="role-problem">Documents were scattered across departments with no unified retrieval system.
+            Procurement was siloed per office, vendor onboarding took weeks, and expense reporting was entirely manual —
+            creating delays, errors, and unnecessary overhead at every step.</p>
+
+          <div class="role-divider" style="margin-top:16px;"></div>
+
+          <!-- Methodology -->
+          <div class="role-section-label">Methodology</div>
+          <ul class="role-how-list" style="margin-bottom:0;">
+            <li><span class="rnum">1</span><span><b>Document Management Redesign:</b> Restructured filing taxonomy and
+                introduced a standardised retrieval system across 3 departments — indexed by project, type, and
+                date.</span></li>
+            <li><span class="rnum">2</span><span><b>Procurement Consolidation:</b> Unified purchasing workflows across
+                multiple offices into a single vendor negotiation framework, enabling bulk purchasing agreements.</span>
+            </li>
+            <li><span class="rnum">3</span><span><b>Vendor Onboarding Overhaul:</b> Mapped the legacy 2-week approval
+                chain, identified bottlenecks, and redesigned the process with parallel approvals and digital submission
+                — cutting time by 85%.</span></li>
+            <li><span class="rnum">4</span><span><b>Automated Expense Reporting:</b> Replaced manual spreadsheet
+                submission with an automated pipeline — expenses were routed, validated, and logged without manual
+                intervention.</span></li>
+          </ul>
+
+          <div class="role-divider" style="margin-top:16px;"></div>
+
+          <!-- Metrics -->
+          <div class="role-section-label">Performance Metrics</div>
+          <div class="role-metrics-grid" style="margin-bottom:0;">
+            <div class="role-metric-card">
+              <div class="role-metric-val">60%</div>
+              <div class="role-metric-lbl">Retrieval Time Cut</div>
+              <div class="role-metric-ctx">Unified document system across 3 departments replaced ad-hoc file searches
+              </div>
+            </div>
+            <div class="role-metric-card">
+              <div class="role-metric-val">25%</div>
+              <div class="role-metric-lbl">Cost Savings</div>
+              <div class="role-metric-ctx">Bulk purchasing agreements unlocked through consolidated procurement
+                workflows</div>
+            </div>
+            <div class="role-metric-card">
+              <div class="role-metric-val">2w → 3d</div>
+              <div class="role-metric-lbl">Vendor Onboarding</div>
+              <div class="role-metric-ctx">Approval cycle redesigned from 14 days to 3 while maintaining compliance
+                standards</div>
+            </div>
+          </div>
+
+          <div class="role-divider" style="margin-top:14px;"></div>
+
+          <!-- Business Impact -->
+          <div class="role-impact">
+            <div class="role-impact-lbl">Business Impact</div>
+            <p class="role-impact-txt">Operational overhead dropped across every department touched. Expense reporting
+              automation saved <strong>15 hours of manual processing per week</strong> and cut error rates by
+              <strong>40%</strong>. Vendor onboarding speed meant procurement could respond to site demands in days —
+              not weeks — keeping projects on schedule.</p>
+          </div>
+
+          <div class="flex flex-wrap gap-2 mt-4"><span class="mt">Process Design</span><span
+              class="mt">Procurement</span><span class="mt">Workflow Automation</span><span class="mt">Operations</span>
+          </div>
+        </div>
+      </div>
+      <!-- Role 3 -->
+      <div class="tl-item relative pb-4 sr">
+        <div class="tl-dot"></div>
+        <div class="feat-card ml-6">
+          <div class="flex flex-wrap items-center gap-3 mb-1">
+            <span class="font-mono text-[11px] text-muted tracking-wider">2018 — 2020</span>
+          </div>
+          <h3 class="font-display font-700 text-xl text-cream mb-0.5">Procurement</h3>
+          <p class="font-mono text-[11px] text-accent tracking-wider uppercase mb-3">IPM Construction &amp; Development
+            Corp</p>
+
+          <div class="role-divider"></div>
+
+          <!-- Problem Statement -->
+          <div class="role-section-label">Problem Statement</div>
+          <p class="role-problem">Vendor pricing was tracked informally with no structured system, leaving negotiation
+            leverage on the table. Supplier discovery was slow and entirely manual — limiting procurement options when
+            projects needed materials fast.</p>
+
+          <div class="role-divider" style="margin-top:16px;"></div>
+
+          <!-- Methodology -->
+          <div class="role-section-label">Methodology</div>
+          <ul class="role-how-list" style="margin-bottom:0;">
+            <li><span class="rnum">1</span><span><b>Vendor &amp; Price Monitoring Database:</b> Built a structured
+                vendor database tracking quotes, delivery history, and price trends — enabling data-driven negotiation
+                backed by historical benchmarks.</span></li>
+            <li><span class="rnum">2</span><span><b>Supplier Relationship Management:</b> Established preferred supplier
+                agreements through consistent engagement and payment reliability — securing priority delivery slots and
+                preferred pricing tiers.</span></li>
+            <li><span class="rnum">3</span><span><b>Web Scraping Automation for Lead Sourcing:</b> Built a large-scale
+                scraping pipeline to systematically discover new suppliers across the Metro Manila construction
+                materials market — replacing ad-hoc manual search entirely.</span></li>
+          </ul>
+
+          <div class="role-divider" style="margin-top:16px;"></div>
+
+          <!-- Metrics -->
+          <div class="role-section-label">Performance Metrics</div>
+          <div class="role-metrics-grid" style="margin-bottom:0;">
+            <div class="role-metric-card">
+              <div class="role-metric-val">10%</div>
+              <div class="role-metric-lbl">Price Reduction</div>
+              <div class="role-metric-ctx">Vendor database insights enabled data-backed negotiation of buying price
+              </div>
+            </div>
+            <div class="role-metric-card">
+              <div class="role-metric-val">0 delay</div>
+              <div class="role-metric-lbl">Supplier Pipeline</div>
+              <div class="role-metric-ctx">Automated scraper kept a live list of qualified lead suppliers at all times
+              </div>
+            </div>
+            <div class="role-metric-card">
+              <div class="role-metric-val">Faster</div>
+              <div class="role-metric-lbl">Delivery Times</div>
+              <div class="role-metric-ctx">Trusted supply partnerships secured priority delivery for critical site
+                materials</div>
+            </div>
+          </div>
+
+          <div class="role-divider" style="margin-top:14px;"></div>
+
+          <!-- Business Impact -->
+          <div class="role-impact">
+            <div class="role-impact-lbl">Business Impact</div>
+            <p class="role-impact-txt">This role established the data mindset that defined Raymond's entire career
+              trajectory. <strong>Turning procurement into a data problem</strong> — building a vendor database,
+              monitoring prices, and automating supplier discovery — produced a <strong>10% buying price
+                reduction</strong> and an always-ready pipeline of qualified suppliers, eliminating procurement delays
+              on active construction sites.</p>
+          </div>
+
+          <div class="flex flex-wrap gap-2 mt-4"><span class="mt">Vendor Management</span><span class="mt">Price
+              Analysis</span><span class="mt">Web Scraping</span><span class="mt">Supplier Sourcing</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="relative z-10 max-w-7xl mx-auto px-4 md:px-8 py-14 md:py-20">
+    <div class="text-center mb-14 sr">
+      <h2 class="font-display font-800 text-3xl md:text-4xl tracking-tight text-cream">Technical skills</h2>
+      <p class="text-subtle mt-3 max-w-xl mx-auto">Three core competency areas — analytics, automation, and data
+        infrastructure.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="feat-card sr">
+        <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-5"><span
+            class="material-symbols-outlined text-accent text-xl">analytics</span></div>
+        <h3 class="font-display font-700 text-lg text-cream mb-4">Analytics &amp; BI</h3>
+        <div class="space-y-2.5 mb-5">
+          <div class="bdot"><span class="text-sm text-warm">Advanced Power BI (DAX, M, TMDL)</span></div>
+          <div class="bdot"><span class="text-sm text-warm">SQL (PostgreSQL, Supabase)</span></div>
+          <div class="bdot"><span class="text-sm text-warm">Statistical trend analysis</span></div>
+          <div class="bdot"><span class="text-sm text-warm">KPI engineering</span></div>
+          <div class="bdot"><span class="text-sm text-warm">Excel &amp; Google Sheets (advanced)</span></div>
+        </div>
+        <div class="flex flex-wrap gap-2"><span class="mt">Power BI</span><span class="mt">DAX</span><span
+            class="mt">SQL</span><span class="mt">Excel</span></div>
+      </div>
+      <div class="feat-card sr d1">
+        <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-5"><span
+            class="material-symbols-outlined text-accent text-xl">account_tree</span></div>
+        <h3 class="font-display font-700 text-lg text-cream mb-4">Automation &amp; ETL</h3>
+        <div class="space-y-2.5 mb-5">
+          <div class="bdot"><span class="text-sm text-warm">n8n workflow orchestration</span></div>
+          <div class="bdot"><span class="text-sm text-warm">Google Apps Script (Gmail, Calendar, Sheets)</span></div>
+          <div class="bdot"><span class="text-sm text-warm">Python/Javascript/regex &amp; OCR Document Parsing</span>
+          </div>
+          <div class="bdot"><span class="text-sm text-warm">RESTful API integration</span></div>
+          <div class="bdot"><span class="text-sm text-warm">Web scraping (Firecrawl, BeautifulSoup)</span></div>
+        </div>
+        <div class="flex flex-wrap gap-2"><span class="mt">n8n</span><span class="mt">GAS</span><span
+            class="mt">Python</span><span class="mt">Regex</span></div>
+      </div>
+      <div class="feat-card sr d2">
+        <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-5"><span
+            class="material-symbols-outlined text-accent text-xl">dns</span></div>
+        <h3 class="font-display font-700 text-lg text-cream mb-4">Infrastructure &amp; Knowledge</h3>
+        <div class="space-y-2.5 mb-5">
+          <div class="bdot"><span class="text-sm text-warm">Docker containerization</span></div>
+          <div class="bdot"><span class="text-sm text-warm">Tailscale mesh networking</span></div>
+          <div class="bdot"><span class="text-sm text-warm">MongoDB, Supabase, Nginx</span></div>
+          <div class="bdot"><span class="text-sm text-warm">Obsidian vault architecture</span></div>
+          <div class="bdot"><span class="text-sm text-warm">BPMN 2.0 &amp; Mermaid diagrams</span></div>
+        </div>
+        <div class="flex flex-wrap gap-2"><span class="mt">Docker</span><span class="mt">Obsidian</span><span
+            class="mt">BPMN</span><span class="mt">Mermaid</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section class="relative z-10 max-w-7xl mx-auto px-8 py-20">
+    <div class="text-center mb-14 sr">
+      <h2 class="font-display font-800 text-3xl md:text-4xl tracking-tight text-cream">Education</h2>
+    </div>
+    <div class="max-w-3xl mx-auto sr">
+      <div class="feat-card">
+        <div class="flex flex-col md:flex-row items-center gap-8">
+          <div
+            class="w-20 h-20 rounded-2xl bg-surface border border-border flex items-center justify-center p-3 shrink-0">
+            <img alt="De La Salle College of Saint Benilde" class="w-full h-full object-contain"
+              src="https://upload.wikimedia.org/wikipedia/en/thumb/a/af/DLSCSB_seal.svg/1200px-DLSCSB_seal.svg.png" />
+          </div>
+          <div class="flex-grow text-center md:text-left">
+            <h3 class="font-display font-700 text-xl text-cream mb-1">BS Business Administration &amp; Export Management
+            </h3>
+            <p class="text-subtle text-sm mb-3">De La Salle College of Saint Benilde</p>
+            <p class="text-subtle text-sm mb-3">Major in Business Analytics and Enthusiast in Operation Analytics</p>
+            <div class="flex flex-wrap justify-center md:justify-start gap-4">
+              <div class="flex items-center gap-2"><span
+                  class="material-symbols-outlined text-accent text-sm">calendar_today</span><span
+                  class="text-xs text-muted font-medium">Class of 2017</span></div>
+              <div class="flex items-center gap-2"><span
+                  class="material-symbols-outlined text-accent text-sm">verified</span><span
+                  class="text-xs text-muted font-medium">Verified</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="relative z-10 max-w-7xl mx-auto px-8 py-12 sr">
+    <div class="bg-surface rounded-3xl p-10 md:p-14 text-center"
+      style="background-image:radial-gradient(circle,#c4b8a8 .5px,transparent .5px);background-size:22px 22px">
+      <h3 class="font-display font-800 text-2xl md:text-3xl tracking-tight text-cream mb-4">Ready to work together?</h3>
+      <p class="text-warm max-w-xl mx-auto mb-6">I'm open to project collaborations, full-time roles, and freelance
+        opportunities in data analytics and workflow automation.</p>
+      <div class="flex flex-wrap justify-center gap-3">
+        <a href="index.html#contact" class="cta-primary px-7 py-3 text-[14px]">
+          <span class="material-symbols-outlined text-base" style="opacity:.85">bolt</span>
+          Start a Conversation
+          <span class="material-symbols-outlined text-base cta-arrow">arrow_forward</span>
+        </a>
+        <a href="index.html#projects" class="cta-secondary px-7 py-3 text-[14px]" style="border-color:#d5cfc5;">
+          View Portfolio
+          <span class="material-symbols-outlined text-base cta-arrow">open_in_new</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="relative z-10 border-t border-border mt-12">
+    <div class="max-w-7xl mx-auto px-8 py-14">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-10 mb-12">
+        <div>
+          <h5 class="font-display font-700 text-sm text-cream mb-4">Services</h5>
+          <div class="space-y-2.5"><a href="index-clay.html#services"
+              class="block text-sm text-muted hover:text-accent transition-colors">Analytics Dashboards</a><a
+              href="index-clay.html#services"
+              class="block text-sm text-muted hover:text-accent transition-colors">Workflow Automation</a><a
+              href="index-clay.html#services"
+              class="block text-sm text-muted hover:text-accent transition-colors">Knowledge Systems</a></div>
+        </div>
+        <div>
+          <h5 class="font-display font-700 text-sm text-cream mb-4">Tools</h5>
+          <div class="space-y-2.5"><span class="block text-sm text-muted">Power BI / DAX</span><span
+              class="block text-sm text-muted">n8n / Docker</span><span class="block text-sm text-muted">Google Apps
+              Script</span><span class="block text-sm text-muted">Obsidian / BPMN</span></div>
+        </div>
+        <div>
+          <h5 class="font-display font-700 text-sm text-cream mb-4">Projects</h5>
+          <div class="space-y-2.5"><a href="index-clay.html#projects"
+              class="block text-sm text-muted hover:text-accent transition-colors">Procurement Dashboard</a><a
+              href="index-clay.html#projects" class="block text-sm text-muted hover:text-accent transition-colors">Bank
+              Statement Pipeline</a><a href="index-clay.html#projects"
+              class="block text-sm text-muted hover:text-accent transition-colors">Self-Hosted Stack</a></div>
+        </div>
+        <div>
+          <h5 class="font-display font-700 text-sm text-cream mb-4">Connect</h5>
+          <div class="space-y-2.5"><a href="https://www.linkedin.com/in/raymond-paredes-805b5415a/"
+              class="block text-sm text-muted hover:text-accent transition-colors">LinkedIn</a><a href="#"
+              class="block text-sm text-muted hover:text-accent transition-colors">GitHub</a><a
+              href="index-clay.html#contact"
+              class="block text-sm text-muted hover:text-accent transition-colors">Contact</a></div>
+        </div>
+      </div>
+      <div class="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-border gap-4">
+        <div class="font-display font-800 text-lg text-cream">RCP<span class="text-accent">.</span></div>
+        <p class="font-mono text-[11px] text-muted/60 tracking-wider uppercase">&copy; 2026 Raymond Paredes — Metro
+          Manila, Philippines</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>addEventListener('scroll', () => { document.getElementById('scroll-bar').style.width = (scrollY / (document.documentElement.scrollHeight - innerHeight)) * 100 + '%' });</script>
+  <script>document.addEventListener('DOMContentLoaded', () => { const o = new IntersectionObserver(e => { e.forEach(x => { if (x.isIntersecting) { x.target.classList.add('v'); o.unobserve(x.target) } }) }, { threshold: .06 }); document.querySelectorAll('.sr').forEach(el => o.observe(el)) });</script>
+
+  <!-- ═══════════════════════════════════════════
+     RESUME CHATBOT WIDGET
+     ═══════════════════════════════════════════ -->
+  <style>
+    /* FAB */
+    #rcb-fab {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 9990;
+      width: 56px;
+      height: 56px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #c47a1e, #e8973e);
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 32px -4px rgba(196, 122, 30, .40);
+      transition: all .35s cubic-bezier(.16, 1, .3, 1)
+    }
+
+    #rcb-fab:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 12px 40px -4px rgba(196, 122, 30, .50)
+    }
+
+    #rcb-fab .material-symbols-outlined {
+      font-size: 26px;
+      transition: transform .3s
+    }
+
+    #rcb-fab.open .material-symbols-outlined {
+      transform: rotate(90deg)
+    }
+
+    #rcb-fab-badge {
+      position: absolute;
+      top: -2px;
+      right: -2px;
+      width: 14px;
+      height: 14px;
+      background: #16a34a;
+      border: 2px solid #f8f7f4;
+      border-radius: 50%;
+      animation: rcbFabPulse 2.5s ease-in-out infinite
+    }
+
+    @keyframes rcbFabPulse {
+
+      0%,
+      100% {
+        box-shadow: 0 0 0 0 rgba(22, 163, 74, .4)
+      }
+
+      50% {
+        box-shadow: 0 0 0 5px rgba(22, 163, 74, 0)
+      }
+    }
+
+    /* Panel */
+    #rcb-panel {
+      position: fixed;
+      bottom: 96px;
+      right: 28px;
+      z-index: 9989;
+      width: 390px;
+      max-width: calc(100vw - 32px);
+      height: 520px;
+      max-height: calc(100dvh - 130px);
+      background: #f8f7f4;
+      border: 1px solid #e2ddd5;
+      border-radius: 24px;
+      box-shadow: 0 24px 80px -12px rgba(26, 24, 22, .18), 0 0 0 1px rgba(226, 221, 213, .5);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(16px) scale(.96);
+      pointer-events: none;
+      transition: opacity .3s cubic-bezier(.16, 1, .3, 1), transform .3s cubic-bezier(.16, 1, .3, 1)
+    }
+
+    #rcb-panel.open {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      pointer-events: auto
+    }
+
+    @media(max-width:480px) {
+      #rcb-panel {
+        right: 8px;
+        bottom: 88px;
+        width: calc(100vw - 16px);
+        height: calc(100dvh - 110px);
+        border-radius: 20px
+      }
+
+      #rcb-fab {
+        bottom: 20px;
+        right: 16px;
+        width: 50px;
+        height: 50px;
+        border-radius: 16px
+      }
+    }
+
+    /* Header */
+    .rcb-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 18px;
+      background: #fff;
+      border-bottom: 1px solid #e2ddd5;
+      flex-shrink: 0
+    }
+
+    .rcb-header-av {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #c47a1e, #e8973e);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 18px;
+      flex-shrink: 0
+    }
+
+    .rcb-header-name {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      color: #1a1816
+    }
+
+    .rcb-header-status {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: #999590;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 1px
+    }
+
+    .rcb-header-status::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #16a34a;
+      flex-shrink: 0
+    }
+
+    .rcb-close {
+      margin-left: auto;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      color: #999590;
+      display: flex;
+      align-items: center;
+      transition: color .2s;
+      padding: 4px;
+      border-radius: 8px
+    }
+
+    .rcb-close:hover {
+      color: #1a1816;
+      background: #f0eee9
+    }
+
+    /* Messages */
+    .rcb-msgs {
+      flex: 1;
+      overflow-y: auto;
+      padding: 14px 14px 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      scroll-behavior: smooth
+    }
+
+    .rcb-msgs::-webkit-scrollbar {
+      width: 3px
+    }
+
+    .rcb-msgs::-webkit-scrollbar-thumb {
+      background: #e2ddd5;
+      border-radius: 99px
+    }
+
+    /* Welcome */
+    .rcb-welcome {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 18px 8px 10px;
+      gap: 8px
+    }
+
+    .rcb-welcome-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, #fdf6ec, #fce8c8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #c47a1e;
+      font-size: 26px;
+      margin-bottom: 4px
+    }
+
+    .rcb-welcome h3 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 17px;
+      color: #1a1816;
+      margin: 0
+    }
+
+    .rcb-welcome p {
+      font-family: 'Outfit', sans-serif;
+      font-size: 13px;
+      color: #6b6660;
+      margin: 0;
+      line-height: 1.5;
+      max-width: 280px
+    }
+
+    .rcb-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      justify-content: center;
+      margin-top: 8px
+    }
+
+    .rcb-chip {
+      padding: 6px 12px;
+      background: #fff;
+      border: 1px solid #e2ddd5;
+      border-radius: 999px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      color: #6b6660;
+      cursor: pointer;
+      transition: all .2s;
+      white-space: nowrap;
+      text-align: left
+    }
+
+    .rcb-chip:hover {
+      border-color: #c47a1e;
+      color: #c47a1e;
+      background: #fdf6ec
+    }
+
+    /* Rows */
+    .rcb-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px
+    }
+
+    .rcb-row.user {
+      flex-direction: row-reverse
+    }
+
+    .rcb-av {
+      width: 28px;
+      height: 28px;
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      flex-shrink: 0
+    }
+
+    .rcb-av.user {
+      background: #1a1816;
+      color: #fff
+    }
+
+    .rcb-av.bot {
+      background: linear-gradient(135deg, #fdf6ec, #fce8c8);
+      color: #c47a1e
+    }
+
+    .rcb-bubble {
+      padding: 9px 13px;
+      border-radius: 16px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 13px;
+      line-height: 1.55;
+      max-width: 82%
+    }
+
+    .rcb-bubble p {
+      margin: 0
+    }
+
+    .rcb-bubble.user {
+      background: #1a1816;
+      color: #fff;
+      border-radius: 16px 16px 4px 16px
+    }
+
+    .rcb-bubble.bot {
+      background: #fff;
+      color: #3d3530;
+      border: 1px solid #e2ddd5;
+      border-radius: 4px 16px 16px 16px
+    }
+
+    .rcb-bubble.bot strong,
+    .rcb-bubble.bot b {
+      color: #c47a1e;
+      font-weight: 600
+    }
+
+    .rcb-bubble.bot a {
+      color: #c47a1e;
+      text-decoration: underline
+    }
+
+    /* Typing dots */
+    .rcb-typing {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+      padding: 2px 0
+    }
+
+    .rcb-typing i {
+      display: block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #c4b8a8;
+      animation: rcbDot 1.2s ease-in-out infinite
+    }
+
+    .rcb-typing i:nth-child(2) {
+      animation-delay: .2s
+    }
+
+    .rcb-typing i:nth-child(3) {
+      animation-delay: .4s
+    }
+
+    @keyframes rcbDot {
+
+      0%,
+      80%,
+      100% {
+        transform: scale(.7);
+        opacity: .4
+      }
+
+      40% {
+        transform: scale(1);
+        opacity: 1
+      }
+    }
+
+    /* Input bar */
+    .rcb-input-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 12px;
+      border-top: 1px solid #e2ddd5;
+      background: #fff;
+      flex-shrink: 0
+    }
+
+    .rcb-input-bar input {
+      flex: 1;
+      background: #f8f7f4;
+      border: 1px solid #e2ddd5;
+      border-radius: 12px;
+      padding: 9px 13px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 13px;
+      color: #1a1816;
+      outline: none;
+      transition: border-color .2s
+    }
+
+    .rcb-input-bar input:focus {
+      border-color: #c47a1e
+    }
+
+    .rcb-input-bar input::placeholder {
+      color: #999590
+    }
+
+    .rcb-send {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: #c47a1e;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background .2s
+    }
+
+    .rcb-send:hover {
+      background: #e8973e
+    }
+
+    .rcb-send .material-symbols-outlined {
+      font-size: 18px
+    }
+
+    .rcb-footer {
+      text-align: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      color: #c4b8a8;
+      padding: 6px 0 10px;
+      letter-spacing: .04em;
+      flex-shrink: 0;
+      background: #fff
+    }
+  </style>
+
+  <!-- FAB -->
+  <button id="rcb-fab" onclick="rcbToggle()" aria-label="Open resume assistant">
+    <span class="material-symbols-outlined">contact_page</span>
+    <div id="rcb-fab-badge"></div>
+  </button>
+
+  <!-- Panel -->
+  <div id="rcb-panel">
+    <div class="rcb-header">
+      <div class="rcb-header-av"><span class="material-symbols-outlined" style="font-size:20px">person</span></div>
+      <div>
+        <div class="rcb-header-name">Resume Assistant</div>
+        <div class="rcb-header-status">Online · Ask about Raymond's CV</div>
+      </div>
+      <button class="rcb-close" onclick="rcbToggle()"><span class="material-symbols-outlined"
+          style="font-size:20px">close</span></button>
+    </div>
+
+    <div class="rcb-msgs" id="rcb-msgs">
+      <div class="rcb-welcome" id="rcb-welcome">
+        <div class="rcb-welcome-icon"><span class="material-symbols-outlined">badge</span></div>
+        <h3>Hi! I'm Raymond's CV Bot</h3>
+        <p>Ask me about his experience, skills, education, or anything on this resume.</p>
+        <div class="rcb-chips" id="rcb-chips">
+          <button class="rcb-chip" onclick="rcbQuick(this)">What's his current role?</button>
+          <button class="rcb-chip" onclick="rcbQuick(this)">What are his skills?</button>
+          <button class="rcb-chip" onclick="rcbQuick(this)">Where did he study?</button>
+          <button class="rcb-chip" onclick="rcbQuick(this)">How many years of experience?</button>
+          <button class="rcb-chip" onclick="rcbQuick(this)">Is he open to work?</button>
+          <button class="rcb-chip" onclick="rcbQuick(this)">What tools does he use?</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="rcb-input-bar">
+      <input type="text" id="rcb-input" placeholder="Ask about the resume…" maxlength="400"
+        onkeydown="if(event.key==='Enter')rcbSend()" />
+      <button class="rcb-send" id="rcb-send-btn" onclick="rcbSend()"><span
+          class="material-symbols-outlined">arrow_upward</span></button>
+    </div>
+    <div class="rcb-footer">Resume Assistant · RCP Data Ops</div>
   </div>
-  <div class="rcb-footer">Resume Assistant · RCP Data Ops</div>
-</div>
 
-<script>
-(function(){
+  <script>
+    (function () {
 
-/* ═══════════════════════════════════════════════
-   RESUME-SPECIFIC PREDEFINED Q&A
-   ═══════════════════════════════════════════════ */
-const FAQ = [
+      /* ═══════════════════════════════════════════════
+         RESUME-SPECIFIC PREDEFINED Q&A
+         ═══════════════════════════════════════════════ */
+      const FAQ = [
 
-  /* ── IDENTITY / SUMMARY ── */
-  { keys:['who','raymond'],
-    answer:`<strong>Raymond Paredes (RCP)</strong> is a Data Analyst, Operations Architect, and Procurement Lead based in Metro Manila, Philippines. He transforms raw operational data into decision-ready dashboards and automates manual workflows. Currently working at IPM Construction &amp; Development Corp.` },
+        /* ── IDENTITY / SUMMARY ── */
+        {
+          keys: ['who', 'raymond'],
+          answer: `<strong>Raymond Paredes (RCP)</strong> is a Data Analyst, Operations Architect, and Procurement Lead based in Metro Manila, Philippines. He transforms raw operational data into decision-ready dashboards and automates manual workflows. Currently working at IPM Construction &amp; Development Corp.`
+        },
 
-  { keys:['summary','about','background'],
-    answer:`Raymond is a data analytics specialist with <strong>5+ years of experience</strong> spanning data analytics, admin operations, and procurement. He has delivered 30+ projects, 50+ automated workflows, and 20+ Power BI dashboards across his career at IPM Construction.` },
+        {
+          keys: ['summary', 'about', 'background'],
+          answer: `Raymond is a data analytics specialist with <strong>5+ years of experience</strong> spanning data analytics, admin operations, and procurement. He has delivered 30+ projects, 50+ automated workflows, and 20+ Power BI dashboards across his career at IPM Construction.`
+        },
 
-  /* ── EXPERIENCE ── */
-  { keys:['current','role'],
-    answer:`Raymond's most recent role is <strong>Data Analytics at IPM Construction (2024–2025)</strong>. Key highlights:<br><br>• Developed and maintained BI dashboards — improved data accessibility by 40%<br>• Automated extraction &amp; reporting workflows — saved 15+ hours of manual work weekly<br>• Statistical analysis that increased work efficiency by 10%<br>• Delivered executive dashboard that reduced overhead costs by 18%` },
+        /* ── EXPERIENCE ── */
+        {
+          keys: ['current', 'role'],
+          answer: `Raymond's most recent role is <strong>Data Analytics at IPM Construction (2024–2025)</strong>. Key highlights:<br><br>• Developed and maintained BI dashboards — improved data accessibility by 40%<br>• Automated extraction &amp; reporting workflows — saved 15+ hours of manual work weekly<br>• Statistical analysis that increased work efficiency by 10%<br>• Delivered executive dashboard that reduced overhead costs by 18%`
+        },
 
-  { keys:['experience','work','job','career','history'],
-    answer:`Raymond has 3 progressive roles at IPM Construction:<br><br>1️⃣ <strong>Data Analytics (2024–2025)</strong> — BI dashboards, automation, KPI reporting<br>2️⃣ <strong>Admin Operations (2021–2023)</strong> — Workflow design, procurement consolidation, expense automation<br>3️⃣ <strong>Procurement (2018–2020)</strong> — Vendor database, price monitoring, web scraping for supplier sourcing` },
+        {
+          keys: ['experience', 'work', 'job', 'career', 'history'],
+          answer: `Raymond has 3 progressive roles at IPM Construction:<br><br>1️⃣ <strong>Data Analytics (2024–2025)</strong> — BI dashboards, automation, KPI reporting<br>2️⃣ <strong>Admin Operations (2021–2023)</strong> — Workflow design, procurement consolidation, expense automation<br>3️⃣ <strong>Procurement (2018–2020)</strong> — Vendor database, price monitoring, web scraping for supplier sourcing`
+        },
 
-  { keys:['data analytic'],
-    answer:`As <strong>Data Analyst at IPM (2024–2025)</strong>, Raymond:<br><br>• Built BI dashboards improving data accessibility by <strong>40%</strong><br>• Automated reporting, saving <strong>15+ hours</strong> of manual work weekly<br>• Performed statistical trend analysis → <strong>10% efficiency increase</strong><br>• Collaborated cross-functionally on KPI definitions → <strong>20% efficiency gain</strong><br>• Delivered executive dashboard reducing overhead costs by <strong>18%</strong>` },
+        {
+          keys: ['data analytic'],
+          answer: `As <strong>Data Analyst at IPM (2024–2025)</strong>, Raymond:<br><br>• Built BI dashboards improving data accessibility by <strong>40%</strong><br>• Automated reporting, saving <strong>15+ hours</strong> of manual work weekly<br>• Performed statistical trend analysis → <strong>10% efficiency increase</strong><br>• Collaborated cross-functionally on KPI definitions → <strong>20% efficiency gain</strong><br>• Delivered executive dashboard reducing overhead costs by <strong>18%</strong>`
+        },
 
-  { keys:['admin','operation'],
-    answer:`As <strong>Admin Operations at IPM (2021–2023)</strong>, Raymond:<br><br>• Streamlined document management → reduced retrieval time by <strong>60%</strong><br>• Consolidated procurement across offices → <strong>25% cost savings</strong> via bulk purchasing<br>• Redesigned vendor onboarding → cut approval time from <strong>2 weeks to 3 days</strong><br>• Implemented automated expense reporting → saved <strong>15 hours/week</strong>, reduced errors by 40%` },
+        {
+          keys: ['admin', 'operation'],
+          answer: `As <strong>Admin Operations at IPM (2021–2023)</strong>, Raymond:<br><br>• Streamlined document management → reduced retrieval time by <strong>60%</strong><br>• Consolidated procurement across offices → <strong>25% cost savings</strong> via bulk purchasing<br>• Redesigned vendor onboarding → cut approval time from <strong>2 weeks to 3 days</strong><br>• Implemented automated expense reporting → saved <strong>15 hours/week</strong>, reduced errors by 40%`
+        },
 
-  { keys:['procurement'],
-    answer:`As <strong>Procurement at IPM (2018–2020)</strong>, Raymond:<br><br>• Built a vendor database &amp; price monitoring system → negotiated <strong>10% price reduction</strong><br>• Developed strong vendor relationships for faster delivery and supply partnerships<br>• Created a web scraping automation to discover new lead suppliers with no delay` },
+        {
+          keys: ['procurement'],
+          answer: `As <strong>Procurement at IPM (2018–2020)</strong>, Raymond:<br><br>• Built a vendor database &amp; price monitoring system → negotiated <strong>10% price reduction</strong><br>• Developed strong vendor relationships for faster delivery and supply partnerships<br>• Created a web scraping automation to discover new lead suppliers with no delay`
+        },
 
-  { keys:['ipm'],
-    answer:`Raymond has worked at <strong>IPM Construction &amp; Development Corp</strong> across three roles over his career:<br>• Procurement (2018–2020)<br>• Admin Operations (2021–2023)<br>• Data Analytics (2024–2025)<br><br>He is currently based there as their Data Analyst &amp; Operations Architect.` },
+        {
+          keys: ['ipm'],
+          answer: `Raymond has worked at <strong>IPM Construction &amp; Development Corp</strong> across three roles over his career:<br>• Procurement (2018–2020)<br>• Admin Operations (2021–2023)<br>• Data Analytics (2024–2025)<br><br>He is currently based there as their Data Analyst &amp; Operations Architect.`
+        },
 
-  { keys:['year','experience','long'],
-    answer:`Raymond has <strong>5+ years of professional experience</strong> at IPM Construction — progressing from Procurement (2018) through Admin Operations to Data Analytics (2024–2025). He's delivered 30+ projects and 50+ automated workflows across that period.` },
+        {
+          keys: ['year', 'experience', 'long'],
+          answer: `Raymond has <strong>5+ years of professional experience</strong> at IPM Construction — progressing from Procurement (2018) through Admin Operations to Data Analytics (2024–2025). He's delivered 30+ projects and 50+ automated workflows across that period.`
+        },
 
-  /* ── SKILLS ── */
-  { keys:['skill'],
-    answer:`Raymond's skills span three core areas:<br><br>📊 <strong>Analytics &amp; BI</strong> — Advanced Power BI (DAX, M, TMDL), SQL (PostgreSQL, Supabase), statistical analysis, KPI engineering, Excel &amp; Google Sheets (advanced)<br><br>⚙️ <strong>Automation &amp; ETL</strong> — n8n orchestration, Google Apps Script, Python/JS/Regex, OCR parsing, REST APIs, web scraping (Firecrawl, BeautifulSoup)<br><br>🏗️ <strong>Infrastructure &amp; Knowledge</strong> — Docker, Tailscale, MongoDB, Supabase, Nginx, Obsidian, BPMN 2.0, Mermaid` },
+        /* ── SKILLS ── */
+        {
+          keys: ['skill'],
+          answer: `Raymond's skills span three core areas:<br><br>📊 <strong>Analytics &amp; BI</strong> — Advanced Power BI (DAX, M, TMDL), SQL (PostgreSQL, Supabase), statistical analysis, KPI engineering, Excel &amp; Google Sheets (advanced)<br><br>⚙️ <strong>Automation &amp; ETL</strong> — n8n orchestration, Google Apps Script, Python/JS/Regex, OCR parsing, REST APIs, web scraping (Firecrawl, BeautifulSoup)<br><br>🏗️ <strong>Infrastructure &amp; Knowledge</strong> — Docker, Tailscale, MongoDB, Supabase, Nginx, Obsidian, BPMN 2.0, Mermaid`
+        },
 
-  { keys:['power bi','powerbi','dax'],
-    answer:`Raymond has <strong>advanced Power BI expertise</strong> including:<br>• DAX — 150+ measures authored (rolling averages, Top N, price variance, time intelligence)<br>• M (Power Query) — data transformation and ETL<br>• TMDL — version-controlled data model exports<br>• Drill-through pages with bookmark navigation<br>• Sub-second performance on 100K+ row datasets` },
+        {
+          keys: ['power bi', 'powerbi', 'dax'],
+          answer: `Raymond has <strong>advanced Power BI expertise</strong> including:<br>• DAX — 150+ measures authored (rolling averages, Top N, price variance, time intelligence)<br>• M (Power Query) — data transformation and ETL<br>• TMDL — version-controlled data model exports<br>• Drill-through pages with bookmark navigation<br>• Sub-second performance on 100K+ row datasets`
+        },
 
-  { keys:['python','javascript','regex','code','programm'],
-    answer:`Raymond codes in <strong>Python and JavaScript</strong>, primarily for automation and data extraction. He's proficient in regex-based OCR document parsing — building extractors for Philippine bank statements (BPI, BDO, UnionBank, Robinsons Bank) that normalise raw text into structured JSON.` },
+        {
+          keys: ['python', 'javascript', 'regex', 'code', 'programm'],
+          answer: `Raymond codes in <strong>Python and JavaScript</strong>, primarily for automation and data extraction. He's proficient in regex-based OCR document parsing — building extractors for Philippine bank statements (BPI, BDO, UnionBank, Robinsons Bank) that normalise raw text into structured JSON.`
+        },
 
-  { keys:['sql','database','postgres','supabase','mongo'],
-    answer:`Raymond works with <strong>SQL (PostgreSQL via Supabase)</strong> for structured data and <strong>MongoDB</strong> for document stores. He also uses Supabase as a backend with auth, and manages his self-hosted stack with these databases in Docker Compose.` },
+        {
+          keys: ['sql', 'database', 'postgres', 'supabase', 'mongo'],
+          answer: `Raymond works with <strong>SQL (PostgreSQL via Supabase)</strong> for structured data and <strong>MongoDB</strong> for document stores. He also uses Supabase as a backend with auth, and manages his self-hosted stack with these databases in Docker Compose.`
+        },
 
-  { keys:['docker','infrastructure','tailscale','nginx','server'],
-    answer:`Raymond self-hosts his full stack using <strong>Docker Compose</strong> — n8n, MongoDB, Supabase, and Nginx — secured via a <strong>Tailscale</strong> mesh VPN. This gives him secure remote access without exposing public ports. His infrastructure runs at 99.8% uptime.` },
+        {
+          keys: ['docker', 'infrastructure', 'tailscale', 'nginx', 'server'],
+          answer: `Raymond self-hosts his full stack using <strong>Docker Compose</strong> — n8n, MongoDB, Supabase, and Nginx — secured via a <strong>Tailscale</strong> mesh VPN. This gives him secure remote access without exposing public ports. His infrastructure runs at 99.8% uptime.`
+        },
 
-  { keys:['obsidian','knowledge','bpmn','mermaid'],
-    answer:`Raymond architects <strong>Obsidian knowledge vaults</strong> with 200+ MOC notes, organising processes across departments. He documents workflows using <strong>BPMN 2.0</strong> (rendered with bpmn-js) and <strong>Mermaid</strong> diagrams, plus Excalidraw for collaborative whiteboards.` },
+        {
+          keys: ['obsidian', 'knowledge', 'bpmn', 'mermaid'],
+          answer: `Raymond architects <strong>Obsidian knowledge vaults</strong> with 200+ MOC notes, organising processes across departments. He documents workflows using <strong>BPMN 2.0</strong> (rendered with bpmn-js) and <strong>Mermaid</strong> diagrams, plus Excalidraw for collaborative whiteboards.`
+        },
 
-  { keys:['google','apps script','gas','gmail','calendar','sheets'],
-    answer:`Raymond has built a full <strong>Google Apps Script automation suite</strong> covering:<br>• Gmail sender analysis &amp; auto-categorisation<br>• Calendar export to per-calendar Google Sheets<br>• Google Tasks auto-sync<br>• Gmail-to-n8n webhook integration for BPI bank transaction filtering` },
+        {
+          keys: ['google', 'apps script', 'gas', 'gmail', 'calendar', 'sheets'],
+          answer: `Raymond has built a full <strong>Google Apps Script automation suite</strong> covering:<br>• Gmail sender analysis &amp; auto-categorisation<br>• Calendar export to per-calendar Google Sheets<br>• Google Tasks auto-sync<br>• Gmail-to-n8n webhook integration for BPI bank transaction filtering`
+        },
 
-  { keys:['n8n','workflow','automation','pipeline'],
-    answer:`Raymond is an expert <strong>n8n workflow architect</strong> with 50+ pipelines built, including:<br>• Bank statement OCR parsers (BPI, BDO, UnionBank, Robinsons Bank)<br>• Gmail automation &amp; webhook triggers<br>• RAG pipelines with Qdrant + OpenAI<br>• Web scraping with Firecrawl<br>• Self-hosted on Docker + Tailscale at 99.8% uptime` },
+        {
+          keys: ['n8n', 'workflow', 'automation', 'pipeline'],
+          answer: `Raymond is an expert <strong>n8n workflow architect</strong> with 50+ pipelines built, including:<br>• Bank statement OCR parsers (BPI, BDO, UnionBank, Robinsons Bank)<br>• Gmail automation &amp; webhook triggers<br>• RAG pipelines with Qdrant + OpenAI<br>• Web scraping with Firecrawl<br>• Self-hosted on Docker + Tailscale at 99.8% uptime`
+        },
 
-  { keys:['web scrap','firecrawl','beautifulsoup'],
-    answer:`Raymond has built web scraping automations — both during his Procurement role (supplier discovery pipeline) and professionally using <strong>Firecrawl</strong> and <strong>BeautifulSoup</strong> in n8n workflows. These extract lead suppliers, product pricing, and structured data for procurement analysis.` },
+        {
+          keys: ['web scrap', 'firecrawl', 'beautifulsoup'],
+          answer: `Raymond has built web scraping automations — both during his Procurement role (supplier discovery pipeline) and professionally using <strong>Firecrawl</strong> and <strong>BeautifulSoup</strong> in n8n workflows. These extract lead suppliers, product pricing, and structured data for procurement analysis.`
+        },
 
-  { keys:['excel','spreadsheet','power query'],
-    answer:`Raymond has <strong>advanced Excel skills</strong> including Power Query for data transformation, complex formulas, and dashboard building. He built a Personal Finance Dashboard in Excel pulling from Philippine bank data (BPI, BDO, Metrobank) with automated categorisation.` },
+        {
+          keys: ['excel', 'spreadsheet', 'power query'],
+          answer: `Raymond has <strong>advanced Excel skills</strong> including Power Query for data transformation, complex formulas, and dashboard building. He built a Personal Finance Dashboard in Excel pulling from Philippine bank data (BPI, BDO, Metrobank) with automated categorisation.`
+        },
 
-  /* ── EDUCATION ── */
-  { keys:['education','study','school','university','college','degree'],
-    answer:`Raymond graduated with a <strong>BS in Business Administration &amp; Export Management</strong> from <strong>De La Salle College of Saint Benilde</strong>, Class of 2017. He majored in Business Analytics with a focus on Operations Analytics.` },
+        /* ── EDUCATION ── */
+        {
+          keys: ['education', 'study', 'school', 'university', 'college', 'degree'],
+          answer: `Raymond graduated with a <strong>BS in Business Administration &amp; Export Management</strong> from <strong>De La Salle College of Saint Benilde</strong>, Class of 2017. He majored in Business Analytics with a focus on Operations Analytics.`
+        },
 
-  { keys:['benilde','dlscsb','la salle'],
-    answer:`Raymond studied at <strong>De La Salle College of Saint Benilde (DLS-CSB)</strong> in Manila, graduating Class of 2017 with a degree in BS Business Administration &amp; Export Management, majoring in Business Analytics.` },
+        {
+          keys: ['benilde', 'dlscsb', 'la salle'],
+          answer: `Raymond studied at <strong>De La Salle College of Saint Benilde (DLS-CSB)</strong> in Manila, graduating Class of 2017 with a degree in BS Business Administration &amp; Export Management, majoring in Business Analytics.`
+        },
 
-  { keys:['2017','class of'],
-    answer:`Raymond graduated <strong>Class of 2017</strong> from De La Salle College of Saint Benilde with a BS in Business Administration &amp; Export Management, majoring in Business Analytics.` },
+        {
+          keys: ['2017', 'class of'],
+          answer: `Raymond graduated <strong>Class of 2017</strong> from De La Salle College of Saint Benilde with a BS in Business Administration &amp; Export Management, majoring in Business Analytics.`
+        },
 
-  /* ── CONTACT / AVAILABILITY ── */
-  { keys:['contact','email','reach','hire','message'],
-    answer:`You can reach Raymond at <strong>reiman.par@gmail.com</strong> or connect via his <a href="https://www.linkedin.com/in/raymond-paredes-805b5415a/" target="_blank">LinkedIn profile</a>. He's based in Manila, PH and is open to remote work.` },
+        /* ── CONTACT / AVAILABILITY ── */
+        {
+          keys: ['contact', 'email', 'reach', 'hire', 'message'],
+          answer: `You can reach Raymond at <strong>reiman.par@gmail.com</strong> or connect via his <a href="https://www.linkedin.com/in/raymond-paredes-805b5415a/" target="_blank">LinkedIn profile</a>. He's based in Manila, PH and is open to remote work.`
+        },
 
-  { keys:['open','available','freelance','opportunit','collaborat','work together'],
-    answer:`Yes! Raymond is <strong>open to project collaborations, full-time roles, and freelance opportunities</strong> in data analytics and workflow automation. You can reach him at reiman.par@gmail.com or use the contact form on his <a href="index.html#contact">portfolio site</a>.` },
+        {
+          keys: ['open', 'available', 'freelance', 'opportunit', 'collaborat', 'work together'],
+          answer: `Yes! Raymond is <strong>open to project collaborations, full-time roles, and freelance opportunities</strong> in data analytics and workflow automation. You can reach him at reiman.par@gmail.com or use the contact form on his <a href="index.html#contact">portfolio site</a>.`
+        },
 
-  { keys:['remote','location','manila','philippines','based'],
-    answer:`Raymond is based in <strong>Metro Manila, Philippines 🇵🇭</strong> and is open to both on-site and <strong>remote work</strong>. He currently works at IPM Construction and takes on freelance/consulting projects under the RCP Data Ops brand.` },
+        {
+          keys: ['remote', 'location', 'manila', 'philippines', 'based'],
+          answer: `Raymond is based in <strong>Metro Manila, Philippines 🇵🇭</strong> and is open to both on-site and <strong>remote work</strong>. He currently works at IPM Construction and takes on freelance/consulting projects under the RCP Data Ops brand.`
+        },
 
-  { keys:['linkedin'],
-    answer:`You can find Raymond on <a href="https://www.linkedin.com/in/raymond-paredes-805b5415a/" target="_blank"><strong>LinkedIn here</strong></a>. He's active there and open to professional connections and project inquiries.` },
+        {
+          keys: ['linkedin'],
+          answer: `You can find Raymond on <a href="https://www.linkedin.com/in/raymond-paredes-805b5415a/" target="_blank"><strong>LinkedIn here</strong></a>. He's active there and open to professional connections and project inquiries.`
+        },
 
-  /* ── ACHIEVEMENTS / METRICS ── */
-  { keys:['achiev','result','impact','metric','number'],
-    answer:`Key career achievements from Raymond's resume:<br><br>📈 <strong>40%</strong> improvement in data accessibility (BI dashboards)<br>⏱️ <strong>15+ hours/week</strong> saved through automation<br>💰 <strong>25% cost savings</strong> through procurement consolidation<br>🚀 <strong>60%</strong> reduction in document retrieval time<br>⚡ Vendor onboarding cut from <strong>2 weeks → 3 days</strong><br>📉 <strong>18%</strong> overhead cost reduction via executive dashboard<br>🎯 <strong>10%</strong> buying price reduction through vendor negotiation` },
+        /* ── ACHIEVEMENTS / METRICS ── */
+        {
+          keys: ['achiev', 'result', 'impact', 'metric', 'number'],
+          answer: `Key career achievements from Raymond's resume:<br><br>📈 <strong>40%</strong> improvement in data accessibility (BI dashboards)<br>⏱️ <strong>15+ hours/week</strong> saved through automation<br>💰 <strong>25% cost savings</strong> through procurement consolidation<br>🚀 <strong>60%</strong> reduction in document retrieval time<br>⚡ Vendor onboarding cut from <strong>2 weeks → 3 days</strong><br>📉 <strong>18%</strong> overhead cost reduction via executive dashboard<br>🎯 <strong>10%</strong> buying price reduction through vendor negotiation`
+        },
 
-  { keys:['cost','saving','reduc','efficien'],
-    answer:`Raymond has delivered measurable cost and efficiency results:<br>• <strong>25% cost savings</strong> via bulk purchasing agreements<br>• <strong>10% buying price reduction</strong> through vendor negotiation<br>• <strong>18% overhead cost reduction</strong> via executive dashboard<br>• <strong>40% error reduction</strong> in expense reporting<br>• <strong>10–20% efficiency increases</strong> across analytics projects` },
+        {
+          keys: ['cost', 'saving', 'reduc', 'efficien'],
+          answer: `Raymond has delivered measurable cost and efficiency results:<br>• <strong>25% cost savings</strong> via bulk purchasing agreements<br>• <strong>10% buying price reduction</strong> through vendor negotiation<br>• <strong>18% overhead cost reduction</strong> via executive dashboard<br>• <strong>40% error reduction</strong> in expense reporting<br>• <strong>10–20% efficiency increases</strong> across analytics projects`
+        },
 
-  { keys:['vendor','supplier'],
-    answer:`Raymond has deep <strong>vendor &amp; supplier management experience</strong> from his Procurement role (2018–2020):<br>• Built a vendor database for price monitoring<br>• Negotiated a 10% buying price reduction<br>• Developed strong supply partnerships for faster delivery<br>• Created web scraping automation to discover new lead suppliers` },
+        {
+          keys: ['vendor', 'supplier'],
+          answer: `Raymond has deep <strong>vendor &amp; supplier management experience</strong> from his Procurement role (2018–2020):<br>• Built a vendor database for price monitoring<br>• Negotiated a 10% buying price reduction<br>• Developed strong supply partnerships for faster delivery<br>• Created web scraping automation to discover new lead suppliers`
+        },
 
-  /* ── GREETINGS ── */
-  { keys:['hello'],
-    answer:`Hello! 👋 I'm Raymond's Resume Assistant. Ask me anything about his experience, skills, education, or how to get in touch!` },
-  { keys:['hi'],
-    answer:`Hi there! 👋 Ask me about Raymond's work history, technical skills, education, or availability — I have all the details from his resume.` },
-  { keys:['hey'],
-    answer:`Hey! 👋 Ask me about Raymond's work history, technical skills, education, or availability — I have all the details from his resume.` },
-];
+        /* ── GREETINGS ── */
+        {
+          keys: ['hello'],
+          answer: `Hello! 👋 I'm Raymond's Resume Assistant. Ask me anything about his experience, skills, education, or how to get in touch!`
+        },
+        {
+          keys: ['hi'],
+          answer: `Hi there! 👋 Ask me about Raymond's work history, technical skills, education, or availability — I have all the details from his resume.`
+        },
+        {
+          keys: ['hey'],
+          answer: `Hey! 👋 Ask me about Raymond's work history, technical skills, education, or availability — I have all the details from his resume.`
+        },
+      ];
 
-/* ── FALLBACK ── */
-const FALLBACK = `I don't have that specific detail on Raymond's resume. For more information, please contact <strong>Mr. RCP himself</strong> directly at <a href="mailto:reiman.par@gmail.com" style="color:#c47a1e">reiman.par@gmail.com</a> or via <a href="https://www.linkedin.com/in/raymond-paredes-805b5415a/" target="_blank" style="color:#c47a1e">LinkedIn</a>. He'd be happy to answer! 😊`;
+      /* ── FALLBACK ── */
+      const FALLBACK = `I don't have that specific detail on Raymond's resume. For more information, please contact <strong>Mr. RCP himself</strong> directly at <a href="mailto:reiman.par@gmail.com" style="color:#c47a1e">reiman.par@gmail.com</a> or via <a href="https://www.linkedin.com/in/raymond-paredes-805b5415a/" target="_blank" style="color:#c47a1e">LinkedIn</a>. He'd be happy to answer! 😊`;
 
-/* ── MATCH ENGINE ── */
-function findAnswer(raw){
-  const q = raw.toLowerCase();
-  // Full multi-keyword match (all keys present)
-  for(const e of FAQ){ if(e.keys.every(k=>q.includes(k))) return e.answer; }
-  // Generous single-keyword pass on longer keywords
-  for(const e of FAQ){ if(e.keys.some(k=>k.length>4 && q.includes(k))) return e.answer; }
-  return null;
-}
+      /* ── MATCH ENGINE ── */
+      function findAnswer(raw) {
+        const q = raw.toLowerCase();
+        // Full multi-keyword match (all keys present)
+        for (const e of FAQ) { if (e.keys.every(k => q.includes(k))) return e.answer; }
+        // Generous single-keyword pass on longer keywords
+        for (const e of FAQ) { if (e.keys.some(k => k.length > 4 && q.includes(k))) return e.answer; }
+        return null;
+      }
 
-/* ── DOM ── */
-let busy = false;
-const msgsEl = document.getElementById('rcb-msgs');
-const inputEl = document.getElementById('rcb-input');
-const sendBtn = document.getElementById('rcb-send-btn');
+      /* ── DOM ── */
+      let busy = false;
+      const msgsEl = document.getElementById('rcb-msgs');
+      const inputEl = document.getElementById('rcb-input');
+      const sendBtn = document.getElementById('rcb-send-btn');
 
-window.rcbToggle = function(){
-  const panel = document.getElementById('rcb-panel');
-  const fab   = document.getElementById('rcb-fab');
-  const badge = document.getElementById('rcb-fab-badge');
-  const isOpen = panel.classList.toggle('open');
-  fab.classList.toggle('open', isOpen);
-  if(badge) badge.style.display='none';
-  if(isOpen) setTimeout(()=>inputEl.focus(),300);
-};
+      window.rcbToggle = function () {
+        const panel = document.getElementById('rcb-panel');
+        const fab = document.getElementById('rcb-fab');
+        const badge = document.getElementById('rcb-fab-badge');
+        const isOpen = panel.classList.toggle('open');
+        fab.classList.toggle('open', isOpen);
+        if (badge) badge.style.display = 'none';
+        if (isOpen) setTimeout(() => inputEl.focus(), 300);
+      };
 
-function scroll(){ msgsEl.scrollTo({top:msgsEl.scrollHeight,behavior:'smooth'}); }
-function killWelcome(){ const w=document.getElementById('rcb-welcome'); if(w) w.remove(); }
+      function scroll() { msgsEl.scrollTo({ top: msgsEl.scrollHeight, behavior: 'smooth' }); }
+      function killWelcome() { const w = document.getElementById('rcb-welcome'); if (w) w.remove(); }
 
-function addRow(role, html){
-  const row=document.createElement('div'); row.className='rcb-row '+role;
-  const av=document.createElement('div'); av.className='rcb-av '+role; av.textContent=role==='user'?'You':'R';
-  const bub=document.createElement('div'); bub.className='rcb-bubble '+role; bub.innerHTML=html;
-  row.appendChild(av); row.appendChild(bub); msgsEl.appendChild(row); scroll();
-}
+      function addRow(role, html) {
+        const row = document.createElement('div'); row.className = 'rcb-row ' + role;
+        const av = document.createElement('div'); av.className = 'rcb-av ' + role; av.textContent = role === 'user' ? 'You' : 'R';
+        const bub = document.createElement('div'); bub.className = 'rcb-bubble ' + role; bub.innerHTML = html;
+        row.appendChild(av); row.appendChild(bub); msgsEl.appendChild(row); scroll();
+      }
 
-function showTyping(){
-  const row=document.createElement('div'); row.className='rcb-row bot'; row.id='rcb-typing';
-  const av=document.createElement('div'); av.className='rcb-av bot'; av.textContent='R';
-  const bub=document.createElement('div'); bub.className='rcb-bubble bot';
-  bub.innerHTML='<div class="rcb-typing"><i></i><i></i><i></i></div>';
-  row.appendChild(av); row.appendChild(bub); msgsEl.appendChild(row); scroll();
-}
-function hideTyping(){ const t=document.getElementById('rcb-typing'); if(t) t.remove(); }
+      function showTyping() {
+        const row = document.createElement('div'); row.className = 'rcb-row bot'; row.id = 'rcb-typing';
+        const av = document.createElement('div'); av.className = 'rcb-av bot'; av.textContent = 'R';
+        const bub = document.createElement('div'); bub.className = 'rcb-bubble bot';
+        bub.innerHTML = '<div class="rcb-typing"><i></i><i></i><i></i></div>';
+        row.appendChild(av); row.appendChild(bub); msgsEl.appendChild(row); scroll();
+      }
+      function hideTyping() { const t = document.getElementById('rcb-typing'); if (t) t.remove(); }
 
-/* ── SEND ── */
-window.rcbSend = function(){
-  const val = inputEl.value.trim();
-  if(!val||busy) return;
-  busy=true; sendBtn.disabled=true; inputEl.value='';
-  killWelcome();
-  addRow('user','<p>'+val.replace(/</g,'&lt;')+'</p>');
-  showTyping();
-  setTimeout(function(){
-    hideTyping();
-    const answer = findAnswer(val) || FALLBACK;
-    addRow('bot','<p>'+answer+'</p>');
-    busy=false; sendBtn.disabled=false; inputEl.focus();
-  }, 450 + Math.random()*300);
-};
+      /* ── SEND ── */
+      window.rcbSend = function () {
+        const val = inputEl.value.trim();
+        if (!val || busy) return;
+        busy = true; sendBtn.disabled = true; inputEl.value = '';
+        killWelcome();
+        addRow('user', '<p>' + val.replace(/</g, '&lt;') + '</p>');
+        showTyping();
+        setTimeout(function () {
+          hideTyping();
+          const answer = findAnswer(val) || FALLBACK;
+          addRow('bot', '<p>' + answer + '</p>');
+          busy = false; sendBtn.disabled = false; inputEl.focus();
+        }, 450 + Math.random() * 300);
+      };
 
-window.rcbQuick = function(btn){ inputEl.value=btn.textContent; rcbSend(); };
+      window.rcbQuick = function (btn) { inputEl.value = btn.textContent; rcbSend(); };
 
-})();
-</script>
+    })();
+  </script>
 
 
-<script>
-function toggleMobMenu(){
-  const m=document.getElementById('mob-menu');
-  const b=document.getElementById('ham-btn');
-  m.classList.toggle('open');
-  b.classList.toggle('open');
-}
-document.querySelectorAll('#mob-menu a').forEach(a=>{
-  a.addEventListener('click',()=>{
-    document.getElementById('mob-menu').classList.remove('open');
-    document.getElementById('ham-btn').classList.remove('open');
-  });
-});
-</script>
+  <script>
+    function toggleMobMenu() {
+      const m = document.getElementById('mob-menu');
+      const b = document.getElementById('ham-btn');
+      m.classList.toggle('open');
+      b.classList.toggle('open');
+    }
+    document.querySelectorAll('#mob-menu a').forEach(a => {
+      a.addEventListener('click', () => {
+        document.getElementById('mob-menu').classList.remove('open');
+        document.getElementById('ham-btn').classList.remove('open');
+      });
+    });
+  </script>
 </body>
+
 </html>

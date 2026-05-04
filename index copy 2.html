@@ -1579,36 +1579,294 @@
     </div>
   </section>
 
-  <section id="dashboard workflow" class="relative z-10 max-w-6xl mx-auto px-4 md:px-8 py-14 md:py-20">
+  <!-- ══ README-STYLE SERVICE SECTIONS ══ -->
+  <style>
+    /* README-style service section layout */
+    .readme-service {
+      position: relative;
+      z-index: 10;
+    }
+
+    .readme-service+.readme-service {
+      border-top: 1px solid #e2ddd5;
+    }
+
+    .readme-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: #c47a1e;
+      border: 1px solid rgba(196, 122, 30, .3);
+      border-radius: 999px;
+      padding: 5px 14px;
+    }
+
+    .readme-divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, #c47a1e 0%, rgba(196, 122, 30, .2) 60%, transparent 100%);
+      margin: 20px 0 24px;
+    }
+
+    .readme-meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+
+    .readme-meta-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: #fff;
+      border: 1px solid #e2ddd5;
+      border-radius: 8px;
+      padding: 4px 10px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9.5px;
+      color: #6b6660;
+      font-weight: 500;
+    }
+
+    .readme-meta-chip .dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #c47a1e;
+    }
+
+    .readme-section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: #c47a1e;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .readme-section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(196, 122, 30, .18);
+      max-width: 120px;
+    }
+
+    .readme-problem {
+      font-family: 'Outfit', sans-serif;
+      font-size: 15px;
+      color: #6b6660;
+      line-height: 1.75;
+      margin-bottom: 16px;
+      border-left: 2px solid rgba(196, 122, 30, .4);
+      padding-left: 14px;
+    }
+
+    .readme-metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 16px 0;
+    }
+
+    @media(max-width:600px) {
+      .readme-metrics-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .readme-metric-card {
+      background: #fff;
+      border: 1px solid #e2ddd5;
+      border-radius: 14px;
+      padding: 14px 16px;
+      transition: all .3s;
+    }
+
+    .readme-metric-card:hover {
+      border-color: #c47a1e;
+      box-shadow: 0 6px 20px -6px rgba(196, 122, 30, .12);
+    }
+
+    .readme-metric-val {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 800;
+      font-size: 1.6rem;
+      color: #c47a1e;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .readme-metric-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: #999590;
+    }
+
+    .readme-metric-context {
+      font-family: 'Outfit', sans-serif;
+      font-size: 11.5px;
+      color: #6b6660;
+      margin-top: 5px;
+      line-height: 1.45;
+    }
+
+    .readme-how-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .readme-how-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 14px;
+      color: #3d3530;
+      line-height: 1.55;
+    }
+
+    .readme-how-list li .ri-num {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      border-radius: 6px;
+      background: rgba(196, 122, 30, .12);
+      border: 1px solid rgba(196, 122, 30, .25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      font-weight: 700;
+      color: #c47a1e;
+      margin-top: 2px;
+    }
+
+    .readme-impact-box {
+      background: linear-gradient(135deg, rgba(196, 122, 30, .06) 0%, rgba(196, 122, 30, .02) 100%);
+      border: 1px solid rgba(196, 122, 30, .2);
+      border-radius: 14px;
+      padding: 16px 20px;
+      margin-top: 16px;
+    }
+
+    .readme-impact-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: #c47a1e;
+      margin-bottom: 8px;
+    }
+
+    .readme-impact-text {
+      font-family: 'Outfit', sans-serif;
+      font-size: 14px;
+      color: #3d3530;
+      line-height: 1.65;
+    }
+
+    .readme-impact-text strong {
+      color: #c47a1e;
+      font-weight: 600;
+    }
+  </style>
+
+  <section id="dashboard workflow" class="readme-service relative z-10 max-w-6xl mx-auto px-4 md:px-8 py-14 md:py-20">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center sr">
-      <div class="space-y-6">
-        <span
-          class="font-mono text-[11px] tracking-[.15em] uppercase text-accent border border-accent/30 rounded-full px-4 py-1.5">Tech
-          Preview</span>
-        <h2 class="font-display font-800 text-3xl md:text-4xl tracking-tight text-cream leading-[1.1]">Every company
-          needs dashboards that drive <span class="text-accent">40%+ faster decisions</span></h2>
-        <p class="text-subtle leading-relaxed">Most teams drown in spreadsheets while leadership waits weeks for
-          reports. The companies that win are the ones where procurement spend, vendor performance, and budget variance
-          are visible in real time — not buried in email threads. I build Power BI reports that pull from automated
-          pipelines and structured knowledge vaults, turning raw data into decisions your team acts on the same day.</p>
-        <ul class="space-y-3">
-          <li class="flex items-start gap-3"><span
-              class="material-symbols-outlined text-accent text-lg mt-0.5">check_circle</span><span
-              class="text-warm text-[15px]"><b>DAX optimization:</b> Sub-second loading on 100K+ row datasets — teams
-              saw <b class="text-accent">32% faster reporting cycles</b></span></li>
-          <li class="flex items-start gap-3"><span
-              class="material-symbols-outlined text-accent text-lg mt-0.5">check_circle</span><span
-              class="text-warm text-[15px]"><b>TMDL exports:</b> Version-controlled data models — zero deployment
-              errors, <b class="text-accent">100% audit-ready</b></span></li>
-          <li class="flex items-start gap-3"><span
-              class="material-symbols-outlined text-accent text-lg mt-0.5">check_circle</span><span
-              class="text-warm text-[15px]"><b>Drill-through pages:</b> Dynamic cross-filtering that cut stakeholder Q&A
-              time by <b class="text-accent">50%</b></span></li>
-        </ul>
-        <div class="stat-pill">
-          <div class="stat-val">20+</div><span class="text-sm text-subtle">Dashboards delivered — each one replacing 15+
-            hours of manual reporting per month</span>
+      <div class="space-y-0">
+
+        <!-- Header -->
+        <div class="readme-badge">
+          <span class="material-symbols-outlined" style="font-size:13px">bar_chart</span>
+          Analytics Dashboards
         </div>
+
+        <h2 class="font-display font-800 text-3xl md:text-4xl tracking-tight text-cream leading-[1.1] mt-4 mb-2">
+          Power BI Dashboards that drive <span class="text-accent">40%+ faster decisions</span>
+        </h2>
+
+        <!-- Meta chips -->
+        <div class="readme-meta-row">
+          <span class="readme-meta-chip"><span class="dot"></span>Power BI · DAX · TMDL</span>
+          <span class="readme-meta-chip"><span class="dot"></span>20+ Dashboards Delivered</span>
+          <span class="readme-meta-chip"><span class="dot"></span>Live Embed Below</span>
+        </div>
+
+        <div class="readme-divider"></div>
+
+        <!-- Problem Statement -->
+        <div class="readme-section-label">Problem Statement</div>
+        <p class="readme-problem">Most teams drown in spreadsheets while leadership waits weeks for reports. Procurement
+          spend, vendor performance, and budget variance are buried in email threads — not visible in real time. Every
+          delayed decision compounds into lost revenue.</p>
+
+        <!-- How It Works -->
+        <div class="readme-section-label" style="margin-top:18px;">How It Works</div>
+        <ul class="readme-how-list">
+          <li><span class="ri-num">1</span><span><b>Data Model First:</b> Star schema design with dimension and fact
+              tables — DimVendor, DimCalendar, FactPO, FactGR — optimised for Storage Engine pushability.</span></li>
+          <li><span class="ri-num">2</span><span><b>DAX Measure Library:</b> 150+ measures authored across operational,
+              analytical, and strategic tiers — rolling averages, Top N, price variance, lead time.</span></li>
+          <li><span class="ri-num">3</span><span><b>TMDL Export & Version Control:</b> Data models exported as text
+              files, tracked in Git — zero deployment errors, full audit trail.</span></li>
+          <li><span class="ri-num">4</span><span><b>Drill-Through & Cross-Filter:</b> Dynamic pages with bookmark
+              navigation cut stakeholder Q&A sessions from hours to minutes.</span></li>
+        </ul>
+
+        <!-- Performance Metrics -->
+        <div class="readme-section-label" style="margin-top:18px;">Performance Metrics</div>
+        <div class="readme-metrics-grid">
+          <div class="readme-metric-card">
+            <div class="readme-metric-val">32%</div>
+            <div class="readme-metric-label">Faster Decisions</div>
+            <div class="readme-metric-context">Reporting cycles cut from weekly to same-day via automated pipelines
+            </div>
+          </div>
+          <div class="readme-metric-card">
+            <div class="readme-metric-val">100%</div>
+            <div class="readme-metric-label">Audit-Ready</div>
+            <div class="readme-metric-context">TMDL version-controlled exports — zero deployment errors across all
+              models</div>
+          </div>
+          <div class="readme-metric-card">
+            <div class="readme-metric-val">50%</div>
+            <div class="readme-metric-label">Q&amp;A Time Saved</div>
+            <div class="readme-metric-context">Drill-through pages eliminated back-and-forth stakeholder reporting loops
+            </div>
+          </div>
+        </div>
+
+        <!-- Business Impact -->
+        <div class="readme-impact-box">
+          <div class="readme-impact-label">Business Impact</div>
+          <p class="readme-impact-text">Companies using these dashboards replaced <strong>15+ hours of manual reporting
+              per month</strong>. Leadership moved from requesting data to acting on it — the same day. <strong>20+
+              dashboards delivered</strong>, each one tracking ₱4.2M+ in procurement value with sub-second load times on
+            100K+ row datasets.</p>
+        </div>
+
       </div>
       <!-- Dashboard Tool Tabs -->
       <div id="dashboardViewer"
@@ -2084,44 +2342,80 @@
     }
   </style>
 
-  <section id="automation workflow" class="relative z-10 max-w-6xl mx-auto px-8 py-20">
+  <section id="automation workflow" class="readme-service relative z-10 max-w-6xl mx-auto px-4 md:px-8 py-14 md:py-20">
 
     <!-- Two-col row: description LEFT, n8n+apps RIGHT -->
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center sr">
-      <div class="space-y-6">
-        <span
-          class="font-mono text-[11px] tracking-[.15em] uppercase text-accent border border-accent/30 rounded-full px-4 py-1.5">Automation
-          Engine</span>
-        <h2 class="font-display font-800 text-3xl md:text-4xl tracking-tight text-cream leading-[1.1]">Every company
-          loses <span class="text-accent">15+ hours/week</span> to tasks a workflow could handle</h2>
-        <p class="text-subtle leading-relaxed">Your team is copying data between tabs, chasing approvals over chat, and
-          reformatting reports that should build themselves. The companies scaling fastest are the ones that automated
-          these bottlenecks yesterday. I build workflows that extract document data, trigger the right notifications,
-          scrape the web for leads and products, and push clean structured data straight into your dashboards — saving
-          <span class="text-accent font-semibold">15+ manual hours per week</span> with <span
-            class="text-accent font-semibold">50%+ error reduction</span>.</p>
-        <ul class="space-y-3">
-          <li class="flex items-start gap-3"><span
-              class="material-symbols-outlined text-accent text-lg mt-0.5">check_circle</span><span
-              class="text-warm text-[15px]"><b>Document Parsing:</b> PDF/OCR extraction for financial statements,
-              invoices, receipts — <b class="text-accent">3x faster processing</b> vs. manual entry</span></li>
-          <li class="flex items-start gap-3"><span
-              class="material-symbols-outlined text-accent text-lg mt-0.5">check_circle</span><span
-              class="text-warm text-[15px]"><b>Google Apps Script integrations:</b> Gmail analysis, Calendar export,
-              Tasks auto-sync — <b class="text-accent">zero missed follow-ups</b></span></li>
-          <li class="flex items-start gap-3"><span
-              class="material-symbols-outlined text-accent text-lg mt-0.5">check_circle</span><span
-              class="text-warm text-[15px]"><b>Real-time database sync:</b> Every update reflected instantly across all
-              systems — <b class="text-accent">99.8% uptime</b></span></li>
-          <li class="flex items-start gap-3"><span
-              class="material-symbols-outlined text-accent text-lg mt-0.5">check_circle</span><span
-              class="text-warm text-[15px]"><b>Web scraping pipelines:</b> Firecrawl-powered lead gen and product
-              research — <b class="text-accent">10x the coverage</b> of manual searching</span></li>
-        </ul>
-        <div class="stat-pill">
-          <div class="stat-val">50+</div><span class="text-sm text-subtle">Workflows automated — each one eliminating
-            hours of repetitive ops work per week</span>
+      <div class="space-y-0">
+
+        <!-- Header -->
+        <div class="readme-badge">
+          <span class="material-symbols-outlined" style="font-size:13px">sync_alt</span>
+          Automation Engine
         </div>
+
+        <h2 class="font-display font-800 text-3xl md:text-4xl tracking-tight text-cream leading-[1.1] mt-4 mb-2">
+          Every company loses <span class="text-accent">15+ hours/week</span> to tasks a workflow could handle
+        </h2>
+
+        <!-- Meta chips -->
+        <div class="readme-meta-row">
+          <span class="readme-meta-chip"><span class="dot"></span>n8n · Apps Script · Docker</span>
+          <span class="readme-meta-chip"><span class="dot"></span>50+ Workflows Built</span>
+          <span class="readme-meta-chip"><span class="dot"></span>99.8% Uptime</span>
+        </div>
+
+        <div class="readme-divider"></div>
+
+        <!-- Problem Statement -->
+        <div class="readme-section-label">Problem Statement</div>
+        <p class="readme-problem">Your team is copying data between tabs, chasing approvals over chat, and reformatting
+          reports that should build themselves. Every manual bottleneck is a revenue leak — and the companies scaling
+          fastest automated these workflows yesterday.</p>
+
+        <!-- How It Works -->
+        <div class="readme-section-label" style="margin-top:18px;">How It Works</div>
+        <ul class="readme-how-list">
+          <li><span class="ri-num">1</span><span><b>Document Parsing:</b> PDF/OCR extraction for bank statements,
+              invoices, and receipts — BPI, BDO, UnionBank, Robinsons Bank handled by modular regex parsers.</span></li>
+          <li><span class="ri-num">2</span><span><b>Google Apps Script Integrations:</b> Gmail analysis, Calendar
+              export, Tasks auto-sync — zero missed follow-ups across the full Google Workspace suite.</span></li>
+          <li><span class="ri-num">3</span><span><b>Real-Time Database Sync:</b> n8n webhooks push clean structured data
+              to Supabase, MongoDB, and Google Sheets — every update reflected instantly across all systems.</span></li>
+          <li><span class="ri-num">4</span><span><b>Web Scraping Pipelines:</b> Firecrawl-powered lead gen and product
+              research — structured JSON output piped directly into dashboards and databases.</span></li>
+        </ul>
+
+        <!-- Performance Metrics -->
+        <div class="readme-section-label" style="margin-top:18px;">Performance Metrics</div>
+        <div class="readme-metrics-grid">
+          <div class="readme-metric-card">
+            <div class="readme-metric-val">3×</div>
+            <div class="readme-metric-label">Faster Processing</div>
+            <div class="readme-metric-context">PDF/OCR extraction vs. manual entry across 4 Philippine banks</div>
+          </div>
+          <div class="readme-metric-card">
+            <div class="readme-metric-val">50%+</div>
+            <div class="readme-metric-label">Error Reduction</div>
+            <div class="readme-metric-context">Automated validation catches mismatches before they reach reporting</div>
+          </div>
+          <div class="readme-metric-card">
+            <div class="readme-metric-val">99.8%</div>
+            <div class="readme-metric-label">Pipeline Uptime</div>
+            <div class="readme-metric-context">Self-hosted Docker stack on Tailscale — no SaaS dependency or downtime
+            </div>
+          </div>
+        </div>
+
+        <!-- Business Impact -->
+        <div class="readme-impact-box">
+          <div class="readme-impact-label">Business Impact</div>
+          <p class="readme-impact-text"><strong>50+ workflows automated</strong> — each one eliminating hours of
+            repetitive ops work per week. Bank statement parsing alone saved <strong>12+ hours/month</strong> of manual
+            data entry with <strong>99.5% extraction accuracy</strong>. All pipelines run containerised on Docker with
+            Tailscale for zero-exposure remote access.</p>
+        </div>
+
       </div>
 
       <div class="space-y-3" id="n8n-container">
@@ -2499,36 +2793,84 @@
     })();
   </script>
 
-  <section id="Knowledge Management workflow" class="relative z-10 max-w-6xl mx-auto px-8 py-20">
+  <section id="Knowledge Management workflow"
+    class="readme-service relative z-10 max-w-6xl mx-auto px-4 md:px-8 py-14 md:py-20">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center sr">
-      <div class="space-y-6">
-        <h2 class="font-display font-800 text-3xl md:text-4xl tracking-tight text-cream leading-[1.1]">Companies without
-          a knowledge system <span class="text-accent">repeat mistakes that cost millions</span></h2>
-        <p class="text-subtle leading-relaxed">When a senior employee leaves, their process knowledge walks out the
-          door. When a new hire onboards, they spend weeks asking questions that should have documented answers. Every
-          company needs a structured knowledge system that makes processes findable, understandable, and actionable —
-          cutting onboarding time by <span class="text-accent font-semibold">40%</span> and eliminating the tribal
-          knowledge bottleneck. I build Obsidian vaults with BPMN process maps, Mermaid diagrams, and AI-powered
-          retrieval layers — the Second Brain your operations have been missing.</p>
-        <ul class="space-y-3">
-          <li class="flex items-start gap-3"><span
-              class="material-symbols-outlined text-accent text-lg mt-0.5">check_circle</span><span
-              class="text-warm text-[15px]"><b>Obsidian vault architecture:</b> Maps of Content across departments —
-              teams find answers <b class="text-accent">5x faster</b> than searching shared drives</span></li>
-          <li class="flex items-start gap-3"><span
-              class="material-symbols-outlined text-accent text-lg mt-0.5">check_circle</span><span
-              class="text-warm text-[15px]"><b>Process documentation:</b> BPMN 2.0 & Mermaid workflow diagrams +
-              Excalidraw whiteboards — <b class="text-accent">100% process coverage</b> across departments</span></li>
+      <div class="space-y-0">
 
-          <li class="flex items-start gap-3"><span
-              class="material-symbols-outlined text-accent text-lg mt-0.5">check_circle</span><span
-              class="text-warm text-[15px]"><b>RAG prototyping:</b> LLM-powered retrieval with vector search — <b
-                class="text-accent">instant answers</b> from your entire documentation library</span></li>
-        </ul>
-        <div class="stat-pill">
-          <div class="stat-val">12</div><span class="text-sm text-subtle">Knowledge systems deployed — each one turning
-            scattered docs into a searchable, living process hub</span>
+        <!-- Header -->
+        <div class="readme-badge">
+          <span class="material-symbols-outlined" style="font-size:13px">hub</span>
+          Knowledge Systems
         </div>
+
+        <h2 class="font-display font-800 text-3xl md:text-4xl tracking-tight text-cream leading-[1.1] mt-4 mb-2">
+          Companies without a knowledge system <span class="text-accent">repeat mistakes that cost millions</span>
+        </h2>
+
+        <!-- Meta chips -->
+        <div class="readme-meta-row">
+          <span class="readme-meta-chip"><span class="dot"></span>Obsidian · BPMN · Mermaid</span>
+          <span class="readme-meta-chip"><span class="dot"></span>12 Systems Deployed</span>
+          <span class="readme-meta-chip"><span class="dot"></span>D3 Graph · Interactive</span>
+        </div>
+
+        <div class="readme-divider"></div>
+
+        <!-- Problem Statement -->
+        <div class="readme-section-label">Problem Statement</div>
+        <p class="readme-problem">When a senior employee leaves, their process knowledge walks out the door. When a new
+          hire onboards, they spend weeks asking questions that should have documented answers. Every undocumented
+          process is a single point of failure — and a recurring cost.</p>
+
+        <!-- How It Works -->
+        <div class="readme-section-label" style="margin-top:18px;">How It Works</div>
+        <ul class="readme-how-list">
+          <li><span class="ri-num">1</span><span><b>Obsidian Vault Architecture:</b> Maps of Content (MOC) across
+              departments — every process, policy, and workflow linked and searchable in a single knowledge
+              graph.</span></li>
+          <li><span class="ri-num">2</span><span><b>Process Documentation:</b> BPMN 2.0 swimlane diagrams and Mermaid
+              flowcharts capture end-to-end processes — from Procure-to-Pay to Accounts Payable — with full decision
+              logic.</span></li>
+          <li><span class="ri-num">3</span><span><b>Visual Collaboration:</b> Excalidraw whiteboards for
+              cross-functional sessions — exported as living documents embedded directly in the vault.</span></li>
+          <li><span class="ri-num">4</span><span><b>RAG Retrieval Layer:</b> LLM-powered vector search (Qdrant + OpenAI
+              embeddings) — teams ask natural language questions and get instant answers from the entire documentation
+              library.</span></li>
+        </ul>
+
+        <!-- Performance Metrics -->
+        <div class="readme-section-label" style="margin-top:18px;">Performance Metrics</div>
+        <div class="readme-metrics-grid">
+          <div class="readme-metric-card">
+            <div class="readme-metric-val">5×</div>
+            <div class="readme-metric-label">Faster Answers</div>
+            <div class="readme-metric-context">Teams find process answers in seconds vs. minutes searching shared drives
+            </div>
+          </div>
+          <div class="readme-metric-card">
+            <div class="readme-metric-val">40%</div>
+            <div class="readme-metric-label">Faster Onboarding</div>
+            <div class="readme-metric-context">New hires reach productivity faster with structured, searchable process
+              maps</div>
+          </div>
+          <div class="readme-metric-card">
+            <div class="readme-metric-val">100%</div>
+            <div class="readme-metric-label">Process Coverage</div>
+            <div class="readme-metric-context">BPMN 2.0 + Mermaid diagrams across all departments — no tribal knowledge
+              gaps</div>
+          </div>
+        </div>
+
+        <!-- Business Impact -->
+        <div class="readme-impact-box">
+          <div class="readme-impact-label">Business Impact</div>
+          <p class="readme-impact-text"><strong>12 knowledge systems deployed</strong> — each one turning scattered docs
+            into a searchable, living process hub. The vault with <strong>200+ MOC notes</strong> eliminated the tribal
+            knowledge bottleneck and gave cross-functional teams <strong>100% process visibility</strong> without
+            needing to ask a senior employee every time.</p>
+        </div>
+
       </div>
       <!-- Knowledge Tools Tabbed Viewer — D3 graph + BPMN + Mermaid + Excalidraw -->
       <div id="ks-graph-shell"
@@ -2801,7 +3143,8 @@
         systems every growing company needs — and the results they deliver</h2>
       <p class="text-subtle text-lg mt-4 max-w-2xl mx-auto font-light">Dashboard + Automation + Knowledge Management =
         <span class="text-accent font-semibold">22%+ revenue growth</span>, <span class="text-accent font-semibold">15+
-          hours saved weekly</span>, and <span class="text-accent font-semibold">50%+ fewer errors</span>.</p>
+          hours saved weekly</span>, and <span class="text-accent font-semibold">50%+ fewer errors</span>.
+      </p>
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-[1fr_1.15fr] gap-10 items-start sr">
@@ -4782,7 +5125,8 @@
           <div class="pc-title">Procurement Dashboard</div>
           <div class="pc-desc">Replaced monthly PDF reports with real-time Power BI tracking ₱4.2M+ in PO value. Result:
             <b>32% faster procurement cycles</b>, <b>50% fewer approval bottlenecks</b>, and leadership visibility from
-            days to seconds with 150+ DAX measures.</div>
+            days to seconds with 150+ DAX measures.
+          </div>
           <div class="pc-tags">
             <span class="pc-tag">Power BI</span>
             <span class="pc-tag">DAX</span>
@@ -4902,7 +5246,8 @@
           <div class="pc-title">Automated Knowledge Base</div>
           <div class="pc-desc">Docker-composed n8n, MongoDB, Supabase, and Nginx on a Tailscale mesh — achieving
             <b>99.8% uptime</b>, <b>zero vendor lock-in</b>, and a self-hosted infrastructure that handles production
-            workloads at a fraction of SaaS costs.</div>
+            workloads at a fraction of SaaS costs.
+          </div>
           <div class="pc-tags">
             <span class="pc-tag">Obsidian</span>
             <span class="pc-tag">Notion</span>
